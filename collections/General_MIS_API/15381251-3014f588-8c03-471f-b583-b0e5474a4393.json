@@ -9987,8 +9987,32 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Custom-PSK",
+						"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": {\r\n        \"grant_type\": \"password\",\r\n        \"email\": \"{{user_email}}\",\r\n        \"password\": \"{{user_password}}\",\r\n        \"client_id\": \"e2e1d2c8-9bac-43c6-adef-83239940b30a\",\r\n        \"scope\": \"app:authorize\"\r\n    }\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://auth-demo.ehealth.gov.ua/auth/login",
+					"protocol": "https",
+					"host": [
+						"auth-demo",
+						"ehealth",
+						"gov",
+						"ua"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
 			},
 			"response": []
 		}
