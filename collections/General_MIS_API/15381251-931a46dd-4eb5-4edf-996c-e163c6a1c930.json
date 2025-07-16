@@ -9979,18 +9979,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "test",
-			"id": "15381251-d0664a1e-f179-4f75-8d5e-08680ab51f15",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "DELETE",
-				"header": []
-			},
-			"response": []
 		}
 	]
 }
