@@ -17495,7 +17495,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/api/patients/composition/12c67495-047a-423c-a25b-abbe158cd008/sign",
+									"raw": "{{host}}/api/patients/composition/1cc8690b-0a50-4fef-b254-4fb0702c4cdb/sign",
 									"host": [
 										"{{host}}"
 									],
@@ -17503,7 +17503,7 @@
 										"api",
 										"patients",
 										"composition",
-										"12c67495-047a-423c-a25b-abbe158cd008",
+										"1cc8690b-0a50-4fef-b254-4fb0702c4cdb",
 										"sign"
 									],
 									"query": [
