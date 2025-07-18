@@ -17930,8 +17930,11 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "b9528e91-1ad2-4cbe-8e44-85c36e5c0ae5",
-										"exec": [],
-										"type": "text/javascript"
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -17942,18 +17945,6 @@
 							"request": {
 								"method": "GET",
 								"header": [
-									{
-										"key": "x-consumer-id",
-										"value": "a747cd78-b7e5-11ea-b351-f319bc42050d",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "x-person-id",
-										"value": "af9d5b14-b7e5-11ea-8ef4-4f81455b5ebd",
-										"type": "text",
-										"disabled": true
-									},
 									{
 										"key": "api-key",
 										"value": "{{mis_client_secret}}",
