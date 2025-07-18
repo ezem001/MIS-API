@@ -8626,7 +8626,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/v2/dictionaries?name=COMPOSITION_CANCELLATION_REASONS_TEMP_DISABILITY&=eHealth/encounter_types",
+							"raw": "{{host}}/api/v2/dictionaries?name=eHealth/encounter_types",
 							"host": [
 								"{{host}}"
 							],
@@ -8783,10 +8783,11 @@
 								},
 								{
 									"key": "name",
-									"value": "COMPOSITION_CANCELLATION_REASONS_TEMP_DISABILITY"
+									"value": "COMPOSITION_CANCELLATION_REASONS_TEMP_DISABILITY",
+									"disabled": true
 								},
 								{
-									"key": "",
+									"key": "name",
 									"value": "eHealth/encounter_types"
 								}
 							]
