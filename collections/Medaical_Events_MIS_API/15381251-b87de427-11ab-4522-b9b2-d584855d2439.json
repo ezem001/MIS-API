@@ -17575,7 +17575,7 @@
 											"    } else {\r",
 											"        console.log('Request successful:', res.json());\r",
 											"        // За потреби можна зберегти відповідь у змінні:\r",
-											"        pm.environment.set(\"compositionenter_in_errorResponse\", JSON.stringify(res.json()));\r",
+											"        pm.environment.set(\"composition_enter_in_error_signed_content\", JSON.stringify(res.json()));\r",
 											"    }\r",
 											"});\r",
 											""
