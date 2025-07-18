@@ -17962,7 +17962,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/patients/searchComposition?focus=ed1b5e9a-1dbf-47f4-9760-74318e3eb054&status=ENTERED_IN_ERROR",
+									"raw": "{{host}}/api/patients/searchComposition?status=ENTERED_IN_ERROR&subject=ed1b5e9a-1dbf-47f4-9760-74318e3eb054",
 									"host": [
 										"{{host}}"
 									],
@@ -17984,7 +17984,8 @@
 										},
 										{
 											"key": "focus",
-											"value": "ed1b5e9a-1dbf-47f4-9760-74318e3eb054"
+											"value": "ed1b5e9a-1dbf-47f4-9760-74318e3eb054",
+											"disabled": true
 										},
 										{
 											"key": "offset",
@@ -18007,8 +18008,7 @@
 										},
 										{
 											"key": "subject",
-											"value": "ed1b5e9a-1dbf-47f4-9760-74318e3eb054",
-											"disabled": true
+											"value": "ed1b5e9a-1dbf-47f4-9760-74318e3eb054"
 										},
 										{
 											"key": "focus",
