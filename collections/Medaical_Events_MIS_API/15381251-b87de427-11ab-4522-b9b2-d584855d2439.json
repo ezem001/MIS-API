@@ -17310,7 +17310,7 @@
 													"        return displayResponse(\"❌ composition_check_job_id not found\", jsonData);",
 													"    }",
 													"",
-													"    const url = `${pm.environment.get('host')}/api/patients/composition/job/${compositionCheckJobID}`;",
+													"    const url = `${pm.g.get('host')}/api/patients/composition/job/${compositionCheckJobID}`;",
 													"",
 													"    pm.sendRequest({",
 													"        method: 'GET',",
