@@ -17304,7 +17304,7 @@
 													"            'Content-Type': 'application/json',",
 													"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,",
 													"            'api-key': `${pm.environment.get('mis_client_secret')}`,",
-													"            'X-Custom-PSK': `${pm..get('')}`",
+													"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`",
 													"        }",
 													"    }, function (err, res) {",
 													"        console.log('error', err);",
