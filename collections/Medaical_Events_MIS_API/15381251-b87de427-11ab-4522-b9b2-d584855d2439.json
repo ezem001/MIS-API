@@ -17551,7 +17551,7 @@
 											"    console.log(compositionCheckJobID)\r",
 											"\r",
 											"    const compositionCheckJobIdVar = pm.globals.get('composition_check_job_id');\r",
-											"    const url = `https://api-demo.ehealth.gov.ua/api/patients/composition/job/${compositionCheckJobIdVar}`;\r",
+											"    const url = `${host}/api/patients/composition/job/${compositionCheckJobIdVar}`;\r",
 											"\r",
 											"    pm.sendRequest({\r",
 											"        method: 'GET',\r",
