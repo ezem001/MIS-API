@@ -17531,8 +17531,6 @@
 											"const apiKey = pm.environment.get(\"mis_client_secret\");\r",
 											"const accessToken = pm.environment.get(\"access_token\");\r",
 											"\r",
-											"const getUrl = `${host}/api/patients/composition/job/${jobId}`;\r",
-											"\r",
 											"const jsonData = pm.response.json();\r",
 											"\r",
 											"function displayResponse(title, data) {\r",
