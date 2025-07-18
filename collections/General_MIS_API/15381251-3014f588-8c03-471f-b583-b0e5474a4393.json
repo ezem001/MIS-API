@@ -4184,7 +4184,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"person\": {\n        \"first_name\": \"Лесь\",\n        \"last_name\": \"Іваненко\",\n        \"second_name\": \"Тестовий\",\n        \"birth_date\": \"2008-11-25\",\n        \"birth_country\": \"Україна\",\n        \"birth_settlement\": \"Київ\",\n        \"gender\": \"MALE\",\n        \"email\": \"test1234@mail.com\",\n        \"no_tax_id\": false,\n        \"tax_id\": \"{{person_tax_id}}\",\n        \"secret\": \"secret\",\n        \"documents\": [\n            {\n                \"type\": \"NATIONAL_ID\",\n                \"number\": \"566436411\",\n                \"issued_by\": \"Рокитнянським РВ ГУ МВС Київської області\",\n                \"issued_at\": \"2017-02-28\",\n                \"expiration_date\":\"2027-02-28\"\n            },\n            {\n                \"type\": \"MARRIAGE_CERTIFICATE\",\n                \"number\": \"УУ436411\",\n                \"issued_by\": \"Рокитнянським РВ ГУ МВС Київської області\",\n                \"issued_at\": \"2017-02-28\"\n            }\n        ],\n        \"addresses\": [\n            {\n                \"area\": \"ХАРКІВСЬКА\",\n                \"building\": \"15\",\n                \"country\": \"UA\",\n                \"region\": \"ЧУГУЇВСЬКИЙ\",\n                \"settlement\": \"ВЕЛИКА БАБКА\",\n                \"settlement_id\": \"7a438190-5b6f-4341-b25d-0b19f46c320f\",\n                \"settlement_type\": \"VILLAGE\",\n                \"street\": \"Ніжинська\",\n                \"street_type\": \"STREET\",\n                \"type\": \"RESIDENCE\",\n                \"zip\": \"12345\"\n            }\n        ],\n        \"phones\": [\n            {\n                \"type\": \"MOBILE\",\n                \"number\": \"+380990953716\"\n            }\n        ],\n        \"authentication_methods\": [\n            {\n                \"type\": \"OFFLINE\"\n            }\n        ],\n        \"unzr\": \"19910824-00026\",\n        \"emergency_contact\": {\n            \"first_name\": \"Ганна\",\n            \"last_name\": \"Сіра\",\n            \"second_name\": \"Іванівна\",\n            \"phones\": [\n                {\n                    \"type\": \"MOBILE\",\n                    \"number\": \"+380954445566\"\n                }\n            ]\n        },\n        \"preferred_way_communication\": \"email\"\n    },\n    \"patient_signed\": false,\n    \"process_disclosure_data_consent\": true\n}"
+											"raw": "{\n    \"person\": {\n        \"first_name\": \"Лесь\",\n        \"last_name\": \"Іваненко\",\n        \"second_name\": \"Тестовий\",\n        \"birth_date\": \"1988-11-25\",\n        \"birth_country\": \"Україна\",\n        \"birth_settlement\": \"Київ\",\n        \"gender\": \"MALE\",\n        \"email\": \"test1234@mail.com\",\n        \"no_tax_id\": false,\n        \"tax_id\": \"{{person_tax_id}}\",\n        \"secret\": \"secret\",\n        \"documents\": [\n            {\n                \"type\": \"TEMPORARY_CERTIFICATE\",\n                \"number\": \"566436411\",\n                \"issued_by\": \"Рокитнянським РВ ГУ МВС Київської області\",\n                \"issued_at\": \"2017-02-28\",\n                \"expiration_date\":\"2027-02-28\"\n            }\n        ],\n        \"addresses\": [\n            {\n                \"area\": \"ХАРКІВСЬКА\",\n                \"building\": \"15\",\n                \"country\": \"UA\",\n                \"region\": \"ЧУГУЇВСЬКИЙ\",\n                \"settlement\": \"ВЕЛИКА БАБКА\",\n                \"settlement_id\": \"7a438190-5b6f-4341-b25d-0b19f46c320f\",\n                \"settlement_type\": \"VILLAGE\",\n                \"street\": \"Ніжинська\",\n                \"street_type\": \"STREET\",\n                \"type\": \"RESIDENCE\",\n                \"zip\": \"12345\"\n            }\n        ],\n        \"phones\": [\n            {\n                \"type\": \"MOBILE\",\n                \"number\": \"+380990953716\"\n            }\n        ],\n        \"authentication_methods\": [\n            {\n                \"type\": \"OFFLINE\"\n            }\n        ],\n        \"unzr\": \"19910824-00026\",\n        \"emergency_contact\": {\n            \"first_name\": \"Ганна\",\n            \"last_name\": \"Сіра\",\n            \"second_name\": \"Іванівна\",\n            \"phones\": [\n                {\n                    \"type\": \"MOBILE\",\n                    \"number\": \"+380954445566\"\n                }\n            ]\n        },\n        \"preferred_way_communication\": \"email\"\n    },\n    \"patient_signed\": false,\n    \"process_disclosure_data_consent\": true\n}"
 										},
 										"url": {
 											"raw": "{{host}}/api/v2/person_requests",
@@ -8626,7 +8626,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/v2/dictionaries?name=COMPOSITION_CANCELLATION_REASONS_TEMP_DISABILITY",
+							"raw": "{{host}}/api/v2/dictionaries?name=COMPOSITION_CANCELLATION_REASONS_TEMP_DISABILITY&=eHealth/encounter_types",
 							"host": [
 								"{{host}}"
 							],
@@ -8784,6 +8784,10 @@
 								{
 									"key": "name",
 									"value": "COMPOSITION_CANCELLATION_REASONS_TEMP_DISABILITY"
+								},
+								{
+									"key": "",
+									"value": "eHealth/encounter_types"
 								}
 							]
 						}
