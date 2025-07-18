@@ -17527,7 +17527,7 @@
 										"exec": [
 											"// --- Другий запит на GET composition job ---\r",
 											"const host = pm.environment.get(\"host\");\r",
-											"const x-custom-psk = pm.environment.get(\"x-custom-psk\");\r",
+											"const psk = pm.environment.get(\"x-custom-psk\");\r",
 											"const apiKey = pm.environment.get(\"mis_client_secret\");\r",
 											"const accessToken = pm.environment.get(\"access_token\");\r",
 											"\r",
