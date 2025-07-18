@@ -17546,7 +17546,7 @@
 											"                }\r",
 											"            ]\r",
 											"        },\r",
-											"        value: \"1cc8690b-0a50-4fef-b254-4fb0702c4cdb\"\r",
+											"        value: `${pm.globals.get(\"JobCompositionID\")}`\r",
 											"    },\r",
 											"    reason: {\r",
 											"        coding: [\r",
@@ -17575,7 +17575,7 @@
 											"    } else {\r",
 											"        console.log('Request successful:', res.json());\r",
 											"        // За потреби можна зберегти відповідь у змінні:\r",
-											"        pm.environment.set(\"enterInErrorResponse\", JSON.stringify(res.json()));\r",
+											"        pm.environment.set(\"compositionenter_in_errorResponse\", JSON.stringify(res.json()));\r",
 											"    }\r",
 											"});\r",
 											""
