@@ -18021,51 +18021,6 @@
 							"response": []
 						},
 						{
-							"name": "Search Compositions",
-							"id": "15381251-ada6a414-c981-4f9d-866e-6838d3dbcf32",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									},
-									{
-										"key": "api-key",
-										"value": "{{mis_client_secret}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Custom-PSK",
-										"value": "{{x-custom-psk}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/api/patients/caada087-f725-4481-8ae4-6c1b642e4fbb/searchComposition",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"patients",
-										"caada087-f725-4481-8ae4-6c1b642e4fbb",
-										"searchComposition"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "printForm - composition",
 							"id": "15381251-182e01b7-c6ee-45fc-9a2f-bb8e801f4567",
 							"protocolProfileBehavior": {
