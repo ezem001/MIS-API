@@ -17594,7 +17594,7 @@
 											"            const hrefs = responseBody.data.links.map(link => link.href);\r",
 											"\r",
 											"            // Виклик displayResponse із усіма значеннями href\r",
-											"            displayResponse('Create Composition Request Job Response Details', hrefs);\r",
+											"            displayResponse('Enter in Composition Request Job Response Details', hrefs);\r",
 											"\r",
 											"            // Перевірка та збереження compositionId, якщо є 'composition/'\r",
 											"            responseBody.data.links.forEach(link => {\r",
