@@ -17962,7 +17962,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/patients/searchComposition?status=FINAL&focus=4563dca3-b086-49fd-bd28-d4e49809565d",
+									"raw": "{{host}}/api/patients/searchComposition?status=ENTERED_IN_ERROR&focus=4563dca3-b086-49fd-bd28-d4e49809565d",
 									"host": [
 										"{{host}}"
 									],
@@ -18004,7 +18004,7 @@
 										},
 										{
 											"key": "status",
-											"value": "FINAL"
+											"value": "ENTERED_IN_ERROR"
 										},
 										{
 											"key": "subject",
