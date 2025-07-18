@@ -17576,7 +17576,7 @@
 											"        try {\r",
 											"            const response = res.json();\r",
 											"            if (response.signed_content) {\r",
-											"                pm.environment.set(\"enterInErrorResponse\", response.signed_content);\r",
+											"                pm.globals.set(\"composition_enter_in_error_signed_content\", response.signed_content);\r",
 											"                console.log(\"signed_content saved to enterInErrorResponse\");\r",
 											"            } else {\r",
 											"                console.warn(\"signed_content not found in response\");\r",
