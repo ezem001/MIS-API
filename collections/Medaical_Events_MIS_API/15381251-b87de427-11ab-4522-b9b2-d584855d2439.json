@@ -15238,9 +15238,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{host_demo}}/api/persons/{{patient_id_from_episode}}/medication_requests/{{medication_req_id}}",
+									"raw": "{{host}}/api/persons/{{patient_id_from_episode}}/medication_requests/{{medication_req_id}}",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
