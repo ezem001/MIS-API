@@ -14082,14 +14082,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/medication_requests/Х",
+									"raw": "{{host}}/api/medication_requests/{{medication_req_id}}",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"medication_requests",
-										"Х"
+										"{{medication_req_id}}"
 									],
 									"query": [
 										{
