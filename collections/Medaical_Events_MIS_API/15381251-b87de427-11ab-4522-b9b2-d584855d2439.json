@@ -14074,17 +14074,22 @@
 										"key": "Authorization",
 										"value": "Bearer {{access_token}}",
 										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/medication_requests/0000-E054-TM12-6T06",
+									"raw": "{{host}}/api/medication_requests/Х",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"medication_requests",
-										"0000-E054-TM12-6T06"
+										"Х"
 									],
 									"query": [
 										{
