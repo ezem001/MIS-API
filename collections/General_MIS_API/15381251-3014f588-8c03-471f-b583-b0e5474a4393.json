@@ -10052,7 +10052,7 @@
 							"        } catch (finalError) {\r",
 							"            displayResponse('Employee processing error', 'Could not extract employee_type or speciality', finalError);\r",
 							"            pm.visualizer.set(visualLog);\r",
-							"            callback(null, null);\r",
+							"            callback(null, null, null);\r",
 							"        }\r",
 							"    });\r",
 							"};"
