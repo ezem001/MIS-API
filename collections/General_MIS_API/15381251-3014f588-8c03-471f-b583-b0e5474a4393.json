@@ -9975,7 +9975,7 @@
 							"        if (err) {\r",
 							"            displayResponse('Employee fetch error', 'Network error while fetching employee', err);\r",
 							"            pm.visualizer.set(visualLog);\r",
-							"            callback(null, null);\r",
+							"            callback(null, null, null);\r",
 							"            return;\r",
 							"        }\r",
 							"\r",
