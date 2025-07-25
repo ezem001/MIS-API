@@ -10001,7 +10001,7 @@
 							"        try {\r",
 							"            const employeeType = responseBody?.data?.employee_type || null;\r",
 							"            const legalEntityType = responseBody?.data?.legal_entity?.type || null;\r",
-							"console.info(legalEntityType)\r",
+							"            console.info(legalEntityType)\r",
 							"            // Отримаємо employee_type у нижньому регістрі\r",
 							"            const employeeTypeLower = employeeType ? employeeType.toLowerCase() : '';\r",
 							"\r",
