@@ -1943,14 +1943,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/employees/{{user_id}}",
+									"raw": "{{host}}/api/employees/{{ow_id}}",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"employees",
-										"{{user_id}}"
+										"{{ow_id}}"
 									]
 								}
 							},
