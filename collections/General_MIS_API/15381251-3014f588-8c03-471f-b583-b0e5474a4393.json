@@ -10000,7 +10000,7 @@
 							"\r",
 							"        try {\r",
 							"            const employeeType = responseBody?.data?.employee_type || null;\r",
-							"            const legalEntityType = responseBody\r",
+							"            const legalEntityType = responseBody?.data?.employee_type || null;\r",
 							"\r",
 							"            // Отримаємо employee_type у нижньому регістрі\r",
 							"            const employeeTypeLower = employeeType ? employeeType.toLowerCase() : '';\r",
