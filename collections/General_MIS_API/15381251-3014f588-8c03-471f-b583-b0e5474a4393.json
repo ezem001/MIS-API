@@ -10033,7 +10033,7 @@
 							"                pm.environment.set('employee_specialty', employeeSpeciality);\r",
 							"            }\r",
 							"\r",
-							"            pm.environment.set('employee_type', ``);\r",
+							"            pm.environment.set('employee_type', `${employeeType}`);\r",
 							"\r",
 							"            displayResponse(\r",
 							"                'Employee fetch success',\r",
