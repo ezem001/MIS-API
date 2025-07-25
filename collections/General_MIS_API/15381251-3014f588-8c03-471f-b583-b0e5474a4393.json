@@ -9941,7 +9941,7 @@
 							"            pm.environment.set(\"access_token\", access_token);\r",
 							"            pm.environment.set(\"refresh_token\", refresh_token);\r",
 							"\r",
-							"            getEmployeeTypeAndSpeciality(access_token, function (receivedEmployeeType, receivedEmployeeSpeciality) {\r",
+							"            getEmployeeTypeAndSpeciality(access_token, function (receivedEmployeeType, receivedEmployeeSpeciality, legalEntityType) {\r",
 							"                const msg = receivedEmployeeSpeciality\r",
 							"                    ? `You authorized as a ${receivedEmployeeType}, Speciality: ${receivedEmployeeSpeciality}`\r",
 							"                    : `You authorized as a ${receivedEmployeeType}`;\r",
