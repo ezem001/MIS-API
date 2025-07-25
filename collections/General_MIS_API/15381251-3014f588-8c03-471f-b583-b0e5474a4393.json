@@ -9986,7 +9986,7 @@
 							"        } catch (parseError) {\r",
 							"            displayResponse('Employee fetch parsing error', 'Invalid JSON in response', parseError);\r",
 							"            pm.visualizer.set(visualLog);\r",
-							"            callback(null, null);\r",
+							"            callback(null, null, null);\r",
 							"            return;\r",
 							"        }\r",
 							"\r",
