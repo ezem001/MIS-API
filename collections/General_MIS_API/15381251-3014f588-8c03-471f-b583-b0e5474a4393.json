@@ -9944,7 +9944,7 @@
 							"            getEmployeeTypeAndSpeciality(access_token, function (receivedEmployeeType, receivedEmployeeSpeciality, legalEntityType) {\r",
 							"                const msg = receivedEmployeeSpeciality\r",
 							"                    ? `You authorized as a ${receivedEmployeeType}, Speciality: ${receivedEmployeeSpeciality}`\r",
-							"                    : `You authorized as a ${receivedEmployeeType}`;\r",
+							"                    : `You authorized as a ${receivedEmployeeType} + `;\r",
 							"\r",
 							"\r",
 							"                displayResponse('Authorization Successful', msg, subrequestData.data);\r",
