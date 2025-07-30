@@ -5757,14 +5757,14 @@
 									"raw": "{\n  \"external_id\": \"3999869394.2799207815.1\",\n  \"first_name\": \"Анна-Марія\",\n  \"last_name\": \"Бондар/Іванова\",\n  \"second_name\":\"Іванівна\",\n  \"gender\": \"MALE\",\n  \"birth_date\": \"1988-03-01\",\n  \"emergency_contact\": {\n    \"first_name\": \"В/Йоханнес\",\n    \"last_name\": \"Петренко\",\n    \"second_name\": \"Іванівна\",\n    \"phones\": [\n      {\n        \"type\": \"MOBILE\",\n        \"number\": \"+380951364444\"\n      }\n    ]\n  },\n  \"note\": \"Зареєстрований у тестових цілях\"\n}"
 								},
 								"url": {
-									"raw": "{{host}}/api/prepersons/",
+									"raw": "{{host}}/api/prepersons/2fd44aa4-5e9f-4e05-9bf9-30ff14311941",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"prepersons",
-										""
+										"2fd44aa4-5e9f-4e05-9bf9-30ff14311941"
 									]
 								}
 							},
