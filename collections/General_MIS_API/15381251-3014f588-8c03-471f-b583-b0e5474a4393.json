@@ -5644,7 +5644,117 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"external_id\": \"3999869394.2799207815.1\",\n  \"first_name\": \"Анна-Марія\",\n  \"last_name\": \"Бондар/Іванова\",\n  \"second_name\":\"Іванівна\",\n  \"gender\": \"MALE\",\n  \"birth_date\": \"1988-03-01\",\n  \"emergency_contact\": {\n    \"first_name\": \"Олена--Світлана\",\n    \"last_name\": \"Петренко\",\n    \"second_name\": \"Іванівна\",\n    \"phones\": [\n      {\n        \"type\": \"MOBILE\",\n        \"number\": \"+380951364444\"\n      }\n    ]\n  },\n  \"note\": \"Зареєстрований у тестових цілях\"\n}"
+									"raw": "{\n  \"external_id\": \"3999869394.2799207815.1\",\n  \"first_name\": \"Анна-Марія\",\n  \"last_name\": \"Бондар/Іванова\",\n  \"second_name\":\"Іванівна\",\n  \"gender\": \"MALE\",\n  \"birth_date\": \"1988-03-01\",\n  \"emergency_contact\": {\n    \"first_name\": \"В/Йоханнес\",\n    \"last_name\": \"Петренко\",\n    \"second_name\": \"Іванівна\",\n    \"phones\": [\n      {\n        \"type\": \"MOBILE\",\n        \"number\": \"+380951364444\"\n      }\n    ]\n  },\n  \"note\": \"Зареєстрований у тестових цілях\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/prepersons",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"prepersons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create PrePerson request Copy",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "cf17477c-d695-4580-8d9b-64ec5bcf8a87",
+										"exec": [
+											"var current_step = environment[\"declaration_current_step\"];",
+											"//According to business logic, phone number need to be verified in Verification module.",
+											"var phone_number = '+380937404005'",
+											"// Генерирует случаиный инн/имя.",
+											"function makeRandom(regexp, n)",
+											"{",
+											"    var text, possible, i;",
+											"    if(regexp === \"name\")",
+											"    {",
+											"        text = \"Тест\";",
+											"        possible = \"АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЮЯ\";",
+											"        for(i=0; i < n; i++)",
+											"        {",
+											"            text += possible.charAt(Math.floor(Math.random() * possible.length));",
+											"        }",
+											"    }",
+											"    else if(regexp === \"tax\")",
+											"    {",
+											"        text = \"\";",
+											"        possible = \"1234567890\";",
+											"        for(i=0; i < n; i++)",
+											"        {",
+											"            text += possible.charAt(Math.floor(Math.random() * possible.length));",
+											"        }",
+											"    }",
+											"    else if(regexp === \"mob\")",
+											"    {",
+											"        text = \"+380\";",
+											"        possible = \"1234567890\";",
+											"        for(i=0; i < n; i++)",
+											"        {",
+											"            text += possible.charAt(Math.floor(Math.random() * possible.length));",
+											"        }",
+											"    }",
+											"    return text;",
+											"}",
+											"//Присваиваем значения глобальным переменным",
+											"",
+											"var randomName = makeRandom(\"name\", 3);",
+											"postman.setEnvironmentVariable(\"declaration_first_name\", randomName);",
+											"postman.setEnvironmentVariable(\"declaration_last_name\", randomName);",
+											"postman.setEnvironmentVariable(\"declaration_second_name\", randomName);",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "cea47197-9303-4162-8acb-fbace8569673",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "15381251-2518f7d1-06d1-4417-acd8-4b70b3f79ead",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"external_id\": \"3999869394.2799207815.1\",\n  \"first_name\": \"Анна-Марія\",\n  \"last_name\": \"Бондар/Іванова\",\n  \"second_name\":\"Іванівна\",\n  \"gender\": \"MALE\",\n  \"birth_date\": \"1988-03-01\",\n  \"emergency_contact\": {\n    \"first_name\": \"В/Йоханнес\",\n    \"last_name\": \"Петренко\",\n    \"second_name\": \"Іванівна\",\n    \"phones\": [\n      {\n        \"type\": \"MOBILE\",\n        \"number\": \"+380951364444\"\n      }\n    ]\n  },\n  \"note\": \"Зареєстрований у тестових цілях\"\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/prepersons",
