@@ -9770,14 +9770,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/equipment/8aeeb218-8e7a-4892-9752-3cebd78a7992",
+							"raw": "{{host}}/api/equipment/ec6215de-a0e7-4fcc-8747-99d0b7ccc282",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"equipment",
-								"8aeeb218-8e7a-4892-9752-3cebd78a7992"
+								"ec6215de-a0e7-4fcc-8747-99d0b7ccc282"
 							]
 						}
 					},
