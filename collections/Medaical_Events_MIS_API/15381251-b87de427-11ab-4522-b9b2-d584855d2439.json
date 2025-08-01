@@ -5810,7 +5810,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"{{procedure_id}}\",\r\n    \"status\": \"completed\",\r\n    \"based_on\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"service_request\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{JobSericeRequestID}}\"\r\n        }\r\n    },\r\n    \"code\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"service\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"40b2dfdf-7623-4fa5-bbfb-58a6b651ff0c\"\r\n        }\r\n    },\r\n    \"performed_period\": {\r\n      \"start\": \"2025-07-30T10:45:16.000Z\",\r\n      \"end\": \"2025-08-10T10:45:16.000Z\"\r\n    },\r\n    \"recorded_by\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"primary_source\": true,\r\n    \"performer\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ],\r\n                \"text\": \"Галина Олександрівна\"\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"division\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"division\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_division_id}}\"\r\n        }\r\n    },\r\n    \"managing_organization\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"legal_entity\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_legal_entity}}\"\r\n        }\r\n    },\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/procedure_categories\",\r\n                \"code\": \"procedure\"\r\n            }\r\n        ]\r\n    }\r\n}",
+									"raw": "{\r\n    \"id\": \"{{procedure_id}}\",\r\n    \"status\": \"completed\",\r\n    \"based_on\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"service_request\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{JobSericeRequestID}}\"\r\n        }\r\n    },\r\n    \"code\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"service\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"40b2dfdf-7623-4fa5-bbfb-58a6b651ff0c\"\r\n        }\r\n    },\r\n    \"performed_period\": {\r\n      \"start\": \"2025-07-20T10:45:16.000Z\",\r\n      \"end\": \"2025-07-30T10:45:16.000Z\"\r\n    },\r\n    \"recorded_by\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"primary_source\": true,\r\n    \"performer\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ],\r\n                \"text\": \"Галина Олександрівна\"\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"division\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"division\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_division_id}}\"\r\n        }\r\n    },\r\n    \"managing_organization\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"legal_entity\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_legal_entity}}\"\r\n        }\r\n    },\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/procedure_categories\",\r\n                \"code\": \"procedure\"\r\n            }\r\n        ]\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6908,7 +6908,7 @@
 							"raw": "'0JTQvtC60YPQvNC10L3Rgg=='"
 						},
 						"url": {
-							"raw": "https://storage-demo.ehealth.gov.ua/person-requests/85/e9/4b/80/ad/85cb7d61-e9d7-4bc6-80e5-ad7482bf4b89/person_request_person.PASSPORT.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Credential=UW2KVTMKINLYBM0A%2F20240808%2Fs3-demo%2Fs3%2Faws4_request&X-Amz-Date=20240808T105633Z&X-Amz-Signature=63ea23a5e4ceaad386df2012a373b88e00fcb4aa8a39fd589719b782ffc25d47",
+							"raw": "https://storage-demo.ehealth.gov.ua/person-requests/a8/aa/4a/94/fd/a85f1d73-aae2-4a1e-94b6-fd2529d57cd4/person_request_person.BIRTH_CERTIFICATE_FOREIGN.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Credential=UW2KVTMKINLYBM0A%2F20250801%2Fs3-demo%2Fs3%2Faws4_request&X-Amz-Date=20250801T072844Z&X-Amz-Signature=8e913f19e737a051d6364ec2d2c41018a33cabc484d3b0915535f94527142074",
 							"protocol": "https",
 							"host": [
 								"storage-demo",
@@ -6918,13 +6918,13 @@
 							],
 							"path": [
 								"person-requests",
-								"85",
-								"e9",
-								"4b",
-								"80",
-								"ad",
-								"85cb7d61-e9d7-4bc6-80e5-ad7482bf4b89",
-								"person_request_person.PASSPORT.jpeg"
+								"a8",
+								"aa",
+								"4a",
+								"94",
+								"fd",
+								"a85f1d73-aae2-4a1e-94b6-fd2529d57cd4",
+								"person_request_person.BIRTH_CERTIFICATE_FOREIGN.jpeg"
 							],
 							"query": [
 								{
@@ -6946,15 +6946,15 @@
 								},
 								{
 									"key": "X-Amz-Credential",
-									"value": "UW2KVTMKINLYBM0A%2F20240808%2Fs3-demo%2Fs3%2Faws4_request"
+									"value": "UW2KVTMKINLYBM0A%2F20250801%2Fs3-demo%2Fs3%2Faws4_request"
 								},
 								{
 									"key": "X-Amz-Date",
-									"value": "20240808T105633Z"
+									"value": "20250801T072844Z"
 								},
 								{
 									"key": "X-Amz-Signature",
-									"value": "63ea23a5e4ceaad386df2012a373b88e00fcb4aa8a39fd589719b782ffc25d47"
+									"value": "8e913f19e737a051d6364ec2d2c41018a33cabc484d3b0915535f94527142074"
 								}
 							]
 						}
