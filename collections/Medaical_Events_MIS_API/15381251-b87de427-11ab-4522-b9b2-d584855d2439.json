@@ -879,7 +879,7 @@
 											"                'Content-Type': 'application/json',\r",
 											"                'Authorization': 'Bearer TEQyZ2VCcW5YWnNoSTkyM2xOU0RVZz09',\r",
 											"                'api-key': '30276e63617461a185ec',\r",
-											"                'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+											"                'X-Custom-PSK': pm.\r",
 											"            }\r",
 											"        }, function (err, res) {\r",
 											"\r",
