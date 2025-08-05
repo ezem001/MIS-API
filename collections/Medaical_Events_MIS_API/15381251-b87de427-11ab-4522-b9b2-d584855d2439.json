@@ -869,7 +869,7 @@
 											"    // Function to check job status\r",
 											"    function checkJobStatus(jobId) {\r",
 											"\r",
-											"        const url = `https://api-preprod.ehealth.gov.ua/api/jobs/${jobId}`;\r",
+											"        const url = `{pm.}/api/jobs/${jobId}`;\r",
 											"        const maxRetries = 3; // Set the maximum number of retries\r",
 											"\r",
 											"        pm.sendRequest({\r",
