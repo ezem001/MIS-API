@@ -1047,7 +1047,8 @@
 										"8fb10e9d-59e5-4c0e-a34e-9162e2b94f6f",
 										"episodes"
 									]
-								}
+								},
+								"description": "## Типи епізодів (`type.code`)\n\nВикористовуй лише **активні** коди з довідника `eHealth/episode_types`:\n\n| Code | Description |\n| --- | --- |\n| `CONDITIONING` | Кондиціонування |\n| `DG` | Діагностика |\n| `PALLIATIVE_CARE` | Паліативна допомога |\n| `PHC` | Первинна медична допомога |\n| `PREVENTION` | Профілактика |\n| `REHAB` | Реабілітація |\n| `TREATMENT` | Лікування |"
 							},
 							"response": []
 						},
