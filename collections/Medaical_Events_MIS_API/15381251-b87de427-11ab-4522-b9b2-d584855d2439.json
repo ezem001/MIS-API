@@ -879,7 +879,7 @@
 											"                'Content-Type': 'application/json',\r",
 											"                'Authorization': 'Bearer TEQyZ2VCcW5YWnNoSTkyM2xOU0RVZz09',\r",
 											"                'api-key': '30276e63617461a185ec',\r",
-											"                'X-Custom-PSK': pm.globals.get(''),\r",
+											"                'X-Custom-PSK': pm.globals.get('x-custom-psk'),\r",
 											"            }\r",
 											"        }, function (err, res) {\r",
 											"\r",
