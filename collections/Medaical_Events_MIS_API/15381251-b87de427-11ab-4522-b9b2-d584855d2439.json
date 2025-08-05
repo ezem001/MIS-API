@@ -852,7 +852,7 @@
 											"pm.globals.set(\"job_id\", jobId);\r",
 											"pm.environment.set(\"retryCount\", 0);\r",
 											"\r",
-											"checkJobStatus(jobId);\r",
+											"\r",
 											"\r",
 											"// -------------------- Функція перевірки статусу job --------------------\r",
 											"\r",
