@@ -944,7 +944,7 @@
 											"        }\r",
 											"    });\r",
 											"}\r",
-											""
+											"checkJobStatus(jobId);"
 										],
 										"type": "text/javascript",
 										"packages": {}
