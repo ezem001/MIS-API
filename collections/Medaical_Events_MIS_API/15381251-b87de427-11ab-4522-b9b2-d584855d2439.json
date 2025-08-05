@@ -1037,14 +1037,14 @@
 									"raw": " {\n   \"id\":\"{{episode_id}}\",\n   \"name\":\"Епізод QA_28\",\n   \"status\":\"active\",\n   \"type\":{\n      \"system\":\"eHealth/episode_types\",\n      \"code\":\"TREATMENT\"\n   },\n   \"period\":{\n      \"start\":\"{{episode_start_date}}\"\n   },\n   \"managing_organization\": {\n\t    \"identifier\": {\n\t      \"type\": {\n\t        \"coding\": [\n\t          {\n\t            \"system\": \"eHealth/resources\",\n\t            \"code\": \"legal_entity\"\n\t          }\n\t        ]\n\t      },\n\t      \"value\":\"{{user_legal_entity}}\"\n\t    }\n   },\n   \"care_manager\": {\n\t    \"identifier\": {\n\t      \"type\": {\n\t        \"coding\": [\n\t          {\n\t            \"system\": \"eHealth/resources\",\n\t            \"code\": \"employee\"\n\t          }\n\t        ]\n\t      },\n\t      \"value\":\"{{user_id}}\"\n\t    }\n   }\n}"
 								},
 								"url": {
-									"raw": "{{host}}/api/patients/8fb10e9d-59e5-4c0e-a34e-9162e2b94f6/episodes",
+									"raw": "{{host}}/api/patients/8fb10e9d-59e5-4c0e-a34e-9162e2b94f6f/episodes",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
-										"8fb10e9d-59e5-4c0e-a34e-9162e2b94f6",
+										"8fb10e9d-59e5-4c0e-a34e-9162e2b94f6f",
 										"episodes"
 									]
 								},
