@@ -968,7 +968,8 @@
 									},
 									{
 										"key": "Authorization",
-										"value": "Bearer {{access_token}}"
+										"value": "Bearer {{access_token}}",
+										"disabled": true
 									},
 									{
 										"key": "api-key",
