@@ -1943,14 +1943,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/employees/8a41986a-3904-4644-b10a-784f37ed6064",
+									"raw": "{{host}}/api/employees/{{user_id}}",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"employees",
-										"8a41986a-3904-4644-b10a-784f37ed6064"
+										"{{user_id}}"
 									]
 								}
 							},
