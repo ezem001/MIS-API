@@ -9478,7 +9478,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/patients/3241244c-acf7-40bf-8a35-d290607fb53e/approvals/{{jobA",
+							"raw": "{{host}}/api/patients/3241244c-acf7-40bf-8a35-d290607fb53e/approvals/{{jobApprovalID}}",
 							"host": [
 								"{{host}}"
 							],
@@ -9487,7 +9487,7 @@
 								"patients",
 								"3241244c-acf7-40bf-8a35-d290607fb53e",
 								"approvals",
-								"{{jobA"
+								"{{jobApprovalID}}"
 							]
 						}
 					},
