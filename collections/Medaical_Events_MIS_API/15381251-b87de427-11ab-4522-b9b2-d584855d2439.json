@@ -9478,16 +9478,16 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/approvals/{{jobApprovalID}}",
+							"raw": "{{host}}/api/patients/3241244c-acf7-40bf-8a35-d290607fb53e/approvals/af27fa55-33d4-41c5-8e64-c8e31f732e99",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"patients",
-								"{{patient_id_from_episode}}",
+								"3241244c-acf7-40bf-8a35-d290607fb53e",
 								"approvals",
-								"{{jobApprovalID}}"
+								"af27fa55-33d4-41c5-8e64-c8e31f732e99"
 							]
 						}
 					},
