@@ -8737,7 +8737,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/v2/dictionaries?name=eHealth/episode_types",
+							"raw": "{{host}}/api/v2/dictionaries",
 							"host": [
 								"{{host}}"
 							],
@@ -8859,7 +8859,8 @@
 								},
 								{
 									"key": "name",
-									"value": "eHealth/episode_types"
+									"value": "eHealth/episode_types",
+									"disabled": true
 								},
 								{
 									"key": "name",
