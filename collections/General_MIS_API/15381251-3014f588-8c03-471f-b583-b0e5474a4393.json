@@ -8737,7 +8737,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/v2/dictionaries",
+							"raw": "{{host}}/api/v2/dictionaries?name=DOCUMENT_TYPE_EXTENDED",
 							"host": [
 								"{{host}}"
 							],
@@ -8839,8 +8839,7 @@
 								},
 								{
 									"key": "name",
-									"value": "DOCUMENT_TYPE_EXTENDED",
-									"disabled": true
+									"value": "DOCUMENT_TYPE_EXTENDED"
 								},
 								{
 									"key": "name",
