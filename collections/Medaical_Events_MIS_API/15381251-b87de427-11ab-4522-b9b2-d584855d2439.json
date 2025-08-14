@@ -6124,47 +6124,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Get Procedures by ID",
-							"id": "15381251-846db920-cfc6-4ab4-b47e-e248c5d58a43",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "api-key",
-										"value": "30276e63617461a185ec",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/api/patients/c9e1fc8b-e446-4131-a710-1694c6049bf4/procedures/fc3e79eb-9455-4d64-9e15-4c204d55bea6",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"patients",
-										"c9e1fc8b-e446-4131-a710-1694c6049bf4",
-										"procedures",
-										"fc3e79eb-9455-4d64-9e15-4c204d55bea6"
-									]
-								}
-							},
-							"response": []
 						}
 					],
 					"id": "15381251-e472e41f-4903-4ecc-ba96-6a724ad7abb1"
