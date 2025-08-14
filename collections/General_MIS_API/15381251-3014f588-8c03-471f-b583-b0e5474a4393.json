@@ -9654,7 +9654,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/equipment?division_id={{user_division_id}}&status=active",
+							"raw": "{{host}}/api/equipment?division_id={{user_division_id}}&status=active&availability_status=available",
 							"host": [
 								"{{host}}"
 							],
@@ -9693,8 +9693,7 @@
 								},
 								{
 									"key": "availability_status",
-									"value": "AVAILABLE",
-									"disabled": true
+									"value": "available"
 								},
 								{
 									"key": "recorder",
