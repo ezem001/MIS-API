@@ -9082,7 +9082,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/events/",
+							"raw": "{{host}}/api/events/?page=2",
 							"host": [
 								"{{host}}"
 							],
@@ -9119,8 +9119,7 @@
 								},
 								{
 									"key": "page",
-									"value": "2",
-									"disabled": true
+									"value": "2"
 								},
 								{
 									"key": "page_size",
