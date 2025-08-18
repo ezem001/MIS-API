@@ -9082,7 +9082,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/events/?date_to=2025-08-18T08:40:01Z&entity_type=Party",
+							"raw": "{{host}}/api/events/?entity_type=Party",
 							"host": [
 								"{{host}}"
 							],
@@ -9094,7 +9094,8 @@
 							"query": [
 								{
 									"key": "date_to",
-									"value": "2025-08-18T08:40:01Z"
+									"value": "2025-08-18T08:40:01Z",
+									"disabled": true
 								},
 								{
 									"key": "event_type",
