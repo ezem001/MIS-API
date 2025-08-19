@@ -9082,7 +9082,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/events/?entity_id=ebd1a3ed-0652-401c-8e25-c51d9e54831c",
+							"raw": "{{host}}/api/events/?entity_type=Party",
 							"host": [
 								"{{host}}"
 							],
@@ -9104,8 +9104,7 @@
 								},
 								{
 									"key": "entity_type",
-									"value": "Party",
-									"disabled": true
+									"value": "Party"
 								},
 								{
 									"key": "attribute_name",
@@ -9129,7 +9128,8 @@
 								},
 								{
 									"key": "entity_id",
-									"value": "ebd1a3ed-0652-401c-8e25-c51d9e54831c"
+									"value": "ebd1a3ed-0652-401c-8e25-c51d9e54831c",
+									"disabled": true
 								},
 								{
 									"key": "date",
