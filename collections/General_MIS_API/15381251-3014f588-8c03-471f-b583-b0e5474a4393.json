@@ -9082,7 +9082,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/events/?entity_type=Person&date=2025-06-30T08:16:02Z&properties",
+							"raw": "{{host}}/api/events/?entity_type=Person&date=2025-06-30T08:16:02Z&properties=dracs_death_verification_status",
 							"host": [
 								"{{host}}"
 							],
@@ -9142,7 +9142,7 @@
 								},
 								{
 									"key": "properties",
-									"value": null
+									"value": "dracs_death_verification_status"
 								}
 							]
 						}
