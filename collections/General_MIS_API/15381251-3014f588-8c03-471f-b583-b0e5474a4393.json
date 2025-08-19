@@ -9082,7 +9082,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/events/?entity_type=Person&entity_id=f9683699-d581-4b87-a51e-95b2b0b39156",
+							"raw": "{{host}}/api/events/?entity_type=Person",
 							"host": [
 								"{{host}}"
 							],
@@ -9128,7 +9128,8 @@
 								},
 								{
 									"key": "entity_id",
-									"value": "f9683699-d581-4b87-a51e-95b2b0b39156"
+									"value": "f9683699-d581-4b87-a51e-95b2b0b39156",
+									"disabled": true
 								},
 								{
 									"key": "date",
