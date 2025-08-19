@@ -9082,7 +9082,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/events/?entity_type=Person",
+							"raw": "{{host}}/api/events/?entity_type=Person&date=2025-06-30T08:16:02Z",
 							"host": [
 								"{{host}}"
 							],
@@ -9138,8 +9138,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2025-06-30T08:16:02Z",
-									"disabled": true
+									"value": "2025-06-30T08:16:02Z"
 								}
 							]
 						}
