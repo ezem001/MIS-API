@@ -9082,7 +9082,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/events/?entity_type=Person&entity_id=f9683699-d581-4b87-a51e-95b2b0b39156&date=2025-07-01T14:54:02Z",
+							"raw": "{{host}}/api/events/?entity_type=Person&entity_id=f9683699-d581-4b87-a51e-95b2b0b39156&date=2025-07-01T14:16:02Z",
 							"host": [
 								"{{host}}"
 							],
@@ -9137,7 +9137,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2025-07-01T14:54:02Z"
+									"value": "2025-07-01T14:16:02Z"
 								}
 							]
 						}
