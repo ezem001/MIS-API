@@ -9082,7 +9082,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/events/?date=2025-08-20T11:42:00Z",
+							"raw": "{{host}}/api/events/?entity_type=Party&date=2025-08-20T11:42:00Z",
 							"host": [
 								"{{host}}"
 							],
@@ -9104,8 +9104,7 @@
 								},
 								{
 									"key": "entity_type",
-									"value": "Person",
-									"disabled": true
+									"value": "Party"
 								},
 								{
 									"key": "attribute_name",
