@@ -1366,14 +1366,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{host}}/api/parties/ebd1a3ed-0652-401c-8e25-c51d9e54831c/verification",
+											"raw": "{{host}}/api/parties/9c5d2bee-a3a4-4d6f-8cda-d28d6195fc16/verification",
 											"host": [
 												"{{host}}"
 											],
 											"path": [
 												"api",
 												"parties",
-												"ebd1a3ed-0652-401c-8e25-c51d9e54831c",
+												"9c5d2bee-a3a4-4d6f-8cda-d28d6195fc16",
 												"verification"
 											]
 										}
