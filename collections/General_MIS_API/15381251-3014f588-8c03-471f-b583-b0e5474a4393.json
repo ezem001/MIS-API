@@ -9082,7 +9082,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/events/",
+							"raw": "{{host}}/api/events/?date=2025-08-20T10:48:22Z",
 							"host": [
 								"{{host}}"
 							],
@@ -9139,8 +9139,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2025-08-20T01:01:18Z",
-									"disabled": true
+									"value": "2025-08-20T10:48:22Z"
 								}
 							]
 						}
