@@ -5332,7 +5332,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/persons?birth_date=1988-11-25&first_name=Ілля&last_name=Другий&phone_number=+380634390602",
+									"raw": "{{host}}/api/persons?birth_date=2008-01-01&first_name=Олег&last_name=Сьомий",
 									"host": [
 										"{{host}}"
 									],
@@ -5348,11 +5348,11 @@
 										},
 										{
 											"key": "birth_date",
-											"value": "1988-11-25"
+											"value": "2008-01-01"
 										},
 										{
 											"key": "first_name",
-											"value": "Ілля"
+											"value": "Олег"
 										},
 										{
 											"key": "tax_id",
@@ -5361,7 +5361,7 @@
 										},
 										{
 											"key": "last_name",
-											"value": "Другий"
+											"value": "Сьомий"
 										},
 										{
 											"key": "birth_certificate",
@@ -5371,7 +5371,8 @@
 										{
 											"key": "phone_number",
 											"value": "+380634390602",
-											"description": "%2B"
+											"description": "%2B",
+											"disabled": true
 										}
 									]
 								}
