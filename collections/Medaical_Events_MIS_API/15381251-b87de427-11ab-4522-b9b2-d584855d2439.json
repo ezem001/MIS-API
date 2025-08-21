@@ -14618,9 +14618,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{host_demo}}/api/medication_request_requests/73645f47-4a3c-4d4c-a06b-a012e783ccd8",
+									"raw": "{{host}}/api/medication_request_requests/73645f47-4a3c-4d4c-a06b-a012e783ccd8",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
