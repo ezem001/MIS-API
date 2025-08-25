@@ -10048,7 +10048,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"person\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"person\"\r\n                    }\r\n                ],\r\n                \"text\": \"\"\r\n            },\r\n            \"value\": \"520e6f47-f137-4053-9d75-b9246a538906\"\r\n        }\r\n    },\r\n    \"granted_to\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"created_by\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"access_level\": \"read\"\r\n}",
+							"raw": "{\r\n    \"person\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"person\"\r\n                    }\r\n                ],\r\n                \"text\": \"\"\r\n            },\r\n            \"value\": \"19311cc0-800d-41e2-8dc2-490a2e4565f4\"\r\n        }\r\n    },\r\n    \"granted_to\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"created_by\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"access_level\": \"read\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10056,14 +10056,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/patients/520e6f47-f137-4053-9d75-b9246a538906/approvals",
+							"raw": "{{host}}/api/patients/19311cc0-800d-41e2-8dc2-490a2e4565f4/approvals",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"patients",
-								"520e6f47-f137-4053-9d75-b9246a538906",
+								"19311cc0-800d-41e2-8dc2-490a2e4565f4",
 								"approvals"
 							]
 						}
