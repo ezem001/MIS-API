@@ -5332,7 +5332,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/persons?birth_date=2008-01-01&first_name=Олег&last_name=Сьомий",
+									"raw": "{{host}}/api/persons?birth_date=1965-09-27&first_name=Ярослав&last_name=Бойко",
 									"host": [
 										"{{host}}"
 									],
@@ -5348,11 +5348,11 @@
 										},
 										{
 											"key": "birth_date",
-											"value": "2008-01-01"
+											"value": "1965-09-27"
 										},
 										{
 											"key": "first_name",
-											"value": "Олег"
+											"value": "Ярослав"
 										},
 										{
 											"key": "tax_id",
@@ -5361,7 +5361,7 @@
 										},
 										{
 											"key": "last_name",
-											"value": "Сьомий"
+											"value": "Бойко"
 										},
 										{
 											"key": "birth_certificate",
