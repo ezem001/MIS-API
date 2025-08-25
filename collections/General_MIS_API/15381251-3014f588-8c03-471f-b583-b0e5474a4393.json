@@ -8938,13 +8938,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{host_demo}}/api/v2/drugs?medical_program_id=f646aa61-6765-4cfa-89cd-5259b68b2ab7",
+							"raw": "{{host}}/api/v3/drugs?medical_program_id=f646aa61-6765-4cfa-89cd-5259b68b2ab7",
 							"host": [
-								"{{host_demo}}"
+								"{{host}}"
 							],
 							"path": [
 								"api",
-								"v2",
+								"v3",
 								"drugs"
 							],
 							"query": [
