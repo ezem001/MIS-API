@@ -3070,7 +3070,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/encounters/a612c781-18d4-4eb4-8571-6c28e1306ad1",
+									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/encounters/{{jobEncounterID}}",
 									"host": [
 										"{{host}}"
 									],
@@ -3079,7 +3079,7 @@
 										"patients",
 										"{{patient_id_from_episode}}",
 										"encounters",
-										"a612c781-18d4-4eb4-8571-6c28e1306ad1"
+										"{{jobEncounterID}}"
 									]
 								}
 							},
