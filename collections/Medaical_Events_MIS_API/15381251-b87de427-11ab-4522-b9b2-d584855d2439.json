@@ -9485,7 +9485,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/patients/421c3318-f783-4883-a030-f0c63aa7e0bf/approvals?granted_resource_type=person",
+							"raw": "{{host}}/api/patients/421c3318-f783-4883-a030-f0c63aa7e0bf/approvals",
 							"host": [
 								"{{host}}"
 							],
@@ -9508,7 +9508,8 @@
 								},
 								{
 									"key": "granted_resource_type",
-									"value": "person"
+									"value": "person",
+									"disabled": true
 								},
 								{
 									"key": "reason",
