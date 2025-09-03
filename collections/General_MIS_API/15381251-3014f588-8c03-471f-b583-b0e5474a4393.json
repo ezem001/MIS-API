@@ -5332,7 +5332,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/persons?birth_date=2008-01-11&last_name=Двадцять-восьмий&first_name=Олег",
+									"raw": "{{host}}/api/persons?birth_date=2008-01-21&last_name=Двадцять-восьмий&first_name=Олег",
 									"host": [
 										"{{host}}"
 									],
@@ -5348,7 +5348,7 @@
 										},
 										{
 											"key": "birth_date",
-											"value": "2008-01-11"
+											"value": "2008-01-21"
 										},
 										{
 											"key": "last_name",
