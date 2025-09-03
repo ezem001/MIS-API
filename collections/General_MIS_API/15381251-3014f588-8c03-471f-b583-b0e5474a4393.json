@@ -6853,7 +6853,7 @@
 									"script": {
 										"id": "20027df2-b3f2-4cb1-bc96-0ad3a8aab9c1",
 										"exec": [
-											"pm.environment.set(\"patient_id\",\"47966250-3d12-4724-9160-2c409a1750ec\")"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -6900,14 +6900,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/persons/9d5b0e88-7b17-4d8e-9a34-66f7e20c39fe/authentication_methods",
+									"raw": "{{host}}/api/persons/8fb10e9d-59e5-4c0e-a34e-9162e2b94f6f/authentication_methods",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"persons",
-										"9d5b0e88-7b17-4d8e-9a34-66f7e20c39fe",
+										"8fb10e9d-59e5-4c0e-a34e-9162e2b94f6f",
 										"authentication_methods"
 									]
 								}
