@@ -5167,6 +5167,63 @@
 									"response": []
 								},
 								{
+									"name": "Approve Confidant Person relationship request Copy",
+									"id": "15381251-f9fd8d67-c268-4c18-98fd-07b5cdcd977f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}",
+												"type": "text"
+											},
+											{
+												"key": "API-key",
+												"value": "{{mis_client_secret}}",
+												"type": "text"
+											},
+											{
+												"key": "X-Custom-PSK",
+												"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"verification_code\": 5229\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/persons/635252d7-d629-4ed0-8d7f-417a47e55a18/confidant_person_relationship_requests/c4245a2d-d38c-4e71-ac85-424ddd94cea9/actions/approve",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"persons",
+												"635252d7-d629-4ed0-8d7f-417a47e55a18",
+												"confidant_person_relationship_requests",
+												"c4245a2d-d38c-4e71-ac85-424ddd94cea9",
+												"actions",
+												"approve"
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "Deactivate Confidant Person relationship request",
 									"id": "15381251-517812ec-f547-4033-802a-36957528e288",
 									"protocolProfileBehavior": {
