@@ -705,7 +705,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n        \"addresses\": [\r\n            {\r\n                \"apartment\": \"23\",\r\n                \"area\": \"ХАРКІВСЬКА\",\r\n                \"building\": \"15\",\r\n                \"country\": \"UA\",\r\n                \"region\": \"ЧУГУЇВСЬКИЙ\",\r\n                \"settlement\": \"ВЕЛИКА БАБКА\",\r\n                \"settlement_id\": \"7a438190-5b6f-4341-b25d-0b19f46c320f\",\r\n                \"settlement_type\": \"VILLAGE\",\r\n                \"street\": \"вул. Ніжинська\",\r\n                \"street_type\": \"STREET\",\r\n                \"type\": \"RESIDENCE\",\r\n                \"zip\": \"02090\"\r\n            }\r\n        ],\r\n        \"email\": \"lilia.besednikova@ehealth.gov.ua\",\r\n        \"external_id\": \"3213213\",\r\n        \"id\": \"c3246236-89a5-44be-8d40-45e1a2b58271\",\r\n        \"legal_entity_id\": \"24dbe468-7820-44d8-adae-28863fc41db4\",\r\n        \"location\": {\r\n            \"latitude\": 49.3333333,\r\n            \"longitude\": 36.3333333\r\n        },\r\n        \"name\": \"Відділення первинної медичної допомоги №1\",\r\n        \"phones\": [\r\n            {\r\n                \"number\": \"+380448888888\",\r\n                \"type\": \"MOBILE\"\r\n            }\r\n        ],\r\n        \"type\": \"CLINIC\",\r\n        \"working_hours\": {\r\n            \"fri\": [\r\n                [\r\n                    \"09.00\",\r\n                    \"15.00\"\r\n                ]\r\n            ],\r\n            \"mon\": [\r\n                [\r\n                    \"09.00\",\r\n                    \"13.00\"\r\n                ],\r\n                [\r\n                    \"14.00\",\r\n                    \"20.00\"\r\n                ]\r\n            ],\r\n            \"thu\": [\r\n                [\r\n                    \"08.00\",\r\n                    \"08.35\"\r\n                ]\r\n            ],\r\n            \"tue\": [\r\n                [\r\n                    \"09.00\",\r\n                    \"18.00\"\r\n                ]\r\n            ],\r\n            \"wed\": [\r\n                [\r\n                    \"09.00\",\r\n                    \"13.00\"\r\n                ],\r\n                [\r\n                    \"14.00\",\r\n                    \"20.00\"\r\n                ]\r\n            ]\r\n        }\r\n    }",
+									"raw": "{\r\n    \"addresses\": [\r\n        {\r\n            \"apartment\": \"23\",\r\n            \"area\": \"КИЇВСЬКА\",\r\n            \"building\": \"15\",\r\n            \"country\": \"UA\",\r\n            \"region\": \"ВИШГОРОДСЬКИЙ\",\r\n            \"settlement\": \"ГЛІБІВКА\",\r\n            \"settlement_id\": \"ebef8451-cb63-430e-99aa-924f208114ba\",\r\n            \"settlement_type\": \"VILLAGE\",\r\n            \"street\": \"Невизначена\",\r\n            \"street_type\": \"STREET\",\r\n            \"type\": \"RESIDENCE\",\r\n            \"zip\": \"07333\"\r\n        }\r\n    ],\r\n    \"email\": \"vyacheslav.syrskyy@ehealth.gov.ua\",\r\n    \"id\": \"40e5622c-64f7-48d8-b02c-2f935bb62823\",\r\n    \"legal_entity_id\": \"26fc5dfe-1bea-440f-a290-48df6f0546ab\",\r\n    \"location\": {\r\n        \"latitude\": 50.80333,\r\n        \"longitude\": 30.36056\r\n    },\r\n    \"name\": \"Відділення ДО реорганізації\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"+380951362570\",\r\n            \"type\": \"MOBILE\"\r\n        }\r\n    ],\r\n    \"type\": \"CLINIC\",\r\n    \"working_hours\": {\r\n        \"fri\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"mon\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"sat\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"sun\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"thu\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"tue\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"wed\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ]\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -713,14 +713,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/api/divisions/c3246236-89a5-44be-8d40-45e1a2b58271",
+									"raw": "{{host}}/api/divisions/40e5622c-64f7-48d8-b02c-2f935bb62823",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"divisions",
-										"c3246236-89a5-44be-8d40-45e1a2b58271"
+										"40e5622c-64f7-48d8-b02c-2f935bb62823"
 									]
 								}
 							},
@@ -909,14 +909,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/divisions/2bb9f35c-711f-4bdf-a69f-0d4fab0d2076",
+									"raw": "{{host}}/api/divisions/c3246236-89a5-44be-8d40-45e1a2b58271",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"divisions",
-										"2bb9f35c-711f-4bdf-a69f-0d4fab0d2076"
+										"c3246236-89a5-44be-8d40-45e1a2b58271"
 									]
 								}
 							},
