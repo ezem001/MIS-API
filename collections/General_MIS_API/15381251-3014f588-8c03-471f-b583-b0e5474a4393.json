@@ -5110,61 +5110,6 @@
 									"response": []
 								},
 								{
-									"name": "Deactivate Confidant Person relationship request",
-									"id": "15381251-517812ec-f547-4033-802a-36957528e288",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Authorization",
-												"value": "Bearer {{access_token}}",
-												"type": "text"
-											},
-											{
-												"key": "API-key",
-												"value": "{{mis_client_secret}}",
-												"type": "text"
-											},
-											{
-												"key": "X-Custom-PSK",
-												"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"confidant_person_relationship\": {\r\n    \"id\": \"9d0f2704-29d4-4ca3-8450-32fabac52c95\",\r\n    \"documents_relationship\": [\r\n      {\r\n        \"type\": \"BIRTH_CERTIFICATE\",\r\n        \"number\": \"АА120518\",\r\n        \"issued_by\": \"Рокитнянським РВ ГУ МВС Київської області\",\r\n        \"issued_at\": \"2020-02-28\"\r\n      }\r\n    ]\r\n  },\r\n  \"authorize_with\": \"684c83ee-8633-4fcd-8580-86b4286127d9\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{host}}/api/persons/ced5c690-b00f-4428-92aa-c46489c2a20c/confidant_person_relationship_requests/deactivate",
-											"host": [
-												"{{host}}"
-											],
-											"path": [
-												"api",
-												"persons",
-												"ced5c690-b00f-4428-92aa-c46489c2a20c",
-												"confidant_person_relationship_requests",
-												"deactivate"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "Approve Confidant Person relationship request",
 									"id": "15381251-26364c4f-8a2c-4c81-bb67-ab4a1e3d5c95",
 									"protocolProfileBehavior": {
@@ -5216,6 +5161,61 @@
 												"c4245a2d-d38c-4e71-ac85-424ddd94cea9",
 												"actions",
 												"approve"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Deactivate Confidant Person relationship request",
+									"id": "15381251-517812ec-f547-4033-802a-36957528e288",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}",
+												"type": "text"
+											},
+											{
+												"key": "API-key",
+												"value": "{{mis_client_secret}}",
+												"type": "text"
+											},
+											{
+												"key": "X-Custom-PSK",
+												"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"confidant_person_relationship\": {\r\n    \"id\": \"9d0f2704-29d4-4ca3-8450-32fabac52c95\",\r\n    \"documents_relationship\": [\r\n      {\r\n        \"type\": \"BIRTH_CERTIFICATE\",\r\n        \"number\": \"АА120518\",\r\n        \"issued_by\": \"Рокитнянським РВ ГУ МВС Київської області\",\r\n        \"issued_at\": \"2020-02-28\"\r\n      }\r\n    ]\r\n  },\r\n  \"authorize_with\": \"684c83ee-8633-4fcd-8580-86b4286127d9\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/persons/ced5c690-b00f-4428-92aa-c46489c2a20c/confidant_person_relationship_requests/deactivate",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"persons",
+												"ced5c690-b00f-4428-92aa-c46489c2a20c",
+												"confidant_person_relationship_requests",
+												"deactivate"
 											]
 										}
 									},
