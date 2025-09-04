@@ -9441,14 +9441,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/patients/3241244c-acf7-40bf-8a35-d290607fb53e/approvals/{{jobApprovalID}}",
+							"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/approvals/{{jobApprovalID}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"patients",
-								"3241244c-acf7-40bf-8a35-d290607fb53e",
+								"{{patient_id_from_episode}}",
 								"approvals",
 								"{{jobApprovalID}}"
 							]
@@ -9487,21 +9487,20 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/patients/421c3318-f783-4883-a030-f0c63aa7e0bf/approvals",
+							"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/approvals?granted_to=7c3da506-804d-4550-8993-bf17f9ee0402&granted_resource_type=care_plan",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"patients",
-								"421c3318-f783-4883-a030-f0c63aa7e0bf",
+								"{{patient_id_from_episode}}",
 								"approvals"
 							],
 							"query": [
 								{
 									"key": "granted_to",
-									"value": "7c3da506-804d-4550-8993-bf17f9ee0402",
-									"disabled": true
+									"value": "7c3da506-804d-4550-8993-bf17f9ee0402"
 								},
 								{
 									"key": "granted_resources",
@@ -9510,8 +9509,7 @@
 								},
 								{
 									"key": "granted_resource_type",
-									"value": "person",
-									"disabled": true
+									"value": "care_plan"
 								},
 								{
 									"key": "reason",
