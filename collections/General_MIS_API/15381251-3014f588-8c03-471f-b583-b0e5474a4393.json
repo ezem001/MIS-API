@@ -5167,7 +5167,7 @@
 									"response": []
 								},
 								{
-									"name": "Approve Confidant Person relationship request Copy",
+									"name": "Sign Confidant Person relationship request",
 									"id": "15381251-f9fd8d67-c268-4c18-98fd-07b5cdcd977f",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
