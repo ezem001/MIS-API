@@ -6864,11 +6864,13 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "'0JTQvtC60YPQvNC10L3Rgg=='"
+							"mode": "file",
+							"file": {
+								"src": "postman-cloud:///1f088a87-f578-4210-b9a6-7197687e59be"
+							}
 						},
 						"url": {
-							"raw": "https://storage-demo.ehealth.gov.ua/person-requests/a8/aa/4a/94/fd/a85f1d73-aae2-4a1e-94b6-fd2529d57cd4/person_request_person.BIRTH_CERTIFICATE_FOREIGN.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Credential=UW2KVTMKINLYBM0A%2F20250801%2Fs3-demo%2Fs3%2Faws4_request&X-Amz-Date=20250801T072844Z&X-Amz-Signature=8e913f19e737a051d6364ec2d2c41018a33cabc484d3b0915535f94527142074",
+							"raw": "https://storage-demo.ehealth.gov.ua/persons/96/d9/48/9d/83/96c086d0-d96d-4808-9da3-83705c8b3a95/person_person.MARRIAGE_CERTIFICATE.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Credential=UW2KVTMKINLYBM0A%2F20250903%2Fs3-demo%2Fs3%2Faws4_request&X-Amz-Date=20250903T101731Z&X-Amz-Signature=d4ae4f967fa65e3c9a27d25b65fc3ba913f1bc7d7fecfcf5b3dffe48c0d740ec",
 							"protocol": "https",
 							"host": [
 								"storage-demo",
@@ -6877,14 +6879,14 @@
 								"ua"
 							],
 							"path": [
-								"person-requests",
-								"a8",
-								"aa",
-								"4a",
-								"94",
-								"fd",
-								"a85f1d73-aae2-4a1e-94b6-fd2529d57cd4",
-								"person_request_person.BIRTH_CERTIFICATE_FOREIGN.jpeg"
+								"persons",
+								"96",
+								"d9",
+								"48",
+								"9d",
+								"83",
+								"96c086d0-d96d-4808-9da3-83705c8b3a95",
+								"person_person.MARRIAGE_CERTIFICATE.jpeg"
 							],
 							"query": [
 								{
@@ -6906,15 +6908,15 @@
 								},
 								{
 									"key": "X-Amz-Credential",
-									"value": "UW2KVTMKINLYBM0A%2F20250801%2Fs3-demo%2Fs3%2Faws4_request"
+									"value": "UW2KVTMKINLYBM0A%2F20250903%2Fs3-demo%2Fs3%2Faws4_request"
 								},
 								{
 									"key": "X-Amz-Date",
-									"value": "20250801T072844Z"
+									"value": "20250903T101731Z"
 								},
 								{
 									"key": "X-Amz-Signature",
-									"value": "8e913f19e737a051d6364ec2d2c41018a33cabc484d3b0915535f94527142074"
+									"value": "d4ae4f967fa65e3c9a27d25b65fc3ba913f1bc7d7fecfcf5b3dffe48c0d740ec"
 								}
 							]
 						}
