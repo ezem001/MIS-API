@@ -5041,14 +5041,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{host}}/api/persons/96eb123f-d58e-488b-9b60-523a94232f26/confidant_person_relationships",
+											"raw": "{{host}}/api/persons/06e073d5-92d7-471b-b5b3-405de25e9763/confidant_person_relationships",
 											"host": [
 												"{{host}}"
 											],
 											"path": [
 												"api",
 												"persons",
-												"96eb123f-d58e-488b-9b60-523a94232f26",
+												"06e073d5-92d7-471b-b5b3-405de25e9763",
 												"confidant_person_relationships"
 											]
 										}
@@ -5057,6 +5057,116 @@
 								},
 								{
 									"name": "Create new Confidant Person relationship request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "eec87b85-5ca3-47bf-ada4-21e01128a240",
+												"exec": [
+													"// === Helpers ===\r",
+													"const safeJson = (body) => {\r",
+													"    try {\r",
+													"        return pm.response.json();\r",
+													"    } catch (e) {\r",
+													"        console.warn(\"Response is not JSON, returning text instead.\");\r",
+													"        return pm.response.text();\r",
+													"    }\r",
+													"};\r",
+													"\r",
+													"const log = (label, data) => {\r",
+													"    console.log(`[DEBUG] ${label}:`, data);\r",
+													"};\r",
+													"\r",
+													"const displayResponse = (title, data) => {\r",
+													"    const html = `\r",
+													"        <h2>${title}</h2>\r",
+													"        <table border=\"1\" style=\"border-collapse:collapse; width:100%;\">\r",
+													"            <tr><td><pre>${JSON.stringify(data, null, 2)}</pre></td></tr>\r",
+													"        </table>`;\r",
+													"    pm.visualizer.set(html);\r",
+													"};\r",
+													"\r",
+													"// === Main ===\r",
+													"const resBody = safeJson();\r",
+													"\r",
+													"// Збереження ID, якщо є\r",
+													"if (resBody?.data?.id) {\r",
+													"    const personReqId = resBody.data.id;\r",
+													"    log(\"Person Request ID\", personReqId);\r",
+													"    pm.globals.set(\"Create_confidant_relationship_id\", personReqId);\r",
+													"}\r",
+													"\r",
+													"// Витягування ID особи з URL (meta.url)\r",
+													"if (resBody?.meta?.url) {\r",
+													"    const url = resBody.meta.url;\r",
+													"    const match = url.match(/\\/persons\\/([^/]+)/);\r",
+													"    if (match && match[1]) {\r",
+													"        const personId = match[1];\r",
+													"        log(\"Person for Relationship\", personId);\r",
+													"        pm.globals.set(\"ward\", personId);\r",
+													"    } else {\r",
+													"        console.warn(\"Could not extract personId from URL:\", url);\r",
+													"    }\r",
+													"}\r",
+													"\r",
+													"\r",
+													"\r",
+													"// === Handle URLs ===\r",
+													"const processUrl = (url, additionalData) => {\r",
+													"    log(\"Processing URL\", url);\r",
+													"\r",
+													"    pm.sendRequest({\r",
+													"        url,\r",
+													"        method: 'PUT',\r",
+													"        header: { 'Content-Type': 'application/json' },\r",
+													"        body: { mode: 'raw', raw: JSON.stringify(additionalData) }\r",
+													"    }, (err, res) => {\r",
+													"        if (err) {\r",
+													"            console.error('Request failed:', err);\r",
+													"            return displayResponse('Request Error', { error: err.message });\r",
+													"        }\r",
+													"\r",
+													"        const contentType = res.headers.get('Content-Type') || '';\r",
+													"        log(\"Content-Type\", contentType);\r",
+													"\r",
+													"        let responseData;\r",
+													"        if (contentType.includes('application/json')) {\r",
+													"            try {\r",
+													"                responseData = res.json();\r",
+													"                displayResponse('Document sign successful (JSON)', responseData);\r",
+													"            } catch (e) {\r",
+													"                console.error('JSON parsing error:', e);\r",
+													"                displayResponse('Parsing Error', { error: 'Failed to parse JSON' });\r",
+													"            }\r",
+													"        } else {\r",
+													"            responseData = res.text();\r",
+													"            displayResponse('Document sign response (Text)', { response: responseData });\r",
+													"        }\r",
+													"    });\r",
+													"};\r",
+													"\r",
+													"// === Extract URLs ===\r",
+													"const documents = resBody?.urgent?.documents || [];\r",
+													"if (!documents.length) {\r",
+													"    log(\"Warning\", \"No documents found in response.\");\r",
+													"} else {\r",
+													"    const urls = documents.map(doc => doc.url).filter(Boolean);\r",
+													"    const additionalData = { row: '0JTQvtC60YPQvNC10L3Rgg==' };\r",
+													"\r",
+													"    urls.forEach((url) => processUrl(url, additionalData));\r",
+													"}\r",
+													"\r",
+													"// === Tests ===\r",
+													"pm.test(\"Status code is 200\", () => {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "15381251-7914d277-6b91-4e03-a828-b290f35d0701",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -5087,7 +5197,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"confidant_person_id\": \"eb540550-2d5f-446c-bcc9-f0e7c8a1cb97\",\r\n  \"documents_relationship\": [\r\n    {\r\n      \"type\": \"BIRTH_CERTIFICATE\",\r\n      \"number\": \"ВР456342\",\r\n      \"issued_by\": \"Рокитнянським РВ ГУ МВС Київської області\",\r\n      \"issued_at\": \"1988-11-25\",\r\n      \"active_to\": \"2035-08-19\"\r\n    }\r\n  ]\r\n}",
+											"raw": "{\r\n    \"confidant_person_id\": \"8fb10e9d-59e5-4c0e-a34e-9162e2b94f6f\",\r\n    \"documents_relationship\": [\r\n        {\r\n            \"type\": \"BIRTH_CERTIFICATE\",\r\n            \"number\": \"І-БК535231\",\r\n            \"issued_by\": \"Рокитнянським РВ ГУ МВС Київської області\",\r\n            \"issued_at\": \"2020-05-16\",\r\n            \"active_to\": \"2027-02-28\"\r\n        }\r\n    ]\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -5095,14 +5205,14 @@
 											}
 										},
 										"url": {
-											"raw": "{{host}}/api/persons/635252d7-d629-4ed0-8d7f-417a47e55a18/confidant_person_relationship_requests",
+											"raw": "{{host}}/api/persons/06e073d5-92d7-471b-b5b3-405de25e9763/confidant_person_relationship_requests",
 											"host": [
 												"{{host}}"
 											],
 											"path": [
 												"api",
 												"persons",
-												"635252d7-d629-4ed0-8d7f-417a47e55a18",
+												"06e073d5-92d7-471b-b5b3-405de25e9763",
 												"confidant_person_relationship_requests"
 											]
 										}
@@ -5111,6 +5221,89 @@
 								},
 								{
 									"name": "Approve Confidant Person relationship request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "366862d6-f09b-431f-b206-ce5ecfdca9a2",
+												"exec": [
+													"// === Helpers ===\r",
+													"const safeJson = () => {\r",
+													"    try {\r",
+													"        return pm.response.json();\r",
+													"    } catch (e) {\r",
+													"        console.warn(\"[WARN] Response is not JSON, returning text instead.\");\r",
+													"        return pm.response.text();\r",
+													"    }\r",
+													"};\r",
+													"\r",
+													"const log = (label, data) => {\r",
+													"    console.log(`[DEBUG] ${label}:`, data);\r",
+													"};\r",
+													"\r",
+													"const displayResponse = (title, data) => {\r",
+													"    const html = `\r",
+													"        <h2>${title}</h2>\r",
+													"        <table border=\"1\" style=\"border-collapse:collapse; width:100%;\">\r",
+													"            <tr><td><pre>${JSON.stringify(data, null, 2)}</pre></td></tr>\r",
+													"        </table>`;\r",
+													"    pm.visualizer.set(html);\r",
+													"};\r",
+													"\r",
+													"// === Main ===\r",
+													"\r",
+													"// 1. Тест статусу відповіді\r",
+													"pm.test(\"Status code is 200\", () => {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// 2. Отримання даних безпечним методом\r",
+													"const responseJson = safeJson();\r",
+													"const dataToSign = responseJson?.data;\r",
+													"\r",
+													"if (!dataToSign) {\r",
+													"    log(\"Warning\", \"No 'data' field found in response.\");\r",
+													"    displayResponse(\"Warning\", { message: \"No 'data' field found in response.\" });\r",
+													"} else {\r",
+													"    const localServerUrl = 'http://localhost:3000/confidant-person-relationship-request'; // онови при потребі\r",
+													"\r",
+													"    const requestData = {\r",
+													"        method: 'POST',\r",
+													"        url: localServerUrl,\r",
+													"        header: { 'Content-Type': 'application/json' },\r",
+													"        body: { mode: 'raw', raw: JSON.stringify(dataToSign) }\r",
+													"    };\r",
+													"\r",
+													"    pm.sendRequest(requestData, (err, res) => {\r",
+													"        if (err) {\r",
+													"            console.error('[ERROR] Request to local server failed:', err);\r",
+													"            return displayResponse('Local Server Error', { error: err.message });\r",
+													"        }\r",
+													"\r",
+													"        let responseBody;\r",
+													"        try {\r",
+													"            responseBody = res.json();\r",
+													"            log(\"Local server JSON response\", responseBody);\r",
+													"        } catch {\r",
+													"            responseBody = res.text();\r",
+													"            console.warn(\"[WARN] Local server returned non-JSON response\");\r",
+													"        }\r",
+													"\r",
+													"        // Зберігаємо підписані дані у глобальні змінні\r",
+													"        if (responseBody?.signed_content) {\r",
+													"            pm.globals.set('confidant_person_relationship_request_signed_content', responseBody.signed_content);\r",
+													"        }\r",
+													"\r",
+													"        displayResponse('Signed person data', responseBody);\r",
+													"    });\r",
+													"}\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "15381251-26364c4f-8a2c-4c81-bb67-ab4a1e3d5c95",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -5141,7 +5334,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"verification_code\": 5229\r\n}",
+											"raw": "{\r\n  \"verification_code\": 1312\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -5149,16 +5342,16 @@
 											}
 										},
 										"url": {
-											"raw": "{{host}}/api/persons/635252d7-d629-4ed0-8d7f-417a47e55a18/confidant_person_relationship_requests/c4245a2d-d38c-4e71-ac85-424ddd94cea9/actions/approve",
+											"raw": "{{host}}/api/persons/{{ward}}/confidant_person_relationship_requests/{{Create_confidant_relationship_id}}/actions/approve",
 											"host": [
 												"{{host}}"
 											],
 											"path": [
 												"api",
 												"persons",
-												"635252d7-d629-4ed0-8d7f-417a47e55a18",
+												"{{ward}}",
 												"confidant_person_relationship_requests",
-												"c4245a2d-d38c-4e71-ac85-424ddd94cea9",
+												"{{Create_confidant_relationship_id}}",
 												"actions",
 												"approve"
 											]
@@ -5198,7 +5391,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"verification_code\": 5229\r\n}",
+											"raw": "{\r\n  \"signed_content\": \"{{confidant_person_relationship_request_signed_content}}\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -5206,18 +5399,18 @@
 											}
 										},
 										"url": {
-											"raw": "{{host}}/api/persons/635252d7-d629-4ed0-8d7f-417a47e55a18/confidant_person_relationship_requests/c4245a2d-d38c-4e71-ac85-424ddd94cea9/actions/approve",
+											"raw": "{{host}}/api/persons/{{ward}}/confidant_person_relationship_requests/{{Create_confidant_relationship_id}}/actions/sign",
 											"host": [
 												"{{host}}"
 											],
 											"path": [
 												"api",
 												"persons",
-												"635252d7-d629-4ed0-8d7f-417a47e55a18",
+												"{{ward}}",
 												"confidant_person_relationship_requests",
-												"c4245a2d-d38c-4e71-ac85-424ddd94cea9",
+												"{{Create_confidant_relationship_id}}",
 												"actions",
-												"approve"
+												"sign"
 											]
 										}
 									},
