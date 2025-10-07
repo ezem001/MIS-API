@@ -1906,7 +1906,8 @@
 											"@winter-zodiac-949553/log-utils": {
 												"id": "019763ea-01f4-7431-9bc8-865f51c1b866"
 											}
-										}
+										},
+										"requests": {}
 									}
 								},
 								{
@@ -1917,7 +1918,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
