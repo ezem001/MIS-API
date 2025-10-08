@@ -9379,7 +9379,7 @@
 					"response": []
 				},
 				{
-					"name": "Public. Medical Service Provider Integration Layer/Configurations/Get Dictionaries Configurations by search params",
+					"name": "Get Dictionaries Configurations by search params",
 					"id": "15381251-a1692753-4b4c-49da-89e2-fe74e301ab64",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
