@@ -9379,7 +9379,7 @@
 					"response": []
 				},
 				{
-					"name": "Dictionary Copy",
+					"name": "Dictionaries configurations",
 					"id": "15381251-a1692753-4b4c-49da-89e2-fe74e301ab64",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
