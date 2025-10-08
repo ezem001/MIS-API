@@ -9388,184 +9388,40 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "X-Custom-PSK",
-								"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "api-key",
+								"value": "{{mis_client_secret}}",
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{host}}/api/v2/dictionaries?name=DOCUMENT_TYPE_EXTENDED",
+							"raw": "{{host}}/api/dictionaries_configurations?name=assistive_devices&is_active=true&page=2&page_size=50",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"dictionaries"
+								"dictionaries_configurations"
 							],
 							"query": [
 								{
 									"key": "name",
-									"value": "eHealth/ICD10/condition_codes",
-									"disabled": true
+									"value": "assistive_devices"
 								},
 								{
-									"key": "name",
-									"value": "POSITION",
-									"disabled": true
+									"key": "is_active",
+									"value": "true"
 								},
 								{
-									"key": "name",
-									"value": "SPECIALITY_TYPE",
-									"disabled": true
+									"key": "page",
+									"value": "2"
 								},
 								{
-									"key": "name",
-									"value": "DIVISION_TYPE",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "HEALTHCARE_SERVICE_CATEGORIES",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "LICENCE_TYPE",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "specimen_types",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/SNOMED/service_request_categories",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/observation_categories",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/LOINC/observation_codes",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "specimen_statuses",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "specimen_conditions",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/diagnostic_report_categories",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/procedure_status_reasons",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/resources",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/procedure_categories",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "specimen_cancel_reasons",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "DOCUMENT_RELATIONSHIP_TYPE",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "DOCUMENT_TYPE_EXTENDED"
-								},
-								{
-									"key": "name",
-									"value": "PROVIDING_CONDITION",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/ICD10_AM/condition_codes",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/care_plan_activity_goals",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/episode_types",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/care_plan_cancel_reasons",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/care_plan_activity_cancel_reasons",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "device_request_revoke_reasons",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "device_request_mark_in_error_reasons",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "device_dispense_mark_in_error_reasons",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "COMPOSITION_CATEGORIES",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "COMPOSITION_CANCELLATION_REASONS_TEMP_DISABILITY",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "eHealth/encounter_types",
-									"disabled": true
+									"key": "page_size",
+									"value": "50"
 								}
 							]
 						}
