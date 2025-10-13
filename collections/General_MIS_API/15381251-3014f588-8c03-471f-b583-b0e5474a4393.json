@@ -3526,15 +3526,20 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								},
 								{
 									"listen": "prerequest",
 									"script": {
 										"id": "ea86d24e-51c5-4e2f-88f6-43a0fcb3db0c",
-										"exec": [],
-										"type": "text/javascript"
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3565,7 +3570,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"division_id\": \"f40ca1ea-e169-4db5-92ec-91d6269f3795\",\r\n    \"speciality_type\": \"PROCTOLOGY\",\r\n    \"providing_condition\": \"OUTPATIENT\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"HEALTHCARE_SERVICE_CATEGORIES\",\r\n                \"code\": \"PHC\"\r\n            }\r\n        ]\r\n    }\r\n}"
+									"raw": "{\r\n    \"division_id\": \"{{user_division_id}}\",\r\n    \"speciality_type\": \"FAMILY_DOCTOR\",\r\n    \"providing_condition\": \"OUTPATIENT\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"HEALTHCARE_SERVICE_CATEGORIES\",\r\n                \"code\": \"MSP\"\r\n            }\r\n        ]\r\n    }\r\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/healthcare_services",
