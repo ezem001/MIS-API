@@ -11966,7 +11966,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								},
 								{
@@ -12076,7 +12077,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -12093,7 +12095,7 @@
 									},
 									{
 										"key": "Authorization",
-										"value": "Bearer {{access_token}}"
+										"value": "Bearer TTV3UFE4L1hiaGxrZmlxYk0yd011dz09"
 									},
 									{
 										"key": "api-key",
@@ -12109,16 +12111,16 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/device_requests/{{JobDeviceRequestID}}",
+									"raw": "{{host}}/api/patients/6c0d83e3-d4d8-4b53-a82d-42c7fbef31c7/device_requests/3d643afa-38b7-45cf-a9c0-ab03094b065c",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
-										"{{patient_id_from_episode}}",
+										"6c0d83e3-d4d8-4b53-a82d-42c7fbef31c7",
 										"device_requests",
-										"{{JobDeviceRequestID}}"
+										"3d643afa-38b7-45cf-a9c0-ab03094b065c"
 									]
 								}
 							},
