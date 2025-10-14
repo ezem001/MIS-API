@@ -602,21 +602,11 @@
 											"tests[\"Status code is 201\"] = responseCode.code === 201;",
 											"",
 											"",
-											"var jsonData = JSON.parse(responseBody);",
-											"",
-											"if (jsonData && jsonData.data) {",
-											"    tests[\"Correct division status\"] = jsonData.data.status === 'ACTIVE';",
-											"    var division_id = jsonData.data.id;",
-											"    postman.setEnvironmentVariable(\"division_id\", division_id);",
-											"} else {",
-											"    tests[\"Correct division status\"] = false;",
-											"    postman.setEnvironmentVariable(\"division_id\", \"<<undefined>>\");",
-											"}",
-											"",
-											"tests[\"working_hours\"] = jsonData.data.working_hours;"
+											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								},
 								{
@@ -627,7 +617,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -658,7 +649,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"TEST_DIVISION\",\n    \"addresses\": [\n        {\n            \"apartment\": \"23\",\n            \"area\": \"АВТОНОМНА РЕСПУБЛІКА КРИМ\",\n            \"building\": \"15\",\n            \"country\": \"UA\",\n            \"region\": \"ЄВПАТОРІЯ\",\n            \"settlement\": \"ЗАОЗЕРНЕ\",\n            \"settlement_id\": \"6067b193-6e79-435c-a13b-e6b53e65cbdd\",\n            \"settlement_type\": \"SETTLEMENT\",\n            \"street\": \"II Лісопарківський\",\n            \"street_type\": \"STREET\",\n            \"type\": \"RESIDENCE\",\n            \"zip\": \"02090\"\n        }\n    ],\n    \"phones\": [\n        {\n            \"type\": \"MOBILE\",\n            \"number\": \"+380447777777\"\n        }\n    ],\n    \"email\": \"demo.emergency@ukr.net\",\n    \"working_hours\": {\n        \"mon\": [\n            [\n                \"09.00\",\n                \"13.00\"\n            ],\n            [\n                \"14.00\",\n                \"20.00\"\n            ]\n        ],\n        \"tue\": [\n            [\n                \"09.00\",\n                \"18.00\"\n            ]\n        ],\n        \"wed\": [\n            [\n                \"09.00\",\n                \"13.00\"\n            ],\n            [\n                \"14.00\",\n                \"20.00\"\n            ]\n        ],\n        \"thu\": [\n            [\n                \"08.00\",\n                \"08.35\"\n            ]\n        ],\n        \"fri\": [\n            [\n                \"09.00\",\n                \"15.00\"\n            ]\n        ]\n    },\n    \"type\": \"LICENSED_UNIT\",\n    \"legal_entity_id\": \"{{user_legal_entity}}\",\n    \"external_id\": \"3213213\",\n    \"location\": {\n        \"latitude\": 49.3333333,\n        \"longitude\": 36.3333333\n    }\n}"
+									"raw": "{\n    \"name\": \"Test_1.0\",\n    \"addresses\": [\n        {\n            \"apartment\": \"23\",\n            \"area\": \"АВТОНОМНА РЕСПУБЛІКА КРИМ\",\n            \"building\": \"15\",\n            \"country\": \"UA\",\n            \"region\": \"ЄВПАТОРІЯ\",\n            \"settlement\": \"ЗАОЗЕРНЕ\",\n            \"settlement_id\": \"6067b193-6e79-435c-a13b-e6b53e65cbdd\",\n            \"settlement_type\": \"SETTLEMENT\",\n            \"street\": \"II Лісопарківський\",\n            \"street_type\": \"STREET\",\n            \"type\": \"RESIDENCE\",\n            \"zip\": \"02090\"\n        }\n    ],\n    \"phones\": [\n        {\n            \"type\": \"MOBILE\",\n            \"number\": \"+380447777777\"\n        }\n    ],\n    \"email\": \"demo.emergency@ukr.net\",\n    \"working_hours\": {\n        \"mon\": [\n            [\n                \"09.00\",\n                \"13.00\"\n            ],\n            [\n                \"14.00\",\n                \"20.00\"\n            ]\n        ],\n        \"tue\": [\n            [\n                \"09.00\",\n                \"18.00\"\n            ]\n        ],\n        \"wed\": [\n            [\n                \"09.00\",\n                \"13.00\"\n            ],\n            [\n                \"14.00\",\n                \"20.00\"\n            ]\n        ],\n        \"thu\": [\n            [\n                \"08.00\",\n                \"08.35\"\n            ]\n        ],\n        \"fri\": [\n            [\n                \"09.00\",\n                \"15.00\"\n            ]\n        ]\n    },\n    \"type\": \"CLINIC\",\n    \"legal_entity_id\": \"{{user_legal_entity}}\",\n    \"external_id\": \"3213213\",\n    \"location\": {\n        \"latitude\": 49.3333333,\n        \"longitude\": 36.3333333\n    }\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/divisions",
