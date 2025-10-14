@@ -1578,12 +1578,12 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"healthcare_service_id\": \"20a643e8-1497-484a-be86-07e2ec07722f\",\r\n  \"employee_id\": \"ecb4394f-34b9-4279-8042-b9bcbdc0456b\"\r\n}"
+											"raw": "{\r\n  \"healthcare_service_id\": \"6a9d692f-0a04-454d-a409-4821b6bc91f1\",\r\n  \"employee_id\": \"24bdf5fd-81e1-4008-bed8-c92321a6a9e7\"\r\n}"
 										},
 										"url": {
-											"raw": "{{host_demo}}/api/employee_roles",
+											"raw": "{{host}}/api/employee_roles",
 											"host": [
-												"{{host_demo}}"
+												"{{host}}"
 											],
 											"path": [
 												"api",
@@ -3561,7 +3561,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"division_id\": \"{{user_division_id}}\",\r\n    \"speciality_type\": \"FAMILY_DOCTOR\",\r\n    \"providing_condition\": \"OUTPATIENT\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"HEALTHCARE_SERVICE_CATEGORIES\",\r\n                \"code\": \"MSP\"\r\n            }\r\n        ]\r\n    }\r\n}"
+									"raw": "{\r\n    \"division_id\": \"99864fe0-7a74-4e0d-b243-36e6deeceb34\",\r\n    \"speciality_type\": \"FAMILY_DOCTOR\",\r\n    \"providing_condition\": \"OUTPATIENT\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"HEALTHCARE_SERVICE_CATEGORIES\",\r\n                \"code\": \"MSP\"\r\n            }\r\n        ]\r\n    }\r\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/healthcare_services",
