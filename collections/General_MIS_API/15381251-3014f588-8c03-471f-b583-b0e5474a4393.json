@@ -3783,23 +3783,25 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "d743af58-5513-4b34-a3bd-f127d0cf095e",
 										"exec": [
 											""
 										],
 										"type": "text/javascript",
 										"packages": {},
-										"id": "d743af58-5513-4b34-a3bd-f127d0cf095e"
+										"requests": {}
 									}
 								},
 								{
 									"listen": "prerequest",
 									"script": {
+										"id": "5622ea33-eb0a-49ee-b6df-7bd2f2639e16",
 										"exec": [
 											""
 										],
 										"type": "text/javascript",
 										"packages": {},
-										"id": "5622ea33-eb0a-49ee-b6df-7bd2f2639e16"
+										"requests": {}
 									}
 								}
 							],
@@ -3824,19 +3826,19 @@
 									},
 									{
 										"key": "X-Custom-PSK",
-										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+										"value": "{{x-custom-psk}}",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{host_demo}}/api/healthcare_services/id/actions/activate",
+									"raw": "{{host}}/api/healthcare_services/6a9d692f-0a04-454d-a409-4821b6bc91f1/actions/activate",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
 										"healthcare_services",
-										"id",
+										"6a9d692f-0a04-454d-a409-4821b6bc91f1",
 										"actions",
 										"activate"
 									]
