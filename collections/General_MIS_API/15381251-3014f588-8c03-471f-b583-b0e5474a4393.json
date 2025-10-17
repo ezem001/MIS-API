@@ -3561,7 +3561,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"division_id\": \"99864fe0-7a74-4e0d-b243-36e6deeceb34\",\r\n    \"speciality_type\": \"FAMILY_DOCTOR\",\r\n    \"providing_condition\": \"OUTPATIENT\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"HEALTHCARE_SERVICE_CATEGORIES\",\r\n                \"code\": \"MSP\"\r\n            }\r\n        ]\r\n    }\r\n}"
+									"raw": "{\r\n    \"division_id\": \"25da95a9-1945-40c1-b1aa-26a2de2a9919\",\r\n    \"speciality_type\": \"FAMILY_DOCTOR\",\r\n    \"providing_condition\": \"OUTPATIENT\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"HEALTHCARE_SERVICE_CATEGORIES\",\r\n                \"code\": \"MSP\"\r\n            }\r\n        ]\r\n    }\r\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/healthcare_services",
@@ -3716,23 +3716,25 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "85e5dfa6-c5fb-4eaa-8b2d-f58c6c5db284",
 										"exec": [
 											""
 										],
 										"type": "text/javascript",
 										"packages": {},
-										"id": "85e5dfa6-c5fb-4eaa-8b2d-f58c6c5db284"
+										"requests": {}
 									}
 								},
 								{
 									"listen": "prerequest",
 									"script": {
+										"id": "7328511f-f626-438e-b5dc-e5deca853592",
 										"exec": [
 											""
 										],
 										"type": "text/javascript",
 										"packages": {},
-										"id": "7328511f-f626-438e-b5dc-e5deca853592"
+										"requests": {}
 									}
 								}
 							],
@@ -3762,14 +3764,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host_demo}}/api/healthcare_services/id/actions/deactivate",
+									"raw": "{{host}}/api/healthcare_services/6a9d692f-0a04-454d-a409-4821b6bc91f1/actions/deactivate",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
 										"healthcare_services",
-										"id",
+										"6a9d692f-0a04-454d-a409-4821b6bc91f1",
 										"actions",
 										"deactivate"
 									]
@@ -3900,7 +3902,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/healthcare_services/?division_id={{user_division_id}}",
+									"raw": "{{host}}/api/healthcare_services/?division_id=25da95a9-1945-40c1-b1aa-26a2de2a9919",
 									"host": [
 										"{{host}}"
 									],
@@ -3947,7 +3949,7 @@
 										},
 										{
 											"key": "division_id",
-											"value": "{{user_division_id}}"
+											"value": "25da95a9-1945-40c1-b1aa-26a2de2a9919"
 										}
 									]
 								}
