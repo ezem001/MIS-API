@@ -58,24 +58,36 @@
 											"\r",
 											"const defaultVal = \"<<undefined>>\";\r",
 											"\r",
-											"function setEnvIfDefined(key, newValue) {\r",
-											"    if (newValue !== undefined) {\r",
-											"        pm.environment.set(key, newValue);\r",
+											"// Перевіряємо, чи employee_specialty вже існує в environment\r",
+											"const existingEmployeeSpecialty = pm.environment.get(\"employee_specialty\");\r",
+											"\r",
+											"// Записуємо нові значення тільки якщо employee_specialty ще не встановлено\r",
+											"if (!existingEmployeeSpecialty) {\r",
+											"\r",
+											"    function setEnvIfDefined(key, newValue) {\r",
+											"        if (newValue !== undefined) {\r",
+											"            pm.environment.set(key, newValue);\r",
+											"        }\r",
+											"        // Якщо undefined — не змінюємо існуюче значення\r",
 											"    }\r",
-											"    // Якщо undefined — не змінюємо існуюче значення\r",
+											"\r",
+											"    // Отримуємо значення з відповіді\r",
+											"    const legal_entity_id = jsonData?.data?.id;\r",
+											"    const owner_email = jsonData?.data?.email;\r",
+											"    const client_secret = jsonData?.urgent?.security?.client_secret;\r",
+											"    const redirect_uri = jsonData?.urgent?.security?.redirect_uri;\r",
+											"\r",
+											"    // Записуємо лише якщо є нові значення\r",
+											"    setEnvIfDefined(\"legal_entity_id\", legal_entity_id);\r",
+											"    setEnvIfDefined(\"owner_email\", owner_email);\r",
+											"    setEnvIfDefined(\"client_secret\", client_secret);\r",
+											"    setEnvIfDefined(\"redirect_uri\", redirect_uri);\r",
+											"\r",
+											"    console.log(\"✅ Значення збережено, оскільки employee_specialty відсутня\");\r",
+											"} else {\r",
+											"    console.log(\"ℹ️ Пропущено збереження — employee_specialty вже існує\");\r",
 											"}\r",
 											"\r",
-											"// Отримуємо значення з відповіді\r",
-											"const legal_entity_id = jsonData?.data?.id;\r",
-											"const owner_email = jsonData?.data?.email;\r",
-											"const client_secret = jsonData?.urgent?.security?.client_secret;\r",
-											"const redirect_uri = jsonData?.urgent?.security?.redirect_uri;\r",
-											"\r",
-											"// Записуємо лише якщо є нові значення\r",
-											"setEnvIfDefined(\"legal_entity_id\", legal_entity_id);\r",
-											"setEnvIfDefined(\"owner_email\", owner_email);\r",
-											"setEnvIfDefined(\"client_secret\", client_secret);\r",
-											"setEnvIfDefined(\"redirect_uri\", redirect_uri);\r",
 											"\r",
 											"\r",
 											"\r",
@@ -163,7 +175,8 @@
 											"// });"
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								},
 								{
@@ -174,7 +187,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -187,7 +201,8 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer {{access_token}}"
+										"value": "Bearer {{access_token}}",
+										"disabled": true
 									},
 									{
 										"key": "api-key",
