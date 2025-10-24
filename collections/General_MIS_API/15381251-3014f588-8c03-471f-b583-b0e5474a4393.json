@@ -10944,6 +10944,18 @@
 				"header": []
 			},
 			"response": []
+		},
+		{
+			"name": "Update pasword login Copy",
+			"id": "15381251-e442ee5b-5e52-44f0-adcd-2e6182e62880",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }
