@@ -10934,7 +10934,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Update pasword login",
 			"id": "15381251-a9a010ac-1ae0-4b96-a0ea-4de99fe50613",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
