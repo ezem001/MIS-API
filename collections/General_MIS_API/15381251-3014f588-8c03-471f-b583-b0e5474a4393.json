@@ -9315,6 +9315,20 @@
 				},
 				{
 					"name": "Get drugs list v2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4b1dd3f5-6247-4617-be71-9805fe18db15",
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
 					"id": "15381251-c61a42ab-6a81-4c71-87a4-36b1370ce8d4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -9343,8 +9357,17 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{host}}/api/v3/drugs?medical_program_id=786ac2aa-af37-4bd0-b1f5-40a017bf2237",
+							"raw": "{{host}}/api/v3/drugs?medical_program_id=85a99548-ab99-4ac4-96ae-558251270690",
 							"host": [
 								"{{host}}"
 							],
@@ -9411,7 +9434,12 @@
 								},
 								{
 									"key": "medical_program_id",
-									"value": "786ac2aa-af37-4bd0-b1f5-40a017bf2237"
+									"value": "786ac2aa-af37-4bd0-b1f5-40a017bf2237",
+									"disabled": true
+								},
+								{
+									"key": "medical_program_id",
+									"value": "85a99548-ab99-4ac4-96ae-558251270690"
 								}
 							]
 						}
@@ -9438,7 +9466,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/dictionaries_configurations?name=assistive_devices&is_active=true&page=2&page_size=50",
+							"raw": "{{host}}/api/dictionaries_configurations?name=prescribable_device_codes",
 							"host": [
 								"{{host}}"
 							],
@@ -9449,19 +9477,22 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "assistive_devices"
+									"value": "prescribable_device_codes"
 								},
 								{
 									"key": "is_active",
-									"value": "true"
+									"value": "true",
+									"disabled": true
 								},
 								{
 									"key": "page",
-									"value": "2"
+									"value": "2",
+									"disabled": true
 								},
 								{
 									"key": "page_size",
-									"value": "50"
+									"value": "50",
+									"disabled": true
 								}
 							]
 						}
