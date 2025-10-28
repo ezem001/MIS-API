@@ -2003,7 +2003,13 @@
 											"\r",
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"console.info(jsonData?.data)"
+											"console.info(jsonData?.data)\r",
+											"\r",
+											"for (const value of jsonData?.data) {\r",
+											"\r",
+											"    for (const key in value) {}\r",
+											"      console.log(key);\r",
+											"}"
 										],
 										"type": "text/javascript",
 										"packages": {},
