@@ -11329,8 +11329,39 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer TUE4K2k5L3JxdW5pSHRTbDFxa2JRdz09",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\r\n        \"password\": \"12345@Azxcvbnm\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://auth-demo.ehealth.gov.ua/oauth/users/actions/update_password",
+					"protocol": "https",
+					"host": [
+						"auth-demo",
+						"ehealth",
+						"gov",
+						"ua"
+					],
+					"path": [
+						"oauth",
+						"users",
+						"actions",
+						"update_password"
+					]
+				}
 			},
 			"response": []
 		}
