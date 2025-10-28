@@ -1999,14 +1999,19 @@
 											"  const logger = pm.require('@winter-zodiac-949553/log-utils')\r",
 											"  const logPayload = logger.createLogPayload(pm);\r",
 											"  logger.sendLog(logPayload);\r",
-											"})();"
+											"})();\r",
+											"\r",
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"console.info(jsonData)"
 										],
 										"type": "text/javascript",
 										"packages": {
 											"@winter-zodiac-949553/log-utils": {
 												"id": "019763ea-01f4-7431-9bc8-865f51c1b866"
 											}
-										}
+										},
+										"requests": {}
 									}
 								},
 								{
@@ -2017,7 +2022,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -2070,23 +2076,18 @@
 											"disabled": true
 										},
 										{
-											"key": "party_id",
-											"value": "9c5d2bee-a3a4-4d6f-8cda-d28d6195fc16",
-											"disabled": true
-										},
-										{
 											"key": "edrpou",
 											"value": "38782323",
 											"disabled": true
 										},
 										{
 											"key": "legal_entity_id",
-											"value": "d290f1ee-6c54-4b01-90e6-d701748f0152",
+											"value": "24dbe468-7820-44d8-adae-28863fc41db4",
 											"disabled": true
 										},
 										{
 											"key": "division_id",
-											"value": "c3246236-89a5-44be-8d40-45e1a2b58271",
+											"value": "7d3d0f90-dafc-45f5-ab28-8600a16f041f",
 											"disabled": true
 										},
 										{
@@ -2096,7 +2097,7 @@
 										},
 										{
 											"key": "employee_type",
-											"value": "LABORANT",
+											"value": "DOCTOR",
 											"disabled": true
 										},
 										{
@@ -2112,6 +2113,17 @@
 										{
 											"key": "verification_status",
 											"value": "NOT_VERIFIED",
+											"disabled": true
+										},
+										{
+											"key": "specialities",
+											"value": "FAMILY_DOCTOR",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "party_id",
+											"value": "2a8a5834-7e09-44b1-9490-d1c341c3da12",
 											"disabled": true
 										}
 									]
