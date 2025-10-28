@@ -1992,25 +1992,21 @@
 										"exec": [
 											"// Логування запиту та відповіді\r",
 											"\r",
-											"(function () {\r",
-											"  // не логувати /log щоб уникнути рекурсії\r",
-											"  if (pm.request.url.toString().includes('/log')) return;\r",
+											"// (function () {\r",
+											"//   // не логувати /log щоб уникнути рекурсії\r",
+											"//   if (pm.request.url.toString().includes('/log')) return;\r",
 											"\r",
-											"  const logger = pm.require('@winter-zodiac-949553/log-utils')\r",
-											"  const logPayload = logger.createLogPayload(pm);\r",
-											"  logger.sendLog(logPayload);\r",
-											"})();\r",
+											"//   const logger = pm.require('@winter-zodiac-949553/log-utils')\r",
+											"//   const logPayload = logger.createLogPayload(pm);\r",
+											"//   logger.sendLog(logPayload);\r",
+											"// })();\r",
 											"\r",
 											"const jsonData = pm.response.json();\r",
 											"\r",
-											"console.info(jsonData)"
+											"console.info(jsonData?.data)"
 										],
 										"type": "text/javascript",
-										"packages": {
-											"@winter-zodiac-949553/log-utils": {
-												"id": "019763ea-01f4-7431-9bc8-865f51c1b866"
-											}
-										},
+										"packages": {},
 										"requests": {}
 									}
 								},
