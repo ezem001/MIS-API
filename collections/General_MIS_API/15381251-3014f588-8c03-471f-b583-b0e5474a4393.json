@@ -11294,8 +11294,31 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": {\r\n        \"grant_type\": \"change_password\",\r\n        \"email\": \"{{user_email}}\",\r\n        \"password\": \"{{user_password}}\",\r\n        \"client_id\": \"e2e1d2c8-9bac-43c6-adef-83239940b30a\",\r\n        \"scope\": \"user:change_password\"\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://auth-demo.ehealth.gov.ua/auth/login",
+					"protocol": "https",
+					"host": [
+						"auth-demo",
+						"ehealth",
+						"gov",
+						"ua"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
 			},
 			"response": []
 		},
