@@ -1232,13 +1232,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://auth-qa.ehealth.gov.ua/oauth/apps/authorize",
-					"protocol": "https",
+					"raw": "{{auth_host}}/oauth/apps/authorize",
 					"host": [
-						"auth-qa",
-						"ehealth",
-						"gov",
-						"ua"
+						"{{auth_host}}"
 					],
 					"path": [
 						"oauth",
@@ -1308,8 +1304,7 @@
 					{
 						"key": "x-custom-psk",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"body": {
@@ -1317,14 +1312,13 @@
 					"raw": "\n{\n   \"token\":{\n      \"grant_type\":\"authorization_code\",\n      \"code\": \"{{user_code}}\",\n      \"client_id\":\"{{user_legal_entity}}\",\n      \"client_secret\": \"{{client_secret}}\",\n      \"redirect_uri\": \"{{user_redirect_uri}}\"\n\n   }\n}"
 				},
 				"url": {
-					"raw": "{{host}}/oauth/tokens/",
+					"raw": "{{host}}/oauth/tokens",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"oauth",
-						"tokens",
-						""
+						"tokens"
 					]
 				}
 			},
