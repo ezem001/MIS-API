@@ -9199,6 +9199,18 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "kljk",
+			"id": "15381251-4d4fec12-b842-4126-b95d-8736144a4a8b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }
