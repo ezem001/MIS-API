@@ -1148,7 +1148,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"token\": {\r\n        \"grant_type\": \"password\",\r\n        \"email\": \"{{user_email}}\",\r\n        \"password\": \"{{user_password}}\",\r\n        \"client_id\": \"27854bef-b66b-41a8-82de-3cd0027e193a\",\r\n        \"scope\": \"app:authorize\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"token\": {\r\n        \"grant_type\": \"password\",\r\n        \"email\": \"{{user_email}}\",\r\n        \"password\": \"{{user_password}}\",\r\n        \"client_id\": \"{{client_id_preprod_demo}}\",\r\n        \"scope\": \"app:authorize\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1156,13 +1156,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://auth-qa.ehealth.gov.ua/auth/login",
-					"protocol": "https",
+					"raw": "{{auth_host}}/auth/login",
 					"host": [
-						"auth-qa",
-						"ehealth",
-						"gov",
-						"ua"
+						"{{auth_host}}"
 					],
 					"path": [
 						"auth",
