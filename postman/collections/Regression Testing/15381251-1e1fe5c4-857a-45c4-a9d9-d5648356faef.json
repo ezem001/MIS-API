@@ -3764,7 +3764,7 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
@@ -3861,7 +3861,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
