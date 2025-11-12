@@ -6449,6 +6449,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "d85f6826-9341-4ef8-bc14-bba91911a9d7",
 						"exec": [
 							"pm.test(\"Get Device Request details - PASS. Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -6456,15 +6457,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "d85f6826-9341-4ef8-bc14-bba91911a9d7"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [],
+						"id": "821f65b1-9f1e-4253-a910-223a3488ff06",
+						"exec": [
+							""
+						],
 						"type": "text/javascript",
-						"id": "821f65b1-9f1e-4253-a910-223a3488ff06"
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -6492,7 +6497,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
