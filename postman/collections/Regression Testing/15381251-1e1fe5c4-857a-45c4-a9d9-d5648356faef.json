@@ -8038,12 +8038,6 @@
 						"key": "X-Custom-PSK",
 						"value": "{{x-custom-psk}}",
 						"type": "text"
-					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
 					}
 				],
 				"url": {
