@@ -5359,7 +5359,7 @@
 			"response": []
 		},
 		{
-			"name": "Sign Medication Request Request Copy",
+			"name": "Sign Medication Request Request",
 			"event": [
 				{
 					"listen": "test",
