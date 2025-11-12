@@ -1927,6 +1927,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3cef400f-db1c-463c-a215-367bc77b220d",
 						"exec": [
 							"const generalResData = pm.response.json();",
 							"const parsedGeneraData = JSON.stringify(generalResData, null, 2)",
@@ -2023,18 +2024,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "3cef400f-db1c-463c-a215-367bc77b220d"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "0dfa2756-78ca-482f-850d-61758d63b97f",
 						"exec": [
 							""
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "0dfa2756-78ca-482f-850d-61758d63b97f"
+						"requests": {}
 					}
 				}
 			],
@@ -2059,7 +2061,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
