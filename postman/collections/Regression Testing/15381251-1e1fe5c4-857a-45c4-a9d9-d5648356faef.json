@@ -1880,7 +1880,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -1927,6 +1927,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3cef400f-db1c-463c-a215-367bc77b220d",
 						"exec": [
 							"const generalResData = pm.response.json();",
 							"const parsedGeneraData = JSON.stringify(generalResData, null, 2)",
@@ -2023,18 +2024,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "3cef400f-db1c-463c-a215-367bc77b220d"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "0dfa2756-78ca-482f-850d-61758d63b97f",
 						"exec": [
 							""
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "0dfa2756-78ca-482f-850d-61758d63b97f"
+						"requests": {}
 					}
 				}
 			],
@@ -2059,7 +2061,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -2155,17 +2157,19 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "6b271ae1-363a-4ce0-97cd-f5e260727d0e",
 						"exec": [
 							""
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "6b271ae1-363a-4ce0-97cd-f5e260727d0e"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
+						"id": "aa2e8cbd-503e-4fbd-82ef-54735c896e3b",
 						"exec": [
 							"const jsonData = pm.response.json();",
 							"",
@@ -2233,7 +2237,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "aa2e8cbd-503e-4fbd-82ef-54735c896e3b"
+						"requests": {}
 					}
 				}
 			],
@@ -2258,7 +2262,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -2289,6 +2293,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "56f447e6-654b-4770-9bd6-88e86e5d5028",
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"\r",
@@ -2312,15 +2317,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "56f447e6-654b-4770-9bd6-88e86e5d5028"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [],
+						"id": "3c01bc7e-4d26-4430-9128-454a32f5e210",
+						"exec": [
+							""
+						],
 						"type": "text/javascript",
-						"id": "3c01bc7e-4d26-4430-9128-454a32f5e210"
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -2348,7 +2357,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -2551,7 +2560,7 @@
 							"                'Content-Type': 'application/json',",
 							"                'Authorization': `Bearer ${pm.environment.get('access_token')}`,",
 							"                'api-key': `${pm.environment.get('mis_client_secret')}`,",
-							"                'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'",
+							"                'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`",
 							"            }",
 							"        }, function (err, res) {",
 							"",
@@ -2701,7 +2710,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -3032,7 +3041,7 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
@@ -3137,7 +3146,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -3323,7 +3332,7 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
@@ -3432,7 +3441,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -3509,7 +3518,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -3583,7 +3592,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -3755,7 +3764,7 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
@@ -3852,7 +3861,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -3930,7 +3939,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -4009,7 +4018,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -4171,7 +4180,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -4317,7 +4326,7 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
@@ -4335,7 +4344,7 @@
 							"\r",
 							"            if (responseBody.data.status === 'processed') {\r",
 							"\r",
-							"                 pm.test(`Care Plan Activity Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
+							"                pm.test(`Care Plan Activity Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
 							"                    pm.expect(res.code).to.eql(303);\r",
 							"                });\r",
 							"\r",
@@ -4434,7 +4443,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -4513,7 +4522,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -4541,6 +4550,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "2b325cbf-ce54-43c1-9630-d654fd420c00",
 						"exec": [
 							"pm.test(\"Get Care Plan activities - PASS. Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -4548,15 +4558,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "2b325cbf-ce54-43c1-9630-d654fd420c00"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [],
+						"id": "c35ccbec-6527-4108-84d9-7b2cd4091884",
+						"exec": [
+							""
+						],
 						"type": "text/javascript",
-						"id": "c35ccbec-6527-4108-84d9-7b2cd4091884"
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -4584,7 +4598,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -4879,7 +4893,7 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
@@ -4897,7 +4911,7 @@
 							"\r",
 							"            if (responseBody.data.status === 'processed') {\r",
 							"\r",
-							"                 pm.test(`Create Service Request Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
+							"                pm.test(`Create Service Request Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
 							"                    pm.expect(res.code).to.eql(303);\r",
 							"                });\r",
 							"\r",
@@ -4984,7 +4998,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -5061,7 +5075,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					},
 					{
@@ -5180,13 +5194,13 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"medication_request_request\": {\r\n        \"person_id\": \"{{patient_for_regress}}\",\r\n        \"employee_id\": \"{{user_id}}\",\r\n        \"division_id\": \"{{user_division_id}}\",\r\n        \"created_at\": \"{{medicationRequestCreatedAt}}\",\r\n        \"started_at\": \"{{medicationRequestStartedAt}}\",\r\n        \"ended_at\": \"{{medicationRequestEndedAt}}\",\r\n        \"medication_id\": \"03e31a12-e894-490b-8f22-c5941f5a789f\",\r\n        \"medication_qty\": 30.0,\r\n        \"intent\": \"order\",\r\n        \"category\": \"community\",\r\n        \"context\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"encounter\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{encounter_extracted_id}}\"\r\n            }\r\n        },\r\n        \"dosage_instruction\": [\r\n            {\r\n                \"sequence\": 1,\r\n                \"text\": \"0.25mg PO every 6-12 hours as needed for menses from Jan 15-20, 2015.  Do not exceed more than 4mg per day\",\r\n                \"patient_instruction\": \"0.25mg PO every 6-12 hours as needed for menses from Jan 15-20, 2015.  Do not exceed more than 4mg per day\",\r\n                \"max_dose_per_period\": {\r\n                    \"numerator\": {\r\n                        \"value\": 0,\r\n                        \"unit\": \"mg\",\r\n                        \"system\": \"eHealth/ucum/units\",\r\n                        \"code\": \"mg\"\r\n                    },\r\n                    \"denominator\": {\r\n                        \"value\": 0,\r\n                        \"unit\": \"mg\",\r\n                        \"system\": \"eHealth/ucum/units\",\r\n                        \"code\": \"mg\"\r\n                    }\r\n                },\r\n                \"max_dose_per_administration\": {\r\n                    \"value\": 0,\r\n                    \"unit\": \"mg\",\r\n                    \"system\": \"eHealth/ucum/units\",\r\n                    \"code\": \"mg\"\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"programs\": [\r\n        {\r\n            \"id\": \"f01d0d8c-bccb-4bde-a6c6-f4b873a005c2\"\r\n        }\r\n    ]\r\n}"
+					"raw": "{\r\n    \"medication_request_request\": {\r\n        \"person_id\": \"{{patient_for_regress}}\",\r\n        \"employee_id\": \"{{user_id}}\",\r\n        \"division_id\": \"{{user_division_id}}\",\r\n        \"created_at\": \"{{medicationRequestCreatedAt}}\",\r\n        \"started_at\": \"{{medicationRequestStartedAt}}\",\r\n        \"ended_at\": \"{{medicationRequestEndedAt}}\",\r\n        \"medication_id\": \"0505cdd8-73b6-4eb7-a79f-3063279b1d92\",\r\n        \"medication_qty\": 30.0,\r\n        \"intent\": \"order\",\r\n        \"category\": \"community\",\r\n        \"context\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"encounter\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{encounter_extracted_id}}\"\r\n            }\r\n        },\r\n        \"dosage_instruction\": [\r\n            {\r\n                \"sequence\": 1,\r\n                \"text\": \"0.25mg PO every 6-12 hours as needed for menses from Jan 15-20, 2015.  Do not exceed more than 4mg per day\",\r\n                \"patient_instruction\": \"0.25mg PO every 6-12 hours as needed for menses from Jan 15-20, 2015.  Do not exceed more than 4mg per day\",\r\n                \"max_dose_per_period\": {\r\n                    \"numerator\": {\r\n                        \"value\": 0,\r\n                        \"unit\": \"mg\",\r\n                        \"system\": \"eHealth/ucum/units\",\r\n                        \"code\": \"mg\"\r\n                    },\r\n                    \"denominator\": {\r\n                        \"value\": 0,\r\n                        \"unit\": \"mg\",\r\n                        \"system\": \"eHealth/ucum/units\",\r\n                        \"code\": \"mg\"\r\n                    }\r\n                },\r\n                \"max_dose_per_administration\": {\r\n                    \"value\": 0,\r\n                    \"unit\": \"mg\",\r\n                    \"system\": \"eHealth/ucum/units\",\r\n                    \"code\": \"mg\"\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"programs\": [\r\n        {\r\n            \"id\": \"f01d0d8c-bccb-4bde-a6c6-f4b873a005c2\"\r\n        }\r\n    ]\r\n}"
 				},
 				"url": {
 					"raw": "{{host}}/api/medication_request_requests/prequalify",
@@ -5323,13 +5337,13 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"medication_request_request\": {\r\n       \"person_id\": \"{{patient_for_regress}}\",\r\n        \"employee_id\": \"{{user_id}}\",\r\n        \"division_id\": \"{{user_division_id}}\",\r\n        \"created_at\": \"{{medicationRequestCreatedAt}}\",\r\n        \"started_at\": \"{{medicationRequestStartedAt}}\",\r\n        \"ended_at\": \"{{medicationRequestEndedAt}}\",\r\n        \"medication_id\": \"03e31a12-e894-490b-8f22-c5941f5a789f\",\r\n        \"medication_qty\": 30.0,\r\n        \"medical_program_id\": \"f01d0d8c-bccb-4bde-a6c6-f4b873a005c2\",\r\n        \"intent\": \"order\",\r\n        \"category\": \"community\",\r\n        \"context\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"encounter\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{encounter_extracted_id}}\"\r\n            }\r\n        },\r\n        \"dosage_instruction\": [\r\n            {\r\n                \"sequence\": 1,\r\n                \"text\": \"0.25mg PO every 6-12 hours as needed for menses from Jan 15-20, 2015.  Do not exceed more than 4mg per day\",\r\n                \"patient_instruction\": \"0.25mg PO every 6-12 hours as needed for menses from Jan 15-20, 2015.  Do not exceed more than 4mg per day\",\r\n                \"max_dose_per_period\": {\r\n                    \"numerator\": {\r\n                        \"value\": 0,\r\n                        \"unit\": \"mg\",\r\n                        \"system\": \"eHealth/ucum/units\",\r\n                        \"code\": \"mg\"\r\n                    },\r\n                    \"denominator\": {\r\n                        \"value\": 0,\r\n                        \"unit\": \"mg\",\r\n                        \"system\": \"eHealth/ucum/units\",\r\n                        \"code\": \"mg\"\r\n                    }\r\n                },\r\n                \"max_dose_per_administration\": {\r\n                    \"value\": 0,\r\n                    \"unit\": \"mg\",\r\n                    \"system\": \"eHealth/ucum/units\",\r\n                    \"code\": \"mg\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}"
+					"raw": "{\r\n    \"medication_request_request\": {\r\n       \"person_id\": \"{{patient_for_regress}}\",\r\n        \"employee_id\": \"{{user_id}}\",\r\n        \"division_id\": \"{{user_division_id}}\",\r\n        \"created_at\": \"{{medicationRequestCreatedAt}}\",\r\n        \"started_at\": \"{{medicationRequestStartedAt}}\",\r\n        \"ended_at\": \"{{medicationRequestEndedAt}}\",\r\n        \"medication_id\": \"0505cdd8-73b6-4eb7-a79f-3063279b1d92\",\r\n        \"medication_qty\": 30.0,\r\n        \"medical_program_id\": \"f01d0d8c-bccb-4bde-a6c6-f4b873a005c2\",\r\n        \"intent\": \"order\",\r\n        \"category\": \"community\",\r\n        \"context\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"encounter\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{encounter_extracted_id}}\"\r\n            }\r\n        },\r\n        \"dosage_instruction\": [\r\n            {\r\n                \"sequence\": 1,\r\n                \"text\": \"0.25mg PO every 6-12 hours as needed for menses from Jan 15-20, 2015.  Do not exceed more than 4mg per day\",\r\n                \"patient_instruction\": \"0.25mg PO every 6-12 hours as needed for menses from Jan 15-20, 2015.  Do not exceed more than 4mg per day\",\r\n                \"max_dose_per_period\": {\r\n                    \"numerator\": {\r\n                        \"value\": 0,\r\n                        \"unit\": \"mg\",\r\n                        \"system\": \"eHealth/ucum/units\",\r\n                        \"code\": \"mg\"\r\n                    },\r\n                    \"denominator\": {\r\n                        \"value\": 0,\r\n                        \"unit\": \"mg\",\r\n                        \"system\": \"eHealth/ucum/units\",\r\n                        \"code\": \"mg\"\r\n                    }\r\n                },\r\n                \"max_dose_per_administration\": {\r\n                    \"value\": 0,\r\n                    \"unit\": \"mg\",\r\n                    \"system\": \"eHealth/ucum/units\",\r\n                    \"code\": \"mg\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}"
 				},
 				"url": {
 					"raw": "{{host}}/api/medication_request_requests",
@@ -5439,7 +5453,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -5474,6 +5488,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "729ec177-48da-4569-82da-ad4a3f814652",
 						"exec": [
 							"pm.test(\"Get medication requests details - PASS. Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -5481,15 +5496,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "729ec177-48da-4569-82da-ad4a3f814652"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [],
+						"id": "5287c6d5-fd53-4039-bec1-3760276c254a",
+						"exec": [
+							""
+						],
 						"type": "text/javascript",
-						"id": "5287c6d5-fd53-4039-bec1-3760276c254a"
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -5517,7 +5536,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -5587,8 +5606,8 @@
 							"pm.environment.set(\"original_access_token\", pm.environment.get(\"access_token\"));\r",
 							"pm.environment.set(\"original_user_division_id\", pm.environment.get(\"user_division_id\"));\r",
 							"\r",
-							"const pharmacyToken = \"ZGRHQ3ExdFB5ZFpjdnNKeWxYeHVaQT09\";\r",
-							"const pharmacyDivision = \"cbc34ead-00e2-4122-b880-245f204344a3\"\r",
+							"const pharmacyToken = \"SU9MYTYzb2ttL2JrUjd3NGZuWTFsdz09\";\r",
+							"const pharmacyDivision = \"8de56110-c1cc-4fe9-bb45-509a6c17963a\"\r",
 							"\r",
 							"pm.environment.set(\"access_token\", pharmacyToken);\r",
 							"pm.environment.set(\"user_division_id\", pharmacyDivision);\r",
@@ -5624,9 +5643,8 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
-						"type": "text",
-						"disabled": true
+						"value": "{{x-custom-psk}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -5724,13 +5742,13 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"medication_dispense\": {\r\n        \"medication_request_id\": \"{{medication_req_id}}\",\r\n        \"dispensed_at\": \"2025-03-03\",\r\n        \"dispensed_by\": \"Іванов Іван Іванович\",\r\n        \"division_id\": \"{{user_division_id}}\",\r\n        \"medical_program_id\": \"{{program_id_qualify_medication_request}}\",\r\n        \"dispense_details\": [\r\n            {\r\n                \"program_medication_id\": \"{{program_medication_id_qualify_medication_request}}\",\r\n                \"medication_id\": \"{{medication_id_qualify_medication_request}}\",\r\n                \"medication_qty\": 30.0,\r\n                \"sell_price\": 10.00,\r\n                \"sell_amount\": 0.5,\r\n                \"discount_amount\": 0\r\n            }\r\n        ]\r\n    }\r\n}"
+					"raw": "{\r\n    \"medication_dispense\": {\r\n        \"medication_request_id\": \"{{medication_req_id}}\",\r\n        \"dispensed_at\": \"{{dispensed_at}}\",\r\n        \"dispensed_by\": \"Іванов Іван Іванович\",\r\n        \"division_id\": \"{{user_division_id}}\",\r\n        \"medical_program_id\": \"{{program_id_qualify_medication_request}}\",\r\n        \"dispense_details\": [\r\n            {\r\n                \"program_medication_id\": \"{{program_medication_id_qualify_medication_request}}\",\r\n                \"medication_id\": \"{{medication_id_qualify_medication_request}}\",\r\n                \"medication_qty\": 30.0,\r\n                \"sell_price\": 10.00,\r\n                \"sell_amount\": 0.5,\r\n                \"discount_amount\": 0\r\n            }\r\n        ]\r\n    }\r\n}"
 				},
 				"url": {
 					"raw": "{{host}}/api/pharmacy/medication_dispenses?code={{medication_req_confirmation_code}}",
@@ -5861,7 +5879,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -6002,7 +6020,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -6137,7 +6155,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -6283,7 +6301,7 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
@@ -6397,7 +6415,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -6431,6 +6449,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "d85f6826-9341-4ef8-bc14-bba91911a9d7",
 						"exec": [
 							"pm.test(\"Get Device Request details - PASS. Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -6438,15 +6457,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "d85f6826-9341-4ef8-bc14-bba91911a9d7"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [],
+						"id": "821f65b1-9f1e-4253-a910-223a3488ff06",
+						"exec": [
+							""
+						],
 						"type": "text/javascript",
-						"id": "821f65b1-9f1e-4253-a910-223a3488ff06"
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -6474,7 +6497,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -6500,6 +6523,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "159129a8-3f26-41f0-be96-74e12dc46d08",
 						"exec": [
 							"const uuid = require('uuid');\r",
 							"const diagnosticReportId = uuid.v4();\r",
@@ -6538,12 +6562,13 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "159129a8-3f26-41f0-be96-74e12dc46d08"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
+						"id": "b027b92e-5f3e-44ec-b12e-b301639d2954",
 						"exec": [
 							"const resData = pm.response.json();\r",
 							"console.log('create diagnostic report sign content', resData)\r",
@@ -6556,7 +6581,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "b027b92e-5f3e-44ec-b12e-b301639d2954"
+						"requests": {}
 					}
 				}
 			],
@@ -6636,7 +6661,7 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
@@ -6775,8 +6800,7 @@
 					{
 						"key": "X-Custom-PSK",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"body": {
@@ -6804,6 +6828,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "e36f85b9-ff3a-4a64-854a-e04ad13b79da",
 						"exec": [
 							"pm.test(\"Get Diagnostic Report by id - PASS. Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -6811,15 +6836,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "e36f85b9-ff3a-4a64-854a-e04ad13b79da"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [],
+						"id": "cc4b2768-2279-4989-bf98-8426547ce9d6",
+						"exec": [
+							""
+						],
 						"type": "text/javascript",
-						"id": "cc4b2768-2279-4989-bf98-8426547ce9d6"
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -6847,7 +6876,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -6922,8 +6951,7 @@
 					{
 						"key": "X-Custom-PSK",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"url": {
@@ -7120,7 +7148,7 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
@@ -7138,7 +7166,7 @@
 							"\r",
 							"            if (responseBody.data.status === 'processed') {\r",
 							"\r",
-							"                 pm.test(`Create Procedures Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
+							"                pm.test(`Create Procedures Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
 							"                    pm.expect(res.code).to.eql(303);\r",
 							"                });\r",
 							"\r",
@@ -7150,7 +7178,7 @@
 							"                    acc[link.entity] = href;\r",
 							"\r",
 							"                    if (href.includes('procedures/')) {\r",
-							"                        console.log('dsasdasdasdasssadasdds',href, acc[link.entity] )\r",
+							"                        console.log('dsasdasdasdasssadasdds', href, acc[link.entity])\r",
 							"                        const procedureId = href.split('/')[3]; // Extract the Proceduress ID\r",
 							"                        acc['createProcedure'] = procedureId;\r",
 							"                    }\r",
@@ -7239,7 +7267,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -7317,8 +7345,7 @@
 					{
 						"key": "x-custom-psk",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"url": {
@@ -7392,8 +7419,7 @@
 					{
 						"key": "x-custom-psk",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"url": {
@@ -7573,12 +7599,12 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
 							"        pm.test(`Job status check response status is 200 or 303`, function () {\r",
-							"           pm.expect([200, 303]).to.include(res.code);\r",
+							"            pm.expect([200, 303]).to.include(res.code);\r",
 							"        });\r",
 							"\r",
 							"        if (err) {\r",
@@ -7678,7 +7704,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -7754,7 +7780,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -7825,7 +7851,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -7940,14 +7966,7 @@
 					{
 						"key": "X-Custom-PSK",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"url": {
@@ -8018,14 +8037,7 @@
 					{
 						"key": "X-Custom-PSK",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"url": {
@@ -8184,8 +8196,7 @@
 					{
 						"key": "x-custom-psk",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"body": {
@@ -8290,8 +8301,7 @@
 					{
 						"key": "x-custom-psk",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"body": {
@@ -8382,8 +8392,7 @@
 					{
 						"key": "x-custom-psk",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"body": {
@@ -8515,7 +8524,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -8623,8 +8632,7 @@
 					{
 						"key": "x-custom-psk",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"body": {
@@ -8653,6 +8661,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "231faebe-9a8d-49b1-b28b-d4450de197e0",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -8660,18 +8669,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "231faebe-9a8d-49b1-b28b-d4450de197e0"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "14e3f403-cbc7-4364-a307-7779d8cc90e4",
 						"exec": [
 							""
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "14e3f403-cbc7-4364-a307-7779d8cc90e4"
+						"requests": {}
 					}
 				}
 			],
@@ -8694,7 +8704,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -8758,17 +8768,19 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "9ff28f18-7279-4fc0-b070-297fc0473d50",
 						"exec": [
 							""
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "9ff28f18-7279-4fc0-b070-297fc0473d50"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
+						"id": "5770c38d-0b06-467b-99c7-62b78b75db41",
 						"exec": [
 							"",
 							"const resData = pm.response.json();",
@@ -8780,7 +8792,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "5770c38d-0b06-467b-99c7-62b78b75db41"
+						"requests": {}
 					}
 				}
 			],
@@ -8805,7 +8817,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b"
+						"value": "{{x-custom-psk}}"
 					}
 				],
 				"body": {
@@ -8849,6 +8861,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "16672cce-743f-48bb-b040-14053b0c430a",
 						"exec": [
 							"const resData = pm.response.json();\r",
 							"\r",
@@ -8860,12 +8873,13 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "16672cce-743f-48bb-b040-14053b0c430a"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "26d081aa-2a79-48ba-8fde-597b7a0e360c",
 						"exec": [
 							"const uuid = require('uuid');\r",
 							"const id = uuid.v4();\r",
@@ -8932,7 +8946,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "26d081aa-2a79-48ba-8fde-597b7a0e360c"
+						"requests": {}
 					}
 				}
 			],
@@ -9029,7 +9043,7 @@
 							"            'Content-Type': 'application/json',\r",
 							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
 							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-							"            'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
 							"        }\r",
 							"    }, function (err, res) {\r",
 							"\r",
@@ -9229,8 +9243,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "{{x-custom-psk}}",
-						"disabled": true
+						"value": "{{x-custom-psk}}"
 					}
 				],
 				"url": {
