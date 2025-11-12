@@ -5453,7 +5453,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
@@ -5488,6 +5488,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "729ec177-48da-4569-82da-ad4a3f814652",
 						"exec": [
 							"pm.test(\"Get medication requests details - PASS. Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -5495,15 +5496,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "729ec177-48da-4569-82da-ad4a3f814652"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [],
+						"id": "5287c6d5-fd53-4039-bec1-3760276c254a",
+						"exec": [
+							""
+						],
 						"type": "text/javascript",
-						"id": "5287c6d5-fd53-4039-bec1-3760276c254a"
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -5531,7 +5536,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
