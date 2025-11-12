@@ -6523,6 +6523,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "159129a8-3f26-41f0-be96-74e12dc46d08",
 						"exec": [
 							"const uuid = require('uuid');\r",
 							"const diagnosticReportId = uuid.v4();\r",
@@ -6561,12 +6562,13 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "159129a8-3f26-41f0-be96-74e12dc46d08"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
+						"id": "b027b92e-5f3e-44ec-b12e-b301639d2954",
 						"exec": [
 							"const resData = pm.response.json();\r",
 							"console.log('create diagnostic report sign content', resData)\r",
@@ -6579,7 +6581,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "b027b92e-5f3e-44ec-b12e-b301639d2954"
+						"requests": {}
 					}
 				}
 			],
