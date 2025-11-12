@@ -543,15 +543,15 @@
 									"const id = uuid.v4();\r",
 									"\r",
 									"setTimeout(() => {\r",
-									"pm.sendRequest({\r",
-									"    \r",
+									"    pm.sendRequest({\r",
+									"\r",
 									"        url: `${pm.globals.get('host')}/api/patients/${pm.globals.get('preperson_id')}/episodes`,\r",
 									"        method: \"POST\",\r",
 									"        header: {\r",
 									"            'Content-Type': 'application/json',\r",
-									"                'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
-									"                'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
-									"                'X-Custom-PSK': '0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b'\r",
+									"            'Authorization': `Bearer ${accessToken}`,\r",
+									"            'api-key': `${pm.environment.get(\"mis_client_secret\")}`,\r",
+									"            'X-Custom-PSK': `${pm.globals.get(\"x-custom-psk\")}`\r",
 									"        },\r",
 									"        body: {\r",
 									"            mode: \"raw\",\r",
@@ -599,7 +599,61 @@
 									"        console.log(res.json());\r",
 									"    });\r",
 									"\r",
-									"    }, 10000); // Затримка 30 секунд"
+									"}, 30000); // Затримка 30 секунд\r",
+									"\r",
+									"\r",
+									"\r",
+									"const patientId = pm.globals.get(\"patient_for_regress\");\r",
+									"const url = `${pm.globals.get(\"host\")}/api/persons/${patientId}/authentication_methods`;\r",
+									"const accessToken = pm.environment.get('access_token');\r",
+									"\r",
+									"function displayResponse(title, data) {\r",
+									"    console.log(title, data)\r",
+									"    const html = `\r",
+									"        <h1>${title}</h1>\r",
+									"        <pre>${JSON.stringify(data, null, 2)}</pre>`;\r",
+									"    pm.visualizer.set(html);\r",
+									"}\r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: url,\r",
+									"    method: 'GET',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json',\r",
+									"        'Authorization': `Bearer ${accessToken}`,\r",
+									"        'api-key': `${pm.environment.get(\"mis_client_secret\")}`,\r",
+									"        'X-Custom-PSK': `${pm.globals.get(\"x-custom-psk\")}`\r",
+									"    }\r",
+									"}, function (err, res) {\r",
+									"    if (err) {\r",
+									"        console.error('Error in request:', err);\r",
+									"    } else {\r",
+									"        console.log('Response Status:', res.status);\r",
+									"        console.log('Response Body:', res.text());\r",
+									"\r",
+									"        // Optional: Process the response data if needed\r",
+									"        try {\r",
+									"            const responseData = res.json();\r",
+									"\r",
+									"            // Extract the ID from the response data\r",
+									"            if (responseData.data && responseData.data.length > 0) {\r",
+									"                const id = responseData.data[0].id;\r",
+									"\r",
+									"                // Set the extracted ID in the Postman globals\r",
+									"                pm.globals.set('patient_authentication_methods_in_approval', id);\r",
+									"\r",
+									"                displayResponse('Patient authentication methods in approval details', responseData)\r",
+									"                console.log('Global Variable \"authenticationMethodID\" set to:', id);\r",
+									"            } else {\r",
+									"                console.log('No data found in response.');\r",
+									"            }\r",
+									"\r",
+									"            console.log('Parsed Response Data:', responseData.data);\r",
+									"        } catch (parseError) {\r",
+									"            console.error('Error parsing response JSON:', parseError);\r",
+									"        }\r",
+									"    }\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {},
@@ -637,7 +691,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"master_person_id\": \"fc6aa72e-7202-42f5-8041-32cdbabd93d5\",\r\n  \"merge_person_id\": \"{{preperson_id}}\",\r\n  \"authorize_with\": \"b1a9b79f-f805-455e-8546-3813f6e0e031\"\r\n}"
+							"raw": "{\r\n  \"master_person_id\": \"{{patient_for_regress}}\",\r\n  \"merge_person_id\": \"{{preperson_id}}\",\r\n  \"authorize_with\": \"{{patient_authentication_methods_in_approval}}\"\r\n}"
 						},
 						"url": {
 							"raw": "{{host}}/api/merge_requests",
@@ -867,6 +921,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "df14a82e-b953-4156-bbc2-762ab01141f0",
 								"exec": [
 									"pm.test(\"Get merge request by ID successful\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -874,15 +929,19 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "df14a82e-b953-4156-bbc2-762ab01141f0"
+								"requests": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"exec": [],
+								"id": "b2366e19-0e96-442f-a244-edd627d0b76a",
+								"exec": [
+									""
+								],
 								"type": "text/javascript",
-								"id": "b2366e19-0e96-442f-a244-edd627d0b76a"
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -910,7 +969,7 @@
 							},
 							{
 								"key": "x-custom-psk",
-								"value": "{{x-custum-psk}}",
+								"value": "{{x-custom-psk}}",
 								"type": "text"
 							}
 						],
