@@ -5606,7 +5606,7 @@
 							"pm.environment.set(\"original_access_token\", pm.environment.get(\"access_token\"));\r",
 							"pm.environment.set(\"original_user_division_id\", pm.environment.get(\"user_division_id\"));\r",
 							"\r",
-							"const pharmacyToken = \"cWNFay9XZWp2QkNqUndTaE5UeitYUT09\";\r",
+							"const pharmacyToken = \"d0srbnZ2YVFLaVZyTVlSaTlJdjhCdz09\";\r",
 							"const pharmacyDivision = \"8de56110-c1cc-4fe9-bb45-509a6c17963a\"\r",
 							"\r",
 							"pm.environment.set(\"access_token\", pharmacyToken);\r",
