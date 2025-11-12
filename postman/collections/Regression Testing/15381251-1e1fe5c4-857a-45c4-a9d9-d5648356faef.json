@@ -9243,8 +9243,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "{{x-custom-psk}}",
-						"disabled": true
+						"value": "{{x-custom-psk}}"
 					}
 				],
 				"url": {
