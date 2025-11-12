@@ -6616,7 +6616,7 @@
 			"response": []
 		},
 		{
-			"name": "Submit Diagnostic Report Package Copy",
+			"name": "Submit Diagnostic Report Package",
 			"event": [
 				{
 					"listen": "test",
