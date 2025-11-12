@@ -8661,6 +8661,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "231faebe-9a8d-49b1-b28b-d4450de197e0",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -8668,18 +8669,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "231faebe-9a8d-49b1-b28b-d4450de197e0"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "14e3f403-cbc7-4364-a307-7779d8cc90e4",
 						"exec": [
 							""
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "14e3f403-cbc7-4364-a307-7779d8cc90e4"
+						"requests": {}
 					}
 				}
 			],
@@ -8702,7 +8704,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
