@@ -6955,7 +6955,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/patients/{{patient_for_regress}}/diagnostic_reports",
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/diagnostic_reports?code=351ba946-f6a5-4630-8ec3-07739d142c47",
 					"host": [
 						"{{host}}"
 					],
@@ -6978,8 +6978,7 @@
 						},
 						{
 							"key": "code",
-							"value": "351ba946-f6a5-4630-8ec3-07739d142c47",
-							"disabled": true
+							"value": "351ba946-f6a5-4630-8ec3-07739d142c47"
 						},
 						{
 							"key": "encounter_id",
