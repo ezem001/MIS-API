@@ -6828,6 +6828,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "e36f85b9-ff3a-4a64-854a-e04ad13b79da",
 						"exec": [
 							"pm.test(\"Get Diagnostic Report by id - PASS. Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -6835,15 +6836,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "e36f85b9-ff3a-4a64-854a-e04ad13b79da"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [],
+						"id": "cc4b2768-2279-4989-bf98-8426547ce9d6",
+						"exec": [
+							""
+						],
 						"type": "text/javascript",
-						"id": "cc4b2768-2279-4989-bf98-8426547ce9d6"
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -6871,7 +6876,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
