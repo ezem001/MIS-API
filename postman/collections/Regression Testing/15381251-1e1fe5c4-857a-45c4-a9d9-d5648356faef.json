@@ -4550,6 +4550,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "2b325cbf-ce54-43c1-9630-d654fd420c00",
 						"exec": [
 							"pm.test(\"Get Care Plan activities - PASS. Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -4557,15 +4558,19 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "2b325cbf-ce54-43c1-9630-d654fd420c00"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [],
+						"id": "c35ccbec-6527-4108-84d9-7b2cd4091884",
+						"exec": [
+							""
+						],
 						"type": "text/javascript",
-						"id": "c35ccbec-6527-4108-84d9-7b2cd4091884"
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -4593,7 +4598,7 @@
 					},
 					{
 						"key": "x-custom-psk",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
