@@ -7966,14 +7966,7 @@
 					{
 						"key": "X-Custom-PSK",
 						"value": "{{x-custom-psk}}",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"url": {
