@@ -921,6 +921,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "df14a82e-b953-4156-bbc2-762ab01141f0",
 								"exec": [
 									"pm.test(\"Get merge request by ID successful\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -928,15 +929,19 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "df14a82e-b953-4156-bbc2-762ab01141f0"
+								"requests": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"exec": [],
+								"id": "b2366e19-0e96-442f-a244-edd627d0b76a",
+								"exec": [
+									""
+								],
 								"type": "text/javascript",
-								"id": "b2366e19-0e96-442f-a244-edd627d0b76a"
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -964,7 +969,7 @@
 							},
 							{
 								"key": "x-custom-psk",
-								"value": "{{x-custum-psk}}",
+								"value": "{{x-custom-psk}}",
 								"type": "text"
 							}
 						],
