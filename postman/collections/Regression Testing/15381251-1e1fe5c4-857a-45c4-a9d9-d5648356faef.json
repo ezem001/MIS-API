@@ -8264,6 +8264,8 @@
 							"\r",
 							"// --- 1️⃣ Розбір відповіді ---\r",
 							"let resBody;\r",
+							"\r",
+							"console.log(pm.info.requestName)\r",
 							"try {\r",
 							"    resBody = pm.response.json();\r",
 							"} catch (e) {\r",
