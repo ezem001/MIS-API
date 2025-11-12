@@ -8768,17 +8768,19 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "9ff28f18-7279-4fc0-b070-297fc0473d50",
 						"exec": [
 							""
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "9ff28f18-7279-4fc0-b070-297fc0473d50"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
+						"id": "5770c38d-0b06-467b-99c7-62b78b75db41",
 						"exec": [
 							"",
 							"const resData = pm.response.json();",
@@ -8790,7 +8792,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "5770c38d-0b06-467b-99c7-62b78b75db41"
+						"requests": {}
 					}
 				}
 			],
@@ -8815,7 +8817,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b"
+						"value": "{{x-custom-psk}}"
 					}
 				],
 				"body": {
