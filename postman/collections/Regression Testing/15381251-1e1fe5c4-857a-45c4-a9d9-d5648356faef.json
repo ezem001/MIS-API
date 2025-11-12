@@ -2157,17 +2157,19 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "6b271ae1-363a-4ce0-97cd-f5e260727d0e",
 						"exec": [
 							""
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "6b271ae1-363a-4ce0-97cd-f5e260727d0e"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
+						"id": "aa2e8cbd-503e-4fbd-82ef-54735c896e3b",
 						"exec": [
 							"const jsonData = pm.response.json();",
 							"",
@@ -2235,7 +2237,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "aa2e8cbd-503e-4fbd-82ef-54735c896e3b"
+						"requests": {}
 					}
 				}
 			],
@@ -2260,7 +2262,7 @@
 					},
 					{
 						"key": "X-Custom-PSK",
-						"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+						"value": "{{x-custom-psk}}",
 						"type": "text"
 					}
 				],
