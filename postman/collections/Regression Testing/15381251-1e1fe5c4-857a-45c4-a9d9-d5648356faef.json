@@ -8861,6 +8861,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "16672cce-743f-48bb-b040-14053b0c430a",
 						"exec": [
 							"const resData = pm.response.json();\r",
 							"\r",
@@ -8872,12 +8873,13 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "16672cce-743f-48bb-b040-14053b0c430a"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "26d081aa-2a79-48ba-8fde-597b7a0e360c",
 						"exec": [
 							"const uuid = require('uuid');\r",
 							"const id = uuid.v4();\r",
@@ -8944,7 +8946,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "26d081aa-2a79-48ba-8fde-597b7a0e360c"
+						"requests": {}
 					}
 				}
 			],
