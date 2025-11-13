@@ -15637,6 +15637,48 @@
 							"response": []
 						},
 						{
+							"name": "Get Medication Request Printout Form",
+							"id": "15381251-1fb48f32-93e0-4fb5-a196-7b8b11acb361",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/db725f9b-241c-4b24-8dc1-76ebcb458773/medication_requests/5759911c-b6c8-42b7-bfaa-5a332b674d0f/printout_form",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"db725f9b-241c-4b24-8dc1-76ebcb458773",
+										"medication_requests",
+										"5759911c-b6c8-42b7-bfaa-5a332b674d0f",
+										"printout_form"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Get Medication Request by ID by Pharmacy User",
 							"id": "15381251-96cda2b3-8b87-467d-aced-45bdb014f195",
 							"protocolProfileBehavior": {
@@ -15676,48 +15718,6 @@
 										"pharmacy",
 										"medication_requests",
 										"{{medication_req_request_number}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Medication Request Printout Form",
-							"id": "15381251-1fb48f32-93e0-4fb5-a196-7b8b11acb361",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "api-key",
-										"value": "{{mis_client_secret}}",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/api/persons/db725f9b-241c-4b24-8dc1-76ebcb458773/medication_requests/5759911c-b6c8-42b7-bfaa-5a332b674d0f/printout_form",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"persons",
-										"db725f9b-241c-4b24-8dc1-76ebcb458773",
-										"medication_requests",
-										"5759911c-b6c8-42b7-bfaa-5a332b674d0f",
-										"printout_form"
 									]
 								}
 							},
