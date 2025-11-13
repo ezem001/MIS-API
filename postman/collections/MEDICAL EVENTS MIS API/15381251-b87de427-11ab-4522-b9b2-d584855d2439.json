@@ -14091,30 +14091,42 @@
 									"script": {
 										"id": "6452322d-93cd-4134-b48a-26416e7ebcfc",
 										"exec": [
-											"// Retrieve the URL from the global variable\r",
-											"const url = pm.globals.get('jobEncounterID');\r",
+											"// Отримуємо encounter_start_date з глобальних змінних\r",
+											"const encounterPeriodes = new Date(pm.globals.get('encounter_period_start'));\r",
 											"\r",
-											"// Check if the URL is defined and contains the expected format\r",
-											"if (url && url.includes('encounters/')) {\r",
-											"    // Extract the ID after 'encounters/'\r",
-											"    const parts = url.split('encounters/');\r",
-											"    if (parts.length > 1) {\r",
-											"        const jobEncounterID = parts[1];\r",
-											"        \r",
-											"        // Log the extracted ID to the console (for debugging purposes)\r",
-											"        console.log('Extracted jobEncounterID:', jobEncounterID);\r",
-											"        \r",
-											"        // Optionally, set the extracted ID as an environment variable\r",
-											"        pm.globals.set('encounter_extracted_id', jobEncounterID);\r",
-											"    } else {\r",
-											"        console.error('The URL does not contain the expected format.');\r",
-											"    }\r",
-											"} else {\r",
-											"    console.error('The global variable jobEncounterID is not defined or does not contain the expected format.');\r",
+											"// Створюємо medicationRequestCreatedAt (на день більше за encounter_start_date)\r",
+											"const medicationRequestCreatedAt = new Date(encounterPeriodes);\r",
+											"medicationRequestCreatedAt.setDate(medicationRequestCreatedAt.getDate());\r",
+											"\r",
+											"// Створюємо medicationRequestStartedAt (завтра відносно сьогоднішньої дати)\r",
+											"const today = new Date();\r",
+											"const medicationRequestStartedAt = new Date(today);\r",
+											"medicationRequestStartedAt.setDate(medicationRequestStartedAt.getDate() + 1);\r",
+											"\r",
+											"// Створюємо medicationRequestEndedAt (на 10 днів більше ніж medicationRequestStartedAt)\r",
+											"const medicationRequestEndedAt = new Date(medicationRequestStartedAt);\r",
+											"medicationRequestEndedAt.setDate(medicationRequestEndedAt.getDate() + 10);\r",
+											"\r",
+											"// Обрізаємо час, залишаємо тільки YYYY-MM-DD\r",
+											"const formatDate = (date) => date.toISOString().split('T')[0];\r",
+											"\r",
+											"const medicationRequestCreatedAtISO = formatDate(medicationRequestCreatedAt);\r",
+											"const medicationRequestStartedAtISO = formatDate(medicationRequestStartedAt);\r",
+											"const medicationRequestEndedAtISO = formatDate(medicationRequestEndedAt);\r",
+											"\r",
+											"// Зберігаємо у глобальні змінні\r",
+											"pm.globals.set('medicationRequestCreatedAt', medicationRequestCreatedAtISO);\r",
+											"pm.globals.set('medicationRequestStartedAt', medicationRequestStartedAtISO);\r",
+											"pm.globals.set('medicationRequestEndedAt', medicationRequestEndedAtISO);\r",
+											"\r",
+											"console.log(\"Medication Request Created At:\", medicationRequestCreatedAtISO);\r",
+											"console.log(\"Medication Request Started At:\", medicationRequestStartedAtISO);\r",
+											"console.log(\"Medication Request Ended At:\", medicationRequestEndedAtISO);\r",
 											"}"
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								},
 								{
@@ -14143,7 +14155,8 @@
 											"});"
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
