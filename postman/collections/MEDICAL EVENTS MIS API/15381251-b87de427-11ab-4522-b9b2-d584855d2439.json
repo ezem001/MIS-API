@@ -14563,17 +14563,8 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"signed_medication_request_request\": \"{{medication_req_req_data_to_sign}}\",\r\n  \"signed_content_encoding\": \"base64\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
-									"raw": "{{host}}/api/medication_request_requests/{{medication_req_req_id}}/actions/sign",
+									"raw": "{{host}}/api/medication_request_requests/{{medication_req_req_id}}/actions/reject",
 									"host": [
 										"{{host}}"
 									],
@@ -14582,7 +14573,7 @@
 										"medication_request_requests",
 										"{{medication_req_req_id}}",
 										"actions",
-										"sign"
+										"reject"
 									]
 								}
 							},
