@@ -15360,24 +15360,63 @@
 											"        // Save the modified object to globals\r",
 											"        pm.globals.set(\"modified_response_data\", JSON.stringify(modifiedObject));\r",
 											"\r",
+											"        sendDataToSign(modifiedObject);\r",
+											"\r",
 											"        // Log confirmation\r",
 											"        console.log(\"Modified object set in globals:\", modifiedObject);\r",
 											"    } catch (parseError) {\r",
 											"        console.error(\"Response parsing error. Raw body:\", res.text());\r",
 											"    }\r",
 											"});\r",
+											"\r",
+											"function sendDataToSign(dataToBeSigned) {\r",
+											"    const localServerUrl = 'http://localhost:3000/reject-medication-request-signed-content';\r",
+											"\r",
+											"    const requestData = {\r",
+											"        method: 'POST',\r",
+											"        url: localServerUrl,\r",
+											"        header: {\r",
+											"            'Content-Type': 'application/json',\r",
+											"        },\r",
+											"        body: {\r",
+											"            mode: 'raw',\r",
+											"            raw: JSON.stringify(dataToBeSigned) // Send the entire response or specific fields\r",
+											"        }\r",
+											"    };\r",
+											"\r",
+											"    // Send the request to the local server\r",
+											"    pm.sendRequest(requestData, function (err, res) {\r",
+											"        if (err) {\r",
+											"            console.error('Error sending request to local server:', err);\r",
+											"        } else {\r",
+											"            console.log('Response from local server:', res.json());\r",
+											"            const responseBody = res.json();\r",
+											"\r",
+											"            pm.test(`Reject Medication Request content sign success. Response status is 200 ${JSON.stringify(responseBody, null, 2)}`, function () {\r",
+											"                pm.expect(res.code).to.eql(200);\r",
+											"                pm.expect(responseBody).to.have.property('signed_content');\r",
+											"                pm.globals.set('reject_medication_data_to_sign', responseBody.signed_content)\r",
+											"            });\r",
+											"        }\r",
+											"    });\r",
+											"}\r",
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								},
 								{
 									"listen": "test",
 									"script": {
 										"id": "c0f0ce9a-0c28-4cd9-8adb-2d46d7971e83",
-										"exec": [],
-										"type": "text/javascript"
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
