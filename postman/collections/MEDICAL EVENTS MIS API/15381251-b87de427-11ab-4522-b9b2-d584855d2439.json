@@ -14587,7 +14587,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Medication Request Request by ID",
+							"name": "Get medication request requests by search params",
 							"id": "15381251-20722101-4da5-425b-85e2-c7d5479d821c",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -14602,7 +14602,7 @@
 									},
 									{
 										"key": "api-key",
-										"value": "30276e63617461a185ec",
+										"value": "{{mis_client_secret}}",
 										"type": "text"
 									},
 									{
@@ -14612,19 +14612,169 @@
 									},
 									{
 										"key": "X-Custom-PSK",
-										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+										"value": "{{x-custom-psk}}",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/medication_request_requests/73645f47-4a3c-4d4c-a06b-a012e783ccd8",
+									"raw": "{{host}}/api/persons/{{patient_id_from_episode}}/medication_request_requests",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
-										"medication_request_requests",
-										"73645f47-4a3c-4d4c-a06b-a012e783ccd8"
+										"persons",
+										"{{patient_id_from_episode}}",
+										"medication_request_requests"
+									],
+									"query": [
+										{
+											"key": "legal_entity_id",
+											"value": "7124259c-eeb1-4cbb-acac-ada2162675d1",
+											"disabled": true
+										},
+										{
+											"key": "employee_id",
+											"value": "7124259c-eeb1-4cbb-acac-ada2162675d1",
+											"disabled": true
+										},
+										{
+											"key": "episode_id",
+											"value": "6f305d0e-1758-4920-9167-d4f97225ad7e",
+											"disabled": true
+										},
+										{
+											"key": "care_plan_id",
+											"value": "8838982b-6a77-4cb5-87cd-cdb82eb55364",
+											"disabled": true
+										},
+										{
+											"key": "activity_id",
+											"value": "d1e07d06-d063-4d19-b9ae-88fc1c7a8682",
+											"disabled": true
+										},
+										{
+											"key": "encounter_id",
+											"value": "7075e0e2-6b57-47fd-aff7-324806efa7e5",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "NEW",
+											"disabled": true
+										},
+										{
+											"key": "intent",
+											"value": "order",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page_size",
+											"value": "50",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get medication request requests by search params Copy",
+							"id": "15381251-e6fc19f7-7dbf-47f3-851f-7fd175e7f3a3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/{{patient_id_from_episode}}/medication_request_requests",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"{{patient_id_from_episode}}",
+										"medication_request_requests"
+									],
+									"query": [
+										{
+											"key": "legal_entity_id",
+											"value": "7124259c-eeb1-4cbb-acac-ada2162675d1",
+											"disabled": true
+										},
+										{
+											"key": "employee_id",
+											"value": "7124259c-eeb1-4cbb-acac-ada2162675d1",
+											"disabled": true
+										},
+										{
+											"key": "episode_id",
+											"value": "6f305d0e-1758-4920-9167-d4f97225ad7e",
+											"disabled": true
+										},
+										{
+											"key": "care_plan_id",
+											"value": "8838982b-6a77-4cb5-87cd-cdb82eb55364",
+											"disabled": true
+										},
+										{
+											"key": "activity_id",
+											"value": "d1e07d06-d063-4d19-b9ae-88fc1c7a8682",
+											"disabled": true
+										},
+										{
+											"key": "encounter_id",
+											"value": "7075e0e2-6b57-47fd-aff7-324806efa7e5",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "NEW",
+											"disabled": true
+										},
+										{
+											"key": "intent",
+											"value": "order",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page_size",
+											"value": "50",
+											"disabled": true
+										}
 									]
 								}
 							},
