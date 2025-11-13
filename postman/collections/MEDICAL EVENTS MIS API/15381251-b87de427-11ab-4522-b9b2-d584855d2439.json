@@ -14465,128 +14465,6 @@
 							"response": []
 						},
 						{
-							"name": "Qualify Medication Request by ID",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "f7d5dd22-b186-4606-8cc1-a175db22a46d",
-										"exec": [
-											"const res = pm.response.json();\r",
-											"\r",
-											"// --- Перевірки базових умов ---\r",
-											"pm.test(\"Status code is 200\", () => {\r",
-											"    pm.expect(pm.response.code).to.eql(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Medication Request status is VALID\", () => {\r",
-											"    const status = res.data?.[0]?.status;\r",
-											"    pm.expect(status).to.eql(\"VALID\");\r",
-											"});\r",
-											"\r",
-											"// --- Визначаємо індекс participant ---\r",
-											"const participantIndex = parseInt(pm.environment.get(\"participant_index\") || \"0\", 10);\r",
-											"const participant = res.data?.[0]?.participants?.[participantIndex];\r",
-											"\r",
-											"if (!participant) {\r",
-											"    console.error(`❌ No participant found at index ${participantIndex}`);\r",
-											"} else {\r",
-											"    console.log(`✅ Using participant[${participantIndex}]`, participant);\r",
-											"\r",
-											"    // --- Збереження ідентифікаторів ---\r",
-											"    pm.globals.set(\"program_id_qualify_medication_request\", res.data[0].program_id);\r",
-											"    pm.globals.set(\"medication_id_qualify_medication_request\", participant.medication_id);\r",
-											"    pm.globals.set(\"program_medication_id_qualify_medication_request\", participant.id);\r",
-											"\r",
-											"    // --- Отримання потрібних значень ---\r",
-											"    const sellPrice = participant.consumer_price ?? 0;\r",
-											"    const reimbursementAmount = participant.reimbursement_amount ?? 0;\r",
-											"\r",
-											"    // --- Розрахунок суми продажу (якщо треба) ---\r",
-											"    const sellAmount = sellPrice.toFixed(2);\r",
-											"    const discountAmount = reimbursementAmount.toFixed(2);\r",
-											"\r",
-											"    // --- Збереження у глобальні змінні для Create Medication Dispense ---\r",
-											"    pm.globals.set(\"sell_price_calc\", sellPrice.toFixed(2));\r",
-											"    pm.globals.set(\"sell_amount_calc\", sellAmount);\r",
-											"    pm.globals.set(\"discount_amount_calc\", discountAmount);\r",
-											"\r",
-											"    console.info({\r",
-											"        participantIndex,\r",
-											"        sell_price_calc: sellPrice,\r",
-											"        sell_amount_calc: sellAmount,\r",
-											"        discount_amount_calc: discountAmount\r",
-											"    });\r",
-											"}\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "520e3f2a-abce-42ba-98e5-230a95311730",
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"id": "15381251-f696698a-f972-462e-aa30-dffaab28804e",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "api-key",
-										"value": "{{mis_client_secret}}",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Custom-PSK",
-										"value": "{{x-custom-psk}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"division_id\": \"2bb9f35c-711f-4bdf-a69f-0d4fab0d2076\",\r\n  \"programs\": [\r\n    {\r\n      \"id\": \"f646aa61-6765-4cfa-89cd-5259b68b2ab7\"\r\n    }\r\n  ]\r\n}"
-								},
-								"url": {
-									"raw": "{{host}}/api/medication_requests/{{medication_req_id}}/actions/qualify",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"medication_requests",
-										"{{medication_req_id}}",
-										"actions",
-										"qualify"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Get medication request requests by search params",
 							"id": "15381251-20722101-4da5-425b-85e2-c7d5479d821c",
 							"protocolProfileBehavior": {
@@ -14714,45 +14592,25 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/persons/{{patient_id_from_episode}}/medication_request_requests",
+									"raw": "{{host}}/api/care_plans/{{jobCareplanID}}/medication_request_requests",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
-										"persons",
-										"{{patient_id_from_episode}}",
+										"care_plans",
+										"{{jobCareplanID}}",
 										"medication_request_requests"
 									],
 									"query": [
-										{
-											"key": "legal_entity_id",
-											"value": "7124259c-eeb1-4cbb-acac-ada2162675d1",
-											"disabled": true
-										},
 										{
 											"key": "employee_id",
 											"value": "7124259c-eeb1-4cbb-acac-ada2162675d1",
 											"disabled": true
 										},
 										{
-											"key": "episode_id",
-											"value": "6f305d0e-1758-4920-9167-d4f97225ad7e",
-											"disabled": true
-										},
-										{
-											"key": "care_plan_id",
-											"value": "8838982b-6a77-4cb5-87cd-cdb82eb55364",
-											"disabled": true
-										},
-										{
-											"key": "activity_id",
-											"value": "d1e07d06-d063-4d19-b9ae-88fc1c7a8682",
-											"disabled": true
-										},
-										{
-											"key": "encounter_id",
-											"value": "7075e0e2-6b57-47fd-aff7-324806efa7e5",
+											"key": "person_id",
+											"value": "d290f1ee-6c54-4b01-90e6-d701748f0851",
 											"disabled": true
 										},
 										{
@@ -14763,6 +14621,11 @@
 										{
 											"key": "intent",
 											"value": "order",
+											"disabled": true
+										},
+										{
+											"key": "encounter_id",
+											"value": "7075e0e2-6b57-47fd-aff7-324806efa7e5",
 											"disabled": true
 										},
 										{
@@ -14872,6 +14735,128 @@
 											"value": "50",
 											"disabled": true
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Qualify Medication Request by ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f7d5dd22-b186-4606-8cc1-a175db22a46d",
+										"exec": [
+											"const res = pm.response.json();\r",
+											"\r",
+											"// --- Перевірки базових умов ---\r",
+											"pm.test(\"Status code is 200\", () => {\r",
+											"    pm.expect(pm.response.code).to.eql(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Medication Request status is VALID\", () => {\r",
+											"    const status = res.data?.[0]?.status;\r",
+											"    pm.expect(status).to.eql(\"VALID\");\r",
+											"});\r",
+											"\r",
+											"// --- Визначаємо індекс participant ---\r",
+											"const participantIndex = parseInt(pm.environment.get(\"participant_index\") || \"0\", 10);\r",
+											"const participant = res.data?.[0]?.participants?.[participantIndex];\r",
+											"\r",
+											"if (!participant) {\r",
+											"    console.error(`❌ No participant found at index ${participantIndex}`);\r",
+											"} else {\r",
+											"    console.log(`✅ Using participant[${participantIndex}]`, participant);\r",
+											"\r",
+											"    // --- Збереження ідентифікаторів ---\r",
+											"    pm.globals.set(\"program_id_qualify_medication_request\", res.data[0].program_id);\r",
+											"    pm.globals.set(\"medication_id_qualify_medication_request\", participant.medication_id);\r",
+											"    pm.globals.set(\"program_medication_id_qualify_medication_request\", participant.id);\r",
+											"\r",
+											"    // --- Отримання потрібних значень ---\r",
+											"    const sellPrice = participant.consumer_price ?? 0;\r",
+											"    const reimbursementAmount = participant.reimbursement_amount ?? 0;\r",
+											"\r",
+											"    // --- Розрахунок суми продажу (якщо треба) ---\r",
+											"    const sellAmount = sellPrice.toFixed(2);\r",
+											"    const discountAmount = reimbursementAmount.toFixed(2);\r",
+											"\r",
+											"    // --- Збереження у глобальні змінні для Create Medication Dispense ---\r",
+											"    pm.globals.set(\"sell_price_calc\", sellPrice.toFixed(2));\r",
+											"    pm.globals.set(\"sell_amount_calc\", sellAmount);\r",
+											"    pm.globals.set(\"discount_amount_calc\", discountAmount);\r",
+											"\r",
+											"    console.info({\r",
+											"        participantIndex,\r",
+											"        sell_price_calc: sellPrice,\r",
+											"        sell_amount_calc: sellAmount,\r",
+											"        discount_amount_calc: discountAmount\r",
+											"    });\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "520e3f2a-abce-42ba-98e5-230a95311730",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "15381251-f696698a-f972-462e-aa30-dffaab28804e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"division_id\": \"2bb9f35c-711f-4bdf-a69f-0d4fab0d2076\",\r\n  \"programs\": [\r\n    {\r\n      \"id\": \"f646aa61-6765-4cfa-89cd-5259b68b2ab7\"\r\n    }\r\n  ]\r\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/medication_requests/{{medication_req_id}}/actions/qualify",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"medication_requests",
+										"{{medication_req_id}}",
+										"actions",
+										"qualify"
 									]
 								}
 							},
