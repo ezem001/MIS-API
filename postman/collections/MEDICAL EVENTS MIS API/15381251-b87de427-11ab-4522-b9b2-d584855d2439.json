@@ -14781,7 +14781,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Medication Request Requests in care plan context Copy",
+							"name": "Get medication request requests details",
 							"id": "15381251-fb6797e0-baad-4043-ad85-f789586a56a7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
