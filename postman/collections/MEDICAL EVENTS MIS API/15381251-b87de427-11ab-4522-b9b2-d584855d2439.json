@@ -14927,6 +14927,52 @@
 							"response": []
 						},
 						{
+							"name": "Get medication requests details",
+							"id": "15381251-3a7945e3-14ae-48a0-89a9-b8668044458b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/{{patient_id_from_episode}}/medication_requests/{{medication_req_id}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"{{patient_id_from_episode}}",
+										"medication_requests",
+										"{{medication_req_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Block Medication Request",
 							"id": "15381251-1d6c3013-cf8d-43d7-bf7e-8101285f7249",
 							"protocolProfileBehavior": {
@@ -15463,52 +15509,6 @@
 										"medication_requests",
 										"5759911c-b6c8-42b7-bfaa-5a332b674d0f",
 										"printout_form"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get medication requests details",
-							"id": "15381251-3a7945e3-14ae-48a0-89a9-b8668044458b",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "api-key",
-										"value": "{{mis_client_secret}}",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Custom-PSK",
-										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/api/persons/{{patient_id_from_episode}}/medication_requests/{{medication_req_id}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"persons",
-										"{{patient_id_from_episode}}",
-										"medication_requests",
-										"{{medication_req_id}}"
 									]
 								}
 							},
