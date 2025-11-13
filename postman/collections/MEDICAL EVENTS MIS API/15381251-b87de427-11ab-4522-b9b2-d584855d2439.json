@@ -15272,52 +15272,6 @@
 							"response": []
 						},
 						{
-							"name": "Block Medication Request by Pharmacy User",
-							"id": "15381251-889458dc-4f6c-4698-86f3-0bcb0ab33a6f",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "PATCH",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "api-key",
-										"value": "{{mis_client_secret}}",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"block_reason\": \"перевищено норми відпуску\",\r\n  \"block_reason_code\": \"WRONG_QTY_DRUG\"\r\n}"
-								},
-								"url": {
-									"raw": "{{host}}/api/pharmacy/medication_requests/ffaa9aa5-75bb-4f3f-bbff-e40b464a08db/actions/block",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"pharmacy",
-										"medication_requests",
-										"ffaa9aa5-75bb-4f3f-bbff-e40b464a08db",
-										"actions",
-										"block"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Reject Medication Request",
 							"event": [
 								{
@@ -15470,6 +15424,52 @@
 										"{{medication_req_id}}",
 										"actions",
 										"reject"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Block Medication Request by Pharmacy User",
+							"id": "15381251-889458dc-4f6c-4698-86f3-0bcb0ab33a6f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"block_reason\": \"перевищено норми відпуску\",\r\n  \"block_reason_code\": \"WRONG_QTY_DRUG\"\r\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/pharmacy/medication_requests/ffaa9aa5-75bb-4f3f-bbff-e40b464a08db/actions/block",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"pharmacy",
+										"medication_requests",
+										"ffaa9aa5-75bb-4f3f-bbff-e40b464a08db",
+										"actions",
+										"block"
 									]
 								}
 							},
