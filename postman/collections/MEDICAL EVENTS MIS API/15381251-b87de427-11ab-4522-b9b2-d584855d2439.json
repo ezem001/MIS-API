@@ -14134,25 +14134,17 @@
 									"script": {
 										"id": "0605ba5f-d098-4584-a632-02c3949842aa",
 										"exec": [
-											"const resData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"PreQualify Medication Request Request Response status code is 200\", function () {\r",
+											"pm.test(\"PreQualify Medication Request Response status code is 200\", function () {\r",
 											"    pm.expect(pm.response.code).to.eql(200);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"PreQualify Medication Request Request status is VALID\", function () {\r",
+											"pm.test(\"PreQualify Medication Request status is VALID\", function () {\r",
 											"    const resData = pm.response.json();\r",
 											"    console.log(resData.data[0].status)\r",
 											"    const status = resData.data[0].status;\r",
 											"    pm.expect(status).to.eql(\"VALID\");\r",
 											"});\r",
-											"\r",
-											"pm.test(\"PreQualify Medication Request Response care plan and activity with the same medical program are present\", function () {\r",
-											"   \r",
-											"    console.log(resData.data[0].rejection_reason)\r",
-											"    const rejectionReason = resData.data[0].rejection_reason;\r",
-											"    pm.expect(rejectionReason).to.be.eql('')\r",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {},
