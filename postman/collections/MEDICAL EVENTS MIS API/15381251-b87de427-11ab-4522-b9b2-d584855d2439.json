@@ -14631,51 +14631,6 @@
 							"response": []
 						},
 						{
-							"name": "Get Medication Request by ID by Pharmacy User",
-							"id": "15381251-96cda2b3-8b87-467d-aced-45bdb014f195",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									},
-									{
-										"key": "api-key",
-										"value": "{{mis_client_secret}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Custom-PSK",
-										"value": "{{x-custom-psk}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/api/pharmacy/medication_requests/{{medication_req_request_number}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"pharmacy",
-										"medication_requests",
-										"{{medication_req_request_number}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Block Medication Request",
 							"id": "15381251-1d6c3013-cf8d-43d7-bf7e-8101285f7249",
 							"protocolProfileBehavior": {
@@ -15125,6 +15080,51 @@
 										"{{medication_req_id}}",
 										"actions",
 										"reject"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Medication Request by ID by Pharmacy User",
+							"id": "15381251-96cda2b3-8b87-467d-aced-45bdb014f195",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/pharmacy/medication_requests/{{medication_req_request_number}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"pharmacy",
+										"medication_requests",
+										"{{medication_req_request_number}}"
 									]
 								}
 							},
