@@ -10259,7 +10259,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"inventory_number\": \"523655gg\",\r\n    \"serial_number\": \"S/N234554\",\r\n    \"names\": [\r\n        {\r\n            \"name\": \"Екг-апарат портативний PM10 S61-2047\",\r\n            \"type\": \"registered\"\r\n        }\r\n    ],\r\n    \"status\": \"active\",\r\n    \"availability_status\": \"available\",\r\n    \"manufacturer\": \"GlobalMed, Inc\",\r\n    \"manufacture_date\": \"1999-01-01\",\r\n    \"model_number\": \"NSPX30\",\r\n    \"type\": \"30221\",\r\n    \"properties\": [\r\n        {\r\n            \"type\": \"default\",\r\n            \"value_integer\": 10\r\n        }\r\n    ],\r\n    \"division_id\": \"{{user_division_id}}\",\r\n    \"note\": \"Технічний огляд раз на рік\",\r\n    \"lot_number\": \"RZ12345678\",\r\n    \"expiration_date\": \"2020-01-01\",\r\n    \"recorder\": \"{{user_id}}\"\r\n}",
+							"raw": "{\r\n    \"inventory_number\": \"013655gg\",\r\n    \"serial_number\": \"S/N234554\",\r\n    \"names\": [\r\n        {\r\n            \"name\": \"Інжектор ангіографічний для комп’ютерної томографії\",\r\n            \"type\": \"registered\"\r\n        }\r\n    ],\r\n    \"status\": \"active\",\r\n    \"availability_status\": \"available\",\r\n    \"manufacturer\": \"GlobalMed, Inc\",\r\n    \"manufacture_date\": \"2023-01-01\",\r\n    \"model_number\": \"NSPX30\",\r\n    \"type\": \"Z11039013\",\r\n    \"properties\": [\r\n        {\r\n            \"type\": \"default\",\r\n            \"value_integer\": 10\r\n        }\r\n    ],\r\n    \"division_id\": \"{{user_division_id}}\",\r\n    \"note\": \"Технічний огляд раз на рік\",\r\n    \"parent_id\": \"8e122d2a-e216-4a21-a18a-936eac9ef408\",\r\n    \"lot_number\": \"RZ12345678\",\r\n    \"expiration_date\": \"2027-01-01\",\r\n    \"recorder\": \"{{user_id}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10307,7 +10307,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/equipment?division_id={{user_division_id}}&status=active&availability_status=available",
+							"raw": "{{host}}/api/equipment?division_id={{user_division_id}}&availability_status=available&inventory_number=013655gg",
 							"host": [
 								"{{host}}"
 							],
@@ -10332,7 +10332,8 @@
 								},
 								{
 									"key": "status",
-									"value": "active"
+									"value": "active",
+									"disabled": true
 								},
 								{
 									"key": "model_number",
@@ -10355,8 +10356,7 @@
 								},
 								{
 									"key": "inventory_number",
-									"value": "23655gg",
-									"disabled": true
+									"value": "013655gg"
 								},
 								{
 									"key": "serial_number",
@@ -10421,14 +10421,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/equipment/ec6215de-a0e7-4fcc-8747-99d0b7ccc282",
+							"raw": "{{host}}/api/equipment/c8bdeea3-9379-40b2-83fd-06937b869957",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"equipment",
-								"ec6215de-a0e7-4fcc-8747-99d0b7ccc282"
+								"c8bdeea3-9379-40b2-83fd-06937b869957"
 							]
 						}
 					},
