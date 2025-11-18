@@ -11001,7 +11001,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "6aff8abf-d788-4d5a-999c-826a71632e9e",
+						"id": "feded27d-420a-414f-b61f-cd92f2f9d4f4",
 						"exec": [
 							"const { displayResponse, renderVisualLog } = pm.require('@winter-zodiac-949553/login-display-response');\r",
 							"\r",
@@ -11228,7 +11228,7 @@
 							"    const code = match[1];\r",
 							"    console.info(\"user code\", typeof code)\r",
 							"    pm.environment.set(\"user_code\", code);\r",
-							"    \r",
+							"\r",
 							"\r",
 							"\r",
 							"    // ----------------------- Exchange grant token ---------------------------\r",
@@ -11283,6 +11283,9 @@
 							"            console.info(\"Exchange grant token refresh_token\", subrequestData.data.details.refresh_token)\r",
 							"            pm.environment.set(\"access_token\", access_token);\r",
 							"            pm.environment.set(\"refresh_token\", refresh_token);\r",
+							"\r",
+							"            console.log(\"Saved access_token:\", pm.environment.get(\"access_token\"));\r",
+							"    console.log(\"Saved refresh_token:\", pm.environment.get(\"refresh_token\"));\r",
 							"\r",
 							"            const prevEmployeeType = pm.environment.get(\"employee_type\");\r",
 							"            const prevEmployeeSpecialty = pm.environment.get(\"employee_specialty\");\r",
@@ -11432,9 +11435,9 @@
 							"\r",
 							"    pm.sendRequest({ url, method: 'GET', header: headers }, (err, res) => {\r",
 							"        if (err) return handleError('Employee fetch error', err);\r",
-							"        \r",
+							"\r",
 							"        let body;\r",
-							"        try { body = res.json(); } \r",
+							"        try { body = res.json(); }\r",
 							"        catch { return handleError('Employee fetch parsing error', res.text()); }\r",
 							"\r",
 							"        if (res.code !== 200)\r",
@@ -11505,7 +11508,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "d6430ee1-40c2-4b00-81ff-40745f0634e0",
+						"id": "002e73a3-6cde-4b7b-82bd-7c851d05d78a",
 						"exec": [
 							"// --- Зберігаємо оригінальні функції ---\r",
 							"const originalLog = console.log;\r",
