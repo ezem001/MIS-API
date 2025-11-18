@@ -11001,7 +11001,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "eef6ac6e-6b2d-4df8-a144-054c2a2d0d42",
+						"id": "6aff8abf-d788-4d5a-999c-826a71632e9e",
 						"exec": [
 							"const { displayResponse, renderVisualLog } = pm.require('@winter-zodiac-949553/login-display-response');\r",
 							"\r",
@@ -11150,9 +11150,10 @@
 							"\r",
 							"if (jsonData.data && jsonData.data.value) {\r",
 							"    const access_token = jsonData.data.value;\r",
-							"    const refresh_token = jsonData.data.details.refresh_token;\r",
+							"    // const refresh_token = jsonData.data.details.refresh_token;\r",
 							"    pm.environment.set(\"access_token\", access_token);\r",
-							"    pm.environment.set(\"refresh_token\", refresh_token);\r",
+							"    console.log(\"login res refresh_token\", jsonData.data.details.refresh_token)\r",
+							"    // pm.environment.set(\"refresh_token\", refresh_token);\r",
 							"} else {\r",
 							"    displayResponse('Login response error', 'Access token not found', jsonData, logsText);\r",
 							"    renderVisualLog();\r",
@@ -11225,7 +11226,9 @@
 							"    }\r",
 							"\r",
 							"    const code = match[1];\r",
+							"    console.info(\"user code\", typeof code)\r",
 							"    pm.environment.set(\"user_code\", code);\r",
+							"    \r",
 							"\r",
 							"\r",
 							"    // ----------------------- Exchange grant token ---------------------------\r",
@@ -11276,6 +11279,8 @@
 							"        if (subrequestData.data && subrequestData.data.value) {\r",
 							"            const access_token = subrequestData.data.value;\r",
 							"            const refresh_token = subrequestData.data.details.refresh_token;\r",
+							"\r",
+							"            console.info(\"Exchange grant token refresh_token\", subrequestData.data.details.refresh_token)\r",
 							"            pm.environment.set(\"access_token\", access_token);\r",
 							"            pm.environment.set(\"refresh_token\", refresh_token);\r",
 							"\r",
@@ -11422,7 +11427,7 @@
 							"        'Content-Type': 'application/json',\r",
 							"        'api-key': apiKey,\r",
 							"        'X-Custom-PSK': XCustomPSK,\r",
-							"        'Authorization': `Bearer ${access_token}`\r",
+							"        'Authorization': `Bearer ${access_token || pm.environment.get(\"access_token\")}`\r",
 							"    };\r",
 							"\r",
 							"    pm.sendRequest({ url, method: 'GET', header: headers }, (err, res) => {\r",
@@ -11500,7 +11505,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "249c2be6-4610-4065-939a-8ef6592575fd",
+						"id": "d6430ee1-40c2-4b00-81ff-40745f0634e0",
 						"exec": [
 							"// --- Зберігаємо оригінальні функції ---\r",
 							"const originalLog = console.log;\r",
