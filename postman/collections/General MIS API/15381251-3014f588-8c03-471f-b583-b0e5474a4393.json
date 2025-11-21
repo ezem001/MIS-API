@@ -9512,7 +9512,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/v3/drugs?medical_program_id=b16409ab-af31-4016-bb61-7661dcce23ed",
+							"raw": "{{host}}/api/v3/drugs?medical_program_id=1318eabc-1a1a-42f6-8450-61e11c19eede",
 							"host": [
 								"{{host}}"
 							],
@@ -9574,8 +9574,7 @@
 								},
 								{
 									"key": "medical_program_id",
-									"value": "1318eabc-1a1a-42f6-8450-61e11c19eede",
-									"disabled": true
+									"value": "1318eabc-1a1a-42f6-8450-61e11c19eede"
 								},
 								{
 									"key": "medical_program_id",
@@ -9589,7 +9588,19 @@
 								},
 								{
 									"key": "medical_program_id",
-									"value": "b16409ab-af31-4016-bb61-7661dcce23ed"
+									"value": "b16409ab-af31-4016-bb61-7661dcce23ed",
+									"disabled": true
+								},
+								{
+									"key": "medical_program_id",
+									"value": "c41ae6c1-67db-4ee0-99f8-92d3faf19cf6",
+									"disabled": true
+								},
+								{
+									"key": "medical_program_id",
+									"value": "0db3b845-bd1c-4021-b3f7-5a388a272fb7",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						}
