@@ -6670,7 +6670,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Device Dispense Copy",
+			"name": "Create Device Dispense",
 			"event": [
 				{
 					"listen": "prerequest",
