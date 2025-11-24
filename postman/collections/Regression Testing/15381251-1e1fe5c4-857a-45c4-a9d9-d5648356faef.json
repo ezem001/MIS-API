@@ -6892,7 +6892,8 @@
 							""
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
 					}
 				},
 				{
@@ -6912,6 +6913,8 @@
 							"  payment_amount:2,\r",
 							"  when_handed_over:nowIsoString\r",
 							"};\r",
+							"\r",
+							"pm.globals.set(\"device_json_completed_to_sign\", JSON.stringify(jsonCompleted));\r",
 							"\r",
 							"// Варіант 2: Mark in error Device dispense\r",
 							"const jsonError = {\r",
@@ -6999,7 +7002,8 @@
 							""
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
