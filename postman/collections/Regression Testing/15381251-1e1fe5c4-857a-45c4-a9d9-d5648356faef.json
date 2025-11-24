@@ -7679,7 +7679,7 @@
 			"response": []
 		},
 		{
-			"name": "Sign person request Copy",
+			"name": "Sign person request for device",
 			"event": [
 				{
 					"listen": "test",
