@@ -5959,7 +5959,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/patients/{{patient_for_regress}}/care_plans?encounter_id={{encounter_extracted_id}}",
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/care_plans?encounter_id={{jobEncounterID}}",
 					"host": [
 						"{{host}}"
 					],
@@ -6007,7 +6007,7 @@
 						},
 						{
 							"key": "encounter_id",
-							"value": "{{encounter_extracted_id}}"
+							"value": "{{jobEncounterID}}"
 						}
 					]
 				}
