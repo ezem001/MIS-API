@@ -7346,104 +7346,6 @@
 			"response": []
 		},
 		{
-			"name": "Dummy Submit Diagnostic Report Package",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "159129a8-3f26-41f0-be96-74e12dc46d08",
-						"exec": [
-							"const uuid = require('uuid');\r",
-							"const diagnosticReportId = uuid.v4();\r",
-							"\r",
-							"pm.globals.set(\"diagnostic_report_id\", diagnosticReportId);\r",
-							"\r",
-							"\r",
-							"// Отримуємо поточну дату\r",
-							"const today = new Date();\r",
-							"\r",
-							"// Обчислюємо diagnosticReportStart (сьогодні - 12 днів)\r",
-							"const diagnosticReportStart = new Date(today);\r",
-							"diagnosticReportStart.setDate(diagnosticReportStart.getDate() - 12);\r",
-							"\r",
-							"// Обчислюємо diagnosticReportEnd (сьогодні - 3 дні)\r",
-							"const diagnosticReportEnd = new Date(today);\r",
-							"diagnosticReportEnd.setDate(diagnosticReportEnd.getDate() - 3);\r",
-							"\r",
-							"// Обчислюємо diagnosticReportIssued (diagnosticReportEnd + 1 день)\r",
-							"const diagnosticReportIssued = new Date(diagnosticReportEnd);\r",
-							"diagnosticReportIssued.setDate(diagnosticReportIssued.getDate() + 1);\r",
-							"\r",
-							"// Функція для форматування дати у форматі ISO 8601 (з T00:00:00.000Z)\r",
-							"const formatISODate = (date) => date.toISOString();\r",
-							"\r",
-							"// Зберігаємо у глобальні змінні\r",
-							"pm.globals.set('diagnosticReportStart', formatISODate(diagnosticReportStart));\r",
-							"pm.globals.set('diagnosticReportEnd', formatISODate(diagnosticReportEnd));\r",
-							"pm.globals.set('diagnosticReportIssued', formatISODate(diagnosticReportIssued));\r",
-							"\r",
-							"// Виводимо у консоль для перевірки\r",
-							"console.log(\"Diagnostic Report Start:\", formatISODate(diagnosticReportStart));\r",
-							"console.log(\"Diagnostic Report End:\", formatISODate(diagnosticReportEnd));\r",
-							"console.log(\"Diagnostic Report Issued:\", formatISODate(diagnosticReportIssued));\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "b027b92e-5f3e-44ec-b12e-b301639d2954",
-						"exec": [
-							"const resData = pm.response.json();\r",
-							"console.log('create diagnostic report sign content', resData)\r",
-							"\r",
-							"pm.test(`Diagnostic report content sign success. Response status is 200 ${JSON.stringify(resData, null, 2)}`, function () {\r",
-							"    pm.expect(pm.response.code).to.eql(200);\r",
-							"    pm.expect(resData).to.have.property('signed_content');\r",
-							"    pm.globals.set('diagnostic_report_signed_content', resData.signed_content);\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"id": "15381251-9ddd0dbf-2f6a-4fc6-853f-e741a0ded71e",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"diagnostic_report\": {\r\n    \"id\": \"{{diagnostic_report_id}}\",\r\n    \"status\": \"final\",\r\n    \"code\": {\r\n      \"identifier\": {\r\n        \"type\": {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"eHealth/resources\",\r\n              \"code\": \"service\"\r\n            }\r\n          ]\r\n        },\r\n        \"value\": \"351ba946-f6a5-4630-8ec3-07739d142c47\"\r\n      }\r\n    },\r\n    \"category\": [\r\n      {\r\n        \"coding\": [\r\n          {\r\n            \"system\": \"eHealth/diagnostic_report_categories\",\r\n            \"code\": \"laboratory_procedure\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"effective_period\": {\r\n      \"start\": \"{{diagnosticReportStart}}\",\r\n      \"end\": \"{{diagnosticReportEnd}}\"\r\n    },\r\n    \"issued\": \"{{diagnosticReportIssued}}\",\r\n    \"conclusion\": \"At risk of osteoporotic fracture\",\r\n    \"recorded_by\": {\r\n      \"identifier\": {\r\n        \"type\": {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"eHealth/resources\",\r\n              \"code\": \"employee\"\r\n            }\r\n          ]\r\n        },\r\n        \"value\": \"{{user_id}}\"\r\n      }\r\n    },\r\n    \"primary_source\": true,\r\n    \"performer\": {\r\n      \"reference\": {\r\n        \"identifier\": {\r\n          \"type\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"eHealth/resources\",\r\n                \"code\": \"employee\"\r\n              }\r\n            ]\r\n          },\r\n          \"value\": \"{{user_id}}\"\r\n        }\r\n      }\r\n    },\r\n    \"managing_organization\": {\r\n      \"identifier\": {\r\n        \"type\": {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"eHealth/resources\",\r\n              \"code\": \"legal_entity\"\r\n            }\r\n          ]\r\n        },\r\n        \"value\": \"{{user_legal_entity}}\"\r\n      }\r\n    },\r\n    \"division\": {\r\n      \"identifier\": {\r\n        \"type\": {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"eHealth/resources\",\r\n              \"code\": \"division\"\r\n            }\r\n          ]\r\n        },\r\n        \"value\": \"{{user_division_id}}\"\r\n      }\r\n    },\r\n    \"results_interpreter\": {\r\n      \"reference\": {\r\n        \"identifier\": {\r\n          \"type\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"eHealth/resources\",\r\n                \"code\": \"employee\"\r\n              }\r\n            ]\r\n          },\r\n          \"value\": \"{{user_id}}\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/diagnostic-report-signed-content",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"diagnostic-report-signed-content"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Create Person Request Copy",
 			"event": [
 				{
@@ -7852,6 +7754,104 @@
 						"{{Person_req_id}}",
 						"actions",
 						"sign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dummy Submit Diagnostic Report Package",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "159129a8-3f26-41f0-be96-74e12dc46d08",
+						"exec": [
+							"const uuid = require('uuid');\r",
+							"const diagnosticReportId = uuid.v4();\r",
+							"\r",
+							"pm.globals.set(\"diagnostic_report_id\", diagnosticReportId);\r",
+							"\r",
+							"\r",
+							"// Отримуємо поточну дату\r",
+							"const today = new Date();\r",
+							"\r",
+							"// Обчислюємо diagnosticReportStart (сьогодні - 12 днів)\r",
+							"const diagnosticReportStart = new Date(today);\r",
+							"diagnosticReportStart.setDate(diagnosticReportStart.getDate() - 12);\r",
+							"\r",
+							"// Обчислюємо diagnosticReportEnd (сьогодні - 3 дні)\r",
+							"const diagnosticReportEnd = new Date(today);\r",
+							"diagnosticReportEnd.setDate(diagnosticReportEnd.getDate() - 3);\r",
+							"\r",
+							"// Обчислюємо diagnosticReportIssued (diagnosticReportEnd + 1 день)\r",
+							"const diagnosticReportIssued = new Date(diagnosticReportEnd);\r",
+							"diagnosticReportIssued.setDate(diagnosticReportIssued.getDate() + 1);\r",
+							"\r",
+							"// Функція для форматування дати у форматі ISO 8601 (з T00:00:00.000Z)\r",
+							"const formatISODate = (date) => date.toISOString();\r",
+							"\r",
+							"// Зберігаємо у глобальні змінні\r",
+							"pm.globals.set('diagnosticReportStart', formatISODate(diagnosticReportStart));\r",
+							"pm.globals.set('diagnosticReportEnd', formatISODate(diagnosticReportEnd));\r",
+							"pm.globals.set('diagnosticReportIssued', formatISODate(diagnosticReportIssued));\r",
+							"\r",
+							"// Виводимо у консоль для перевірки\r",
+							"console.log(\"Diagnostic Report Start:\", formatISODate(diagnosticReportStart));\r",
+							"console.log(\"Diagnostic Report End:\", formatISODate(diagnosticReportEnd));\r",
+							"console.log(\"Diagnostic Report Issued:\", formatISODate(diagnosticReportIssued));\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b027b92e-5f3e-44ec-b12e-b301639d2954",
+						"exec": [
+							"const resData = pm.response.json();\r",
+							"console.log('create diagnostic report sign content', resData)\r",
+							"\r",
+							"pm.test(`Diagnostic report content sign success. Response status is 200 ${JSON.stringify(resData, null, 2)}`, function () {\r",
+							"    pm.expect(pm.response.code).to.eql(200);\r",
+							"    pm.expect(resData).to.have.property('signed_content');\r",
+							"    pm.globals.set('diagnostic_report_signed_content', resData.signed_content);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "15381251-9ddd0dbf-2f6a-4fc6-853f-e741a0ded71e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"diagnostic_report\": {\r\n    \"id\": \"{{diagnostic_report_id}}\",\r\n    \"status\": \"final\",\r\n    \"code\": {\r\n      \"identifier\": {\r\n        \"type\": {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"eHealth/resources\",\r\n              \"code\": \"service\"\r\n            }\r\n          ]\r\n        },\r\n        \"value\": \"351ba946-f6a5-4630-8ec3-07739d142c47\"\r\n      }\r\n    },\r\n    \"category\": [\r\n      {\r\n        \"coding\": [\r\n          {\r\n            \"system\": \"eHealth/diagnostic_report_categories\",\r\n            \"code\": \"laboratory_procedure\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"effective_period\": {\r\n      \"start\": \"{{diagnosticReportStart}}\",\r\n      \"end\": \"{{diagnosticReportEnd}}\"\r\n    },\r\n    \"issued\": \"{{diagnosticReportIssued}}\",\r\n    \"conclusion\": \"At risk of osteoporotic fracture\",\r\n    \"recorded_by\": {\r\n      \"identifier\": {\r\n        \"type\": {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"eHealth/resources\",\r\n              \"code\": \"employee\"\r\n            }\r\n          ]\r\n        },\r\n        \"value\": \"{{user_id}}\"\r\n      }\r\n    },\r\n    \"primary_source\": true,\r\n    \"performer\": {\r\n      \"reference\": {\r\n        \"identifier\": {\r\n          \"type\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"eHealth/resources\",\r\n                \"code\": \"employee\"\r\n              }\r\n            ]\r\n          },\r\n          \"value\": \"{{user_id}}\"\r\n        }\r\n      }\r\n    },\r\n    \"managing_organization\": {\r\n      \"identifier\": {\r\n        \"type\": {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"eHealth/resources\",\r\n              \"code\": \"legal_entity\"\r\n            }\r\n          ]\r\n        },\r\n        \"value\": \"{{user_legal_entity}}\"\r\n      }\r\n    },\r\n    \"division\": {\r\n      \"identifier\": {\r\n        \"type\": {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"eHealth/resources\",\r\n              \"code\": \"division\"\r\n            }\r\n          ]\r\n        },\r\n        \"value\": \"{{user_division_id}}\"\r\n      }\r\n    },\r\n    \"results_interpreter\": {\r\n      \"reference\": {\r\n        \"identifier\": {\r\n          \"type\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"eHealth/resources\",\r\n                \"code\": \"employee\"\r\n              }\r\n            ]\r\n          },\r\n          \"value\": \"{{user_id}}\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/diagnostic-report-signed-content",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"diagnostic-report-signed-content"
 					]
 				}
 			},
