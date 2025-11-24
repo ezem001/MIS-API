@@ -6082,6 +6082,279 @@
 			"response": []
 		},
 		{
+			"name": "Dummy Encounter data package Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c4fb34ba-93f5-473b-b57c-4b534d6bb3b0",
+						"exec": [
+							"const resData = pm.response.json();\r",
+							"console.log('create encounter sign content', resData)\r",
+							"\r",
+							"pm.test(`Encounter content sign success. Response status is 200 ${JSON.stringify(resData, null, 2)}`, function () {\r",
+							"    pm.expect(pm.response.code).to.eql(200);\r",
+							"    pm.expect(resData).to.have.property('signed_content');\r",
+							"    pm.globals.set('encounter_signed_content', resData.signed_content);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1d830f30-72de-4f4a-9515-78e38f0a3888",
+						"exec": [
+							"const uuid = require('uuid');\r",
+							"const encounterId = uuid.v4();\r",
+							"const visitId = uuid.v4();\r",
+							"pm.globals.set(\"encounter_dummy_id\", encounterId);\r",
+							"pm.globals.set(\"visit_id\", visitId);\r",
+							"\r",
+							"const episodeStartDate = pm.globals.get('episode_start_date');\r",
+							"const encounterDate = new Date(episodeStartDate);\r",
+							"\r",
+							"console.log(encounterDate)\r",
+							"// Додаємо 1 день\r",
+							"encounterDate.setDate(encounterDate.getDate() + 1);\r",
+							"\r",
+							"// Перетворюємо назад у формат ISO 8601\r",
+							"const encounterDateISO = encounterDate.toISOString();\r",
+							"\r",
+							"// Зберігаємо оновлену дату в глобальні змінні\r",
+							"pm.globals.set('encounter_start_date', encounterDateISO);\r",
+							"\r",
+							"console.log(\"Encounter Start Date:\", encounterDateISO);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "15381251-c3eb9127-26b7-4ac9-81b1-7f70a8aa8e6a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"encounter\": {\r\n        \"id\": \"{{encounter_dummy_id}}\",\r\n        \"status\": \"finished\",\r\n        \"period\": {\r\n            \"start\": \"{{encounter_start_date}}\",\r\n            \"end\": \"{{encounter_start_date}}\"\r\n        },\r\n        \"visit\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"visit\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{visit_id}}\"\r\n            }\r\n        },\r\n        \"actions\": [\r\n            {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/ICPC2/actions\",\r\n                        \"code\": \"N47\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"episode\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"episode\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{jobEpisodeID}}\"\r\n            }\r\n        },\r\n        \"class\": {\r\n            \"system\": \"eHealth/encounter_classes\",\r\n            \"code\": \"PHC\"\r\n        },\r\n        \"type\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/encounter_types\",\r\n                    \"code\": \"service_delivery_location\"\r\n                }\r\n            ]\r\n        },\r\n        \"priority\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/encounter_priority\",\r\n                    \"code\": \"urgent\"\r\n                }\r\n            ]\r\n        },\r\n        \"performer\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"employee\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{user_id}}\"\r\n            }\r\n        },\r\n        \"reasons\": [\r\n            {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/ICPC2/reasons\",\r\n                        \"code\": \"S17\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"diagnoses\": [\r\n            {\r\n                \"condition\": {\r\n                    \"identifier\": {\r\n                        \"type\": {\r\n                            \"coding\": [\r\n                                {\r\n                                    \"system\": \"eHealth/resources\",\r\n                                    \"code\": \"condition\"\r\n                                }\r\n                            ]\r\n                        },\r\n                        \"value\": \"{{encounter_dummy_id}}\"\r\n                    }\r\n                },\r\n                \"role\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/diagnosis_roles\",\r\n                            \"code\": \"primary\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"rank\": 1\r\n            }\r\n        ],\r\n        \"division\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"division\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{user_division_id}}\"\r\n            }\r\n        },\r\n        \"prescriptions\": \"Дієта №3, Омепразолу 40 мг 1 раз на добу + амоксициліну 500 мг + метронідазолу 400 мг при необхідності 500 мг або тинідазолу 500 мг 3 рази на добу протягом 1 тижня\"\r\n    },\r\n    \"conditions\": [\r\n        {\r\n            \"id\": \"{{encounter_dummy_id}}\",\r\n            \"primary_source\": true,\r\n            \"asserter\": {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"employee\"\r\n                            }\r\n                        ],\r\n                        \"text\": \"Якийсь текст\"\r\n                    },\r\n                    \"value\": \"{{user_id}}\"\r\n                }\r\n            },\r\n            \"context\": {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"encounter\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    \"value\": \"{{encounter_dummy_id}}\"\r\n                }\r\n            },\r\n            \"code\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/ICPC2/condition_codes\",\r\n                        \"code\": \"S14\"\r\n                    }\r\n                ]\r\n            },\r\n            \"clinical_status\": \"active\",\r\n            \"verification_status\": \"confirmed\",\r\n            \"severity\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/condition_severities\",\r\n                        \"code\": \"moderate\"\r\n                    }\r\n                ]\r\n            },\r\n            \"body_sites\": [\r\n                {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/body_sites\",\r\n                            \"code\": \"pelvis\"\r\n                        }\r\n                    ]\r\n                }\r\n            ],\r\n            \"onset_date\": \"2025-01-10T09:46:37.694Z\",\r\n            \"asserted_date\": \"2025-01-11T09:46:37.694Z\",\r\n            \"stage\": {\r\n                \"summary\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/condition_stages\",\r\n                            \"code\": \"default_condition_stage\"\r\n                        }\r\n                    ]\r\n                }\r\n            },\r\n            \"evidences\": [\r\n                {\r\n                    \"codes\": [\r\n                        {\r\n                            \"coding\": [\r\n                                {\r\n                                    \"system\": \"eHealth/ICPC2/reasons\",\r\n                                    \"code\": \"T90\"\r\n                                }\r\n                            ]\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"observations\": [\r\n        {\r\n            \"id\": \"{{encounter_dummy_id}}\",\r\n            \"status\": \"valid\",\r\n            \"categories\": [\r\n                {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/ICF/observation_categories\",\r\n                            \"code\": \"functions\"\r\n                        }\r\n                    ]\r\n                }\r\n            ],\r\n            \"code\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/ICF/classifiers\",\r\n                        \"code\": \"b1721\"\r\n                    }\r\n                ]\r\n            },\r\n            \"components\": [\r\n                {\r\n                    \"code\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"code\": \"extent_or_magnitude_of_impairment\",\r\n                                \"system\": \"eHealth/ICF/qualifiers\"\r\n                            }\r\n                        ],\r\n                        \"text\": null\r\n                    },\r\n                    \"interpretation\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/observation_interpretations\",\r\n                                \"code\": \"normal\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    \"reference_ranges\": [],\r\n                    \"value_codeable_concept\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"code\": \"1\",\r\n                                \"system\": \"eHealth/ICF/qualifiers/extent_or_magnitude_of_impairment\"\r\n                            }\r\n                        ],\r\n                        \"text\": null\r\n                    }\r\n                }\r\n            ],\r\n            \"effective_date_time\": \"2025-01-20T10:45:16.000Z\",\r\n            \"issued\": \"2025-01-21T10:45:16.000Z\",\r\n            \"primary_source\": true,\r\n            \"performer\": {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"employee\"\r\n                            }\r\n                        ],\r\n                        \"text\": \"Галина Олександрівна\"\r\n                    },\r\n                    \"value\": \"{{user_id}}\"\r\n                }\r\n            },\r\n            \"comment\": \"Some comment\",\r\n            \"value_quantity\": {\r\n                \"value\": 0,\r\n                \"comparator\": \">\",\r\n                \"unit\": \"kg\",\r\n                \"system\": \"eHealth/ucum/units\",\r\n                \"code\": \"kg\"\r\n            },\r\n            \"context\": {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"encounter\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    \"value\": \"{{encounter_dummy_id}}\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"immunizations\": [\r\n        {\r\n            \"id\": \"{{encounter_dummy_id}}\",\r\n            \"status\": \"completed\",\r\n            \"not_given\": false,\r\n            \"vaccine_code\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/vaccine_codes\",\r\n                        \"code\": \"SarsCov2_nRVv\"\r\n                    }\r\n                ]\r\n            },\r\n            \"context\": {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"encounter\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    \"value\": \"{{encounter_dummy_id}}\"\r\n                }\r\n            },\r\n            \"date\": \"2025-01-19T09:46:37.694Z\",\r\n            \"primary_source\": true,\r\n            \"performer\": {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"employee\"\r\n                            }\r\n                        ],\r\n                        \"text\": \"Текст 123\"\r\n                    },\r\n                    \"value\": \"{{user_id}}\"\r\n                }\r\n            },\r\n            \"manufacturer\": \"VacinePro Manufacturer\",\r\n            \"lot_number\": \"041A21A\",\r\n            \"expiration_date\": \"2025-10-02T09:46:37.694Z\",\r\n            \"site\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/immunization_body_sites\",\r\n                        \"code\": \"outer_surface_of_(left_shoulder)\"\r\n                    }\r\n                ]\r\n            },\r\n            \"route\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/vaccination_routes\",\r\n                        \"code\": \"intramuscularly\"\r\n                    }\r\n                ]\r\n            },\r\n            \"dose_quantity\": {\r\n                \"value\": 5,\r\n                \"unit\": \"MG\",\r\n                \"system\": \"eHealth/immunization_dosage_units\",\r\n                \"code\": \"MG\"\r\n            },\r\n            \"explanation\": {\r\n                \"reasons\": [\r\n                    {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/reason_explanations\",\r\n                                \"code\": \"immunization_by_epidemic_indicators\"\r\n                            }\r\n                        ],\r\n                        \"text\": \"Щеплення, які проводяться на ендемічних і ензоотичних територіях та за епідемічними показаннями\"\r\n                    }\r\n                ]\r\n            },\r\n            \"vaccination_protocols\": [\r\n                {\r\n                    \"dose_sequence\": 1,\r\n                    \"description\": \"Опис 123\",\r\n                    \"authority\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/vaccination_authorities\",\r\n                                \"code\": \"MoH\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    \"series\": \"Vaccination Series 1\",\r\n                    \"series_doses\": 1,\r\n                    \"target_diseases\": [\r\n                        {\r\n                            \"coding\": [\r\n                                {\r\n                                    \"system\": \"eHealth/vaccination_target_diseases\",\r\n                                    \"code\": \"COVID_19\"\r\n                                }\r\n                            ]\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/create-encounter-signed-content",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"create-encounter-signed-content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit encounter datapackage Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a28f1d86-7645-44f9-83dc-eb93f4d5ee7b",
+						"exec": [
+							"// Helper function: Capitalize and format path segment to Title Case\r",
+							"function formatEntityTitle(pathSegment) {\r",
+							"    if (!pathSegment) return 'Job';\r",
+							"    return pathSegment\r",
+							"        .split('_')\r",
+							"        .map(part => part.charAt(0).toUpperCase() + part.slice(1))\r",
+							"        .join(' ');\r",
+							"}\r",
+							"\r",
+							"// Get dynamic entity name from URL path (e.g., 'encounters', 'device_dispenses')\r",
+							"const resourceType = pm.request.url.path[3]; // Dynamically detects resource\r",
+							"const resourceLabel = formatEntityTitle(resourceType);\r",
+							"\r",
+							"// 🔧 Display JSON in Visualizer\r",
+							"function displayResponse(title, data) {\r",
+							"    const html = `\r",
+							"        <h1>${title}</h1>\r",
+							"        <pre>${JSON.stringify(data, null, 2)}</pre>`;\r",
+							"    pm.visualizer.set(html);\r",
+							"}\r",
+							"\r",
+							"// Parse initial response\r",
+							"const resBody = pm.response.text();\r",
+							"const resData = JSON.parse(resBody);\r",
+							"console.log(pm.request.url.path[3])\r",
+							"\r",
+							"// ⛔ Show error if initial response has it\r",
+							"if (resData && resData.error) {\r",
+							"    displayResponse(`${resourceLabel} Response Error Details`, resData.error);\r",
+							"}\r",
+							"\r",
+							"// Extract Job ID from href\r",
+							"const href = resData.data.links[0].href;\r",
+							"const jobId = href.split('/jobs/')[1];\r",
+							"console.log(\"Extracted jobId:\", jobId);\r",
+							"\r",
+							"// Init retry counter\r",
+							"pm.environment.set('retryCount', 0);\r",
+							"\r",
+							"// 🔄 Check job status recursively\r",
+							"function checkJobStatus(jobId) {\r",
+							"    const url = `${pm.globals.get('host')}/api/jobs/${jobId}`;\r",
+							"    const maxRetries = 3;\r",
+							"\r",
+							"    pm.sendRequest({\r",
+							"        method: 'GET',\r",
+							"        url: url,\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/json',\r",
+							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
+							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
+							"        }\r",
+							"    }, function (err, res) {\r",
+							"        pm.test(`${resourceLabel} job check response is 200 or 303`, function () {\r",
+							"            pm.expect([200, 303]).to.include(res.code);\r",
+							"        });\r",
+							"\r",
+							"        if (err) {\r",
+							"            displayResponse(`${resourceLabel} Job Request Error`, { error: err.message });\r",
+							"            return;\r",
+							"        }\r",
+							"\r",
+							"        const responseBody = res.json();\r",
+							"        const jobStatus = responseBody.data.status;\r",
+							"        console.log(`${resourceLabel} Job Status:`, jobStatus);\r",
+							"\r",
+							"        if (jobStatus === 'processed') {\r",
+							"            // ✅ Success\r",
+							"            pm.test(`${resourceLabel} Job Processed (303 expected)`, function () {\r",
+							"                pm.expect(res.code).to.eql(303);\r",
+							"            });\r",
+							"\r",
+							"          // Set global vars for result links (only the ID part)\r",
+							"                const links = responseBody.data.links.reduce((acc, link) => {\r",
+							"                    const parts = link.href.split('/');\r",
+							"                    const id = parts[parts.length - 1]; // extract only the last part (ID)\r",
+							"                    acc[link.entity] = acc[link.entity] || [];\r",
+							"                    acc[link.entity].push(id);\r",
+							"                    return acc;\r",
+							"                }, {});\r",
+							"\r",
+							"                Object.entries(links).forEach(([entity, ids]) => {\r",
+							"                    ids.forEach((id, index) => {\r",
+							"                        const capitalizedEntity = entity.charAt(0).toUpperCase() + entity.slice(1).replace('_', '');\r",
+							"                        const globalName = ids.length === 1\r",
+							"                            ? `job${capitalizedEntity}ID`\r",
+							"                            : `job${capitalizedEntity}ID_${index + 1}`;\r",
+							"                        pm.globals.set(globalName, id);\r",
+							"                    });\r",
+							"                });\r",
+							"\r",
+							"            displayResponse(`${resourceLabel} Job Response Details`, responseBody.data);\r",
+							"        } else {\r",
+							"            // 🔁 Retry if not yet processed\r",
+							"            let retryCount = parseInt(pm.environment.get('retryCount')) || 0;\r",
+							"\r",
+							"            if (retryCount < maxRetries) {\r",
+							"                retryCount++;\r",
+							"                pm.environment.set('retryCount', retryCount);\r",
+							"                console.log(`Retrying ${resourceLabel} job... Attempt ${retryCount}`);\r",
+							"                setTimeout(() => checkJobStatus(jobId), 1000);\r",
+							"\r",
+							"                displayResponse(`${resourceLabel} Job Status Pending`, responseBody.data);\r",
+							"            } else {\r",
+							"                console.warn(`❌ Max retries reached for ${resourceLabel} job.`);\r",
+							"                const finalTitle = responseBody.data.error\r",
+							"                    ? `${resourceLabel} Job Error Details`\r",
+							"                    : `Final ${resourceLabel} Job Status Check`;\r",
+							"                displayResponse(finalTitle, responseBody.data);\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"}\r",
+							"\r",
+							"// ▶️ Trigger job check\r",
+							"checkJobStatus(jobId);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1cdbc1f9-752b-492f-9b40-7a7ba60748c0",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "15381251-f36f1f60-ece9-4217-858c-7f9bf1319dc6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "api-key",
+						"value": "{{mis_client_secret}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "x-custom-psk",
+						"value": "{{x-custom-psk}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"visit\": {\n    \"id\": \"{{visit_id}}\",\n    \"period\": {\n      \"start\": \"2022-05-05T10:42:16.000Z\",\n      \"end\": \"2024-06-10T11:46:17.000Z\"\n    }\n  },\n  \"signed_data\": \"{{encounter_signed_content}}\"\n}\n"
+				},
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/encounter_package",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_for_regress}}",
+						"encounter_package"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "PreQualify Device request",
 			"event": [
 				{
