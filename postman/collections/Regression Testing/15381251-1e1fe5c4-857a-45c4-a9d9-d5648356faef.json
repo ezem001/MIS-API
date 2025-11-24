@@ -6559,7 +6559,7 @@
 			"response": []
 		},
 		{
-			"name": "Qualify Device Request Copy",
+			"name": "Qualify Device Request",
 			"event": [
 				{
 					"listen": "prerequest",
