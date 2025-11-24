@@ -5535,6 +5535,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "5e7c221d-6d79-409b-83fd-cd79b9313159",
 						"exec": [
 							"const uuid = require('uuid');\r",
 							"const carePlanId = uuid.v4();\r",
@@ -5589,12 +5590,13 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "5e7c221d-6d79-409b-83fd-cd79b9313159"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
+						"id": "e14633c7-fe8f-4f4e-b5e1-c9e61458da18",
 						"exec": [
 							"const resData = pm.response.json();\r",
 							"\r",
@@ -5607,7 +5609,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "e14633c7-fe8f-4f4e-b5e1-c9e61458da18"
+						"requests": {}
 					}
 				}
 			],
@@ -5620,7 +5622,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"{{care_plan_id}}\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/care_plan_categories\",\r\n                \"code\": \"class_4\"\r\n            }\r\n        ]\r\n    },\r\n    \"title\": \"План Лікуваня\",\r\n    \"description\": \"123\",\r\n    \"period\": {\r\n        \"start\": \"{{carePlanStartDate}}\",\r\n        \"end\": \"{{carePlanEndDate}}\"\r\n    },\r\n    \"note\": \"123\",\r\n    \"intent\": \"order\",\r\n    \"encounter\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"encounter\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{encounter_extracted_id}}\"\r\n        }\r\n    },\r\n    \"addresses\": [\r\n        {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/ICPC2/condition_codes\",\r\n                    \"code\": \"T89\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"author\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"terms_of_service\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"PROVIDING_CONDITION\",\r\n                \"code\": \"OUTPATIENT\"\r\n            }\r\n        ]\r\n    },\r\n    \"status\": \"new\"\r\n}",
+					"raw": "{\r\n    \"id\": \"{{care_plan_id}}\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/care_plan_categories\",\r\n                \"code\": \"class_4\"\r\n            }\r\n        ]\r\n    },\r\n    \"title\": \"План Лікуваня\",\r\n    \"description\": \"123\",\r\n    \"period\": {\r\n        \"start\": \"{{carePlanStartDate}}\",\r\n        \"end\": \"{{carePlanEndDate}}\"\r\n    },\r\n    \"note\": \"123\",\r\n    \"intent\": \"order\",\r\n    \"encounter\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"encounter\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{jobEncounterID}}\"\r\n        }\r\n    },\r\n    \"addresses\": [\r\n        {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/ICPC2/condition_codes\",\r\n                    \"code\": \"T89\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"author\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"terms_of_service\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"PROVIDING_CONDITION\",\r\n                \"code\": \"OUTPATIENT\"\r\n            }\r\n        ]\r\n    },\r\n    \"status\": \"new\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
