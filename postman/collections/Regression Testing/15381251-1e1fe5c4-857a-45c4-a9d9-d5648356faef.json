@@ -33,7 +33,8 @@
 									"\r",
 									"    const jsonData = pm.response.json();\r",
 									"\r",
-									"    pm.globals.set('preperson_id', jsonData.data.id)\r",
+									"    setTimeout(() => { pm.globals.set('preperson_id', jsonData.data.id) }, 10000)\r",
+									"\r",
 									"});\r",
 									""
 								],
