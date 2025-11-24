@@ -6559,6 +6559,107 @@
 			"response": []
 		},
 		{
+			"name": "Qualify Device Request Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b8f5367a-1188-433b-b399-1066e953be56",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "45cad939-60ab-415d-b2ed-74dc22ec0137",
+						"exec": [
+							"const resData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Qualify Device Request Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Qualify Device Request status is VALID\", function () {\r",
+							"    const resData = pm.response.json();\r",
+							"    console.log(resData.data[0].status)\r",
+							"    const status = resData.data[0].status;\r",
+							"    pm.expect(status).to.eql(\"VALID\");\r",
+							"\r",
+							"    pm.test(\"resData.data is an array\", function () {\r",
+							"        pm.expect(Array.isArray(resData.data)).to.be.true;\r",
+							"        const programId = resData.data[0].program_id;\r",
+							"        console.info(programId)\r",
+							"        pm.globals.set('program_id_qualify_device_request', programId);\r",
+							"\r",
+							"        const deviceDefinitionId = resData.data[0].participants[0].device_definition.id;\r",
+							"        console.info(resData.data[0].participants[0].device_definition.id)\r",
+							"        pm.globals.set('device_definition_id_qualify_device_request', deviceDefinitionId);\r",
+							"\r",
+							"        // const medicationId = resData.data[0].participants[0].medication_id;\r",
+							"        // console.info(resData.data[0].participants[0].medication_id);\r",
+							"        // pm.globals.set('medication_id_qualify_device_request', medicationId);\r",
+							"\r",
+							"        const porgramMedicationId = resData.data[0].participants[0].id;\r",
+							"        console.info(resData.data[0].participants[0].id);\r",
+							"        pm.globals.set('program_medication_id_qualify_device_request', porgramMedicationId);\r",
+							"    });\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "15381251-69cda7ff-8ca3-402c-969e-1bd1606044fe",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "api-key",
+						"value": "{{mis_client_secret}}"
+					},
+					{
+						"key": "X-Custom-PSK",
+						"value": "{{x-custom-psk}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"programs\": [\n      {\n         \"identifier\":{\n            \"type\":{\n               \"coding\":[\n                  {\n                     \"system\":\"eHealth/resources\",\n                     \"code\":\"medical_program\"\n                  }\n               ]\n            },\n            \"value\":\"d1f8be15-f9db-4c09-abf7-aa78a5a09b24\"\n         }\n      }\n   ],\n   \"location\": {\n        \"identifier\": {\n            \"type\": {\n                \"coding\": [\n                    {\n                        \"system\": \"eHealth/resources\",\n                        \"code\": \"division\"\n                    }\n                ]\n            },\n            \"value\": \"{{user_division_id}}\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/device_requests/{{JobDeviceRequestID}}/actions/qualify",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"device_requests",
+						"{{JobDeviceRequestID}}",
+						"actions",
+						"qualify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Dummy Submit Diagnostic Report Package",
 			"event": [
 				{
@@ -9441,107 +9542,6 @@
 						"{{patient_for_regress}}",
 						"compositions",
 						"{{JobCompositionID}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Qualify Device Request Copy",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "b8f5367a-1188-433b-b399-1066e953be56",
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "45cad939-60ab-415d-b2ed-74dc22ec0137",
-						"exec": [
-							"const resData = pm.response.json();\r",
-							"\r",
-							"pm.test(\"Qualify Device Request Response status code is 200\", function () {\r",
-							"    pm.expect(pm.response.code).to.eql(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Qualify Device Request status is VALID\", function () {\r",
-							"    const resData = pm.response.json();\r",
-							"    console.log(resData.data[0].status)\r",
-							"    const status = resData.data[0].status;\r",
-							"    pm.expect(status).to.eql(\"VALID\");\r",
-							"\r",
-							"    pm.test(\"resData.data is an array\", function () {\r",
-							"        pm.expect(Array.isArray(resData.data)).to.be.true;\r",
-							"        const programId = resData.data[0].program_id;\r",
-							"        console.info(programId)\r",
-							"        pm.globals.set('program_id_qualify_device_request', programId);\r",
-							"\r",
-							"        const deviceDefinitionId = resData.data[0].participants[0].device_definition.id;\r",
-							"        console.info(resData.data[0].participants[0].device_definition.id)\r",
-							"        pm.globals.set('device_definition_id_qualify_device_request', deviceDefinitionId);\r",
-							"\r",
-							"        // const medicationId = resData.data[0].participants[0].medication_id;\r",
-							"        // console.info(resData.data[0].participants[0].medication_id);\r",
-							"        // pm.globals.set('medication_id_qualify_device_request', medicationId);\r",
-							"\r",
-							"        const porgramMedicationId = resData.data[0].participants[0].id;\r",
-							"        console.info(resData.data[0].participants[0].id);\r",
-							"        pm.globals.set('program_medication_id_qualify_device_request', porgramMedicationId);\r",
-							"    });\r",
-							"\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "15381251-69cda7ff-8ca3-402c-969e-1bd1606044fe",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "api-key",
-						"value": "{{mis_client_secret}}"
-					},
-					{
-						"key": "X-Custom-PSK",
-						"value": "{{x-custom-psk}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"programs\": [\n      {\n         \"identifier\":{\n            \"type\":{\n               \"coding\":[\n                  {\n                     \"system\":\"eHealth/resources\",\n                     \"code\":\"medical_program\"\n                  }\n               ]\n            },\n            \"value\":\"d1f8be15-f9db-4c09-abf7-aa78a5a09b24\"\n         }\n      }\n   ],\n   \"location\": {\n        \"identifier\": {\n            \"type\": {\n                \"coding\": [\n                    {\n                        \"system\": \"eHealth/resources\",\n                        \"code\": \"division\"\n                    }\n                ]\n            },\n            \"value\": \"{{user_division_id}}\"\n        }\n    }\n}"
-				},
-				"url": {
-					"raw": "{{host}}/api/device_requests/{{JobDeviceRequestID}}/actions/qualify",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"device_requests",
-						"{{JobDeviceRequestID}}",
-						"actions",
-						"qualify"
 					]
 				}
 			},
