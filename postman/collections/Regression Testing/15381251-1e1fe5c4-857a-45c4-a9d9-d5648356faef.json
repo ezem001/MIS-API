@@ -1733,7 +1733,7 @@
 							"    pm.response.to.have.status(200);",
 							"",
 							"    const patientID = resBody.data?.person_id",
-							"    pm.globals.set('patient_for_regress', patientID)",
+							"    setTimeout(() => { pm.globals.set('patient_for_regress', patientID) }, 30000);",
 							"});",
 							""
 						],
