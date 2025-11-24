@@ -7761,7 +7761,7 @@
 			"response": []
 		},
 		{
-			"name": "Dummy Device request #2",
+			"name": "Dummy Device request #2 without program",
 			"event": [
 				{
 					"listen": "prerequest",
