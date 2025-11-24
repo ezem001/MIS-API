@@ -7828,7 +7828,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Device request #2",
+			"name": "Create Device request #2 without program",
 			"event": [
 				{
 					"listen": "test",
