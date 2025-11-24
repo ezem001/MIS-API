@@ -6670,6 +6670,535 @@
 			"response": []
 		},
 		{
+			"name": "Create Device Dispense Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5edb6783-64e7-47c9-a2d4-88a056d57f1a",
+						"exec": [
+							"const uuid = require('uuid');\r",
+							"const deviceDispenseRequestId = uuid.v4();\r",
+							"\r",
+							"pm.globals.set(\"dummy_device_dispense_request_id\", deviceDispenseRequestId);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1420a4d9-710c-4e60-815a-f83990226e93",
+						"exec": [
+							"function displayResponse(title, data) {\r",
+							"    const html = `\r",
+							"        <h1>${title}</h1>\r",
+							"        <pre>${JSON.stringify(data, null, 2)}</pre>`;\r",
+							"    pm.visualizer.set(html);\r",
+							"}\r",
+							"\r",
+							"// Get the response body from the main request\r",
+							"const resBody = pm.response.text();\r",
+							"const resData = JSON.parse(resBody);\r",
+							"\r",
+							"if (resData && resData.error) {\r",
+							"    displayResponse('Create Device Dispense Response Error Details', resData.error);\r",
+							"}\r",
+							"\r",
+							"const href = resData.data.links[0].href;\r",
+							"console.log(\"Extracted href:\", href);\r",
+							"\r",
+							"// Extract the job ID from the href\r",
+							"const number = href.split('/jobs/')[1];\r",
+							"console.log(\"Extracted number:\", number);\r",
+							"\r",
+							"// Initialize retry counter in the environment\r",
+							"pm.environment.set('retryCount', 0);\r",
+							"\r",
+							"// Function to check job status\r",
+							"function checkJobStatus(jobId) {\r",
+							"\r",
+							"    const url = `https://api-demo.ehealth.gov.ua/api/jobs/${jobId}`;\r",
+							"    const maxRetries = 3; // Set the maximum number of retries\r",
+							"\r",
+							"    pm.sendRequest({\r",
+							"        method: 'GET',\r",
+							"        url: url,\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/json',\r",
+							"            'Authorization': 'Bearer WUFKZDJ2TFhtUHNvZlQ1OUVuazhpUT09',\r",
+							"            'api-key': '30276e63617461a185ec',\r",
+							"            'X-Custom-PSK': 'a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e'\r",
+							"        }\r",
+							"    }, function (err, res) {\r",
+							"\r",
+							"        pm.test(`Job status check response status is 200 or 303`, function () {\r",
+							"            pm.expect([200, 303]).to.include(res.code);\r",
+							"        });\r",
+							"\r",
+							"        if (err) {\r",
+							"            displayResponse('Request Error', { error: err.message });\r",
+							"            console.error('Error checking job status:', err);\r",
+							"        } else {\r",
+							"\r",
+							"            const responseBody = res.json();\r",
+							"            console.log('Job Status:', responseBody.data.status);\r",
+							"\r",
+							"            if (responseBody.data.status === 'processed') {\r",
+							"\r",
+							"                pm.test(`Create Device Dispense Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
+							"                    pm.expect(res.code).to.eql(303);\r",
+							"                });\r",
+							"\r",
+							"                const links = responseBody.data.links.reduce((acc, link) => {\r",
+							"                    // Extract the part after \"/api/\"\r",
+							"                    const href = link.href.replace('/api/', '');\r",
+							"\r",
+							"                    // Set the link entity to global variables\r",
+							"                    acc[link.entity] = href;\r",
+							"\r",
+							"                    if (href.includes('device_dispenses/')) {\r",
+							"                        const  deviceDispenseId = href.split('/')[3]; // Extract the Device Dispense ID\r",
+							"                        acc['jobDeviceDispense'] = deviceDispenseId;\r",
+							"                    }\r",
+							"\r",
+							"                    return acc;\r",
+							"                }, {});\r",
+							"\r",
+							"                // Iterate over the links object and set globals dynamically\r",
+							"                Object.entries(links).forEach(([entity, value]) => {\r",
+							"                    const globalName = `${entity.charAt(0).toUpperCase() + entity.slice(1)}ID`;\r",
+							"                    pm.globals.set(globalName, value);\r",
+							"                });\r",
+							"\r",
+							"\r",
+							"                displayResponse('Create Device Dispense Job Response Details', responseBody.data);\r",
+							"            } else {\r",
+							"\r",
+							"                // Retrieve the current retry count\r",
+							"                let retryCount = parseInt(pm.environment.get('retryCount')) || 0;\r",
+							"\r",
+							"                if (retryCount < maxRetries) {\r",
+							"                    // Increment the retry count and set it back to the environment\r",
+							"                    retryCount++;\r",
+							"                    pm.environment.set('retryCount', retryCount);\r",
+							"\r",
+							"                    console.log(`Retrying... Attempt ${retryCount}`);\r",
+							"\r",
+							"                    setTimeout(() => {\r",
+							"                        checkJobStatus(jobId);\r",
+							"                    }, 1000);\r",
+							"\r",
+							"                    displayResponse('Create Device Dispense Job Response Details2', responseBody.data);\r",
+							"\r",
+							"                } else {\r",
+							"                    console.log('Maximum retry limit reached.');\r",
+							"                    displayResponse(responseBody.data.error ? 'Create Device Dispense Error Details' : 'Final Job Status Check', responseBody.data);\r",
+							"                }\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"}\r",
+							"\r",
+							"// Call the function with the job ID\r",
+							"checkJobStatus(number);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "15381251-32c9c884-5d04-46a5-983a-6baf81fd443d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "api-key",
+						"value": "{{mis_client_secret}}"
+					},
+					{
+						"key": "X-Custom-PSK",
+						"value": "{{x-custom-psk}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"{{dummy_device_dispense_request_id}}\",\n  \"based_on\": {\n    \"identifier\": {\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"eHealth/resources\",\n            \"code\": \"device_request\"\n          }\n        ]\n      },\n      \"value\": \"{{JobDeviceRequestID}}\"\n    }\n  },\n  \"performer\": {\n    \"identifier\": {\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"eHealth/resources\",\n            \"code\": \"employee\"\n          }\n        ]\n      },\n      \"value\": \"{{user_id}}\"\n    }\n  },\n  \"location\": {\n    \"identifier\": {\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"eHealth/resources\",\n            \"code\": \"division\"\n          }\n        ]\n      },\n      \"value\": \"{{user_division_id}}\"\n    }\n  },\n  \"note\": \"Some notes\",\n  \"program\": {\n    \"identifier\": {\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"eHealth/resources\",\n            \"code\": \"medical_program\"\n          }\n        ]\n      },\n      \"value\": \"{{program_id_qualify_device_request}}\"\n    }\n  },\n  \"primary_source\": true,\n  \"details\": [\n    {\n      \"device\": {\n        \"identifier\": {\n          \"type\": {\n            \"coding\": [\n              {\n                \"system\": \"eHealth/resources\",\n                \"code\": \"device_definition\"\n              }\n            ]\n          },\n          \"value\": \"{{device_definition_id_qualify_device_request}}\"\n        }\n      },\n      \"program_device\": {\n        \"identifier\": {\n          \"type\": {\n            \"coding\": [\n              {\n                \"system\": \"eHealth/resources\",\n                \"code\": \"program_device\"\n              }\n            ]\n          },\n          \"value\": \"{{program_medication_id_qualify_device_request}}\"\n        }\n      },\n      \"quantity\": {\n        \"value\": 30,\n        \"system\": \"device_unit\",\n        \"code\": \"piece\"\n      },\n      \"sell_price\": 18.65,\n      \"discount_amount\": 150\n    }\n  ],\n  \"verification_code\": \"9696\",\n  \"status\": \"in_progress\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/device_dispenses",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_id_from_episode}}",
+						"device_dispenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Device Dispense details Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2a57a879-bf1a-48d7-93bd-49e5769a6db9",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e624a55f-200a-444a-b780-56110b0f3216",
+						"exec": [
+							"const resData = pm.response.json().data;\r",
+							"\r",
+							"// Отримання поточної дати у форматі 2018-08-02T10:45:16.000Z\r",
+							"const nowIsoString = new Date().toISOString().replace(/\\.\\d{3}Z$/, '.000Z');\r",
+							"\r",
+							"// Варіант 1: Complete Device Dispense\r",
+							"const jsonCompleted = {\r",
+							"  ...resData,\r",
+							"  status: \"completed\",\r",
+							"  payment_amount:2,\r",
+							"  when_handed_over:nowIsoString\r",
+							"};\r",
+							"\r",
+							"// Варіант 2: Mark in error Device dispense\r",
+							"const jsonError = {\r",
+							"  ...resData,\r",
+							"  status: \"entered_in_error\",\r",
+							"  status_reason: {\r",
+							"    coding: [\r",
+							"      {\r",
+							"        system: \"device_dispense_mark_in_error_reasons\",\r",
+							"        code: \"entered_in_error\"\r",
+							"      }\r",
+							"    ]\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.visualizer.set(`\r",
+							"  <style>\r",
+							"    .container {\r",
+							"      display: flex;\r",
+							"      flex-wrap: wrap;\r",
+							"      gap: 20px;\r",
+							"    }\r",
+							"    .block {\r",
+							"      flex: 1 1 45%;\r",
+							"      min-width: 300px;\r",
+							"    }\r",
+							"    pre {\r",
+							"      background-color: #f6f8fa;\r",
+							"      padding: 16px;\r",
+							"      border-radius: 5px;\r",
+							"      font-family: monospace;\r",
+							"      white-space: pre-wrap;\r",
+							"      max-height: 500px;\r",
+							"      overflow: auto;\r",
+							"    }\r",
+							"    button {\r",
+							"      margin: 10px 0;\r",
+							"      padding: 5px 10px;\r",
+							"      border-radius: 4px;\r",
+							"      border: 1px solid #ccc;\r",
+							"      background-color: #e0e0e0;\r",
+							"      cursor: pointer;\r",
+							"    }\r",
+							"    button:hover {\r",
+							"      background-color: #d0d0d0;\r",
+							"    }\r",
+							"    h3 {\r",
+							"      margin-bottom: 5px;\r",
+							"    }\r",
+							"  </style>\r",
+							"\r",
+							"  <div class=\"container\">\r",
+							"    <div class=\"block\">\r",
+							"      <h3>JSON для <u>завершення</u> DeviceDispense</h3>\r",
+							"      <button onclick=\"copyToClipboard('json1')\">Скопіювати JSON (completed)</button>\r",
+							"      <pre id=\"json1\">{{jsonCompleted}}</pre>\r",
+							"    </div>\r",
+							"    <div class=\"block\">\r",
+							"      <h3>JSON для <u>помилкового</u> DeviceDispense</h3>\r",
+							"      <button onclick=\"copyToClipboard('json2')\">Скопіювати JSON (entered_in_error)</button>\r",
+							"      <pre id=\"json2\">{{jsonError}}</pre>\r",
+							"    </div>\r",
+							"  </div>\r",
+							"\r",
+							"  <script>\r",
+							"    function copyToClipboard(id) {\r",
+							"      const text = document.getElementById(id).innerText;\r",
+							"      const textArea = document.createElement('textarea');\r",
+							"      textArea.value = text;\r",
+							"      document.body.appendChild(textArea);\r",
+							"      textArea.select();\r",
+							"      try {\r",
+							"        document.execCommand('copy');\r",
+							"        alert('JSON скопійовано!');\r",
+							"      } catch (err) {\r",
+							"        alert('Помилка копіювання: ' + err);\r",
+							"      }\r",
+							"      document.body.removeChild(textArea);\r",
+							"    }\r",
+							"  </script>\r",
+							"`, {\r",
+							"  jsonCompleted: JSON.stringify(jsonCompleted, null, 2),\r",
+							"  jsonError: JSON.stringify(jsonError, null, 2)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "15381251-805a0c3d-89fb-40b9-a156-aaf738ab9caf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "api-key",
+						"value": "{{mis_client_secret}}"
+					},
+					{
+						"key": "X-Custom-PSK",
+						"value": "{{x-custom-psk}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/device_dispenses/{{JobDeviceDispenseID}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_id_from_episode}}",
+						"device_dispenses",
+						"{{JobDeviceDispenseID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complete Device Dispense Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6c3e6802-6c2c-4edf-82c3-e038fb617920",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e1cc3d18-da9e-4e81-b769-229cb6e1d677",
+						"exec": [
+							"function displayResponse(title, data) {\r",
+							"    const html = `\r",
+							"        <h1>${title}</h1>\r",
+							"        <pre>${JSON.stringify(data, null, 2)}</pre>`;\r",
+							"    pm.visualizer.set(html);\r",
+							"}\r",
+							"\r",
+							"// Get the response body from the main request\r",
+							"const resBody = pm.response.text();\r",
+							"const resData = JSON.parse(resBody);\r",
+							"\r",
+							"if (resData && resData.error) {\r",
+							"    displayResponse('Complete Device Dispense request Response Error Details', resData.error);\r",
+							"}\r",
+							"\r",
+							"const href = resData.data.links[0].href;\r",
+							"console.log(\"Extracted href:\", href);\r",
+							"\r",
+							"// Extract the job ID from the href\r",
+							"const number = href.split('/jobs/')[1];\r",
+							"console.log(\"Extracted number:\", number);\r",
+							"\r",
+							"// Initialize retry counter in the environment\r",
+							"pm.environment.set('retryCount', 0);\r",
+							"\r",
+							"// Function to check job status\r",
+							"function checkJobStatus(jobId) {\r",
+							"\r",
+							"    const url = `https://api-demo.ehealth.gov.ua/api/jobs/${jobId}`;\r",
+							"    const maxRetries = 3; // Set the maximum number of retries\r",
+							"\r",
+							"    pm.sendRequest({\r",
+							"        method: 'GET',\r",
+							"        url: url,\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/json',\r",
+							"            'Authorization': 'Bearer WUFKZDJ2TFhtUHNvZlQ1OUVuazhpUT09',\r",
+							"            'api-key': '30276e63617461a185ec',\r",
+							"            'X-Custom-PSK': 'a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e'\r",
+							"        }\r",
+							"    }, function (err, res) {\r",
+							"\r",
+							"        pm.test(`Job status check response status is 200 or 303`, function () {\r",
+							"           pm.expect([200, 303]).to.include(res.code);\r",
+							"        });\r",
+							"\r",
+							"        if (err) {\r",
+							"            displayResponse('Request Error', { error: err.message });\r",
+							"            console.error('Error checking job status:', err);\r",
+							"        } else {\r",
+							"\r",
+							"            const responseBody = res.json();\r",
+							"            console.log('Job Status:', responseBody.data.status);\r",
+							"\r",
+							"            if (responseBody.data.status === 'processed') {\r",
+							"\r",
+							"                pm.test(`Complete Device Dispense request Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
+							"                    pm.expect(res.code).to.eql(303);\r",
+							"                });\r",
+							"\r",
+							"                const links = responseBody.data.links.reduce((acc, link) => {\r",
+							"                    acc[link.entity] = link.href.replace('/api/', '');\r",
+							"                    return acc;\r",
+							"                }, {});\r",
+							"\r",
+							"                // Iterate over the links object and set globals dynamically\r",
+							"                Object.entries(links).forEach(([entity, href]) => {\r",
+							"                    const globalName = `job${entity.charAt(0).toUpperCase() + entity.slice(1).replace('_', '')}ID`;\r",
+							"                    pm.globals.set(globalName, href);\r",
+							"                });\r",
+							"\r",
+							"\r",
+							"                displayResponse('Complete Device Dispense request Job Response Details', responseBody.data);\r",
+							"            } else {\r",
+							"\r",
+							"                // Retrieve the current retry count\r",
+							"                let retryCount = parseInt(pm.environment.get('retryCount')) || 0;\r",
+							"\r",
+							"                if (retryCount < maxRetries) {\r",
+							"                    // Increment the retry count and set it back to the environment\r",
+							"                    retryCount++;\r",
+							"                    pm.environment.set('retryCount', retryCount);\r",
+							"\r",
+							"                    console.log(`Retrying... Attempt ${retryCount}`);\r",
+							"\r",
+							"                    setTimeout(() => {\r",
+							"                        checkJobStatus(jobId);\r",
+							"                    }, 1000);\r",
+							"\r",
+							"                    displayResponse('Complete Device Dispense request Job Response Details2', responseBody.data);\r",
+							"\r",
+							"                } else {\r",
+							"                    console.log('Maximum retry limit reached.');\r",
+							"                    displayResponse(responseBody.data.error ? 'Complete Device Dispense request Error Details' : 'Final Job Status Check', responseBody.data);\r",
+							"                }\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"}\r",
+							"\r",
+							"// Call the function with the job ID\r",
+							"checkJobStatus(number);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "15381251-a870a203-2e34-4b5d-a0bf-26bee258d4dd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "api-key",
+						"value": "{{mis_client_secret}}"
+					},
+					{
+						"key": "X-Custom-PSK",
+						"value": "{{x-custom-psk}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"signed_data\": \"MIJThAYJKoZIhvcNAQcCoIJTdTCCU3ECAQExDjAMBgoqhiQCAQEBAQIBMIIOvwYJKoZIhvcNAQcBoIIOsASCDqx7DQogICJiYXNlZF9vbiI6IHsNCiAgICAiZGlzcGxheV92YWx1ZSI6IG51bGwsDQogICAgImlkZW50aWZpZXIiOiB7DQogICAgICAidHlwZSI6IHsNCiAgICAgICAgImNvZGluZyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAiY29kZSI6ICJkZXZpY2VfcmVxdWVzdCIsDQogICAgICAgICAgICAic3lzdGVtIjogImVIZWFsdGgvcmVzb3VyY2VzIg0KICAgICAgICAgIH0NCiAgICAgICAgXSwNCiAgICAgICAgInRleHQiOiBudWxsDQogICAgICB9LA0KICAgICAgInZhbHVlIjogImM2ZTk0MjlhLTFmZDktNGU4Mi1iZmI1LTRmY2M3NzI0MmU2NCINCiAgICB9DQogIH0sDQogICJkZXRhaWxzIjogWw0KICAgIHsNCiAgICAgICJkZXZpY2UiOiB7DQogICAgICAgICJkaXNwbGF5X3ZhbHVlIjogbnVsbCwNCiAgICAgICAgImlkZW50aWZpZXIiOiB7DQogICAgICAgICAgInR5cGUiOiB7DQogICAgICAgICAgICAiY29kaW5nIjogWw0KICAgICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgImNvZGUiOiAiZGV2aWNlX2RlZmluaXRpb24iLA0KICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiZUhlYWx0aC9yZXNvdXJjZXMiDQogICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIF0sDQogICAgICAgICAgICAidGV4dCI6IG51bGwNCiAgICAgICAgICB9LA0KICAgICAgICAgICJ2YWx1ZSI6ICJhZWZiYTIyNC01ZDI1LTRlNmQtOGRhNi1jZDMyNGFlZjljOWMiDQogICAgICAgIH0NCiAgICAgIH0sDQogICAgICAiZGlzY291bnRfYW1vdW50IjogMTUwLA0KICAgICAgInByb2dyYW1fZGV2aWNlIjogew0KICAgICAgICAiZGlzcGxheV92YWx1ZSI6IG51bGwsDQogICAgICAgICJpZGVudGlmaWVyIjogew0KICAgICAgICAgICJ0eXBlIjogew0KICAgICAgICAgICAgImNvZGluZyI6IFsNCiAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICJjb2RlIjogInByb2dyYW1fZGV2aWNlIiwNCiAgICAgICAgICAgICAgICAic3lzdGVtIjogImVIZWFsdGgvcmVzb3VyY2VzIg0KICAgICAgICAgICAgICB9DQogICAgICAgICAgICBdLA0KICAgICAgICAgICAgInRleHQiOiBudWxsDQogICAgICAgICAgfSwNCiAgICAgICAgICAidmFsdWUiOiAiYTZlZWM3YWUtZjAwZi00MTYxLWE4MTMtNDY2MjY0YzFjYjVmIg0KICAgICAgICB9DQogICAgICB9LA0KICAgICAgInF1YW50aXR5Ijogew0KICAgICAgICAiY29kZSI6ICJwaWVjZSIsDQogICAgICAgICJzeXN0ZW0iOiAiZGV2aWNlX3VuaXQiLA0KICAgICAgICAidW5pdCI6ICLRiNGCIiwNCiAgICAgICAgInZhbHVlIjogMzANCiAgICAgIH0sDQogICAgICAicmVpbWJ1cnNlbWVudF9hbW91bnQiOiA0NTAsDQogICAgICAic2VsbF9wcmljZSI6IDE4LjY1DQogICAgfQ0KICBdLA0KICAiZW5jb3VudGVyIjogbnVsbCwNCiAgImV4cGxhbmF0b3J5X2xldHRlciI6IG51bGwsDQogICJleHRlcm5hbF9wZXJmb3JtZXIiOiBudWxsLA0KICAiZXh0ZXJuYWxfcHJvdmlkZXIiOiBudWxsLA0KICAiaWQiOiAiN2Q2ZGQ3N2ItMGJjNy00MTAwLThiZjktZjdhMmE1YjYxMDNiIiwNCiAgImluc2VydGVkX2F0IjogIjIwMjUtMTEtMTBUMTA6MDY6MzQuNzYwMDAwWiIsDQogICJsb2NhdGlvbiI6IHsNCiAgICAiZGlzcGxheV92YWx1ZSI6ICLQktGW0LTQtNGW0LvQtdC90L3RjyDQsNC/0YLQtdC60Lgg0LzQtdC00LjRh9C90L7RlyDQtNC+0L/QvtC80L7Qs9C4IOKEljEiLA0KICAgICJpZGVudGlmaWVyIjogew0KICAgICAgInR5cGUiOiB7DQogICAgICAgICJjb2RpbmciOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgImNvZGUiOiAiZGl2aXNpb24iLA0KICAgICAgICAgICAgInN5c3RlbSI6ICJlSGVhbHRoL3Jlc291cmNlcyINCiAgICAgICAgICB9DQogICAgICAgIF0sDQogICAgICAgICJ0ZXh0IjogbnVsbA0KICAgICAgfSwNCiAgICAgICJ2YWx1ZSI6ICIyYmI5ZjM1Yy03MTFmLTRiZGYtYTY5Zi0wZDRmYWIwZDIwNzYiDQogICAgfQ0KICB9LA0KICAibm90ZSI6ICJTb21lIG5vdGVzIiwNCiAgInBhcnRfb2YiOiBudWxsLA0KICAicGF5bWVudF9hbW91bnQiOiAyLA0KICAicGF5bWVudF9pZCI6IG51bGwsDQogICJwZXJmb3JtZXIiOiB7DQogICAgImRpc3BsYXlfdmFsdWUiOiAi0KHQtdGA0LPRltC5INCS0ZbQutGC0L7RgNC+0LLQuNGHINCa0YPRgNC40LvQtdC90LrQviIsDQogICAgImlkZW50aWZpZXIiOiB7DQogICAgICAidHlwZSI6IHsNCiAgICAgICAgImNvZGluZyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAiY29kZSI6ICJlbXBsb3llZSIsDQogICAgICAgICAgICAic3lzdGVtIjogImVIZWFsdGgvcmVzb3VyY2VzIg0KICAgICAgICAgIH0NCiAgICAgICAgXSwNCiAgICAgICAgInRleHQiOiBudWxsDQogICAgICB9LA0KICAgICAgInZhbHVlIjogIjg0MDY0NGQ0LWRiNWItNDQ1Ny04OGUxLWVmNWUzYmU2MTAxZiINCiAgICB9DQogIH0sDQogICJwZXJmb3JtZXJfbGVnYWxfZW50aXR5Ijogew0KICAgICJkaXNwbGF5X3ZhbHVlIjogIlwi0JXQm9CV0JrQotCg0J7QndCd0JUg0JfQlNCe0KDQntCSJ9CvXCIiLA0KICAgICJpZGVudGlmaWVyIjogew0KICAgICAgInR5cGUiOiB7DQogICAgICAgICJjb2RpbmciOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgImNvZGUiOiAibGVnYWxfZW50aXR5IiwNCiAgICAgICAgICAgICJzeXN0ZW0iOiAiZUhlYWx0aC9yZXNvdXJjZXMiDQogICAgICAgICAgfQ0KICAgICAgICBdLA0KICAgICAgICAidGV4dCI6IG51bGwNCiAgICAgIH0sDQogICAgICAidmFsdWUiOiAiZDkyMmU5NGUtMzE3OS00NzZjLTljNTMtY2NmMzAxYTYyOTM5Ig0KICAgIH0NCiAgfSwNCiAgInByaW1hcnlfc291cmNlIjogdHJ1ZSwNCiAgInByb2dyYW0iOiB7DQogICAgImRpc3BsYXlfdmFsdWUiOiAi0KDQtdCw0LHRltC70ZbRgtCw0YbRltGPINCG0IYgLSDRgtC10YHRgiDRgdC80YPQttC60LgiLA0KICAgICJpZGVudGlmaWVyIjogew0KICAgICAgInR5cGUiOiB7DQogICAgICAgICJjb2RpbmciOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgImNvZGUiOiAibWVkaWNhbF9wcm9ncmFtIiwNCiAgICAgICAgICAgICJzeXN0ZW0iOiAiZUhlYWx0aC9yZXNvdXJjZXMiDQogICAgICAgICAgfQ0KICAgICAgICBdLA0KICAgICAgICAidGV4dCI6IG51bGwNCiAgICAgIH0sDQogICAgICAidmFsdWUiOiAiZDFmOGJlMTUtZjlkYi00YzA5LWFiZjctYWE3OGE1YTA5YjI0Ig0KICAgIH0NCiAgfSwNCiAgInJlcG9ydF9vcmlnaW4iOiBudWxsLA0KICAic2lnbmVkX2NvbnRlbnRfbGlua3MiOiBbXSwNCiAgInN0YXR1cyI6ICJjb21wbGV0ZWQiLA0KICAic3RhdHVzX3JlYXNvbiI6IG51bGwsDQogICJzdWJqZWN0Ijogew0KICAgICJkaXNwbGF5X3ZhbHVlIjogbnVsbCwNCiAgICAiaWRlbnRpZmllciI6IHsNCiAgICAgICJ0eXBlIjogew0KICAgICAgICAiY29kaW5nIjogWw0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJjb2RlIjogInBhdGllbnQiLA0KICAgICAgICAgICAgInN5c3RlbSI6ICJlSGVhbHRoL3Jlc291cmNlcyINCiAgICAgICAgICB9DQogICAgICAgIF0sDQogICAg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\"}"
+				},
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/device_dispenses/{{JobDeviceDispenseID}}/actions/complete",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_id_from_episode}}",
+						"device_dispenses",
+						"{{JobDeviceDispenseID}}",
+						"actions",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Dummy Submit Diagnostic Report Package",
 			"event": [
 				{
@@ -9552,535 +10081,6 @@
 						"{{patient_for_regress}}",
 						"compositions",
 						"{{JobCompositionID}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Device Dispense Copy",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "5edb6783-64e7-47c9-a2d4-88a056d57f1a",
-						"exec": [
-							"const uuid = require('uuid');\r",
-							"const deviceDispenseRequestId = uuid.v4();\r",
-							"\r",
-							"pm.globals.set(\"dummy_device_dispense_request_id\", deviceDispenseRequestId);"
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "1420a4d9-710c-4e60-815a-f83990226e93",
-						"exec": [
-							"function displayResponse(title, data) {\r",
-							"    const html = `\r",
-							"        <h1>${title}</h1>\r",
-							"        <pre>${JSON.stringify(data, null, 2)}</pre>`;\r",
-							"    pm.visualizer.set(html);\r",
-							"}\r",
-							"\r",
-							"// Get the response body from the main request\r",
-							"const resBody = pm.response.text();\r",
-							"const resData = JSON.parse(resBody);\r",
-							"\r",
-							"if (resData && resData.error) {\r",
-							"    displayResponse('Create Device Dispense Response Error Details', resData.error);\r",
-							"}\r",
-							"\r",
-							"const href = resData.data.links[0].href;\r",
-							"console.log(\"Extracted href:\", href);\r",
-							"\r",
-							"// Extract the job ID from the href\r",
-							"const number = href.split('/jobs/')[1];\r",
-							"console.log(\"Extracted number:\", number);\r",
-							"\r",
-							"// Initialize retry counter in the environment\r",
-							"pm.environment.set('retryCount', 0);\r",
-							"\r",
-							"// Function to check job status\r",
-							"function checkJobStatus(jobId) {\r",
-							"\r",
-							"    const url = `https://api-demo.ehealth.gov.ua/api/jobs/${jobId}`;\r",
-							"    const maxRetries = 3; // Set the maximum number of retries\r",
-							"\r",
-							"    pm.sendRequest({\r",
-							"        method: 'GET',\r",
-							"        url: url,\r",
-							"        header: {\r",
-							"            'Content-Type': 'application/json',\r",
-							"            'Authorization': 'Bearer WUFKZDJ2TFhtUHNvZlQ1OUVuazhpUT09',\r",
-							"            'api-key': '30276e63617461a185ec',\r",
-							"            'X-Custom-PSK': 'a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e'\r",
-							"        }\r",
-							"    }, function (err, res) {\r",
-							"\r",
-							"        pm.test(`Job status check response status is 200 or 303`, function () {\r",
-							"            pm.expect([200, 303]).to.include(res.code);\r",
-							"        });\r",
-							"\r",
-							"        if (err) {\r",
-							"            displayResponse('Request Error', { error: err.message });\r",
-							"            console.error('Error checking job status:', err);\r",
-							"        } else {\r",
-							"\r",
-							"            const responseBody = res.json();\r",
-							"            console.log('Job Status:', responseBody.data.status);\r",
-							"\r",
-							"            if (responseBody.data.status === 'processed') {\r",
-							"\r",
-							"                pm.test(`Create Device Dispense Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
-							"                    pm.expect(res.code).to.eql(303);\r",
-							"                });\r",
-							"\r",
-							"                const links = responseBody.data.links.reduce((acc, link) => {\r",
-							"                    // Extract the part after \"/api/\"\r",
-							"                    const href = link.href.replace('/api/', '');\r",
-							"\r",
-							"                    // Set the link entity to global variables\r",
-							"                    acc[link.entity] = href;\r",
-							"\r",
-							"                    if (href.includes('device_dispenses/')) {\r",
-							"                        const  deviceDispenseId = href.split('/')[3]; // Extract the Device Dispense ID\r",
-							"                        acc['jobDeviceDispense'] = deviceDispenseId;\r",
-							"                    }\r",
-							"\r",
-							"                    return acc;\r",
-							"                }, {});\r",
-							"\r",
-							"                // Iterate over the links object and set globals dynamically\r",
-							"                Object.entries(links).forEach(([entity, value]) => {\r",
-							"                    const globalName = `${entity.charAt(0).toUpperCase() + entity.slice(1)}ID`;\r",
-							"                    pm.globals.set(globalName, value);\r",
-							"                });\r",
-							"\r",
-							"\r",
-							"                displayResponse('Create Device Dispense Job Response Details', responseBody.data);\r",
-							"            } else {\r",
-							"\r",
-							"                // Retrieve the current retry count\r",
-							"                let retryCount = parseInt(pm.environment.get('retryCount')) || 0;\r",
-							"\r",
-							"                if (retryCount < maxRetries) {\r",
-							"                    // Increment the retry count and set it back to the environment\r",
-							"                    retryCount++;\r",
-							"                    pm.environment.set('retryCount', retryCount);\r",
-							"\r",
-							"                    console.log(`Retrying... Attempt ${retryCount}`);\r",
-							"\r",
-							"                    setTimeout(() => {\r",
-							"                        checkJobStatus(jobId);\r",
-							"                    }, 1000);\r",
-							"\r",
-							"                    displayResponse('Create Device Dispense Job Response Details2', responseBody.data);\r",
-							"\r",
-							"                } else {\r",
-							"                    console.log('Maximum retry limit reached.');\r",
-							"                    displayResponse(responseBody.data.error ? 'Create Device Dispense Error Details' : 'Final Job Status Check', responseBody.data);\r",
-							"                }\r",
-							"            }\r",
-							"        }\r",
-							"    });\r",
-							"}\r",
-							"\r",
-							"// Call the function with the job ID\r",
-							"checkJobStatus(number);\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"id": "15381251-32c9c884-5d04-46a5-983a-6baf81fd443d",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "api-key",
-						"value": "{{mis_client_secret}}"
-					},
-					{
-						"key": "X-Custom-PSK",
-						"value": "{{x-custom-psk}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"id\": \"{{dummy_device_dispense_request_id}}\",\n  \"based_on\": {\n    \"identifier\": {\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"eHealth/resources\",\n            \"code\": \"device_request\"\n          }\n        ]\n      },\n      \"value\": \"{{JobDeviceRequestID}}\"\n    }\n  },\n  \"performer\": {\n    \"identifier\": {\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"eHealth/resources\",\n            \"code\": \"employee\"\n          }\n        ]\n      },\n      \"value\": \"{{user_id}}\"\n    }\n  },\n  \"location\": {\n    \"identifier\": {\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"eHealth/resources\",\n            \"code\": \"division\"\n          }\n        ]\n      },\n      \"value\": \"{{user_division_id}}\"\n    }\n  },\n  \"note\": \"Some notes\",\n  \"program\": {\n    \"identifier\": {\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"eHealth/resources\",\n            \"code\": \"medical_program\"\n          }\n        ]\n      },\n      \"value\": \"{{program_id_qualify_device_request}}\"\n    }\n  },\n  \"primary_source\": true,\n  \"details\": [\n    {\n      \"device\": {\n        \"identifier\": {\n          \"type\": {\n            \"coding\": [\n              {\n                \"system\": \"eHealth/resources\",\n                \"code\": \"device_definition\"\n              }\n            ]\n          },\n          \"value\": \"{{device_definition_id_qualify_device_request}}\"\n        }\n      },\n      \"program_device\": {\n        \"identifier\": {\n          \"type\": {\n            \"coding\": [\n              {\n                \"system\": \"eHealth/resources\",\n                \"code\": \"program_device\"\n              }\n            ]\n          },\n          \"value\": \"{{program_medication_id_qualify_device_request}}\"\n        }\n      },\n      \"quantity\": {\n        \"value\": 30,\n        \"system\": \"device_unit\",\n        \"code\": \"piece\"\n      },\n      \"sell_price\": 18.65,\n      \"discount_amount\": 150\n    }\n  ],\n  \"verification_code\": \"9696\",\n  \"status\": \"in_progress\"\n}"
-				},
-				"url": {
-					"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/device_dispenses",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"patients",
-						"{{patient_id_from_episode}}",
-						"device_dispenses"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Device Dispense details Copy",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "2a57a879-bf1a-48d7-93bd-49e5769a6db9",
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "e624a55f-200a-444a-b780-56110b0f3216",
-						"exec": [
-							"const resData = pm.response.json().data;\r",
-							"\r",
-							"// Отримання поточної дати у форматі 2018-08-02T10:45:16.000Z\r",
-							"const nowIsoString = new Date().toISOString().replace(/\\.\\d{3}Z$/, '.000Z');\r",
-							"\r",
-							"// Варіант 1: Complete Device Dispense\r",
-							"const jsonCompleted = {\r",
-							"  ...resData,\r",
-							"  status: \"completed\",\r",
-							"  payment_amount:2,\r",
-							"  when_handed_over:nowIsoString\r",
-							"};\r",
-							"\r",
-							"// Варіант 2: Mark in error Device dispense\r",
-							"const jsonError = {\r",
-							"  ...resData,\r",
-							"  status: \"entered_in_error\",\r",
-							"  status_reason: {\r",
-							"    coding: [\r",
-							"      {\r",
-							"        system: \"device_dispense_mark_in_error_reasons\",\r",
-							"        code: \"entered_in_error\"\r",
-							"      }\r",
-							"    ]\r",
-							"  }\r",
-							"};\r",
-							"\r",
-							"pm.visualizer.set(`\r",
-							"  <style>\r",
-							"    .container {\r",
-							"      display: flex;\r",
-							"      flex-wrap: wrap;\r",
-							"      gap: 20px;\r",
-							"    }\r",
-							"    .block {\r",
-							"      flex: 1 1 45%;\r",
-							"      min-width: 300px;\r",
-							"    }\r",
-							"    pre {\r",
-							"      background-color: #f6f8fa;\r",
-							"      padding: 16px;\r",
-							"      border-radius: 5px;\r",
-							"      font-family: monospace;\r",
-							"      white-space: pre-wrap;\r",
-							"      max-height: 500px;\r",
-							"      overflow: auto;\r",
-							"    }\r",
-							"    button {\r",
-							"      margin: 10px 0;\r",
-							"      padding: 5px 10px;\r",
-							"      border-radius: 4px;\r",
-							"      border: 1px solid #ccc;\r",
-							"      background-color: #e0e0e0;\r",
-							"      cursor: pointer;\r",
-							"    }\r",
-							"    button:hover {\r",
-							"      background-color: #d0d0d0;\r",
-							"    }\r",
-							"    h3 {\r",
-							"      margin-bottom: 5px;\r",
-							"    }\r",
-							"  </style>\r",
-							"\r",
-							"  <div class=\"container\">\r",
-							"    <div class=\"block\">\r",
-							"      <h3>JSON для <u>завершення</u> DeviceDispense</h3>\r",
-							"      <button onclick=\"copyToClipboard('json1')\">Скопіювати JSON (completed)</button>\r",
-							"      <pre id=\"json1\">{{jsonCompleted}}</pre>\r",
-							"    </div>\r",
-							"    <div class=\"block\">\r",
-							"      <h3>JSON для <u>помилкового</u> DeviceDispense</h3>\r",
-							"      <button onclick=\"copyToClipboard('json2')\">Скопіювати JSON (entered_in_error)</button>\r",
-							"      <pre id=\"json2\">{{jsonError}}</pre>\r",
-							"    </div>\r",
-							"  </div>\r",
-							"\r",
-							"  <script>\r",
-							"    function copyToClipboard(id) {\r",
-							"      const text = document.getElementById(id).innerText;\r",
-							"      const textArea = document.createElement('textarea');\r",
-							"      textArea.value = text;\r",
-							"      document.body.appendChild(textArea);\r",
-							"      textArea.select();\r",
-							"      try {\r",
-							"        document.execCommand('copy');\r",
-							"        alert('JSON скопійовано!');\r",
-							"      } catch (err) {\r",
-							"        alert('Помилка копіювання: ' + err);\r",
-							"      }\r",
-							"      document.body.removeChild(textArea);\r",
-							"    }\r",
-							"  </script>\r",
-							"`, {\r",
-							"  jsonCompleted: JSON.stringify(jsonCompleted, null, 2),\r",
-							"  jsonError: JSON.stringify(jsonError, null, 2)\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "15381251-805a0c3d-89fb-40b9-a156-aaf738ab9caf",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "api-key",
-						"value": "{{mis_client_secret}}"
-					},
-					{
-						"key": "X-Custom-PSK",
-						"value": "{{x-custom-psk}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/device_dispenses/{{JobDeviceDispenseID}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"patients",
-						"{{patient_id_from_episode}}",
-						"device_dispenses",
-						"{{JobDeviceDispenseID}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Complete Device Dispense Copy",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "6c3e6802-6c2c-4edf-82c3-e038fb617920",
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "e1cc3d18-da9e-4e81-b769-229cb6e1d677",
-						"exec": [
-							"function displayResponse(title, data) {\r",
-							"    const html = `\r",
-							"        <h1>${title}</h1>\r",
-							"        <pre>${JSON.stringify(data, null, 2)}</pre>`;\r",
-							"    pm.visualizer.set(html);\r",
-							"}\r",
-							"\r",
-							"// Get the response body from the main request\r",
-							"const resBody = pm.response.text();\r",
-							"const resData = JSON.parse(resBody);\r",
-							"\r",
-							"if (resData && resData.error) {\r",
-							"    displayResponse('Complete Device Dispense request Response Error Details', resData.error);\r",
-							"}\r",
-							"\r",
-							"const href = resData.data.links[0].href;\r",
-							"console.log(\"Extracted href:\", href);\r",
-							"\r",
-							"// Extract the job ID from the href\r",
-							"const number = href.split('/jobs/')[1];\r",
-							"console.log(\"Extracted number:\", number);\r",
-							"\r",
-							"// Initialize retry counter in the environment\r",
-							"pm.environment.set('retryCount', 0);\r",
-							"\r",
-							"// Function to check job status\r",
-							"function checkJobStatus(jobId) {\r",
-							"\r",
-							"    const url = `https://api-demo.ehealth.gov.ua/api/jobs/${jobId}`;\r",
-							"    const maxRetries = 3; // Set the maximum number of retries\r",
-							"\r",
-							"    pm.sendRequest({\r",
-							"        method: 'GET',\r",
-							"        url: url,\r",
-							"        header: {\r",
-							"            'Content-Type': 'application/json',\r",
-							"            'Authorization': 'Bearer WUFKZDJ2TFhtUHNvZlQ1OUVuazhpUT09',\r",
-							"            'api-key': '30276e63617461a185ec',\r",
-							"            'X-Custom-PSK': 'a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e'\r",
-							"        }\r",
-							"    }, function (err, res) {\r",
-							"\r",
-							"        pm.test(`Job status check response status is 200 or 303`, function () {\r",
-							"           pm.expect([200, 303]).to.include(res.code);\r",
-							"        });\r",
-							"\r",
-							"        if (err) {\r",
-							"            displayResponse('Request Error', { error: err.message });\r",
-							"            console.error('Error checking job status:', err);\r",
-							"        } else {\r",
-							"\r",
-							"            const responseBody = res.json();\r",
-							"            console.log('Job Status:', responseBody.data.status);\r",
-							"\r",
-							"            if (responseBody.data.status === 'processed') {\r",
-							"\r",
-							"                pm.test(`Complete Device Dispense request Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
-							"                    pm.expect(res.code).to.eql(303);\r",
-							"                });\r",
-							"\r",
-							"                const links = responseBody.data.links.reduce((acc, link) => {\r",
-							"                    acc[link.entity] = link.href.replace('/api/', '');\r",
-							"                    return acc;\r",
-							"                }, {});\r",
-							"\r",
-							"                // Iterate over the links object and set globals dynamically\r",
-							"                Object.entries(links).forEach(([entity, href]) => {\r",
-							"                    const globalName = `job${entity.charAt(0).toUpperCase() + entity.slice(1).replace('_', '')}ID`;\r",
-							"                    pm.globals.set(globalName, href);\r",
-							"                });\r",
-							"\r",
-							"\r",
-							"                displayResponse('Complete Device Dispense request Job Response Details', responseBody.data);\r",
-							"            } else {\r",
-							"\r",
-							"                // Retrieve the current retry count\r",
-							"                let retryCount = parseInt(pm.environment.get('retryCount')) || 0;\r",
-							"\r",
-							"                if (retryCount < maxRetries) {\r",
-							"                    // Increment the retry count and set it back to the environment\r",
-							"                    retryCount++;\r",
-							"                    pm.environment.set('retryCount', retryCount);\r",
-							"\r",
-							"                    console.log(`Retrying... Attempt ${retryCount}`);\r",
-							"\r",
-							"                    setTimeout(() => {\r",
-							"                        checkJobStatus(jobId);\r",
-							"                    }, 1000);\r",
-							"\r",
-							"                    displayResponse('Complete Device Dispense request Job Response Details2', responseBody.data);\r",
-							"\r",
-							"                } else {\r",
-							"                    console.log('Maximum retry limit reached.');\r",
-							"                    displayResponse(responseBody.data.error ? 'Complete Device Dispense request Error Details' : 'Final Job Status Check', responseBody.data);\r",
-							"                }\r",
-							"            }\r",
-							"        }\r",
-							"    });\r",
-							"}\r",
-							"\r",
-							"// Call the function with the job ID\r",
-							"checkJobStatus(number);\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"id": "15381251-a870a203-2e34-4b5d-a0bf-26bee258d4dd",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "api-key",
-						"value": "{{mis_client_secret}}"
-					},
-					{
-						"key": "X-Custom-PSK",
-						"value": "{{x-custom-psk}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"signed_data\": \"MIJThAYJKoZIhvcNAQcCoIJTdTCCU3ECAQExDjAMBgoqhiQCAQEBAQIBMIIOvwYJKoZIhvcNAQcBoIIOsASCDqx7DQogICJiYXNlZF9vbiI6IHsNCiAgICAiZGlzcGxheV92YWx1ZSI6IG51bGwsDQogICAgImlkZW50aWZpZXIiOiB7DQogICAgICAidHlwZSI6IHsNCiAgICAgICAgImNvZGluZyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAiY29kZSI6ICJkZXZpY2VfcmVxdWVzdCIsDQogICAgICAgICAgICAic3lzdGVtIjogImVIZWFsdGgvcmVzb3VyY2VzIg0KICAgICAgICAgIH0NCiAgICAgICAgXSwNCiAgICAgICAgInRleHQiOiBudWxsDQogICAgICB9LA0KICAgICAgInZhbHVlIjogImM2ZTk0MjlhLTFmZDktNGU4Mi1iZmI1LTRmY2M3NzI0MmU2NCINCiAgICB9DQogIH0sDQogICJkZXRhaWxzIjogWw0KICAgIHsNCiAgICAgICJkZXZpY2UiOiB7DQogICAgICAgICJkaXNwbGF5X3ZhbHVlIjogbnVsbCwNCiAgICAgICAgImlkZW50aWZpZXIiOiB7DQogICAgICAgICAgInR5cGUiOiB7DQogICAgICAgICAgICAiY29kaW5nIjogWw0KICAgICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgImNvZGUiOiAiZGV2aWNlX2RlZmluaXRpb24iLA0KICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiZUhlYWx0aC9yZXNvdXJjZXMiDQogICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIF0sDQogICAgICAgICAgICAidGV4dCI6IG51bGwNCiAgICAgICAgICB9LA0KICAgICAgICAgICJ2YWx1ZSI6ICJhZWZiYTIyNC01ZDI1LTRlNmQtOGRhNi1jZDMyNGFlZjljOWMiDQogICAgICAgIH0NCiAgICAgIH0sDQogICAgICAiZGlzY291bnRfYW1vdW50IjogMTUwLA0KICAgICAgInByb2dyYW1fZGV2aWNlIjogew0KICAgICAgICAiZGlzcGxheV92YWx1ZSI6IG51bGwsDQogICAgICAgICJpZGVudGlmaWVyIjogew0KICAgICAgICAgICJ0eXBlIjogew0KICAgICAgICAgICAgImNvZGluZyI6IFsNCiAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICJjb2RlIjogInByb2dyYW1fZGV2aWNlIiwNCiAgICAgICAgICAgICAgICAic3lzdGVtIjogImVIZWFsdGgvcmVzb3VyY2VzIg0KICAgICAgICAgICAgICB9DQogICAgICAgICAgICBdLA0KICAgICAgICAgICAgInRleHQiOiBudWxsDQogICAgICAgICAgfSwNCiAgICAgICAgICAidmFsdWUiOiAiYTZlZWM3YWUtZjAwZi00MTYxLWE4MTMtNDY2MjY0YzFjYjVmIg0KICAgICAgICB9DQogICAgICB9LA0KICAgICAgInF1YW50aXR5Ijogew0KICAgICAgICAiY29kZSI6ICJwaWVjZSIsDQogICAgICAgICJzeXN0ZW0iOiAiZGV2aWNlX3VuaXQiLA0KICAgICAgICAidW5pdCI6ICLRiNGCIiwNCiAgICAgICAgInZhbHVlIjogMzANCiAgICAgIH0sDQogICAgICAicmVpbWJ1cnNlbWVudF9hbW91bnQiOiA0NTAsDQogICAgICAic2VsbF9wcmljZSI6IDE4LjY1DQogICAgfQ0KICBdLA0KICAiZW5jb3VudGVyIjogbnVsbCwNCiAgImV4cGxhbmF0b3J5X2xldHRlciI6IG51bGwsDQogICJleHRlcm5hbF9wZXJmb3JtZXIiOiBudWxsLA0KICAiZXh0ZXJuYWxfcHJvdmlkZXIiOiBudWxsLA0KICAiaWQiOiAiN2Q2ZGQ3N2ItMGJjNy00MTAwLThiZjktZjdhMmE1YjYxMDNiIiwNCiAgImluc2VydGVkX2F0IjogIjIwMjUtMTEtMTBUMTA6MDY6MzQuNzYwMDAwWiIsDQogICJsb2NhdGlvbiI6IHsNCiAgICAiZGlzcGxheV92YWx1ZSI6ICLQktGW0LTQtNGW0LvQtdC90L3RjyDQsNC/0YLQtdC60Lgg0LzQtdC00LjRh9C90L7RlyDQtNC+0L/QvtC80L7Qs9C4IOKEljEiLA0KICAgICJpZGVudGlmaWVyIjogew0KICAgICAgInR5cGUiOiB7DQogICAgICAgICJjb2RpbmciOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgImNvZGUiOiAiZGl2aXNpb24iLA0KICAgICAgICAgICAgInN5c3RlbSI6ICJlSGVhbHRoL3Jlc291cmNlcyINCiAgICAgICAgICB9DQogICAgICAgIF0sDQogICAgICAgICJ0ZXh0IjogbnVsbA0KICAgICAgfSwNCiAgICAgICJ2YWx1ZSI6ICIyYmI5ZjM1Yy03MTFmLTRiZGYtYTY5Zi0wZDRmYWIwZDIwNzYiDQogICAgfQ0KICB9LA0KICAibm90ZSI6ICJTb21lIG5vdGVzIiwNCiAgInBhcnRfb2YiOiBudWxsLA0KICAicGF5bWVudF9hbW91bnQiOiAyLA0KICAicGF5bWVudF9pZCI6IG51bGwsDQogICJwZXJmb3JtZXIiOiB7DQogICAgImRpc3BsYXlfdmFsdWUiOiAi0KHQtdGA0LPRltC5INCS0ZbQutGC0L7RgNC+0LLQuNGHINCa0YPRgNC40LvQtdC90LrQviIsDQogICAgImlkZW50aWZpZXIiOiB7DQogICAgICAidHlwZSI6IHsNCiAgICAgICAgImNvZGluZyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAiY29kZSI6ICJlbXBsb3llZSIsDQogICAgICAgICAgICAic3lzdGVtIjogImVIZWFsdGgvcmVzb3VyY2VzIg0KICAgICAgICAgIH0NCiAgICAgICAgXSwNCiAgICAgICAgInRleHQiOiBudWxsDQogICAgICB9LA0KICAgICAgInZhbHVlIjogIjg0MDY0NGQ0LWRiNWItNDQ1Ny04OGUxLWVmNWUzYmU2MTAxZiINCiAgICB9DQogIH0sDQogICJwZXJmb3JtZXJfbGVnYWxfZW50aXR5Ijogew0KICAgICJkaXNwbGF5X3ZhbHVlIjogIlwi0JXQm9CV0JrQotCg0J7QndCd0JUg0JfQlNCe0KDQntCSJ9CvXCIiLA0KICAgICJpZGVudGlmaWVyIjogew0KICAgICAgInR5cGUiOiB7DQogICAgICAgICJjb2RpbmciOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgImNvZGUiOiAibGVnYWxfZW50aXR5IiwNCiAgICAgICAgICAgICJzeXN0ZW0iOiAiZUhlYWx0aC9yZXNvdXJjZXMiDQogICAgICAgICAgfQ0KICAgICAgICBdLA0KICAgICAgICAidGV4dCI6IG51bGwNCiAgICAgIH0sDQogICAgICAidmFsdWUiOiAiZDkyMmU5NGUtMzE3OS00NzZjLTljNTMtY2NmMzAxYTYyOTM5Ig0KICAgIH0NCiAgfSwNCiAgInByaW1hcnlfc291cmNlIjogdHJ1ZSwNCiAgInByb2dyYW0iOiB7DQogICAgImRpc3BsYXlfdmFsdWUiOiAi0KDQtdCw0LHRltC70ZbRgtCw0YbRltGPINCG0IYgLSDRgtC10YHRgiDRgdC80YPQttC60LgiLA0KICAgICJpZGVudGlmaWVyIjogew0KICAgICAgInR5cGUiOiB7DQogICAgICAgICJjb2RpbmciOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgImNvZGUiOiAibWVkaWNhbF9wcm9ncmFtIiwNCiAgICAgICAgICAgICJzeXN0ZW0iOiAiZUhlYWx0aC9yZXNvdXJjZXMiDQogICAgICAgICAgfQ0KICAgICAgICBdLA0KICAgICAgICAidGV4dCI6IG51bGwNCiAgICAgIH0sDQogICAgICAidmFsdWUiOiAiZDFmOGJlMTUtZjlkYi00YzA5LWFiZjctYWE3OGE1YTA5YjI0Ig0KICAgIH0NCiAgfSwNCiAgInJlcG9ydF9vcmlnaW4iOiBudWxsLA0KICAic2lnbmVkX2NvbnRlbnRfbGlua3MiOiBbXSwNCiAgInN0YXR1cyI6ICJjb21wbGV0ZWQiLA0KICAic3RhdHVzX3JlYXNvbiI6IG51bGwsDQogICJzdWJqZWN0Ijogew0KICAgICJkaXNwbGF5X3ZhbHVlIjogbnVsbCwNCiAgICAiaWRlbnRpZmllciI6IHsNCiAgICAgICJ0eXBlIjogew0KICAgICAgICAiY29kaW5nIjogWw0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJjb2RlIjogInBhdGllbnQiLA0KICAgICAgICAgICAgInN5c3RlbSI6ICJlSGVhbHRoL3Jlc291cmNlcyINCiAgICAgICAgICB9DQogICAgICAgIF0sDQogICAg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\"}"
-				},
-				"url": {
-					"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/device_dispenses/{{JobDeviceDispenseID}}/actions/complete",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"patients",
-						"{{patient_id_from_episode}}",
-						"device_dispenses",
-						"{{JobDeviceDispenseID}}",
-						"actions",
-						"complete"
 					]
 				}
 			},
