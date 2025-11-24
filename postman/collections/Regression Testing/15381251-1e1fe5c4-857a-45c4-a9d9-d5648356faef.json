@@ -7443,12 +7443,6 @@
 						"key": "x-custom-psk",
 						"value": "{{x-custom-psk}}",
 						"type": "text"
-					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
 					}
 				],
 				"url": {
