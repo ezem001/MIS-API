@@ -9631,7 +9631,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/dictionaries_configurations?name=prescribable_device_codes",
+							"raw": "{{host}}/api/dictionaries_configurations",
 							"host": [
 								"{{host}}"
 							],
@@ -9640,10 +9640,6 @@
 								"dictionaries_configurations"
 							],
 							"query": [
-								{
-									"key": "name",
-									"value": "prescribable_device_codes"
-								},
 								{
 									"key": "is_active",
 									"value": "true",
@@ -9657,6 +9653,11 @@
 								{
 									"key": "page_size",
 									"value": "50",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "prescribable_device_codes",
 									"disabled": true
 								}
 							]
