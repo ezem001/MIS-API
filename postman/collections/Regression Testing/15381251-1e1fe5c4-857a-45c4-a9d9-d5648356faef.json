@@ -7053,7 +7053,7 @@
 			"response": []
 		},
 		{
-			"name": "Complete Device Dispense Copy",
+			"name": "Complete Device Dispense",
 			"event": [
 				{
 					"listen": "prerequest",
