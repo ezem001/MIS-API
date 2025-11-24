@@ -6905,21 +6905,21 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "feee3b46-06ee-4b62-bcca-575c098de5b1",
+						"id": "6f73cae8-6555-4514-95ab-8a332a4fa361",
 						"exec": [
 							"const resData = pm.response.json().data;\r",
 							"\r",
-							"// Функція для примусового формату \"400.0\"\r",
-							"function forceDecimal(num) {\r",
-							"    if (num === null || num === undefined) return num;\r",
-							"    return Number(num).toFixed(1); // завжди робить х.0\r",
+							"// --- Функція для чисел з .0 ---\r",
+							"function numberWithDecimalZero(num) {\r",
+							"    return Number(num);\r",
 							"}\r",
 							"\r",
+							"// Формуємо details\r",
 							"const details = resData.details.map(d => ({\r",
 							"    ...d,\r",
-							"    sell_price: Number(d.sell_price).toExponential().replace('+', ''),   // 3.5e3\r",
-							"    reimbursement_amount: forceDecimal(d.reimbursement_amount),\r",
-							"    discount_amount: forceDecimal(d.discount_amount)\r",
+							"    reimbursement_amount: numberWithDecimalZero(d.reimbursement_amount),\r",
+							"    discount_amount: numberWithDecimalZero(d.discount_amount),\r",
+							"    sell_price: numberWithDecimalZero(d.sell_price)\r",
 							"}));\r",
 							"\r",
 							"// Дата формату 2018-08-02T10:45:16.000Z\r",
@@ -6933,8 +6933,19 @@
 							"    details\r",
 							"};\r",
 							"\r",
+							"// Примусова серіалізація чисел з .0\r",
+							"function stringifyWithDecimalZero(obj) {\r",
+							"    return JSON.stringify(obj, (key, value) => {\r",
+							"        if (typeof value === \"number\" && Number.isInteger(value)) {\r",
+							"            return Number(value.toFixed(1)); // додає .0 до цілих чисел\r",
+							"        }\r",
+							"        return value;\r",
+							"    }, 2);\r",
+							"}\r",
+							"\r",
 							"// Зберігаємо у глобальну змінну\r",
-							"pm.globals.set(\"device_json_completed_to_sign\", JSON.stringify(jsonCompleted, null, 2));\r",
+							"pm.globals.set(\"device_json_completed_to_sign\", stringifyWithDecimalZero(jsonCompleted));\r",
+							"\r",
 							"\r",
 							"// Варіант 2: Mark in error Device dispense\r",
 							"const jsonError = {\r",
@@ -7037,7 +7048,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "06d2555c-ef38-463a-b848-98c9cd064ecf",
+						"id": "083a0ea9-9ee8-4319-950c-e335ab7048f1",
 						"exec": [
 							""
 						],
@@ -7074,7 +7085,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"based_on\": {\r\n        \"display_value\": null,\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"device_request\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"88821f44-2b4b-48a8-9bad-95de29a5a3ce\"\r\n        }\r\n    },\r\n    \"details\": [\r\n        {\r\n            \"device\": {\r\n                \"display_value\": null,\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"code\": \"device_definition\",\r\n                                \"system\": \"eHealth/resources\"\r\n                            }\r\n                        ],\r\n                        \"text\": null\r\n                    },\r\n                    \"value\": \"9221c91f-aed0-435b-9bc5-f9c8be59f146\"\r\n                }\r\n            },\r\n            \"discount_amount\": 400,\r\n            \"program_device\": {\r\n                \"display_value\": null,\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"code\": \"program_device\",\r\n                                \"system\": \"eHealth/resources\"\r\n                            }\r\n                        ],\r\n                        \"text\": null\r\n                    },\r\n                    \"value\": \"095c790c-9a70-4b37-ac4f-b556e7f1ee85\"\r\n                }\r\n            },\r\n            \"quantity\": {\r\n                \"code\": \"piece\",\r\n                \"system\": \"device_unit\",\r\n                \"unit\": \"шт\",\r\n                \"value\": 50\r\n            },\r\n            \"reimbursement_amount\": 400,\r\n            \"sell_price\": 3500\r\n        }\r\n    ],\r\n    \"encounter\": null,\r\n    \"explanatory_letter\": null,\r\n    \"external_performer\": null,\r\n    \"external_provider\": null,\r\n    \"id\": \"3fd39ea9-cb99-4072-9462-62d056ac5996\",\r\n    \"inserted_at\": \"2025-11-24T18:33:54.722000Z\",\r\n    \"location\": {\r\n        \"display_value\": \"Відділення аптеки медичної допомоги №1\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"division\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"2bb9f35c-711f-4bdf-a69f-0d4fab0d2076\"\r\n        }\r\n    },\r\n    \"note\": \"Some notes\",\r\n    \"part_of\": null,\r\n    \"payment_amount\": 2,\r\n    \"payment_id\": null,\r\n    \"performer\": {\r\n        \"display_value\": \"Сергій Вікторович Куриленко\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"employee\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"840644d4-db5b-4457-88e1-ef5e3be6101f\"\r\n        }\r\n    },\r\n    \"performer_legal_entity\": {\r\n        \"display_value\": \"\\\"ЕЛЕКТРОННЕ ЗДОРОВ'Я\\\"\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"legal_entity\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"d922e94e-3179-476c-9c53-ccf301a62939\"\r\n        }\r\n    },\r\n    \"primary_source\": true,\r\n    \"program\": {\r\n        \"display_value\": \"Медичні вироби для визначення рівня глюкози в крові\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"medical_program\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"0cefbce3-6dd2-45bd-b1e6-983fc055d5e0\"\r\n        }\r\n    },\r\n    \"report_origin\": null,\r\n    \"signed_content_links\": [],\r\n    \"status\": \"completed\",\r\n    \"status_reason\": null,\r\n    \"subject\": {\r\n        \"display_value\": null,\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"patient\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"40123283-6aef-4b5e-bcef-8a1f73b4badb\"\r\n        }\r\n    },\r\n    \"supporting_info\": [],\r\n    \"updated_at\": \"2025-11-24T18:33:54.722000Z\",\r\n    \"when_handed_over\": \"2025-11-24T18:34:21.000Z\"\r\n}"
+					"raw": "{\r\n    \"based_on\": {\r\n        \"display_value\": null,\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"device_request\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"88821f44-2b4b-48a8-9bad-95de29a5a3ce\"\r\n        }\r\n    },\r\n    \"details\": [\r\n        {\r\n            \"device\": {\r\n                \"display_value\": null,\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"code\": \"device_definition\",\r\n                                \"system\": \"eHealth/resources\"\r\n                            }\r\n                        ],\r\n                        \"text\": null\r\n                    },\r\n                    \"value\": \"9221c91f-aed0-435b-9bc5-f9c8be59f146\"\r\n                }\r\n            },\r\n            \"discount_amount\": 400,\r\n            \"program_device\": {\r\n                \"display_value\": null,\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"code\": \"program_device\",\r\n                                \"system\": \"eHealth/resources\"\r\n                            }\r\n                        ],\r\n                        \"text\": null\r\n                    },\r\n                    \"value\": \"095c790c-9a70-4b37-ac4f-b556e7f1ee85\"\r\n                }\r\n            },\r\n            \"quantity\": {\r\n                \"code\": \"piece\",\r\n                \"system\": \"device_unit\",\r\n                \"unit\": \"шт\",\r\n                \"value\": 50\r\n            },\r\n            \"reimbursement_amount\": 400,\r\n            \"sell_price\": \"3.5e+3\"\r\n        }\r\n    ],\r\n    \"encounter\": null,\r\n    \"explanatory_letter\": null,\r\n    \"external_performer\": null,\r\n    \"external_provider\": null,\r\n    \"id\": \"678db378-e59b-48da-8a71-439cd8c491a2\",\r\n    \"inserted_at\": \"2025-11-24T18:53:09.650000Z\",\r\n    \"location\": {\r\n        \"display_value\": \"Відділення аптеки медичної допомоги №1\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"division\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"2bb9f35c-711f-4bdf-a69f-0d4fab0d2076\"\r\n        }\r\n    },\r\n    \"note\": \"Some notes\",\r\n    \"part_of\": null,\r\n    \"payment_amount\": 2,\r\n    \"payment_id\": null,\r\n    \"performer\": {\r\n        \"display_value\": \"Сергій Вікторович Куриленко\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"employee\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"840644d4-db5b-4457-88e1-ef5e3be6101f\"\r\n        }\r\n    },\r\n    \"performer_legal_entity\": {\r\n        \"display_value\": \"\\\"ЕЛЕКТРОННЕ ЗДОРОВ'Я\\\"\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"legal_entity\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"d922e94e-3179-476c-9c53-ccf301a62939\"\r\n        }\r\n    },\r\n    \"primary_source\": true,\r\n    \"program\": {\r\n        \"display_value\": \"Медичні вироби для визначення рівня глюкози в крові\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"medical_program\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"0cefbce3-6dd2-45bd-b1e6-983fc055d5e0\"\r\n        }\r\n    },\r\n    \"report_origin\": null,\r\n    \"signed_content_links\": [],\r\n    \"status\": \"completed\",\r\n    \"status_reason\": null,\r\n    \"subject\": {\r\n        \"display_value\": null,\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"patient\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"40123283-6aef-4b5e-bcef-8a1f73b4badb\"\r\n        }\r\n    },\r\n    \"supporting_info\": [],\r\n    \"updated_at\": \"2025-11-24T19:04:00.403000Z\",\r\n    \"when_handed_over\": \"2025-11-24T19:11:19.000Z\"\r\n}"
 				},
 				"url": {
 					"raw": "{{host}}/api/patients/{{patient_for_regress}}/device_dispenses/{{JobDeviceDispenseID}}",
@@ -7098,7 +7109,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b1659f8a-3442-4afa-8d61-5bb0288eae9d",
+						"id": "6b466626-0117-45ca-8d15-e5d756ce7472",
 						"exec": [
 							"// Helper function: Capitalize and format path segment to Title Case\r",
 							"function formatEntityTitle(pathSegment) {\r",
@@ -7193,23 +7204,23 @@
 							"            });\r",
 							"\r",
 							"            displayResponse(`${resourceLabel} Job Response Details`, responseBody.data);\r",
+							"            setTimeout(() => {  // Відновлюємо попередні значення після запиту\r",
+							"                const originalToken = pm.environment.get(\"original_access_token\");\r",
+							"                const originalDivision = pm.environment.get(\"original_user_division_id\");\r",
+							"                const originalUserID = pm.environment.get(\"original_user_id\");\r",
 							"\r",
-							"            // Відновлюємо попередні значення після запиту\r",
-							"            const originalToken = pm.environment.get(\"original_access_token\");\r",
-							"            const originalDivision = pm.environment.get(\"original_user_division_id\");\r",
-							"            const originalUserID = pm.environment.get(\"original_user_id\");\r",
+							"                if (originalToken) {\r",
+							"                    pm.environment.set(\"access_token\", originalToken);\r",
+							"                }\r",
 							"\r",
-							"            if (originalToken) {\r",
-							"                pm.environment.set(\"access_token\", originalToken);\r",
-							"            }\r",
+							"                if (originalDivision) {\r",
+							"                    pm.environment.set(\"user_division_id\", originalDivision);\r",
+							"                }\r",
 							"\r",
-							"            if (originalDivision) {\r",
-							"                pm.environment.set(\"user_division_id\", originalDivision);\r",
-							"            }\r",
-							"\r",
-							"            if (originalUserID) {\r",
-							"                pm.environment.set(\"user_id\", originalUserID);\r",
-							"            }\r",
+							"                if (originalUserID) {\r",
+							"                    pm.environment.set(\"user_id\", originalUserID);\r",
+							"                }\r",
+							"            }, 5000)\r",
 							"\r",
 							"\r",
 							"        } else {\r",
@@ -7245,7 +7256,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f5cf244c-2586-4934-aada-40133b2641f4",
+						"id": "7e8484f5-f142-493b-bd4c-80317ead23c8",
 						"exec": [
 							"// Отримуємо ContentForSign із глобальних змінних\r",
 							"const contentForSign = pm.globals.get('device_json_completed_to_sign');\r",
@@ -7325,7 +7336,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"signed_data\": \"{{device_json_completed_to_sign}}\"}"
+					"raw": "{\"signed_data\": \"{{complete_device_dispense_signed_content}}\"}"
 				},
 				"url": {
 					"raw": "{{host}}/api/patients/{{patient_for_regress}}/device_dispenses/{{JobDeviceDispenseID}}/actions/complete",
