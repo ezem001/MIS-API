@@ -8518,7 +8518,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{host}}/api/patients/{{patient_for_regress}}/composition/{{JobCompositionID}}/episode/{{jobEpisodeID}}/encounter/{{encounter_extracted_id}}",
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/composition/{{JobCompositionID}}/episode/{{jobEpisodeID}}/encounter/{{jobEncounterID}}",
 					"host": [
 						"{{host}}"
 					],
@@ -8531,7 +8531,7 @@
 						"episode",
 						"{{jobEpisodeID}}",
 						"encounter",
-						"{{encounter_extracted_id}}"
+						"{{jobEncounterID}}"
 					]
 				}
 			},
