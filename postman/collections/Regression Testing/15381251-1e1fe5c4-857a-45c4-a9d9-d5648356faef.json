@@ -6566,10 +6566,19 @@
 					"script": {
 						"id": "b8f5367a-1188-433b-b399-1066e953be56",
 						"exec": [
-							""
+							"pm.environment.set(\"original_access_token\", pm.environment.get(\"access_token\"));\r",
+							"pm.environment.set(\"original_user_division_id\", pm.environment.get(\"user_division_id\"));\r",
+							"\r",
+							"const pharmacyToken = \"ckJ6bnRMY3M1SHlJY1ZTbTRnaHlSdz09\";\r",
+							"const pharmacyDivision = \"2bb9f35c-711f-4bdf-a69f-0d4fab0d2076\"\r",
+							"\r",
+							"pm.environment.set(\"access_token\", pharmacyToken);\r",
+							"pm.environment.set(\"user_division_id\", pharmacyDivision);\r",
+							"console.log(\"✅ Temporary token set for this request:\", pharmacyToken);"
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
 					}
 				},
 				{
@@ -6611,7 +6620,8 @@
 							"});"
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
