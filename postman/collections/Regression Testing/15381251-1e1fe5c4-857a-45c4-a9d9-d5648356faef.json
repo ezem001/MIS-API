@@ -10172,12 +10172,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/{{jobEncounterID}}",
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/encounters/{{jobEncounterID}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
+						"patients",
+						"{{patient_for_regress}}",
+						"encounters",
 						"{{jobEncounterID}}"
 					]
 				}
