@@ -7148,6 +7148,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "a99c8384-fc48-498a-8791-2143f209fba5",
 						"exec": [
 							"const uuid = require('uuid');\r",
 							"const serviceRequestId = uuid.v4();\r",
@@ -7156,12 +7157,13 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "a99c8384-fc48-498a-8791-2143f209fba5"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
+						"id": "f7a85fab-b962-4ace-b6b3-ed89afeabd6a",
 						"exec": [
 							"const resData = pm.response.json();\r",
 							"\r",
@@ -7173,7 +7175,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "f7a85fab-b962-4ace-b6b3-ed89afeabd6a"
+						"requests": {}
 					}
 				}
 			],
@@ -7186,7 +7188,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"{{service_request_id}}\",\r\n    \"status\": \"active\",\r\n    \"intent\": \"order\",\r\n    \"priority\": \"routine\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/SNOMED/service_request_categories\",\r\n                \"code\": \"procedure\"\r\n            }\r\n        ]\r\n    },\r\n    \"code\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"service\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"40b2dfdf-7623-4fa5-bbfb-58a6b651ff0c\"\r\n        }\r\n    },\r\n    \"context\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"encounter\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{encounter_extracted_id}}\"\r\n        }\r\n    },\r\n    \"occurrence_period\": {\r\n        \"start\": \"{{serviceRequestStartDate}}\",\r\n            \"end\": \"{{serviceRequestEndDate}}\"\r\n    },\r\n    \"requester_employee\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"requester_legal_entity\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"legal_entity\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_legal_entity}}\"\r\n        }\r\n    },\r\n    \"program\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"medical_program\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"0eb268fa-ab21-4df9-8d58-1bc85e393533\"\r\n        }\r\n    }\r\n}",
+					"raw": "{\r\n    \"id\": \"{{service_request_id}}\",\r\n    \"status\": \"active\",\r\n    \"intent\": \"order\",\r\n    \"priority\": \"routine\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/SNOMED/service_request_categories\",\r\n                \"code\": \"procedure\"\r\n            }\r\n        ]\r\n    },\r\n    \"code\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"service\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"40b2dfdf-7623-4fa5-bbfb-58a6b651ff0c\"\r\n        }\r\n    },\r\n    \"context\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"encounter\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{jobEncounterID}}\"\r\n        }\r\n    },\r\n    \"occurrence_period\": {\r\n        \"start\": \"{{serviceRequestStartDate}}\",\r\n            \"end\": \"{{serviceRequestEndDate}}\"\r\n    },\r\n    \"requester_employee\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"requester_legal_entity\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"legal_entity\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_legal_entity}}\"\r\n        }\r\n    },\r\n    \"program\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"medical_program\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"0eb268fa-ab21-4df9-8d58-1bc85e393533\"\r\n        }\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
