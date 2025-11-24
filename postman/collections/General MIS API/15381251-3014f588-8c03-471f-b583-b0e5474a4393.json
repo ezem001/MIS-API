@@ -9661,7 +9661,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Dictionaries Configurations by search params Copy",
+					"name": "Get Devices Configurations by search params",
 					"id": "15381251-29a50a33-ecf7-4b7a-a53f-ff776e4dc38d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
