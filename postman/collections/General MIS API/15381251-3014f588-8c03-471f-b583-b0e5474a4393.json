@@ -9659,6 +9659,59 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Dictionaries Configurations by search params Copy",
+					"id": "15381251-29a50a33-ecf7-4b7a-a53f-ff776e4dc38d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "api-key",
+								"value": "{{mis_client_secret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/dictionaries_configurations?name=prescribable_device_codes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"dictionaries_configurations"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "prescribable_device_codes"
+								},
+								{
+									"key": "is_active",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "page_size",
+									"value": "50",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "15381251-afb31d21-ffe1-44f6-a15b-778d6de02fa2"
