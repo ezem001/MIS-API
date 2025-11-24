@@ -7555,7 +7555,7 @@
 			"response": []
 		},
 		{
-			"name": "Approve Person Request Copy",
+			"name": "Approve Person Request for device",
 			"event": [
 				{
 					"listen": "test",
