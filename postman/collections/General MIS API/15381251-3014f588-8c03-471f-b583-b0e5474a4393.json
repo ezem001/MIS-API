@@ -9065,7 +9065,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/device_definitions?medical_program_id=0cefbce3-6dd2-45bd-b1e6-983fc055d5e0",
+									"raw": "{{host}}/api/device_definitions?classification_type=W0101060101&medical_program_id=0cefbce3-6dd2-45bd-b1e6-983fc055d5e0",
 									"host": [
 										"{{host}}"
 									],
@@ -9076,8 +9076,7 @@
 									"query": [
 										{
 											"key": "classification_type",
-											"value": "30221",
-											"disabled": true
+											"value": "W0101060101"
 										},
 										{
 											"key": "model_number",
@@ -9100,6 +9099,10 @@
 											"disabled": true
 										},
 										{
+											"key": "medical_program_id",
+											"value": "0cefbce3-6dd2-45bd-b1e6-983fc055d5e0"
+										},
+										{
 											"key": "is_active",
 											"value": "true",
 											"disabled": true
@@ -9116,8 +9119,9 @@
 										},
 										{
 											"key": "medical_program_id",
-											"value": "0cefbce3-6dd2-45bd-b1e6-983fc055d5e0",
-											"type": "text"
+											"value": "c41ae6c1-67db-4ee0-99f8-92d3faf19cf6",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								}
