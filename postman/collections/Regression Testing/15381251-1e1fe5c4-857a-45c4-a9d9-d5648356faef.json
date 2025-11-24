@@ -6489,7 +6489,12 @@
 						"exec": [
 							"pm.test(\"Get Device Request details - PASS. Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							"const data = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"device_req_requisition\", data?.data?.requisition)\r",
+							"pm.globals.set(\"device_req_verification_code\", data?.urgent?.verification_code)"
 						],
 						"type": "text/javascript",
 						"packages": {},
