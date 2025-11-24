@@ -9684,19 +9684,15 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/dictionaries_configurations?name=prescribable_device_codes",
+							"raw": "{{host}}/api/devices_configurations",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
-								"dictionaries_configurations"
+								"devices_configurations"
 							],
 							"query": [
-								{
-									"key": "name",
-									"value": "prescribable_device_codes"
-								},
 								{
 									"key": "is_active",
 									"value": "true",
