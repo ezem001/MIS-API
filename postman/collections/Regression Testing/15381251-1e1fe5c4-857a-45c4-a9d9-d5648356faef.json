@@ -6082,7 +6082,7 @@
 			"response": []
 		},
 		{
-			"name": "Dummy Encounter data package Copy",
+			"name": "Dummy Encounter data package",
 			"event": [
 				{
 					"listen": "test",
