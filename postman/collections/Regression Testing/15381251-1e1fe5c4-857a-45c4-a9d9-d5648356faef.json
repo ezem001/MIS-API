@@ -8020,7 +8020,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Device Request details #2",
+			"name": "Get Device Request details #2 without program",
 			"event": [
 				{
 					"listen": "test",
