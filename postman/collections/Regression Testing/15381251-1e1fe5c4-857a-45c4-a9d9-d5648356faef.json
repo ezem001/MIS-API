@@ -527,6 +527,7 @@
 									"});\r",
 									"\r",
 									"tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -685,7 +686,7 @@
 							},
 							{
 								"key": "x-custom-psk",
-								"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+								"value": "{{x-custom-psk}}",
 								"type": "text"
 							}
 						],
