@@ -995,6 +995,11 @@
 			"id": "15381251-952d7626-ad38-4a1d-af2d-fd6565884c8b"
 		},
 		{
+			"name": "New Folder",
+			"item": [],
+			"id": "15381251-db6d5370-8e8d-4273-b6b6-3e16634b2ab2"
+		},
+		{
 			"name": "Login",
 			"event": [
 				{
