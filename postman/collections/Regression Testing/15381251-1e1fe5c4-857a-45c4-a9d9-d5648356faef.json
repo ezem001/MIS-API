@@ -6480,6 +6480,344 @@
 			"response": []
 		},
 		{
+			"name": "Dummy Device request Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "019a60f4-6832-4a10-b438-7c3622a059df",
+						"exec": [
+							"const uuid = require('uuid');\r",
+							"const serviceRequestId = uuid.v4();\r",
+							"\r",
+							"pm.globals.set(\"dummy_device_request_id\", serviceRequestId);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c596aab1-8696-4d90-b877-4a5d98ca288e",
+						"exec": [
+							"const resData = pm.response.json();\r",
+							"\r",
+							"pm.test(`Device Request content sign success. Response status is 200 ${JSON.stringify(resData, null, 2)}`, function () {\r",
+							"    pm.expect(pm.response.code).to.eql(200);\r",
+							"    pm.expect(resData).to.have.property('signed_content');\r",
+							"    pm.globals.set('device_request_signed_content', resData.signed_content);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "15381251-9a846da9-dfb0-4b0d-8aac-44ddd429cf80",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"{{dummy_device_request_id}}\",\r\n    \"intent\": \"order\",\r\n    \"quantity\": {\r\n        \"value\": 50,\r\n        \"system\": \"device_unit\",\r\n        \"code\": \"piece\"\r\n    },\r\n    \"code\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"device_definition_classification_type\",\r\n                \"code\": \"W0101060101\"\r\n            }\r\n        ]\r\n    },\r\n    \"encounter\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"encounter\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{jobEncounterID}}\"\r\n        }\r\n    },\r\n    \"requester\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"authored_on\": \"{{deviceRequestAuthoredOn}}\",\r\n    \"occurrence_period\": {\r\n        \"start\": \"{{deviceRequestStartedAt}}\",\r\n        \"end\": \"{{deviceRequestEndAt}}\"\r\n    },\r\n    \"performer\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"legal_entity\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_legal_entity}}\"\r\n        }\r\n    },\r\n    \"note\": \"Some notes\",\r\n    \"program\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"medical_program\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"af8ba0d3-1520-4a01-8156-22065e96fd9a\"\r\n        }\r\n    },\r\n    \"status\": \"active\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/create-device-signed-content",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"create-device-signed-content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Device request Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "005dbf15-a485-4735-9f0c-83dbef15fb5a",
+						"exec": [
+							"function displayResponse(title, data) {\r",
+							"    const html = `\r",
+							"        <h1>${title}</h1>\r",
+							"        <pre>${JSON.stringify(data, null, 2)}</pre>`;\r",
+							"    pm.visualizer.set(html);\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Create Device Request Response status code is 202\", function () {\r",
+							"    pm.expect(pm.response.code).to.eql(202);\r",
+							"});\r",
+							"\r",
+							"// Get the response body from the main request\r",
+							"const resBody = pm.response.text();\r",
+							"const resData = JSON.parse(resBody);\r",
+							"\r",
+							"if (resData && resData.error) {\r",
+							"    displayResponse('Create Device Request Response Error Details', resData.error);\r",
+							"}\r",
+							"\r",
+							"const href = resData.data.links[0].href;\r",
+							"console.log(\"Extracted href:\", href);\r",
+							"\r",
+							"// Extract the job ID from the href\r",
+							"const number = href.split('/jobs/')[1];\r",
+							"console.log(\"Extracted number:\", number);\r",
+							"\r",
+							"// Initialize retry counter in the environment\r",
+							"pm.environment.set('retryCount', 0);\r",
+							"\r",
+							"// Function to check job status\r",
+							"function checkJobStatus(jobId) {\r",
+							"\r",
+							"    const url = `${pm.globals.get('host')}/api/jobs/${jobId}`;\r",
+							"    const maxRetries = 3; // Set the maximum number of retries\r",
+							"\r",
+							"    pm.sendRequest({\r",
+							"        method: 'GET',\r",
+							"        url: url,\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/json',\r",
+							"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,\r",
+							"            'api-key': `${pm.environment.get('mis_client_secret')}`,\r",
+							"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`\r",
+							"        }\r",
+							"    }, function (err, res) {\r",
+							"\r",
+							"        pm.test(`Job status check response status is 200 or 303`, function () {\r",
+							"            pm.expect([200, 303]).to.include(res.code);\r",
+							"        });\r",
+							"\r",
+							"        if (err) {\r",
+							"            displayResponse('Request Error', { error: err.message });\r",
+							"            console.error('Error checking job status:', err);\r",
+							"        } else {\r",
+							"\r",
+							"            const responseBody = res.json();\r",
+							"            console.log('Job Status:', responseBody.data.status);\r",
+							"\r",
+							"            if (responseBody.data.status === 'processed') {\r",
+							"\r",
+							"                pm.test(`Create Device Request Job Success. Response status is 303 ${JSON.stringify(res.json(), null, 2)}`, function () {\r",
+							"                    pm.expect(res.code).to.eql(303);\r",
+							"                });\r",
+							"\r",
+							"                const links = responseBody.data.links.reduce((acc, link) => {\r",
+							"                    // Видаляємо '/api/' з початку href\r",
+							"                    const href = link.href.replace('/api/', '');\r",
+							"\r",
+							"                    // Додаємо оброблений href у глобальні змінні\r",
+							"                    acc[link.entity] = href;\r",
+							"\r",
+							"                    // Якщо href містить \"device_requests/\", витягуємо ID\r",
+							"                    if (href.includes('device_requests/')) {\r",
+							"                        const activityId = href.split('/').pop(); // Беремо останній елемент після розділення \"/\"\r",
+							"                        acc['jobDeviceRequest'] = activityId;\r",
+							"                    }\r",
+							"\r",
+							"                    return acc;\r",
+							"                }, {});\r",
+							"                // Iterate over the links object and set globals dynamically\r",
+							"                Object.entries(links).forEach(([entity, value]) => {\r",
+							"                    const globalName = `${entity.charAt(0).toUpperCase() + entity.slice(1)}ID`;\r",
+							"                    pm.globals.set(globalName, value);\r",
+							"                });\r",
+							"\r",
+							"\r",
+							"                displayResponse('Create Device Request Job Response Details', responseBody.data);\r",
+							"            } else {\r",
+							"\r",
+							"                // Retrieve the current retry count\r",
+							"                let retryCount = parseInt(pm.environment.get('retryCount')) || 0;\r",
+							"\r",
+							"                if (retryCount < maxRetries) {\r",
+							"                    // Increment the retry count and set it back to the environment\r",
+							"                    retryCount++;\r",
+							"                    pm.environment.set('retryCount', retryCount);\r",
+							"\r",
+							"                    console.log(`Retrying... Attempt ${retryCount}`);\r",
+							"\r",
+							"                    setTimeout(() => {\r",
+							"                        checkJobStatus(jobId);\r",
+							"                    }, 1000);\r",
+							"\r",
+							"                    displayResponse('Create Device Request Job Response Details2', responseBody.data);\r",
+							"\r",
+							"                } else {\r",
+							"                    console.log('Maximum retry limit reached.');\r",
+							"                    displayResponse(responseBody.data.error ? 'Create Device Request Error Details' : 'Final Job Status Check', responseBody.data);\r",
+							"                }\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"}\r",
+							"\r",
+							"// Call the function with the job ID\r",
+							"checkJobStatus(number);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a957924f-68c2-4faf-8973-c90719c6617a",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "15381251-5e400e34-2bc4-4119-a611-96e8beaff00f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "api-key",
+						"value": "{{mis_client_secret}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-custom-psk",
+						"value": "{{x-custom-psk}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"signed_data\": \"{{device_request_signed_content}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/device_requests",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_for_regress}}",
+						"device_requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Device Request details Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d85f6826-9341-4ef8-bc14-bba91911a9d7",
+						"exec": [
+							"pm.test(\"Get Device Request details - PASS. Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const data = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"device_req_requisition\", data?.data?.requisition)\r",
+							"pm.globals.set(\"device_req_verification_code\", data?.urgent?.verification_code)"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "821f65b1-9f1e-4253-a910-223a3488ff06",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "15381251-892f0d9c-eb21-4a33-97f4-d64cf4773386",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "{{mis_client_secret}}",
+						"type": "text"
+					},
+					{
+						"key": "x-custom-psk",
+						"value": "{{x-custom-psk}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/device_requests/{{JobDeviceRequestID}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_for_regress}}",
+						"device_requests",
+						"{{JobDeviceRequestID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get Device Request details",
 			"event": [
 				{
