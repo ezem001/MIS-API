@@ -6568,6 +6568,7 @@
 						"exec": [
 							"pm.environment.set(\"original_access_token\", pm.environment.get(\"access_token\"));\r",
 							"pm.environment.set(\"original_user_division_id\", pm.environment.get(\"user_division_id\"));\r",
+							"pm.environment.set(\"original_user_id\", pm.environment.get(\"user_id\"));\r",
 							"\r",
 							"const pharmacyToken = \"ckJ6bnRMY3M1SHlJY1ZTbTRnaHlSdz09\";\r",
 							"const pharmacyDivision = \"2bb9f35c-711f-4bdf-a69f-0d4fab0d2076\"\r",
