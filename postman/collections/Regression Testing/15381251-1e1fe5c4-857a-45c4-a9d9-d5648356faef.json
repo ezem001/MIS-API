@@ -6882,7 +6882,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Device Dispense details Copy",
+			"name": "Get Device Dispense details",
 			"event": [
 				{
 					"listen": "prerequest",
