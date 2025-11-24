@@ -841,6 +841,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "9df22ec8-98c7-4b9a-b247-71ba6513aa7e",
 								"exec": [
 									"pm.test(\"Merge request sign successful\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -852,18 +853,19 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "9df22ec8-98c7-4b9a-b247-71ba6513aa7e"
+								"requests": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "be2e8d9d-574a-4a79-8bc2-eea5d719ca48",
 								"exec": [
 									""
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "be2e8d9d-574a-4a79-8bc2-eea5d719ca48"
+								"requests": {}
 							}
 						}
 					],
@@ -891,7 +893,7 @@
 							},
 							{
 								"key": "x-custom-psk",
-								"value": "0d65b47f51cb527a3262311da2af53e03f6fcff6e4cf655414a43f52e5ad457b",
+								"value": "{{x-custom-psk}}",
 								"type": "text"
 							}
 						],
