@@ -7346,7 +7346,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Person Request Copy",
+			"name": "Create Person Request for device",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -7760,7 +7760,7 @@
 			"response": []
 		},
 		{
-			"name": "Dummy Device request Copy",
+			"name": "Dummy Device request #2",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -7827,7 +7827,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Device request Copy",
+			"name": "Create Device request #2",
 			"event": [
 				{
 					"listen": "test",
@@ -8019,7 +8019,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Device Request details Copy",
+			"name": "Get Device Request details #2",
 			"event": [
 				{
 					"listen": "test",
