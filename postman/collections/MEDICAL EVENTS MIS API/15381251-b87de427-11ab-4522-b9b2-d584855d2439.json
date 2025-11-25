@@ -3315,7 +3315,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Conditions by search paramss Copy",
+							"name": "Get Conditions by search paramss",
 							"id": "15381251-d94e91ef-7dca-454b-b757-efe8d27b2d1e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
