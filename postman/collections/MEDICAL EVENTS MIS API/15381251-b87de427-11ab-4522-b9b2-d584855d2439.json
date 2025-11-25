@@ -3340,19 +3340,19 @@
 									},
 									{
 										"key": "X-Custom-PSK",
-										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+										"value": "{{x-custom-psk}}",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{host_demo}}/api/patients/b0efddfe-cde2-4faf-839e-9f0fc4a68c23/conditions?managing_organization_id={{user_legal_entity}}",
+									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/conditions?managing_organization_id={{user_legal_entity}}&verification_status=confirmed",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
-										"b0efddfe-cde2-4faf-839e-9f0fc4a68c23",
+										"{{patient_id_from_episode}}",
 										"conditions"
 									],
 									"query": [
@@ -3394,6 +3394,23 @@
 										{
 											"key": "managing_organization_id",
 											"value": "{{user_legal_entity}}"
+										},
+										{
+											"key": "clinical_status",
+											"value": "active",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "verification_status",
+											"value": "provisional",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "verification_status",
+											"value": "confirmed",
+											"type": "text"
 										}
 									]
 								}
