@@ -5246,40 +5246,45 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/patients/patient_id/clinical_impressions?encounter_id=7c3da506-804d-4550-8993-bf17f9ee0400&episode_id=f48d1b6c-a021-4d6a-a5a4-aee93e152ecc&code=insulin_1&status=completed&page=2&page_size=50",
+									"raw": "{{host}}/api/patients/f32392dc-57d0-40ce-abce-983eb504618a/clinical_impressions?encounter_id=4e4bb94f-381e-4e72-a5df-54a44d232e34",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
-										"patient_id",
+										"f32392dc-57d0-40ce-abce-983eb504618a",
 										"clinical_impressions"
 									],
 									"query": [
 										{
 											"key": "encounter_id",
-											"value": "7c3da506-804d-4550-8993-bf17f9ee0400"
+											"value": "4e4bb94f-381e-4e72-a5df-54a44d232e34"
 										},
 										{
 											"key": "episode_id",
-											"value": "f48d1b6c-a021-4d6a-a5a4-aee93e152ecc"
+											"value": "f48d1b6c-a021-4d6a-a5a4-aee93e152ecc",
+											"disabled": true
 										},
 										{
 											"key": "code",
-											"value": "insulin_1"
+											"value": "insulin_1",
+											"disabled": true
 										},
 										{
 											"key": "status",
-											"value": "completed"
+											"value": "completed",
+											"disabled": true
 										},
 										{
 											"key": "page",
-											"value": "2"
+											"value": "2",
+											"disabled": true
 										},
 										{
 											"key": "page_size",
-											"value": "50"
+											"value": "50",
+											"disabled": true
 										}
 									]
 								}
