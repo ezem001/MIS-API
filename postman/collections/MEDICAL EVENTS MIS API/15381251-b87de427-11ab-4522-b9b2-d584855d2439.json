@@ -3345,14 +3345,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/conditions?managing_organization_id={{user_legal_entity}}&verification_status=confirmed",
+									"raw": "{{host}}/api/patients/f32392dc-57d0-40ce-abce-983eb504618a/conditions?encounter_id={{jobEncounterID}}&managing_organization_id={{user_legal_entity}}",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
-										"{{patient_id_from_episode}}",
+										"f32392dc-57d0-40ce-abce-983eb504618a",
 										"conditions"
 									],
 									"query": [
@@ -3373,8 +3373,7 @@
 										},
 										{
 											"key": "encounter_id",
-											"value": "f9d7c18f-97c2-466c-8809-59f90b70f560",
-											"disabled": true
+											"value": "{{jobEncounterID}}"
 										},
 										{
 											"key": "episode_id",
@@ -3397,7 +3396,7 @@
 										},
 										{
 											"key": "clinical_status",
-											"value": "active",
+											"value": "finished",
 											"type": "text",
 											"disabled": true
 										},
@@ -3409,8 +3408,8 @@
 										},
 										{
 											"key": "verification_status",
-											"value": "confirmed",
-											"type": "text"
+											"value": "entered_in_error",
+											"disabled": true
 										}
 									]
 								}
