@@ -6087,7 +6087,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "33cd1485-07c2-4a20-8973-0a0f44954ddd",
+						"id": "4aaa43f6-c70e-4cf8-bb00-fc3efc62c0f0",
 						"exec": [
 							"// Retrieve the URL from the global variable\r",
 							"const url = pm.globals.get('jobEncounterID');\r",
@@ -6118,11 +6118,11 @@
 							"\r",
 							"// Обчислюємо deviceRequestStartedAt (на день більше за encounter_start_date)\r",
 							"const deviceRequestStartedAt = new Date(encounterPeriodes);\r",
-							"deviceRequestStartedAt.setDate(deviceRequestStartedAt.getDate() + 1);\r",
+							"deviceRequestStartedAt.setDate(deviceRequestStartedAt.getDate() + 3);\r",
 							"\r",
 							"// Обчислюємо deviceRequestEndAt (на 5 днів більше ніж deviceRequestStartedAt)\r",
 							"const deviceRequestEndAt = new Date(deviceRequestStartedAt);\r",
-							"deviceRequestEndAt.setDate(deviceRequestEndAt.getDate() + 5);\r",
+							"deviceRequestEndAt.setDate(deviceRequestEndAt.getDate() + 8);\r",
 							"\r",
 							"// Обчислюємо deviceRequestAuthoredOn (вчора відносно сьогоднішньої дати)\r",
 							"const today = new Date();\r",
@@ -6150,7 +6150,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b70ba999-b29f-461f-a8ba-eac42c5b2da4",
+						"id": "41ec2d8f-0d05-4c16-88fe-48ea80635a9c",
 						"exec": [
 							"pm.test(\"PreQualify Device request Response status code is 200\", function () {\r",
 							"    pm.expect(pm.response.code).to.eql(200);\r",
