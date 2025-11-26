@@ -3550,16 +3550,10 @@
 										"key": "X-Custom-PSK",
 										"value": "{{x-custom-psk}}",
 										"type": "text"
-									},
-									{
-										"key": "",
-										"value": "",
-										"type": "text",
-										"disabled": true
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/observations?managing_organization_id={{user_legal_entity}}",
+									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/observations?episode_id={{jobEpisodeID}}&managing_organization_id={{user_legal_entity}}",
 									"host": [
 										"{{host}}"
 									],
@@ -3592,13 +3586,12 @@
 										},
 										{
 											"key": "diagnostic_report_id",
-											"value": "09dc3ed7-2169-45d8-8fa3-d918c6839bf9",
+											"value": "",
 											"disabled": true
 										},
 										{
 											"key": "episode_id",
-											"value": "f48d1b6c-a021-4d6a-a5a4-aee93e152ecc",
-											"disabled": true
+											"value": "{{jobEpisodeID}}"
 										},
 										{
 											"key": "issued_from",
@@ -5202,14 +5195,14 @@
 									},
 									{
 										"key": "X-Custom-PSK",
-										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+										"value": "{{x-custom-psk}}",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{host_demo}}/api/patients/f32392dc-57d0-40ce-abce-983eb504618a/clinical_impressions/abd18092-17ed-4976-bdc7-6a6eb2b66c95",
+									"raw": "{{host}}/api/patients/f32392dc-57d0-40ce-abce-983eb504618a/clinical_impressions/abd18092-17ed-4976-bdc7-6a6eb2b66c95",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
