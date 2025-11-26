@@ -5241,14 +5241,14 @@
 									},
 									{
 										"key": "X-Custom-PSK",
-										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+										"value": "{{x-custom-psk}}",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{host_demo}}/api/patients/patient_id/clinical_impressions?encounter_id=7c3da506-804d-4550-8993-bf17f9ee0400&episode_id=f48d1b6c-a021-4d6a-a5a4-aee93e152ecc&code=insulin_1&status=completed&page=2&page_size=50",
+									"raw": "{{host}}/api/patients/patient_id/clinical_impressions?encounter_id=7c3da506-804d-4550-8993-bf17f9ee0400&episode_id=f48d1b6c-a021-4d6a-a5a4-aee93e152ecc&code=insulin_1&status=completed&page=2&page_size=50",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
