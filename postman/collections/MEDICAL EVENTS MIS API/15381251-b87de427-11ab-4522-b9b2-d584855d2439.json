@@ -5246,7 +5246,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/patients/f32392dc-57d0-40ce-abce-983eb504618a/clinical_impressions?encounter_id=4e4bb94f-381e-4e72-a5df-54a44d232e34",
+									"raw": "{{host}}/api/patients/f32392dc-57d0-40ce-abce-983eb504618a/clinical_impressions?encounter_id=4e4bb94f-381e-4e72-a5df-54a44d232e34&episode_id=40aa471a-f293-4927-b05f-fe9cebd8f093",
 									"host": [
 										"{{host}}"
 									],
@@ -5263,8 +5263,7 @@
 										},
 										{
 											"key": "episode_id",
-											"value": "f48d1b6c-a021-4d6a-a5a4-aee93e152ecc",
-											"disabled": true
+											"value": "40aa471a-f293-4927-b05f-fe9cebd8f093"
 										},
 										{
 											"key": "code",
