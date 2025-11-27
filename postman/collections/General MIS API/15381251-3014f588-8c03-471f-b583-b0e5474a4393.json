@@ -5847,7 +5847,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/persons?birth_date=1988-11-25&last_name=Тищенко&first_name=Григорій",
+									"raw": "{{host}}/api/persons?birth_date=1955-01-01&last_name=Галушка&first_name=Марко",
 									"host": [
 										"{{host}}"
 									],
@@ -5863,15 +5863,15 @@
 										},
 										{
 											"key": "birth_date",
-											"value": "1988-11-25"
+											"value": "1955-01-01"
 										},
 										{
 											"key": "last_name",
-											"value": "Тищенко"
+											"value": "Галушка"
 										},
 										{
 											"key": "first_name",
-											"value": "Григорій"
+											"value": "Марко"
 										},
 										{
 											"key": "tax_id",
