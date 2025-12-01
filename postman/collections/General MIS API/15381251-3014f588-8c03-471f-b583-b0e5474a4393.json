@@ -1600,7 +1600,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"healthcare_service_id\": \"6a9d692f-0a04-454d-a409-4821b6bc91f1\",\r\n  \"employee_id\": \"24bdf5fd-81e1-4008-bed8-c92321a6a9e7\"\r\n}"
+											"raw": "{\r\n  \"healthcare_service_id\": \"6a9d692f-0a04-454d-a409-4821b6bc91f1\",\r\n  \"employee_id\": \"9b424a60-91fe-492d-8e28-30b8ef9309f1\"\r\n}"
 										},
 										"url": {
 											"raw": "{{host}}/api/employee_roles",
@@ -4005,7 +4005,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/healthcare_services/?speciality_type=FAMILY_DOCTOR",
+									"raw": "{{host}}/api/healthcare_services/?division_id={{user_division_id}}",
 									"host": [
 										"{{host}}"
 									],
@@ -4017,7 +4017,8 @@
 									"query": [
 										{
 											"key": "speciality_type",
-											"value": "FAMILY_DOCTOR"
+											"value": "FAMILY_DOCTOR",
+											"disabled": true
 										},
 										{
 											"key": "providing_condition",
@@ -4051,8 +4052,7 @@
 										},
 										{
 											"key": "division_id",
-											"value": "25da95a9-1945-40c1-b1aa-26a2de2a9919",
-											"disabled": true
+											"value": "{{user_division_id}}"
 										}
 									]
 								}
