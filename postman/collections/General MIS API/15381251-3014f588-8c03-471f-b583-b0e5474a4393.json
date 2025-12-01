@@ -8355,7 +8355,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/declarations?employee_id=52fb1417-c7d7-426c-9121-cf030fc17e76",
+							"raw": "{{host}}/api/declarations?employee_id={{user_id}}",
 							"host": [
 								"{{host}}"
 							],
@@ -8366,7 +8366,7 @@
 							"query": [
 								{
 									"key": "employee_id",
-									"value": "52fb1417-c7d7-426c-9121-cf030fc17e76"
+									"value": "{{user_id}}"
 								}
 							]
 						}
