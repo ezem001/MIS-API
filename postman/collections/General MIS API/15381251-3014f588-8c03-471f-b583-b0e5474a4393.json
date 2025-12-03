@@ -3996,7 +3996,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/healthcare_services/?division_id={{user_division_id}}",
+									"raw": "{{host}}/api/healthcare_services/?division_id=40e5622c-64f7-48d8-b02c-2f935bb62823",
 									"host": [
 										"{{host}}"
 									],
@@ -4043,7 +4043,7 @@
 										},
 										{
 											"key": "division_id",
-											"value": "{{user_division_id}}"
+											"value": "40e5622c-64f7-48d8-b02c-2f935bb62823"
 										}
 									]
 								}
