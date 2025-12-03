@@ -3655,7 +3655,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"division_id\": \"25da95a9-1945-40c1-b1aa-26a2de2a9919\",\r\n    \"speciality_type\": \"FAMILY_DOCTOR\",\r\n    \"providing_condition\": \"OUTPATIENT\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"HEALTHCARE_SERVICE_CATEGORIES\",\r\n                \"code\": \"MSP\"\r\n            }\r\n        ]\r\n    }\r\n}"
+									"raw": "{\r\n    \"division_id\": \"40e5622c-64f7-48d8-b02c-2f935bb62823\",\r\n    \"speciality_type\": \"FAMILY_DOCTOR\",\r\n    \"providing_condition\": \"OUTPATIENT\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"HEALTHCARE_SERVICE_CATEGORIES\",\r\n                \"code\": \"MSP\"\r\n            }\r\n        ]\r\n    }\r\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/healthcare_services",
