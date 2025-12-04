@@ -3741,23 +3741,25 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "3527361e-c2a4-4abb-8a9e-c1d69d812eb5",
 										"exec": [
 											""
 										],
 										"type": "text/javascript",
 										"packages": {},
-										"id": "3527361e-c2a4-4abb-8a9e-c1d69d812eb5"
+										"requests": {}
 									}
 								},
 								{
 									"listen": "prerequest",
 									"script": {
+										"id": "1e3e652e-b0e0-4b66-a88f-dc75ba9034b6",
 										"exec": [
 											""
 										],
 										"type": "text/javascript",
 										"packages": {},
-										"id": "1e3e652e-b0e0-4b66-a88f-dc75ba9034b6"
+										"requests": {}
 									}
 								}
 							],
@@ -3788,17 +3790,17 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"comment\": \"Заведено помилково\",\r\n  \"coverage_area\": [\r\n    \"2c0110a9-0bea-4b16-af8e-6e2e149a5bfc\"\r\n  ],\r\n  \"available_time\": [\r\n    {\r\n      \"days_of_week\": [\r\n        \"mon\"\r\n      ],\r\n      \"all_day\": true,\r\n      \"available_start_time\": \"08:30:00\",\r\n      \"available_end_time\": \"19:00:00\"\r\n    }\r\n  ],\r\n  \"not_available\": [\r\n    {\r\n      \"description\": \"Санітарний день\",\r\n      \"during\": {\r\n        \"start\": \"2018-08-02T10:45:16.000Z\",\r\n        \"end\": \"2018-08-02T11:00:00.000Z\"\r\n      }\r\n    }\r\n  ]\r\n}"
+									"raw": "{\r\n  \"comment\": \"Заведено помилково\",\r\n  \"available_time\": [\r\n    {\r\n      \"days_of_week\": [\r\n        \"mon\"\r\n      ],\r\n      \"all_day\": true\r\n    }\r\n  ],\r\n  \"not_available\": [\r\n    {\r\n      \"description\": \"Санітарний день\",\r\n      \"during\": {\r\n        \"start\": \"2018-08-02T10:45:16.000Z\",\r\n        \"end\": \"2018-08-02T11:00:00.000Z\"\r\n      }\r\n    }\r\n  ]\r\n}"
 								},
 								"url": {
-									"raw": "{{host_demo}}/api/healthcare_services/id",
+									"raw": "{{host}}/api/healthcare_services/b458359f-6df9-46a6-b821-31d919f87a83",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
 										"healthcare_services",
-										"id"
+										"b458359f-6df9-46a6-b821-31d919f87a83"
 									]
 								}
 							},
