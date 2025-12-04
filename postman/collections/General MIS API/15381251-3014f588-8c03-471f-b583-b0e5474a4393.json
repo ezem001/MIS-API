@@ -718,7 +718,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"addresses\": [\r\n        {\r\n            \"apartment\": \"23\",\r\n            \"area\": \"КИЇВСЬКА\",\r\n            \"building\": \"15\",\r\n            \"country\": \"UA\",\r\n            \"region\": \"ВИШГОРОДСЬКИЙ\",\r\n            \"settlement\": \"ГЛІБІВКА\",\r\n            \"settlement_id\": \"ebef8451-cb63-430e-99aa-924f208114ba\",\r\n            \"settlement_type\": \"VILLAGE\",\r\n            \"street\": \"Невизначена\",\r\n            \"street_type\": \"STREET\",\r\n            \"type\": \"RESIDENCE\",\r\n            \"zip\": \"07333\"\r\n        }\r\n    ],\r\n    \"email\": \"vyacheslav.syrskyy@ehealth.gov.ua\",\r\n    \"id\": \"40e5622c-64f7-48d8-b02c-2f935bb62823\",\r\n    \"legal_entity_id\": \"26fc5dfe-1bea-440f-a290-48df6f0546ab\",\r\n    \"location\": {\r\n        \"latitude\": 50.7966555,\r\n        \"longitude\": 30.355165\r\n    },\r\n    \"name\": \"Відділення ПМД ДО реорганізації закладу\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"+380775675656\",\r\n            \"type\": \"MOBILE\"\r\n        }\r\n    ],\r\n    \"type\": \"CLINIC\",\r\n    \"working_hours\": {\r\n        \"fri\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"mon\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"sat\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"sun\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"thu\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"tue\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"wed\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ]\r\n    }\r\n}",
+									"raw": "{\r\n    \"addresses\": [\r\n        {\r\n            \"apartment\": \"23\",\r\n            \"area\": \"КИЇВСЬКА\",\r\n            \"building\": \"15\",\r\n            \"country\": \"UA\",\r\n            \"region\": \"ВИШГОРОДСЬКИЙ\",\r\n            \"settlement\": \"ГЛІБІВКА\",\r\n            \"settlement_id\": \"ebef8451-cb63-430e-99aa-924f208114ba\",\r\n            \"settlement_type\": \"VILLAGE\",\r\n            \"street\": \"Невизначена\",\r\n            \"street_type\": \"STREET\",\r\n            \"type\": \"RESIDENCE\",\r\n            \"zip\": \"07333\"\r\n        }\r\n    ],\r\n    \"email\": \"ownerout@yopmail.com\",\r\n    \"id\": \"838d2afc-ea42-4344-b296-8446dcc9d4d3\",\r\n    \"legal_entity_id\": \"97a4144d-1290-465b-a983-d3773de3ef92\",\r\n    \"location\": {\r\n        \"latitude\": 50.7966555,\r\n        \"longitude\": 30.355165\r\n    },\r\n    \"name\": \"Відділення ПМД\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"+380775675656\",\r\n            \"type\": \"MOBILE\"\r\n        }\r\n    ],\r\n    \"type\": \"CLINIC\",\r\n    \"working_hours\": {\r\n        \"fri\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"mon\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"sat\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"sun\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"thu\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"tue\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"wed\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ]\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -726,14 +726,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/api/divisions/40e5622c-64f7-48d8-b02c-2f935bb62823",
+									"raw": "{{host}}/api/divisions/838d2afc-ea42-4344-b296-8446dcc9d4d3",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"divisions",
-										"40e5622c-64f7-48d8-b02c-2f935bb62823"
+										"838d2afc-ea42-4344-b296-8446dcc9d4d3"
 									]
 								}
 							},
@@ -922,14 +922,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/divisions/40e5622c-64f7-48d8-b02c-2f935bb62823",
+									"raw": "{{host}}/api/divisions/838d2afc-ea42-4344-b296-8446dcc9d4d3",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"divisions",
-										"40e5622c-64f7-48d8-b02c-2f935bb62823"
+										"838d2afc-ea42-4344-b296-8446dcc9d4d3"
 									]
 								}
 							},
