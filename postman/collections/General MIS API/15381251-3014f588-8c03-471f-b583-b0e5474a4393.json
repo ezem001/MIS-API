@@ -718,7 +718,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"addresses\": [\r\n        {\r\n            \"apartment\": \"99\",\r\n            \"area\": \"М.КИЇВ\",\r\n            \"building\": \"20\",\r\n            \"country\": \"UA\",\r\n            \"region\": \"М.КИЇВ\",\r\n            \"settlement\": \"Київ\",\r\n            \"settlement_id\": \"adaa4abf-f530-461c-bcbf-a0ac210d955b\",\r\n            \"settlement_type\": \"CITY\",\r\n            \"street\": \"Леоніда Первомайського\",\r\n            \"street_type\": \"STREET\",\r\n            \"type\": \"RESIDENCE\",\r\n            \"zip\": \"01200\"\r\n        }\r\n    ],\r\n    \"email\": \"balogtest@yopmail.com\",\r\n    \"id\": \"99864fe0-7a74-4e0d-b243-36e6deeceb34\",\r\n    \"legal_entity_id\": \"24dbe468-7820-44d8-adae-28863fc41db4\",\r\n    \"location\": {\r\n        \"latitude\": 50.80333,\r\n        \"longitude\": 30.36056\r\n    },\r\n    \"name\": \"Test-division\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"+380663333333\",\r\n            \"type\": \"MOBILE\"\r\n        }\r\n    ],\r\n    \"type\": \"CLINIC\",\r\n    \"working_hours\": {\r\n        \"fri\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"mon\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"sat\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"sun\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"thu\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"tue\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"wed\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ]\r\n    }\r\n}",
+									"raw": "{\r\n    \"addresses\": [\r\n        {\r\n            \"apartment\": \"23\",\r\n            \"area\": \"КИЇВСЬКА\",\r\n            \"building\": \"15\",\r\n            \"country\": \"UA\",\r\n            \"region\": \"ВИШГОРОДСЬКИЙ\",\r\n            \"settlement\": \"ГЛІБІВКА\",\r\n            \"settlement_id\": \"ebef8451-cb63-430e-99aa-924f208114ba\",\r\n            \"settlement_type\": \"VILLAGE\",\r\n            \"street\": \"Невизначена\",\r\n            \"street_type\": \"STREET\",\r\n            \"type\": \"RESIDENCE\",\r\n            \"zip\": \"07333\"\r\n        }\r\n    ],\r\n    \"email\": \"vyacheslav.syrskyy@ehealth.gov.ua\",\r\n    \"id\": \"40e5622c-64f7-48d8-b02c-2f935bb62823\",\r\n    \"legal_entity_id\": \"26fc5dfe-1bea-440f-a290-48df6f0546ab\",\r\n    \"location\": {\r\n        \"latitude\": 50.7966555,\r\n        \"longitude\": 30.355165\r\n    },\r\n    \"name\": \"Відділення ПМД ДО реорганізації закладу\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"+380775675656\",\r\n            \"type\": \"MOBILE\"\r\n        }\r\n    ],\r\n    \"type\": \"CLINIC\",\r\n    \"working_hours\": {\r\n        \"fri\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"mon\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"sat\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"sun\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"thu\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"tue\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ],\r\n        \"wed\": [\r\n            [\r\n                \"09.00\",\r\n                \"18.00\"\r\n            ]\r\n        ]\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -726,14 +726,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/api/divisions/99864fe0-7a74-4e0d-b243-36e6deeceb34",
+									"raw": "{{host}}/api/divisions/40e5622c-64f7-48d8-b02c-2f935bb62823",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"divisions",
-										"99864fe0-7a74-4e0d-b243-36e6deeceb34"
+										"40e5622c-64f7-48d8-b02c-2f935bb62823"
 									]
 								}
 							},
@@ -922,14 +922,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/divisions/99864fe0-7a74-4e0d-b243-36e6deeceb34",
+									"raw": "{{host}}/api/divisions/40e5622c-64f7-48d8-b02c-2f935bb62823",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"divisions",
-										"99864fe0-7a74-4e0d-b243-36e6deeceb34"
+										"40e5622c-64f7-48d8-b02c-2f935bb62823"
 									]
 								}
 							},
