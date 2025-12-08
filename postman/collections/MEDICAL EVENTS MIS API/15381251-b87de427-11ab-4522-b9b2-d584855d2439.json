@@ -3124,14 +3124,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/patients/f32392dc-57d0-40ce-abce-983eb504618a/encounters/{{jobEncounterID}}",
+									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/encounters/{{jobEncounterID}}",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
-										"f32392dc-57d0-40ce-abce-983eb504618a",
+										"{{patient_id_from_episode}}",
 										"encounters",
 										"{{jobEncounterID}}"
 									]
