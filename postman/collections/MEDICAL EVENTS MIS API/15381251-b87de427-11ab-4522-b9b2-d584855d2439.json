@@ -2315,7 +2315,7 @@
 									"response": []
 								},
 								{
-									"name": "FULL Dummy PHC encounter",
+									"name": "FULL Dummy AMB encounter",
 									"event": [
 										{
 											"listen": "prerequest",
