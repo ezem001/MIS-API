@@ -922,14 +922,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/divisions/838d2afc-ea42-4344-b296-8446dcc9d4d3",
+									"raw": "{{host}}/api/divisions/{{user_division_id}}",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"divisions",
-										"838d2afc-ea42-4344-b296-8446dcc9d4d3"
+										"{{user_division_id}}"
 									]
 								}
 							},
