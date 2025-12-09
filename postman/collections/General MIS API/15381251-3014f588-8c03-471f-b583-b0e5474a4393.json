@@ -9386,7 +9386,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/v2/dictionaries?name=eHealth/body_sites",
+							"raw": "{{host}}/api/v2/dictionaries?name=eHealth/risk_assesment_codes",
 							"host": [
 								"{{host}}"
 							],
@@ -9538,7 +9538,18 @@
 								},
 								{
 									"key": "name",
+									"value": "prescribable_device_codes",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
 									"value": "device_dispense_mark_in_error_reasons",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "device_definition_classification_type",
 									"disabled": true
 								},
 								{
@@ -9548,7 +9559,17 @@
 								},
 								{
 									"key": "name",
+									"value": "COMPOSITION_EVENTS",
+									"disabled": true
+								},
+								{
+									"key": "name",
 									"value": "COMPOSITION_CANCELLATION_REASONS_TEMP_DISABILITY",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "COMPOSITION_SECTION_CODES",
 									"disabled": true
 								},
 								{
@@ -9558,7 +9579,7 @@
 								},
 								{
 									"key": "name",
-									"value": "COMPOSITION_SECTION_CODES",
+									"value": "eHealth/encounter_classes",
 									"disabled": true
 								},
 								{
@@ -9573,18 +9594,60 @@
 								},
 								{
 									"key": "name",
-									"value": "device_definition_classification_type",
+									"value": "eHealth/body_sites",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "device_unit",
 									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "name",
-									"value": "eHealth/encounter_classes",
+									"value": "eHealth/condition_clinical_statuses",
+									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "name",
-									"value": "eHealth/body_sites"
+									"value": "eHealth/condition_verification_statuses",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "equipment_statuses",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "equipment_availability_statuses",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "eHealth/ICPC2/reasons",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "eHealth/ICPC2/condition_codes",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "eHealth/allergy_intolerance_codes",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "eHealth/risk_assesment_codes",
+									"type": "text"
 								}
 							]
 						}
