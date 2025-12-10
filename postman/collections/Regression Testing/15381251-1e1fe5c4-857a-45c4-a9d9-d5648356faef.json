@@ -10080,6 +10080,82 @@
 			"response": []
 		},
 		{
+			"name": "Get Clinical Impression by search params",
+			"id": "15381251-fac51327-853e-4404-bb4a-a13777605da5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "{{mis_client_secret}}",
+						"type": "text"
+					},
+					{
+						"key": "X-Custom-PSK",
+						"value": "{{x-custom-psk}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/clinical_impressions?encounter_id={{jobEncounterID}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_for_regress}}",
+						"clinical_impressions"
+					],
+					"query": [
+						{
+							"key": "encounter_id",
+							"value": "{{jobEncounterID}}"
+						},
+						{
+							"key": "episode_id",
+							"value": "40aa471a-f293-4927-b05f-fe9cebd8f093",
+							"disabled": true
+						},
+						{
+							"key": "code",
+							"value": "insulin_1",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "completed",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "page_size",
+							"value": "50",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Create Composition TEMP_DISABILITY",
 			"event": [
 				{
@@ -11369,81 +11445,6 @@
 						"{{patient_for_regress}}",
 						"compositions",
 						"{{JobCompositionID}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Clinical Impression by search params",
-			"id": "15381251-fac51327-853e-4404-bb4a-a13777605da5",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}",
-						"type": "text"
-					},
-					{
-						"key": "api-key",
-						"value": "{{mis_client_secret}}",
-						"type": "text"
-					},
-					{
-						"key": "X-Custom-PSK",
-						"value": "{{x-custom-psk}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/patients/f32392dc-57d0-40ce-abce-983eb504618a/clinical_impressions?encounter_id=4e4bb94f-381e-4e72-a5df-54a44d232e34&episode_id=40aa471a-f293-4927-b05f-fe9cebd8f093",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"patients",
-						"f32392dc-57d0-40ce-abce-983eb504618a",
-						"clinical_impressions"
-					],
-					"query": [
-						{
-							"key": "encounter_id",
-							"value": "4e4bb94f-381e-4e72-a5df-54a44d232e34"
-						},
-						{
-							"key": "episode_id",
-							"value": "40aa471a-f293-4927-b05f-fe9cebd8f093"
-						},
-						{
-							"key": "code",
-							"value": "insulin_1",
-							"disabled": true
-						},
-						{
-							"key": "status",
-							"value": "completed",
-							"disabled": true
-						},
-						{
-							"key": "page",
-							"value": "2",
-							"disabled": true
-						},
-						{
-							"key": "page_size",
-							"value": "50",
-							"disabled": true
-						}
 					]
 				}
 			},
