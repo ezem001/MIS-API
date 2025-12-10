@@ -2812,7 +2812,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Episode Copy",
+			"name": "Create Episode Device",
 			"event": [
 				{
 					"listen": "prerequest",
