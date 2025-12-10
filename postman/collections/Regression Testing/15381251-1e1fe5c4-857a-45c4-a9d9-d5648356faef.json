@@ -995,7 +995,7 @@
 			"id": "15381251-952d7626-ad38-4a1d-af2d-fd6565884c8b"
 		},
 		{
-			"name": "Event Manager Copy",
+			"name": "Event Manager",
 			"item": [
 				{
 					"name": "Get events by ID",
