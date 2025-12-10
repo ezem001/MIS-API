@@ -10081,6 +10081,22 @@
 		},
 		{
 			"name": "Get Clinical Impression by search params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1108bea3-0b3b-41e2-84ae-1f65d02a9f8e",
+						"exec": [
+							"pm.test(\"Get Clinical Impression by search params - PASS. Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"id": "15381251-fac51327-853e-4404-bb4a-a13777605da5",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
