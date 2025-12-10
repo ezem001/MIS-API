@@ -6366,7 +6366,7 @@
 			"response": []
 		},
 		{
-			"name": "Dummy encounter with condition procedure diagnostic-report immunization",
+			"name": "Dummy encounter",
 			"event": [
 				{
 					"listen": "test",
