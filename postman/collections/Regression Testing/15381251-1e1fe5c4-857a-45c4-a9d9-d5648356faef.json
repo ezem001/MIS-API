@@ -7888,6 +7888,81 @@
 			"response": []
 		},
 		{
+			"name": "Get Device Dispense details Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8db695b9-27c1-4e25-8e8c-121f72d53738",
+						"exec": [
+							"pm.test(\"Get Device Dispense details - PASS. Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d0385d71-ae6c-4511-8843-5fb40d4d58e1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "15381251-a8331def-e643-4ec4-a971-3b3eb7456783",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "api-key",
+						"value": "{{mis_client_secret}}"
+					},
+					{
+						"key": "X-Custom-PSK",
+						"value": "{{x-custom-psk}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"based_on\": {\r\n        \"display_value\": null,\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"device_request\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"88821f44-2b4b-48a8-9bad-95de29a5a3ce\"\r\n        }\r\n    },\r\n    \"details\": [\r\n        {\r\n            \"device\": {\r\n                \"display_value\": null,\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"code\": \"device_definition\",\r\n                                \"system\": \"eHealth/resources\"\r\n                            }\r\n                        ],\r\n                        \"text\": null\r\n                    },\r\n                    \"value\": \"9221c91f-aed0-435b-9bc5-f9c8be59f146\"\r\n                }\r\n            },\r\n            \"discount_amount\": 400,\r\n            \"program_device\": {\r\n                \"display_value\": null,\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"code\": \"program_device\",\r\n                                \"system\": \"eHealth/resources\"\r\n                            }\r\n                        ],\r\n                        \"text\": null\r\n                    },\r\n                    \"value\": \"095c790c-9a70-4b37-ac4f-b556e7f1ee85\"\r\n                }\r\n            },\r\n            \"quantity\": {\r\n                \"code\": \"piece\",\r\n                \"system\": \"device_unit\",\r\n                \"unit\": \"шт\",\r\n                \"value\": 50\r\n            },\r\n            \"reimbursement_amount\": 400,\r\n            \"sell_price\": \"3.5e+3\"\r\n        }\r\n    ],\r\n    \"encounter\": null,\r\n    \"explanatory_letter\": null,\r\n    \"external_performer\": null,\r\n    \"external_provider\": null,\r\n    \"id\": \"678db378-e59b-48da-8a71-439cd8c491a2\",\r\n    \"inserted_at\": \"2025-11-24T18:53:09.650000Z\",\r\n    \"location\": {\r\n        \"display_value\": \"Відділення аптеки медичної допомоги №1\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"division\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"2bb9f35c-711f-4bdf-a69f-0d4fab0d2076\"\r\n        }\r\n    },\r\n    \"note\": \"Some notes\",\r\n    \"part_of\": null,\r\n    \"payment_amount\": 2,\r\n    \"payment_id\": null,\r\n    \"performer\": {\r\n        \"display_value\": \"Сергій Вікторович Куриленко\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"employee\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"840644d4-db5b-4457-88e1-ef5e3be6101f\"\r\n        }\r\n    },\r\n    \"performer_legal_entity\": {\r\n        \"display_value\": \"\\\"ЕЛЕКТРОННЕ ЗДОРОВ'Я\\\"\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"legal_entity\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"d922e94e-3179-476c-9c53-ccf301a62939\"\r\n        }\r\n    },\r\n    \"primary_source\": true,\r\n    \"program\": {\r\n        \"display_value\": \"Медичні вироби для визначення рівня глюкози в крові\",\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"medical_program\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"0cefbce3-6dd2-45bd-b1e6-983fc055d5e0\"\r\n        }\r\n    },\r\n    \"report_origin\": null,\r\n    \"signed_content_links\": [],\r\n    \"status\": \"completed\",\r\n    \"status_reason\": null,\r\n    \"subject\": {\r\n        \"display_value\": null,\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"patient\",\r\n                        \"system\": \"eHealth/resources\"\r\n                    }\r\n                ],\r\n                \"text\": null\r\n            },\r\n            \"value\": \"40123283-6aef-4b5e-bcef-8a1f73b4badb\"\r\n        }\r\n    },\r\n    \"supporting_info\": [],\r\n    \"updated_at\": \"2025-11-24T19:04:00.403000Z\",\r\n    \"when_handed_over\": \"2025-11-24T19:11:19.000Z\"\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/device_dispenses/{{JobDeviceDispenseID}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_for_regress}}",
+						"device_dispenses",
+						"{{JobDeviceDispenseID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Dummy Device request #2 without program",
 			"event": [
 				{
