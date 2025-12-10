@@ -10126,7 +10126,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/patients/{{patient_for_regress}}/clinical_impressions?encounter_id={{jobEncounterID}}",
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/clinical_impressions?encounter_id={{jobEncounterID}}&episode_id={{jobEpisodeID}}",
 					"host": [
 						"{{host}}"
 					],
@@ -10143,8 +10143,7 @@
 						},
 						{
 							"key": "episode_id",
-							"value": "40aa471a-f293-4927-b05f-fe9cebd8f093",
-							"disabled": true
+							"value": "{{jobEpisodeID}}"
 						},
 						{
 							"key": "code",
