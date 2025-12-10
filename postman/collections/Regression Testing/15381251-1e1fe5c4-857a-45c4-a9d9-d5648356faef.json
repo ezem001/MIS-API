@@ -10019,6 +10019,22 @@
 		},
 		{
 			"name": "Get Clinical Impression by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "911c3038-5516-4e67-87dd-620594372df8",
+						"exec": [
+							"pm.test(\"Get Clinical Impression by id - PASS. Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"id": "15381251-cecd5f15-da34-44ef-a9f4-7a1b74a9b6da",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
