@@ -8376,6 +8376,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "9cb77786-5b68-4ed6-971e-f14850fb1eea",
 						"exec": [
 							"const uuid = require('uuid');\r",
 							"const procedureId = uuid.v4();\r",
@@ -8409,12 +8410,13 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "9cb77786-5b68-4ed6-971e-f14850fb1eea"
+						"requests": {}
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
+						"id": "2311869d-6269-46b8-b37d-a86de4ed311c",
 						"exec": [
 							"const resData = pm.response.json();\r",
 							"console.log('create procedure sign content', resData)\r",
@@ -8428,7 +8430,7 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "2311869d-6269-46b8-b37d-a86de4ed311c"
+						"requests": {}
 					}
 				}
 			],
@@ -8441,7 +8443,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"{{procedure_id}}\",\r\n    \"status\": \"completed\",\r\n    \"based_on\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"service_request\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{JobSericeRequestID}}\"\r\n        }\r\n    },\r\n    \"code\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"service\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"40b2dfdf-7623-4fa5-bbfb-58a6b651ff0c\"\r\n        }\r\n    },\r\n    \"performed_period\": {\r\n        \"start\": \"{{procedureStart}}\",\r\n        \"end\": \"{{procedureEnd}}\"\r\n    },\r\n    \"recorded_by\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"primary_source\": true,\r\n    \"performer\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ],\r\n                \"text\": \"Галина Олександрівна\"\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"division\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"division\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_division_id}}\"\r\n        }\r\n    },\r\n    \"managing_organization\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"legal_entity\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_legal_entity}}\"\r\n        }\r\n    },\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/procedure_categories\",\r\n                \"code\": \"procedure\"\r\n            }\r\n        ]\r\n    }\r\n}",
+					"raw": "{\r\n    \"id\": \"{{procedure_id}}\",\r\n    \"status\": \"completed\",\r\n    \"based_on\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"service_request\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{JobSericeRequestID}}\"\r\n        }\r\n    },\r\n    \"code\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"service\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"40b2dfdf-7623-4fa5-bbfb-58a6b651ff0c\"\r\n        }\r\n    },\r\n    \"performed_period\": {\r\n        \"start\": \"{{procedureStart}}\",\r\n        \"end\": \"{{procedureEnd}}\"\r\n    },\r\n    \"recorded_by\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"primary_source\": true,\r\n    \"performer\": [\r\n        {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"employee\"\r\n                        }\r\n                    ],\r\n                    \"text\": \"Галина Олександрівна\"\r\n                },\r\n                \"value\": \"{{user_id}}\"\r\n            }\r\n        }\r\n    ],\r\n    \"division\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"division\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_division_id}}\"\r\n        }\r\n    },\r\n    \"managing_organization\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"legal_entity\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_legal_entity}}\"\r\n        }\r\n    },\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/procedure_categories\",\r\n                \"code\": \"procedure\"\r\n            }\r\n        ]\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
