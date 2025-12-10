@@ -7888,7 +7888,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Device Dispense details Copy",
+			"name": "Get Device Dispense details after complete",
 			"event": [
 				{
 					"listen": "test",
