@@ -995,6 +995,152 @@
 			"id": "15381251-952d7626-ad38-4a1d-af2d-fd6565884c8b"
 		},
 		{
+			"name": "Event Manager Copy",
+			"item": [
+				{
+					"name": "Get events by ID",
+					"id": "15381251-e3bd8cab-1664-4afb-ad11-6a9d74cdedeb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{mis_client_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Custom-PSK",
+								"value": "{{x-custom-psk}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/events/id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"events",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get events list",
+					"id": "15381251-301f1aeb-ed2a-4e83-a9c1-1d690412d627",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{mis_client_secret}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Custom-PSK",
+								"value": "{{x-custom-psk}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/events/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"events",
+								""
+							],
+							"query": [
+								{
+									"key": "date_to",
+									"value": "2025-08-18T08:40:01Z",
+									"disabled": true
+								},
+								{
+									"key": "event_type",
+									"value": "StatusChangeEvent",
+									"disabled": true
+								},
+								{
+									"key": "entity_type",
+									"value": "Party",
+									"disabled": true
+								},
+								{
+									"key": "entity_type",
+									"value": "Person",
+									"disabled": true
+								},
+								{
+									"key": "attribute_name",
+									"value": "status",
+									"disabled": true
+								},
+								{
+									"key": "new_value",
+									"value": "VERIFIED",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "page_size",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2025-08-14T01:01:11Z",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2025-09-01T00:00:25Z",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "15381251-d6e26e9a-218b-49d7-81f7-65fe3f0e4310"
+		},
+		{
 			"name": "Login",
 			"event": [
 				{
