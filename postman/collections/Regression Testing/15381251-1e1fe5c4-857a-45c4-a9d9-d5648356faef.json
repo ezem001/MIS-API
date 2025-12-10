@@ -1149,7 +1149,7 @@
 					"response": []
 				},
 				{
-					"name": "Get events list check",
+					"name": "Get events list check entity_type",
 					"event": [
 						{
 							"listen": "prerequest",
