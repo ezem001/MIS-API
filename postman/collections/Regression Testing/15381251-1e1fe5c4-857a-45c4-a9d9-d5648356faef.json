@@ -1149,7 +1149,7 @@
 					"response": []
 				},
 				{
-					"name": "Get events list check period Copy",
+					"name": "Get events list check period",
 					"event": [
 						{
 							"listen": "prerequest",
