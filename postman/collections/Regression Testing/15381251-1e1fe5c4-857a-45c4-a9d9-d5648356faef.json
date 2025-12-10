@@ -3554,120 +3554,6 @@
 			"response": []
 		},
 		{
-			"name": "Get Care Plans by search params",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "d2031ad7-3246-4194-9bc9-ddc62ada14aa",
-						"exec": [
-							"pm.test(\"Get Care Plans by search params - PASS. Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "b1f4a4ac-803e-4d4c-b592-c6db5aed7d5d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"id": "15381251-934634ad-1eb6-4bac-8c1a-4d4104789a78",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "api-key",
-						"value": "{{mis_client_secret}}",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}",
-						"type": "text"
-					},
-					{
-						"key": "X-Custom-PSK",
-						"value": "{{x-custom-psk}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/api/patients/{{patient_for_regress}}/care_plans?encounter_id={{jobEncounterID}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"patients",
-						"{{patient_for_regress}}",
-						"care_plans"
-					],
-					"query": [
-						{
-							"key": "period_date",
-							"value": "2018-08-02",
-							"disabled": true
-						},
-						{
-							"key": "based_on",
-							"value": "7c3da506-804d-4550-8993-bf17f9ee0401",
-							"disabled": true
-						},
-						{
-							"key": "part_of",
-							"value": "7c3da506-804d-4550-8993-bf17f9ee0401",
-							"disabled": true
-						},
-						{
-							"key": "managing_organization_id",
-							"value": "80a9e15b-b71b-4caf-8f2e-ff247e8a5677",
-							"disabled": true
-						},
-						{
-							"key": "status",
-							"value": "active",
-							"disabled": true
-						},
-						{
-							"key": "page",
-							"value": "2",
-							"disabled": true
-						},
-						{
-							"key": "page_size",
-							"value": "50",
-							"disabled": true
-						},
-						{
-							"key": "encounter_id",
-							"value": "{{jobEncounterID}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Create approval",
 			"event": [
 				{
@@ -11353,6 +11239,120 @@
 						"f32392dc-57d0-40ce-abce-983eb504618a",
 						"clinical_impressions",
 						"abd18092-17ed-4976-bdc7-6a6eb2b66c95"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Care Plans by search params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d2031ad7-3246-4194-9bc9-ddc62ada14aa",
+						"exec": [
+							"pm.test(\"Get Care Plans by search params - PASS. Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b1f4a4ac-803e-4d4c-b592-c6db5aed7d5d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "15381251-934634ad-1eb6-4bac-8c1a-4d4104789a78",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "{{mis_client_secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-Custom-PSK",
+						"value": "{{x-custom-psk}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/care_plans?encounter_id={{jobEncounterID}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_for_regress}}",
+						"care_plans"
+					],
+					"query": [
+						{
+							"key": "period_date",
+							"value": "2018-08-02",
+							"disabled": true
+						},
+						{
+							"key": "based_on",
+							"value": "7c3da506-804d-4550-8993-bf17f9ee0401",
+							"disabled": true
+						},
+						{
+							"key": "part_of",
+							"value": "7c3da506-804d-4550-8993-bf17f9ee0401",
+							"disabled": true
+						},
+						{
+							"key": "managing_organization_id",
+							"value": "80a9e15b-b71b-4caf-8f2e-ff247e8a5677",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "page_size",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "encounter_id",
+							"value": "{{jobEncounterID}}"
+						}
 					]
 				}
 			},
