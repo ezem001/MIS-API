@@ -6462,7 +6462,7 @@
 			"response": []
 		},
 		{
-			"name": "Submit encounter datapackage Copy",
+			"name": "Submit encounter datapackage device",
 			"event": [
 				{
 					"listen": "test",
