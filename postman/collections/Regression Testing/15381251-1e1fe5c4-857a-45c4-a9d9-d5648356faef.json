@@ -7147,7 +7147,7 @@
 							"});\r",
 							"\r",
 							"// --- Participants processing ---\r",
-							"const participant = res?.data?.[0]?.participants?.[0];\r",
+							"const participant = res?.data?.[0]?.participants?.[1];\r",
 							"if (!participant) {\r",
 							"    console.error(\"❌ No participant found\");\r",
 							"    return;\r",
