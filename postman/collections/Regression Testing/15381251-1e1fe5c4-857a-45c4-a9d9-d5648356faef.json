@@ -6588,7 +6588,8 @@
 							"checkJobStatus(jobId);"
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
 					}
 				},
 				{
@@ -6599,7 +6600,8 @@
 							""
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -6633,14 +6635,14 @@
 					"raw": "{\n  \"visit\": {\n    \"id\": \"{{visit_id}}\",\n    \"period\": {\n      \"start\": \"2024-09-03T10:42:16.000Z\",\n      \"end\": \"2024-09-03T11:46:17.000Z\"\n    }\n  },\n  \"signed_data\": \"{{encounter_signed_content}}\"\n  \n}\n"
 				},
 				"url": {
-					"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/encounter_package",
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/encounter_package",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"patients",
-						"{{patient_id_from_episode}}",
+						"{{patient_for_regress}}",
 						"encounter_package"
 					]
 				}
