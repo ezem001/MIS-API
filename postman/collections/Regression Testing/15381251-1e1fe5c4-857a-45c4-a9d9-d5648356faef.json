@@ -1191,6 +1191,7 @@
 									"\r",
 									"// Масив entity_type\r",
 									"const entityTypes = [\r",
+									"    \"Party\",\r",
 									"    \"Approval\",\r",
 									"    \"CarePlan\",\r",
 									"    \"CarePlanActivity\",\r",
@@ -1225,8 +1226,8 @@
 									"\r",
 									"    // Формуємо URL з параметрами\r",
 									"    const url = `${pm.globals.get(\"host\")}/api/events/` +\r",
-									"        `?date= ${eventDate}` +\r",
-									"        `&date_to= ${eventDateTo}` +\r",
+									"        `?date=${eventDate}` +\r",
+									"        `&date_to=${eventDateTo}` +\r",
 									"        `&event_type=StatusChangeEvent` +\r",
 									"        `&entity_type=${curr}` +\r",
 									"        `&page=1&page_size=300`;\r",
@@ -1257,8 +1258,7 @@
 									"// Старт циклу\r",
 									"runNext();\r",
 									"\r",
-									"// Забороняємо основний запит виконуватись (якщо це Pre-request Script)\r",
-									"pm.request.abort();\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -1271,8 +1271,41 @@
 							"script": {
 								"id": "0f60903f-d865-4ca4-8d5c-6ddd8fb9e90c",
 								"exec": [
-									"pm.test(\"Get events list, check period - PASS. Status code is 200\", function () {\r",
+									"const resData = pm.response.json().data;\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Get events list, check entity_types - PASS. Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has data array\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.data.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All data items have required fields and new_value is VERIFICATION_NEEDED\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    jsonData.data.forEach(item => {\r",
+									"        pm.expect(item).to.have.property(\"changed_by\");\r",
+									"        pm.expect(item).to.have.property(\"entity_id\");\r",
+									"        pm.expect(item).to.have.property(\"entity_type\");\r",
+									"        pm.expect(item).to.have.property(\"event_type\");\r",
+									"        pm.expect(item).to.have.property(\"id\");\r",
+									"        pm.expect(item).to.have.property(\"properties\");\r",
+									"        pm.expect(item.properties).to.have.property(\"mvs_passport_verification_status\");\r",
+									"        pm.expect(item.properties.mvs_passport_verification_status).to.have.property(\"new_value\", \"VERIFICATION_NEEDED\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Paging info exists and total_entries > 0\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"paging\");\r",
+									"    pm.expect(jsonData.paging).to.have.property(\"total_entries\").that.is.above(0);\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -1310,7 +1343,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/events/?date_to={{event_list_date_to}}&date={{event_list_date}}",
+							"raw": "{{host}}/api/events/?date_to={{event_list_date_to}}&event_type=StatusChangeEvent&entity_type=Party&attribute_name=mvs_passport_verification_status&new_value=VERIFICATION_NEEDED&date={{event_list_date}}",
 							"host": [
 								"{{host}}"
 							],
@@ -1326,13 +1359,11 @@
 								},
 								{
 									"key": "event_type",
-									"value": "StatusChangeEvent",
-									"disabled": true
+									"value": "StatusChangeEvent"
 								},
 								{
 									"key": "entity_type",
-									"value": "{{entity_type}}",
-									"disabled": true
+									"value": "Party"
 								},
 								{
 									"key": "entity_type",
@@ -1341,13 +1372,11 @@
 								},
 								{
 									"key": "attribute_name",
-									"value": "status",
-									"disabled": true
+									"value": "mvs_passport_verification_status"
 								},
 								{
 									"key": "new_value",
-									"value": "VERIFIED",
-									"disabled": true
+									"value": "VERIFICATION_NEEDED"
 								},
 								{
 									"key": "page",
