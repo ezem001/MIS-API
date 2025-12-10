@@ -10018,7 +10018,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Clinical Impression by id Copy",
+			"name": "Get Clinical Impression by id",
 			"id": "15381251-cecd5f15-da34-44ef-a9f4-7a1b74a9b6da",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -10048,16 +10048,16 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/patients/f32392dc-57d0-40ce-abce-983eb504618a/clinical_impressions/abd18092-17ed-4976-bdc7-6a6eb2b66c95",
+					"raw": "{{host}}/api/patients/{{patient_for_regress}}/clinical_impressions/{{jobClinicalimpressionID}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"patients",
-						"f32392dc-57d0-40ce-abce-983eb504618a",
+						"{{patient_for_regress}}",
 						"clinical_impressions",
-						"abd18092-17ed-4976-bdc7-6a6eb2b66c95"
+						"{{jobClinicalimpressionID}}"
 					]
 				}
 			},
