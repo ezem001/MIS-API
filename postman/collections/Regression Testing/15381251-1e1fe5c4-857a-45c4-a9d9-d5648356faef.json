@@ -11375,7 +11375,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Clinical Impression by search params Copy",
+			"name": "Get Clinical Impression by search params",
 			"id": "15381251-fac51327-853e-4404-bb4a-a13777605da5",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
