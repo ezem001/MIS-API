@@ -998,7 +998,7 @@
 			"name": "Event Manager",
 			"item": [
 				{
-					"name": "Get events list",
+					"name": "Get events list check period",
 					"event": [
 						{
 							"listen": "prerequest",
