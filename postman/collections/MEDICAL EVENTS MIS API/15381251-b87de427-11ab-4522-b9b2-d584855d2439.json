@@ -20388,7 +20388,8 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						},
 						{
@@ -20399,7 +20400,8 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -20433,14 +20435,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}/api/rule_engine_rules/29f0c495-a06f-46a3-993c-97fac8014cfc",
+							"raw": "{{host}}/api/rule_engine_rules/dcde5af7-c768-47da-b153-4c4362f3b53c",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"rule_engine_rules",
-								"29f0c495-a06f-46a3-993c-97fac8014cfc"
+								"dcde5af7-c768-47da-b153-4c4362f3b53c"
 							],
 							"query": [
 								{
