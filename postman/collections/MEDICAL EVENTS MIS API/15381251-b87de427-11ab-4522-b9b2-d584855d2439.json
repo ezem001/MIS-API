@@ -1947,7 +1947,7 @@
 									"id": "15381251-6119961a-f37c-4237-bc49-c300d6f84145"
 								},
 								{
-									"name": "Dummy encounter with observation and immunization",
+									"name": "Dummy AMB encounter observation immunization",
 									"event": [
 										{
 											"listen": "prerequest",
