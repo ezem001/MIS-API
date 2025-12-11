@@ -1952,6 +1952,7 @@
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "76bdd611-f5a2-43a4-8ab7-4bddbe7d9449",
 												"exec": [
 													"const uuid = require('uuid');\r",
 													"const encounterId = uuid.v4();\r",
@@ -1961,12 +1962,13 @@
 												],
 												"type": "text/javascript",
 												"packages": {},
-												"id": "76bdd611-f5a2-43a4-8ab7-4bddbe7d9449"
+												"requests": {}
 											}
 										},
 										{
 											"listen": "test",
 											"script": {
+												"id": "d52dc333-21f9-46c2-94d5-60ff0404f34a",
 												"exec": [
 													"const resData = pm.response.json();\r",
 													"console.log('create encounter sign content', resData)\r",
@@ -1986,7 +1988,7 @@
 												],
 												"type": "text/javascript",
 												"packages": {},
-												"id": "d52dc333-21f9-46c2-94d5-60ff0404f34a"
+												"requests": {}
 											}
 										}
 									],
