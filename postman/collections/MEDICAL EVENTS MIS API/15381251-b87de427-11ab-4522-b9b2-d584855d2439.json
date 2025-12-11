@@ -2095,7 +2095,7 @@
 									"response": []
 								},
 								{
-									"name": "Dummy AMB encounter with condition procedure diagnostic-report immunization",
+									"name": "Dummy AMB encounter condition procedure diagnostic-report immunization Ci",
 									"event": [
 										{
 											"listen": "test",
