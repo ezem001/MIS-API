@@ -6339,7 +6339,7 @@
 						"exec": [
 							"pm.test(\"Get Medication dispense details by Pharmacy User before Process - PASS. Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"\r",
+							"});\r",
 							"// Парсимо JSON-відповідь\r",
 							"const res = pm.response.json();\r",
 							"\r",
