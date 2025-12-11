@@ -6337,6 +6337,9 @@
 					"script": {
 						"id": "aec3ae9c-7308-4f8c-ad50-53c80d9dbc62",
 						"exec": [
+							"pm.test(\"Get Medication dispense details by Pharmacy User before Process - PASS. Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
 							"// Парсимо JSON-відповідь\r",
 							"const res = pm.response.json();\r",
 							"\r",
