@@ -7582,8 +7582,6 @@
 					"script": {
 						"id": "a19e7b07-e384-44a6-b508-ad3b27ba4f51",
 						"exec": [
-							"\r",
-							"\r",
 							"// New user data\r",
 							"const newUser = {\r",
 							"    access_token: \"ckJ6bnRMY3M1SHlJY1ZTbTRnaHlSdz09\",\r",
