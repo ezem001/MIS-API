@@ -8349,7 +8349,8 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						},
 						{
@@ -8372,7 +8373,8 @@
 									"// }"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -8385,7 +8387,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"{{care_plan_id}}\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/care_plan_categories\",\r\n                \"code\": \"class_19\"\r\n            }\r\n        ]\r\n    },\r\n    \"title\": \"План Лікуваня\",\r\n    \"description\": \"123\",\r\n    \"period\": {\r\n        \"start\": \"2025-08-29T08:45:16.000Z\",\r\n        \"end\": \"2025-09-15T11:00:00.000Z\"\r\n    },\r\n    \"note\": \"123\",\r\n    \"intent\": \"order\",\r\n    \"encounter\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"encounter\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{jobEncounterID}}\"\r\n        }\r\n    },\r\n    \"addresses\": [\r\n        {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/ICPC2/condition_codes\",\r\n                    \"code\": \"S14\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"author\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"terms_of_service\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"PROVIDING_CONDITION\",\r\n                \"code\": \"OUTPATIENT\"\r\n            }\r\n        ]\r\n    },\r\n    \"status\": \"new\"\r\n}",
+							"raw": "{\r\n    \"id\": \"{{care_plan_id}}\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/care_plan_categories\",\r\n                \"code\": \"class_19\"\r\n            }\r\n        ]\r\n    },\r\n    \"title\": \"План Лікуваня\",\r\n    \"description\": \"123\",\r\n    \"period\": {\r\n        \"start\": \"2025-12-11T08:45:16.000Z\",\r\n        \"end\": \"2025-12-25T11:00:00.000Z\"\r\n    },\r\n    \"note\": \"123\",\r\n    \"intent\": \"order\",\r\n    \"encounter\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"encounter\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{jobEncounterID}}\"\r\n        }\r\n    },\r\n    \"addresses\": [\r\n        {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/ICPC2/condition_codes\",\r\n                    \"code\": \"S14\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"author\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"terms_of_service\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"PROVIDING_CONDITION\",\r\n                \"code\": \"OUTPATIENT\"\r\n            }\r\n        ]\r\n    },\r\n    \"status\": \"new\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
