@@ -2342,7 +2342,7 @@
 									"response": []
 								},
 								{
-									"name": "Dummy PHC encounter",
+									"name": "Dummy PHC encounter observation",
 									"event": [
 										{
 											"listen": "prerequest",
