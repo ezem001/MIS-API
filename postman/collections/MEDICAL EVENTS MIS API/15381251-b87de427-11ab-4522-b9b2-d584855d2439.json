@@ -3426,16 +3426,16 @@
 									}
 								],
 								"url": {
-									"raw": "{{host_demo}}/api/patients/{{patient_id_from_episode}}/conditions/03e68f2f-79e7-43e9-9256-7871da8772af",
+									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/conditions/{{jobConditionID}}",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
 										"{{patient_id_from_episode}}",
 										"conditions",
-										"03e68f2f-79e7-43e9-9256-7871da8772af"
+										"{{jobConditionID}}"
 									]
 								}
 							},
