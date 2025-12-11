@@ -2169,7 +2169,9 @@
 							"} else {\r",
 							"    console.log('Initial request failed');\r",
 							"}\r",
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+							"pm.test(\"Approve Person Request - Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.eql(200);\r",
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {},
