@@ -6884,7 +6884,7 @@
 			"response": []
 		},
 		{
-			"name": "Dummy Encounter data package Copy",
+			"name": "Dummy Encounter for device",
 			"event": [
 				{
 					"listen": "test",
