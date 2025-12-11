@@ -1947,6 +1947,11 @@
 									"id": "15381251-6119961a-f37c-4237-bc49-c300d6f84145"
 								},
 								{
+									"name": "New Folder",
+									"item": [],
+									"id": "15381251-79978825-e9d8-42a1-85e5-2820d84d063a"
+								},
+								{
 									"name": "Dummy AMB encounter observation immunization",
 									"event": [
 										{
@@ -2432,18 +2437,6 @@
 												"create-encounter-signed-content"
 											]
 										}
-									},
-									"response": []
-								},
-								{
-									"name": "New Request",
-									"id": "15381251-73d471bb-32ab-4c89-83dc-58cc164a22fd",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": []
 									},
 									"response": []
 								}
