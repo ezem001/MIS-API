@@ -3562,9 +3562,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{auth_host}}/auth/login",
+					"raw": "{{host}}/auth/login",
 					"host": [
-						"{{auth_host}}"
+						"{{host}}"
 					],
 					"path": [
 						"auth",
