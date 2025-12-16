@@ -11274,7 +11274,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8fc65ee8-015b-4dcf-a83d-9ea19f560be3",
+						"id": "2dcf8713-3cc5-49d1-bb1a-3fc080faab56",
 						"exec": [
 							"const { displayResponse, renderVisualLog } = pm.require('@winter-zodiac-949553/login-display-response');\r",
 							"\r",
@@ -11442,7 +11442,7 @@
 							"const XCustomPSK = pm.globals.get('x-custom-psk');\r",
 							"\r",
 							"pm.sendRequest({\r",
-							"    url: `${pm.globals.get('auth_host')}/oauth/apps/authorize`,\r",
+							"    url: `${pm.globals.get('host')}/oauth/apps/authorize`,\r",
 							"    method: 'POST',\r",
 							"    header: {\r",
 							"        'Content-Type': 'application/json',\r",
@@ -11506,7 +11506,7 @@
 							"\r",
 							"    // ----------------------- Exchange grant token ---------------------------\r",
 							"    pm.sendRequest({\r",
-							"        url: `${pm.globals.get('auth_host')}/oauth/tokens`,\r",
+							"        url: `${pm.globals.get('host')}/oauth/tokens`,\r",
 							"        method: 'POST',\r",
 							"        header: {\r",
 							"            'Content-Type': 'application/json',\r",
@@ -11941,7 +11941,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "5d4e8336-f34b-4a61-8145-ae52cffd312d",
+						"id": "90cf8732-60a9-468d-b6ae-48f3d6b4848f",
 						"exec": [
 							"// --- Зберігаємо оригінальні функції ---\r",
 							"const originalLog = console.log;\r",
