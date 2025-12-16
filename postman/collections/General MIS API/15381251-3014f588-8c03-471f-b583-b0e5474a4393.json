@@ -11442,7 +11442,7 @@
 							"const XCustomPSK = pm.globals.get('x-custom-psk');\r",
 							"\r",
 							"pm.sendRequest({\r",
-							"    url: `${pm.globals.get('host')}/oauth/apps/authorize`,\r",
+							"    url: `${pm.globals.get('auth_host')}/oauth/apps/authorize`,\r",
 							"    method: 'POST',\r",
 							"    header: {\r",
 							"        'Content-Type': 'application/json',\r",
