@@ -1893,9 +1893,9 @@
 					"raw": "\n{\n   \"token\":{\n      \"grant_type\":\"authorization_code\",\n      \"code\": \"{{user_code}}\",\n      \"client_id\":\"{{user_legal_entity}}\",\n      \"client_secret\": \"{{client_secret}}\",\n      \"redirect_uri\": \"{{user_redirect_uri}}\"\n\n   }\n}"
 				},
 				"url": {
-					"raw": "{{host}}/oauth/tokens",
+					"raw": "{{auth_host}}/oauth/tokens",
 					"host": [
-						"{{host}}"
+						"{{auth_host}}"
 					],
 					"path": [
 						"oauth",
