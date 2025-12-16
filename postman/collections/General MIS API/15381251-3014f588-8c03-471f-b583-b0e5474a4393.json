@@ -11506,7 +11506,7 @@
 							"\r",
 							"    // ----------------------- Exchange grant token ---------------------------\r",
 							"    pm.sendRequest({\r",
-							"        url: `${pm.globals.get('host')}/oauth/tokens`,\r",
+							"        url: `${pm.globals.get('auth_host')}/oauth/tokens`,\r",
 							"        method: 'POST',\r",
 							"        header: {\r",
 							"            'Content-Type': 'application/json',\r",
