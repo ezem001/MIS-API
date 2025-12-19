@@ -11240,7 +11240,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"status\": \"inactive\",\r\n  \"period_end\": \"2024-11-28\",\r\n  \"status_reason\": \"typo\"\r\n}",
+							"raw": "{\r\n    \"status\": \"entered_in_error\",\r\n    \"status_reason\": \"typo\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11248,7 +11248,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/care_teams/participants/id/actions/change_status",
+							"raw": "{{host}}/api/care_teams/participants/bdfbb0cf-7f66-4e28-b06a-274222945560/actions/change_status",
 							"host": [
 								"{{host}}"
 							],
@@ -11256,7 +11256,7 @@
 								"api",
 								"care_teams",
 								"participants",
-								"id",
+								"bdfbb0cf-7f66-4e28-b06a-274222945560",
 								"actions",
 								"change_status"
 							]
