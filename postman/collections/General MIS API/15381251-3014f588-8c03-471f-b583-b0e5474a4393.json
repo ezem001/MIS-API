@@ -11124,7 +11124,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/care_teams/participants?status=active&page=2&page_size=50&care_team_id=d290f1ee-6c54-4b01-90e6-d701748f0851&role=care_manager",
+							"raw": "{{host}}/api/care_teams/participants?care_team_id=9aaa6bdf-8b73-434c-817e-644695210680",
 							"host": [
 								"{{host}}"
 							],
@@ -11135,24 +11135,70 @@
 							],
 							"query": [
 								{
+									"key": "role",
+									"value": "care_manager",
+									"disabled": true
+								},
+								{
 									"key": "status",
-									"value": "active"
+									"value": "active",
+									"disabled": true
 								},
 								{
 									"key": "page",
-									"value": "2"
+									"value": "2",
+									"disabled": true
 								},
 								{
 									"key": "page_size",
-									"value": "50"
+									"value": "50",
+									"disabled": true
 								},
 								{
 									"key": "care_team_id",
-									"value": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+									"value": "18e020eb-9dd9-498d-bc65-d37a47f7abfb",
+									"description": "active",
+									"disabled": true
 								},
 								{
-									"key": "role",
-									"value": "care_manager"
+									"key": "care_team_id",
+									"value": "ed6fc426-69ca-46cf-82dd-b39c34e2cb18",
+									"description": "active same le",
+									"disabled": true
+								},
+								{
+									"key": "care_team_id",
+									"value": "30e8a772-16f8-4ab2-bfbf-b90b83b722d7",
+									"description": "draft",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "care_team_id",
+									"value": "918095dc-fa3d-4fbc-b4b8-3a394467b39f",
+									"description": "without performer",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "care_team_id",
+									"value": "e245c8ff-cce9-4209-82c4-04eb71030f63",
+									"description": "without performer 2 ?",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "care_team_id",
+									"value": "9aaa6bdf-8b73-434c-817e-644695210680",
+									"description": "with performer lead_surgeon",
+									"type": "text"
+								},
+								{
+									"key": "care_team_id",
+									"value": "0717c34a-4e51-443e-b464-c4429e0adae6",
+									"description": "PHC",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
