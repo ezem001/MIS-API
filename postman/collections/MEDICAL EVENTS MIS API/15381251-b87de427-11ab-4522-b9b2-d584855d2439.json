@@ -5673,21 +5673,21 @@
 									},
 									{
 										"key": "X-Custom-PSK",
-										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+										"value": "{{x-custom-psk}}",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{host_demo}}/api/patients/patient_id/diagnostic_reports/diagnostic_report_id",
+									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/diagnostic_reports/{{jobDiagnosticreportID}}",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
-										"patient_id",
+										"{{patient_id_from_episode}}",
 										"diagnostic_reports",
-										"diagnostic_report_id"
+										"{{jobDiagnosticreportID}}"
 									]
 								}
 							},
