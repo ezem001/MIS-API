@@ -11385,7 +11385,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"role\": \"assistant_surgeon\",\r\n  \"member_type\": \"employee\",\r\n  \"member_id\": \"a2dec326-af1f-4591-9de0-c4ab1d7a2383\",\r\n  \"period_start\": \"2025-12-01\",\r\n  \"status\": \"active\",\r\n  \"care_team_id\": \"{{care_team_id}}\"\r\n}",
+							"raw": "{\r\n  \"role\": \"team_member\",\r\n  \"member_type\": \"employee\",\r\n  \"member_id\": \"a2dec326-af1f-4591-9de0-c4ab1d7a2383\",\r\n  \"period_start\": \"2025-12-01\",\r\n  \"status\": \"active\",\r\n  \"care_team_id\": \"{{care_team_id}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
