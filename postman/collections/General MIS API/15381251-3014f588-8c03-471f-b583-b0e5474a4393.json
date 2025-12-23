@@ -10830,6 +10830,7 @@
 									"const response = pm.response.json();",
 									"pm.test(\"Response is 201\", () => {",
 									"    pm.response.to.have.status(201);",
+									"    pm.globals.set(\"care_team_id\", response?.data?.id);",
 									"});",
 									"",
 									"const { id, name, category } = response.data;",
