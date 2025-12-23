@@ -11190,7 +11190,7 @@
 									"    //  2. Підготуємо payload для бекенду",
 									"    // ------------------------------",
 									"    const mongoPayload = {",
-									"        email, phones, note",
+									"        id, email, phones, note",
 									"    };",
 									"",
 									"    console.info(\"📤 Sending participant to backend:\", mongoPayload);",
