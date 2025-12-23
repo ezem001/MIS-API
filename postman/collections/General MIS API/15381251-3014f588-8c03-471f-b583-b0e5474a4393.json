@@ -10579,7 +10579,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/equipment?division_id={{user_division_id}}&availability_status=available&inventory_number=013655gg",
+							"raw": "{{host}}/api/equipment?division_id={{user_division_id}}&availability_status=available",
 							"host": [
 								"{{host}}"
 							],
@@ -10628,7 +10628,8 @@
 								},
 								{
 									"key": "inventory_number",
-									"value": "013655gg"
+									"value": "013655gg",
+									"disabled": true
 								},
 								{
 									"key": "serial_number",
