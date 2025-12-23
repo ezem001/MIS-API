@@ -6464,81 +6464,6 @@
 							"response": []
 						},
 						{
-							"name": "Get Diagnostic Report by search params",
-							"id": "15381251-6b39d56e-4a92-48cc-869d-5e7eae1d58c8",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "api-key",
-										"value": "{{mis_client_secret}}",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/api/patients/2c46cd1d-3e28-4f8c-a35c-645019b27c3b/diagnostic_reports/?page=1&encounter_id=c6218ce3-99fd-49c9-9e79-ce7339a8709d&context_episode_id=dc40dfb2-2c33-449e-b25d-d58403f150ba",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"patients",
-										"2c46cd1d-3e28-4f8c-a35c-645019b27c3b",
-										"diagnostic_reports",
-										""
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "page_size",
-											"value": "50",
-											"disabled": true
-										},
-										{
-											"key": "code",
-											"value": "12345",
-											"disabled": true
-										},
-										{
-											"key": "encounter_id",
-											"value": "c6218ce3-99fd-49c9-9e79-ce7339a8709d"
-										},
-										{
-											"key": "context_episode_id",
-											"value": "dc40dfb2-2c33-449e-b25d-d58403f150ba"
-										},
-										{
-											"key": "issued_from",
-											"value": "1990-01-01",
-											"disabled": true
-										},
-										{
-											"key": "issued_to",
-											"value": "2000-01-01",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Submit Diagnostic Report Package",
 							"event": [
 								{
@@ -6700,6 +6625,81 @@
 										"patients",
 										"ada5d0c6-805b-4e5a-871a-cd84569f3bd1",
 										"diagnostic_report_package"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Diagnostic Report by search params",
+							"id": "15381251-6b39d56e-4a92-48cc-869d-5e7eae1d58c8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/patients/2c46cd1d-3e28-4f8c-a35c-645019b27c3b/diagnostic_reports/?page=1&encounter_id=c6218ce3-99fd-49c9-9e79-ce7339a8709d&context_episode_id=dc40dfb2-2c33-449e-b25d-d58403f150ba",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"2c46cd1d-3e28-4f8c-a35c-645019b27c3b",
+										"diagnostic_reports",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "page_size",
+											"value": "50",
+											"disabled": true
+										},
+										{
+											"key": "code",
+											"value": "12345",
+											"disabled": true
+										},
+										{
+											"key": "encounter_id",
+											"value": "c6218ce3-99fd-49c9-9e79-ce7339a8709d"
+										},
+										{
+											"key": "context_episode_id",
+											"value": "dc40dfb2-2c33-449e-b25d-d58403f150ba"
+										},
+										{
+											"key": "issued_from",
+											"value": "1990-01-01",
+											"disabled": true
+										},
+										{
+											"key": "issued_to",
+											"value": "2000-01-01",
+											"disabled": true
+										}
 									]
 								}
 							},
