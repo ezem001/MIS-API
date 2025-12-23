@@ -6396,7 +6396,7 @@
 							"response": []
 						},
 						{
-							"name": "Dummy Submit Diagnostic Report Package Copy",
+							"name": "Dummy Submit Diagnostic Report + Observation",
 							"event": [
 								{
 									"listen": "prerequest",
