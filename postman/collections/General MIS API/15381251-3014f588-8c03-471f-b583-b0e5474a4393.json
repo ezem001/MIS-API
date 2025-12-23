@@ -9397,7 +9397,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/v2/dictionaries?name=eHealth/risk_assesment_codes",
+							"raw": "{{host}}/api/v2/dictionaries?name=eHealth/LOINC/observation_codes",
 							"host": [
 								"{{host}}"
 							],
@@ -9459,8 +9459,7 @@
 								},
 								{
 									"key": "name",
-									"value": "eHealth/LOINC/observation_codes",
-									"disabled": true
+									"value": "eHealth/LOINC/observation_codes"
 								},
 								{
 									"key": "name",
@@ -9658,7 +9657,7 @@
 								{
 									"key": "name",
 									"value": "eHealth/risk_assesment_codes",
-									"type": "text"
+									"disabled": true
 								}
 							]
 						}
