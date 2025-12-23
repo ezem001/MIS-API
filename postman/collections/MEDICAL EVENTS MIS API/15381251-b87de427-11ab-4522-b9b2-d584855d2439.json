@@ -8567,6 +8567,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "4143da1f-aaad-4977-bbdf-0ae8bf3d5c86",
 								"exec": [
 									"const uuid = require('uuid');\r",
 									"const carePlanId = uuid.v4();\r",
@@ -8599,12 +8600,13 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "4143da1f-aaad-4977-bbdf-0ae8bf3d5c86"
+								"requests": {}
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
+								"id": "a4ba6ebe-13d9-460e-92fe-c5d3679c90bd",
 								"exec": [
 									"const resData = pm.response.json();\r",
 									"\r",
@@ -8622,7 +8624,7 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "a4ba6ebe-13d9-460e-92fe-c5d3679c90bd"
+								"requests": {}
 							}
 						}
 					],
@@ -8635,7 +8637,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"{{care_plan_id}}\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/care_plan_categories\",\r\n                \"code\": \"class_4\"\r\n            }\r\n        ]\r\n    },\r\n    \"title\": \"План Лікуваня\",\r\n    \"description\": \"123\",\r\n    \"period\": {\r\n        \"start\": \"2024-10-09T08:45:16.000Z\",\r\n        \"end\": \"2024-10-19T11:00:00.000Z\"\r\n    },\r\n    \"note\": \"123\",\r\n    \"intent\": \"order\",\r\n    \"encounter\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"encounter\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{encounter_extracted_id}}\"\r\n        }\r\n    },\r\n    \"addresses\": [\r\n        {\r\n            \"coding\": [\r\n                {\r\n                   \"system\": \"eHealth/ICD10_AM/condition_codes\",\r\n                        \"code\": \"E10.9\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"author\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"terms_of_service\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"PROVIDING_CONDITION\",\r\n                \"code\": \"OUTPATIENT\"\r\n            }\r\n        ]\r\n    },\r\n    \"status\": \"new\"\r\n}",
+							"raw": "{\r\n    \"id\": \"{{care_plan_id}}\",\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"eHealth/care_plan_categories\",\r\n                \"code\": \"class_4\"\r\n            }\r\n        ]\r\n    },\r\n    \"title\": \"План Лікуваня\",\r\n    \"description\": \"123\",\r\n    \"period\": {\r\n        \"start\": \"2025-12-24T08:45:16.000Z\",\r\n        \"end\": \"2026-01-19T11:00:00.000Z\"\r\n    },\r\n    \"note\": \"123\",\r\n    \"intent\": \"order\",\r\n    \"encounter\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"encounter\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{jobEncounterID}}\"\r\n        }\r\n    },\r\n    \"addresses\": [\r\n        {\r\n            \"coding\": [\r\n                {\r\n                   \"system\": \"eHealth/ICD10_AM/condition_codes\",\r\n                        \"code\": \"E10.9\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"author\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"terms_of_service\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"PROVIDING_CONDITION\",\r\n                \"code\": \"OUTPATIENT\"\r\n            }\r\n        ]\r\n    },\r\n    \"status\": \"new\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
