@@ -6536,6 +6536,76 @@
 							"response": []
 						},
 						{
+							"name": "Dummy Submit Diagnostic Report + Device Copy",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "2aa665ab-76d5-4212-9d45-d7700c8c60d2",
+										"exec": [
+											"const { v4: uuid } = require('uuid');\r",
+											"\r",
+											"[\r",
+											"    \"diagnostic_report_id\",\r",
+											"    \"observation_id\"\r",
+											"].forEach(key => pm.globals.set(key, uuid()));"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "7c771577-f026-4002-8c84-b493df8a84f9",
+										"exec": [
+											"const resData = pm.response.json();\r",
+											"console.log('create diagnostic report sign content', resData)\r",
+											"\r",
+											"pm.test(`Diagnostic report content sign success. Response status is 200 ${JSON.stringify(resData, null, 2)}`, function () {\r",
+											"    pm.expect(pm.response.code).to.eql(200);\r",
+											"    pm.expect(resData).to.have.property('signed_content');\r",
+											"    pm.globals.set('diagnostic_report_signed_content', resData.signed_content);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "15381251-0d8236ad-704b-440c-af35-562c634f1ad5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"diagnostic_report\": {\r\n        \"id\": \"{{diagnostic_report_id}}\",\r\n        \"status\": \"final\",\r\n        \"code\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"service\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"30c22c24-c8ef-410a-8c23-984da411077a\"\r\n            }\r\n        },\r\n        \"category\": [\r\n            {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/diagnostic_report_categories\",\r\n                        \"code\": \"diagnostic_procedure\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"effective_period\": {\r\n            \"start\": \"2025-12-03T09:30:00.000Z\",\r\n            \"end\": \"2025-12-03T09:45:00.000Z\"\r\n        },\r\n        \"issued\": \"2025-12-03T09:45:00.000Z\",\r\n        \"conclusion\": \"At risk of osteoporotic fracture\",\r\n        \"recorded_by\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"employee\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{user_id}}\"\r\n            }\r\n        },\r\n        \"primary_source\": true,\r\n        \"performer\": [\r\n            {\r\n                \"reference\": {\r\n                    \"identifier\": {\r\n                        \"type\": {\r\n                            \"coding\": [\r\n                                {\r\n                                    \"system\": \"eHealth/resources\",\r\n                                    \"code\": \"employee\"\r\n                                }\r\n                            ]\r\n                        },\r\n                        \"value\": \"{{user_id}}\"\r\n                    }\r\n                }\r\n            },\r\n            {\r\n                \"reference\": {\r\n                    \"identifier\": {\r\n                        \"type\": {\r\n                            \"coding\": [\r\n                                {\r\n                                    \"system\": \"eHealth/resources\",\r\n                                    \"code\": \"care_team\"\r\n                                }\r\n                            ]\r\n                        },\r\n                        \"value\": \"18e020eb-9dd9-498d-bc65-d37a47f7abfb\"\r\n                    }\r\n                }\r\n            },\r\n            {\r\n                \"reference\": {\r\n                    \"identifier\": {\r\n                        \"type\": {\r\n                            \"coding\": [\r\n                                {\r\n                                    \"system\": \"eHealth/resources\",\r\n                                    \"code\": \"care_team\"\r\n                                }\r\n                            ]\r\n                        },\r\n                        \"value\": \"ed6fc426-69ca-46cf-82dd-b39c34e2cb18\"\r\n                    }\r\n                }\r\n            }\r\n        ],\r\n        \"used_references\": [\r\n            {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"equipment\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    \"value\": \"bef8be0f-c31c-4e9e-b61d-71b565c3e5a0\"\r\n                }\r\n            }\r\n        ],\r\n        \"managing_organization\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"legal_entity\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{user_legal_entity}}\"\r\n            }\r\n        },\r\n        \"division\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"division\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{user_division_id}}\"\r\n            }\r\n        },\r\n        \"results_interpreter\": {\r\n            \"reference\": {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"employee\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    \"value\": \"{{user_id}}\"\r\n                }\r\n            }\r\n        }\r\n    },\r\n    \"observations\": [\r\n        {\r\n            \"id\": \"{{observation_id}}\",\r\n            \"status\": \"valid\",\r\n            \"diagnostic_report\": {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"diagnostic_report\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    \"value\": \"{{diagnostic_report_id}}\"\r\n                }\r\n            },\r\n            \"categories\": [\r\n                {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/observation_categories\",\r\n                            \"code\": \"vital-signs\"\r\n                        }\r\n                    ]\r\n                }\r\n            ],\r\n            \"code\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/LOINC/observation_codes\",\r\n                        \"code\": \"65897-1\"\r\n                    }\r\n                ]\r\n            },\r\n            \"effective_date_time\": \"2025-12-03T11:00:00.000Z\",\r\n            \"issued\": \"2025-12-03T10:30:58.947463+00:00\",\r\n            \"primary_source\": true,\r\n            \"performer\": [\r\n                {\r\n                    \"identifier\": {\r\n                        \"type\": {\r\n                            \"coding\": [\r\n                                {\r\n                                    \"system\": \"eHealth/resources\",\r\n                                    \"code\": \"employee\"\r\n                                }\r\n                            ]\r\n                        },\r\n                        \"value\": \"{{user_id}}\"\r\n                    }\r\n                }\r\n            ],\r\n            \"interpretation\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/observation_interpretations\",\r\n                        \"code\": \"expected\"\r\n                    }\r\n                ],\r\n                \"text\": \"очікуваний\"\r\n            },\r\n            \"comment\": \"Some comment\",\r\n            \"method\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/observation_methods\",\r\n                        \"code\": \"physical\"\r\n                    }\r\n                ],\r\n                \"text\": \"Фізикальне обстеження\"\r\n            },\r\n            \"body_site\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"eyes\",\r\n                        \"system\": \"eHealth/body_sites\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value_quantity\": {\r\n                \"code\": \"%\",\r\n                \"system\": \"eHealth/ucum/units\",\r\n                \"unit\": \"%\",\r\n                \"value\": 0.4\r\n            }\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/diagnostic-report-signed-content",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"diagnostic-report-signed-content"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Submit Diagnostic Report Package",
 							"event": [
 								{
