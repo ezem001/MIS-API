@@ -11167,6 +11167,64 @@
 				},
 				{
 					"name": "Update care team",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "15b4e918-89d5-4087-a94a-419edefbe4a9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    // ------------------------------",
+									"    //  1. Отримуємо респонс з попереднього запиту",
+									"    // ------------------------------",
+									"    const response = pm.response.json();",
+									"",
+									"    if (!response.data) {",
+									"        console.error(\"❌ No participant data in response\");",
+									"        return;",
+									"    }",
+									"    const { email, phones, note } = response.data;",
+									"    // ------------------------------",
+									"    //  2. Підготуємо payload для бекенду",
+									"    // ------------------------------",
+									"    const mongoPayload = {",
+									"        email, phones, note",
+									"    };",
+									"",
+									"    console.info(\"📤 Sending participant to backend:\", mongoPayload);",
+									"",
+									"    // ------------------------------",
+									"    //  3. Надсилаємо на наш бекенд",
+									"    // ------------------------------",
+									"    pm.sendRequest({",
+									"        url: \"http://localhost:3000/care-teams/participants\",",
+									"        method: \"PATCH\",",
+									"        header: {",
+									"            \"Content-Type\": \"application/json\"",
+									"        },",
+									"        body: {",
+									"            mode: \"raw\",",
+									"            raw: JSON.stringify({ data: mongoPayload })",
+									"        }",
+									"    }, (err, res) => {",
+									"        if (err) {",
+									"            console.error(\"❌ Error sending participant to backend:\", err);",
+									"            return;",
+									"        }",
+									"",
+									"        console.log(\"✅ Participant saved in backend:\", res.json());",
+									"    });",
+									"",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
 					"id": "15381251-a1a8c7f5-cef9-4d92-9a2f-9e2d18fae198",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -11202,14 +11260,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/care_teams/id",
+							"raw": "{{host}}/api/care_teams/{{care_team_id}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"care_teams",
-								"id"
+								"{{care_team_id}}"
 							]
 						},
 						"description": "This method is used to change care team status."
