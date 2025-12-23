@@ -10818,6 +10818,83 @@
 			"item": [
 				{
 					"name": "Create care team",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "788ac0d1-3aac-4e26-b0d8-440482b5cc2d",
+								"exec": [
+									"// ------------------------------",
+									"//  Parse response",
+									"// ------------------------------",
+									"const response = pm.response.json();",
+									"pm.test(\"Response is 201\", () => {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"const { id, name, category } = response.data;",
+									"console.log(pm.request)",
+									"// ------------------------------",
+									"//  Detect environment",
+									"// ------------------------------",
+									"function detectEnvironment() {",
+									"     const host = pm.request.url.host;",
+									"    if (host.includes(\"api-demo\")) return \"demo\";",
+									"    if (host.includes(\"api-preprod\")) return \"preprod\";",
+									"    if (host.includes(\"api-stage\")) return \"stage\";",
+									"    return \"unknown\";",
+									"}",
+									"",
+									"const environment = detectEnvironment();",
+									"",
+									"// ------------------------------",
+									"//  Prepare Mongo payload",
+									"// ------------------------------",
+									"const mongoPayload = {",
+									"    careTeamId: id,",
+									"    name,",
+									"    category,",
+									"    environment,",
+									"    createdAt: new Date().toISOString()",
+									"};",
+									"",
+									"console.info(mongoPayload)",
+									"// ------------------------------",
+									"//  Send to Mongo API",
+									"// ------------------------------",
+									"// ⚠️ Рекомендовано: MongoDB Atlas Data API",
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"mongo_api_url\"), ",
+									"    method: \"POST\",",
+									"    header: {",
+									"        \"Content-Type\": \"application/json\",",
+									"        \"api-key\": pm.environment.get(\"mongo_api_key\")",
+									"    },",
+									"    body: {",
+									"        mode: \"raw\",",
+									"        raw: JSON.stringify({",
+									"            collection: \"care_teams\",",
+									"            database: \"ehealth\",",
+									"            dataSource: \"Cluster0\",",
+									"            document: mongoPayload",
+									"        })",
+									"    }",
+									"}, (err, res) => {",
+									"    if (err) {",
+									"        console.error(\"❌ Mongo error:\", err);",
+									"        return;",
+									"    }",
+									"",
+									"    console.log(\"✅ Saved to Mongo:\", mongoPayload);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
 					"id": "15381251-3e3c3c72-2bcf-4664-a162-2886a68a6828",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -10845,7 +10922,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"status\": \"draft\",\r\n  \"category\": \"palliative_care_team\",\r\n  \"name\": \"Тестова команда лікування\",\r\n  \"period_start\": \"2024-11-28\",\r\n  \"email\": \"test_care_team@email.com\",\r\n  \"phones\": [\r\n    {\r\n      \"type\": \"MOBILE\",\r\n      \"number\": \"+380503410870\"\r\n    }\r\n  ],\r\n  \"note\": \"Додаткова примітка до команди лікування\",\r\n  \"author_employee_id\": \"{{user_id}}\"\r\n}",
+							"raw": "{\r\n  \"status\": \"draft\",\r\n  \"category\": \"surgical_care_team\",\r\n  \"name\": \"Тестова команда лікування no user 2\",\r\n  \"period_start\": \"2025-11-28\",\r\n  \"email\": \"test_care_team@email.com\",\r\n  \"phones\": [\r\n    {\r\n      \"type\": \"MOBILE\",\r\n      \"number\": \"+380503410870\"\r\n    }\r\n  ],\r\n  \"note\": \"Додаткова примітка до команди лікування\",\r\n  \"author_employee_id\": \"{{user_id}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
