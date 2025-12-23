@@ -11067,6 +11067,44 @@
 				},
 				{
 					"name": "Change care team status",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "24c269d5-8f52-403d-b636-6af819b88027",
+								"exec": [
+									"// Отримуємо статус з тіла запиту",
+									"let requestBody = pm.request.body.raw ? JSON.parse(pm.request.body.raw) : {};",
+									"let status = requestBody.status;",
+									"",
+									"// Створюємо копію об'єкту для модифікацій",
+									"let newBody = { ...requestBody };",
+									"",
+									"if (status === \"entered_in_error\") {",
+									"    // Додаємо поле status_reason",
+									"    newBody.status_reason = \"typo\";",
+									"} else if (status === \"inactive\") {",
+									"    // Додаємо поле period_end = сьогодні - 2 дні",
+									"    let date = new Date();",
+									"    date.setDate(date.getDate() - 2);",
+									"",
+									"    // Форматуємо дату у YYYY-MM-DD",
+									"    let yyyy = date.getFullYear();",
+									"    let mm = String(date.getMonth() + 1).padStart(2, '0'); // місяці з 0",
+									"    let dd = String(date.getDate()).padStart(2, '0');",
+									"    newBody.period_end = `${yyyy}-${mm}-${dd}`;",
+									"}",
+									"",
+									"// Оновлюємо тіло запиту",
+									"pm.request.body.update(JSON.stringify(newBody));",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
 					"id": "15381251-93ca2056-e043-43a7-8987-31ae35a82c3d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -11094,7 +11132,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"status\": \"inactive\",\r\n  \"status_reason\": \"typo\",\r\n  \"period_end\": \"2024-11-28\"\r\n}",
+							"raw": "{\r\n  \"status\": \"suspended\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11102,14 +11140,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/care_teams/id/actions/change_status",
+							"raw": "{{host}}/api/care_teams/{{care_team_id}}/actions/change_status",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"care_teams",
-								"id",
+								"{{care_team_id}}",
 								"actions",
 								"change_status"
 							]
