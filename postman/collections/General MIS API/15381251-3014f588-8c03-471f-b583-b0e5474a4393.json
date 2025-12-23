@@ -11252,7 +11252,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"test_care_team@email.com\",\r\n  \"phones\": [\r\n    {\r\n      \"type\": \"MOBILE\",\r\n      \"number\": \"+380503410870\"\r\n    }\r\n  ],\r\n  \"note\": \"Додаткова примітка до команди лікування\"\r\n}",
+							"raw": "{\r\n  \"email\": \"test_care_team_no_user_4@email.com\",\r\n  \"phones\": [\r\n    {\r\n      \"type\": \"MOBILE\",\r\n      \"number\": \"+380503410870\"\r\n    },\r\n    {\r\n      \"type\": \"MOBILE\",\r\n      \"number\": \"+380506780845\"\r\n    }\r\n  ],\r\n  \"note\": \"Додаткова примітка до команди лікування no user 4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
