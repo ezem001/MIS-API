@@ -952,16 +952,14 @@
 											"script": {
 												"id": "b34a66ef-26e0-4574-b83a-e389eda3d182",
 												"exec": [
-													"tests[\"Status code is 200\"] = responseCode.code === 200;",
+													"const resData = pm.response.json();",
+													"console.log('create employee sign content', resData)",
 													"",
-													"var jsonData = JSON.parse(responseBody);",
-													"",
-													"if (jsonData.data !== undefined){",
-													"    var employee_request_id = jsonData.data.id;",
-													"    postman.setEnvironmentVariable(\"employee_request_id_to_approve\", employee_request_id);",
-													"} else {",
-													"    postman.setEnvironmentVariable(\"employee_request_id_to_approve\", \"<<undefined>>\");",
-													"}"
+													"pm.test(`Employee content sign success. Response status is 200 ${JSON.stringify(resData, null, 2)}`, function () {",
+													"    pm.expect(pm.response.code).to.eql(200);",
+													"    pm.expect(resData).to.have.property('signed_content');",
+													"    pm.globals.set('employee_signed_content', resData.signed_content);",
+													"});"
 												],
 												"type": "text/javascript",
 												"packages": {},
