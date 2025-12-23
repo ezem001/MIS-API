@@ -6466,7 +6466,7 @@
 							"response": []
 						},
 						{
-							"name": "Dummy Submit Diagnostic Report + Observation_Device",
+							"name": "Dummy Submit Diagnostic Report + Device",
 							"event": [
 								{
 									"listen": "prerequest",
