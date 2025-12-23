@@ -11293,6 +11293,74 @@
 				},
 				{
 					"name": "Add care team participant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cde84d25-bdc8-4e32-9527-5f6705c48964",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"",
+									"    // ------------------------------",
+									"    //  1. Отримуємо респонс з попереднього запиту",
+									"    // ------------------------------",
+									"    const responseJson = pm.response.json();",
+									"    const participantData = responseJson.data;",
+									"",
+									"    if (!participantData) {",
+									"        console.error(\"❌ No participant data in response\");",
+									"        return;",
+									"    }",
+									"",
+									"    // ------------------------------",
+									"    //  2. Підготуємо payload для бекенду",
+									"    // ------------------------------",
+									"    const mongoPayload = {",
+									"        care_team_id: participantData.care_team_id,",
+									"        id: participantData.id,",
+									"        member_id: participantData.member_id,",
+									"        member_type: participantData.member_type,",
+									"        role: participantData.role,",
+									"        status: participantData.status,",
+									"        period_start: participantData.period_start,",
+									"        period_end: participantData.period_end,",
+									"        status_reason: participantData.status_reason",
+									"    };",
+									"",
+									"    console.info(\"📤 Sending participant to backend:\", mongoPayload);",
+									"",
+									"    // ------------------------------",
+									"    //  3. Надсилаємо на наш бекенд",
+									"    // ------------------------------",
+									"    pm.sendRequest({",
+									"        url: \"http://localhost:3000/care-teams/participants\",",
+									"        method: \"POST\",",
+									"        header: {",
+									"            \"Content-Type\": \"application/json\"",
+									"        },",
+									"        body: {",
+									"            mode: \"raw\",",
+									"            raw: JSON.stringify({ data: mongoPayload })",
+									"        }",
+									"    }, (err, res) => {",
+									"        if (err) {",
+									"            console.error(\"❌ Error sending participant to backend:\", err);",
+									"            return;",
+									"        }",
+									"",
+									"        console.log(\"✅ Participant saved in backend:\", res.json());",
+									"    });",
+									"",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
 					"id": "15381251-0b7e8d2d-ac81-4319-8757-ddd3111532e5",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -11320,7 +11388,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"role\": \"participant\",\r\n  \"member_type\": \"employee\",\r\n  \"member_id\": \"28d9c1be-08f0-403b-aa76-bff228c9904f\",\r\n  \"period_start\": \"2024-11-28\",\r\n  \"status\": \"active\",\r\n  \"care_team_id\": \"28d9c1be-08f0-403b-aa76-bff228c9904f\"\r\n}",
+							"raw": "{\r\n  \"role\": \"assistant_surgeon\",\r\n  \"member_type\": \"employee\",\r\n  \"member_id\": \"a2dec326-af1f-4591-9de0-c4ab1d7a2383\",\r\n  \"period_start\": \"2025-12-01\",\r\n  \"status\": \"active\",\r\n  \"care_team_id\": \"{{care_team_id}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
