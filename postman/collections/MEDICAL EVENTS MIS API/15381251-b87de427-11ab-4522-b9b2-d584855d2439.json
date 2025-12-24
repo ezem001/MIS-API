@@ -7560,138 +7560,6 @@
 					"name": "Care Plan Activity",
 					"item": [
 						{
-							"name": "Get Care Plan Activity by ID",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "591b7c7c-78cd-40b4-9a5a-56371db3c2ce",
-										"exec": [
-											"const resData = pm.response.json().data;\r",
-											"\r",
-											"// Копія з оновленим статус різоном всередині detail\r",
-											"const finalJson = {\r",
-											"  ...resData,\r",
-											"  detail: {\r",
-											"    ...resData.detail,\r",
-											"    status_reason: {\r",
-											"      coding: [\r",
-											"        {\r",
-											"          system: \"eHealth/care_plan_activity_cancel_reasons\",\r",
-											"          code: \"entered_in_error\"\r",
-											"        }\r",
-											"      ]\r",
-											"    }\r",
-											"  }\r",
-											"};\r",
-											"\r",
-											"pm.visualizer.set(`\r",
-											"  <style>\r",
-											"    pre {\r",
-											"      background-color: #f6f8fa;\r",
-											"      padding: 16px;\r",
-											"      border-radius: 5px;\r",
-											"      font-family: monospace;\r",
-											"      white-space: pre-wrap;\r",
-											"      max-height: 500px;\r",
-											"      overflow: auto;\r",
-											"    }\r",
-											"    button {\r",
-											"      margin-bottom: 10px;\r",
-											"      padding: 5px 10px;\r",
-											"      border-radius: 4px;\r",
-											"      border: 1px solid #ccc;\r",
-											"      background-color: #e0e0e0;\r",
-											"      cursor: pointer;\r",
-											"    }\r",
-											"    button:hover {\r",
-											"      background-color: #d0d0d0;\r",
-											"    }\r",
-											"  </style>\r",
-											"  <h3>Згенерований JSON для скасування активності плану лікування</h3>\r",
-											"  <button onclick=\"copyToClipboard()\">Скопіювати JSON</button>\r",
-											"  <pre id=\"jsonOutput\">{{json}}</pre>\r",
-											"  <script>\r",
-											"    function copyToClipboard() {\r",
-											"      const text = document.getElementById('jsonOutput').innerText;\r",
-											"      const textArea = document.createElement('textarea');\r",
-											"      textArea.value = text;\r",
-											"      document.body.appendChild(textArea);\r",
-											"      textArea.select();\r",
-											"      try {\r",
-											"        document.execCommand('copy');\r",
-											"        alert('JSON скопійовано!');\r",
-											"      } catch (err) {\r",
-											"        alert('Помилка копіювання: ' + err);\r",
-											"      }\r",
-											"      document.body.removeChild(textArea);\r",
-											"    }\r",
-											"  </script>\r",
-											"`, {\r",
-											"  json: JSON.stringify(finalJson, null, 2)\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "62f85035-74d4-4e2d-afcd-2e0b3fc8590d",
-										"exec": [],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "15381251-0402273e-f00c-4277-be8e-8de641a7c61c",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									},
-									{
-										"key": "api-key",
-										"value": "{{mis_client_secret}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "X-Custom-PSK",
-										"value": "{{x-custom-psk}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/care_plans/{{jobCareplanID}}/activities/{{JobActivityID}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"patients",
-										"{{patient_id_from_episode}}",
-										"care_plans",
-										"{{jobCareplanID}}",
-										"activities",
-										"{{JobActivityID}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "PreQualify SR Care Plan Activity",
 							"event": [
 								{
@@ -8581,6 +8449,138 @@
 										"{{JobActivityID}}",
 										"actions",
 										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Care Plan Activity by ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "591b7c7c-78cd-40b4-9a5a-56371db3c2ce",
+										"exec": [
+											"const resData = pm.response.json().data;\r",
+											"\r",
+											"// Копія з оновленим статус різоном всередині detail\r",
+											"const finalJson = {\r",
+											"  ...resData,\r",
+											"  detail: {\r",
+											"    ...resData.detail,\r",
+											"    status_reason: {\r",
+											"      coding: [\r",
+											"        {\r",
+											"          system: \"eHealth/care_plan_activity_cancel_reasons\",\r",
+											"          code: \"entered_in_error\"\r",
+											"        }\r",
+											"      ]\r",
+											"    }\r",
+											"  }\r",
+											"};\r",
+											"\r",
+											"pm.visualizer.set(`\r",
+											"  <style>\r",
+											"    pre {\r",
+											"      background-color: #f6f8fa;\r",
+											"      padding: 16px;\r",
+											"      border-radius: 5px;\r",
+											"      font-family: monospace;\r",
+											"      white-space: pre-wrap;\r",
+											"      max-height: 500px;\r",
+											"      overflow: auto;\r",
+											"    }\r",
+											"    button {\r",
+											"      margin-bottom: 10px;\r",
+											"      padding: 5px 10px;\r",
+											"      border-radius: 4px;\r",
+											"      border: 1px solid #ccc;\r",
+											"      background-color: #e0e0e0;\r",
+											"      cursor: pointer;\r",
+											"    }\r",
+											"    button:hover {\r",
+											"      background-color: #d0d0d0;\r",
+											"    }\r",
+											"  </style>\r",
+											"  <h3>Згенерований JSON для скасування активності плану лікування</h3>\r",
+											"  <button onclick=\"copyToClipboard()\">Скопіювати JSON</button>\r",
+											"  <pre id=\"jsonOutput\">{{json}}</pre>\r",
+											"  <script>\r",
+											"    function copyToClipboard() {\r",
+											"      const text = document.getElementById('jsonOutput').innerText;\r",
+											"      const textArea = document.createElement('textarea');\r",
+											"      textArea.value = text;\r",
+											"      document.body.appendChild(textArea);\r",
+											"      textArea.select();\r",
+											"      try {\r",
+											"        document.execCommand('copy');\r",
+											"        alert('JSON скопійовано!');\r",
+											"      } catch (err) {\r",
+											"        alert('Помилка копіювання: ' + err);\r",
+											"      }\r",
+											"      document.body.removeChild(textArea);\r",
+											"    }\r",
+											"  </script>\r",
+											"`, {\r",
+											"  json: JSON.stringify(finalJson, null, 2)\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "62f85035-74d4-4e2d-afcd-2e0b3fc8590d",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "15381251-0402273e-f00c-4277-be8e-8de641a7c61c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/care_plans/{{jobCareplanID}}/activities/{{JobActivityID}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"{{patient_id_from_episode}}",
+										"care_plans",
+										"{{jobCareplanID}}",
+										"activities",
+										"{{JobActivityID}}"
 									]
 								}
 							},
