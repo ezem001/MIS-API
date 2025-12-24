@@ -10919,15 +10919,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/care-teams/search?member_id=3acde8fa-0d48-44d5-9635-f62b2fb23530",
+									"raw": "http://localhost:3000/care-teams?member_id=3acde8fa-0d48-44d5-9635-f62b2fb23530",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"care-teams",
-										"search"
+										"care-teams"
 									],
 									"query": [
 										{
@@ -10942,8 +10941,7 @@
 										},
 										{
 											"key": "member_id",
-											"value": "3acde8fa-0d48-44d5-9635-f62b2fb23530",
-											"type": "text"
+											"value": "3acde8fa-0d48-44d5-9635-f62b2fb23530"
 										}
 									]
 								}
