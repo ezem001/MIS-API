@@ -10870,7 +10870,18 @@
 							},
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/care-teams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"care-teams"
+									]
+								}
 							},
 							"response": []
 						}
