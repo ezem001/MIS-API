@@ -10863,7 +10863,7 @@
 					"name": "Local saved care teams",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Get care teams",
 							"id": "15381251-9435b591-ff22-419d-8a84-c29f190e676b",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
