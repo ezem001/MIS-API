@@ -10919,7 +10919,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/care-teams?member_id=3acde8fa-0d48-44d5-9635-f62b2fb23530",
+									"raw": "http://localhost:3000/care-teams?status=suspended",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -10941,7 +10941,31 @@
 										},
 										{
 											"key": "member_id",
-											"value": "3acde8fa-0d48-44d5-9635-f62b2fb23530"
+											"value": "3acde8fa-0d48-44d5-9635-f62b2fb23530",
+											"disabled": true
+										},
+										{
+											"key": "environment",
+											"value": "demo",
+											"description": "preprod",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "6",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "category",
+											"value": "surgical_care_team",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "suspended"
 										}
 									]
 								}
