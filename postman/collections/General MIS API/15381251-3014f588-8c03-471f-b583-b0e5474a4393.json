@@ -2211,13 +2211,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://api-demo.ehealth.gov.ua/api/employees/{{user_id}}/users",
-									"protocol": "https",
+									"raw": "{{host}}/api/employees/{{user_id}}/users",
 									"host": [
-										"api-demo",
-										"ehealth",
-										"gov",
-										"ua"
+										"{{host}}"
 									],
 									"path": [
 										"api",
