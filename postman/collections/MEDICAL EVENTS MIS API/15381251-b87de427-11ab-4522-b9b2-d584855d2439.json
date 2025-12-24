@@ -2050,7 +2050,7 @@
 									"name": "AMB",
 									"item": [
 										{
-											"name": "Dummy AMB encounter condition procedure diagnostic-report immunization Ci",
+											"name": "Dummy AMB encounter condition observation procedure diagnostic-report immunization Ci",
 											"event": [
 												{
 													"listen": "test",
