@@ -2184,6 +2184,50 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "S1.1 Get Employee users Copy",
+							"id": "15381251-b0f0d792-25a7-4ce3-abd3-7d087efa02be",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api-demo.ehealth.gov.ua/api/employees/{{user_id}}/users",
+									"protocol": "https",
+									"host": [
+										"api-demo",
+										"ehealth",
+										"gov",
+										"ua"
+									],
+									"path": [
+										"api",
+										"employees",
+										"{{user_id}}",
+										"users"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "15381251-d619d677-d031-49d5-b474-ca37bfc2cc5f"
