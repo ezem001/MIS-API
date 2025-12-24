@@ -10952,6 +10952,29 @@
 					"id": "15381251-4a56993e-fa5b-4d7e-aeef-e1446f4bbb4b"
 				},
 				{
+					"name": "Get care teams Copy",
+					"id": "15381251-695eaf82-9cbe-45cd-94d7-1accabfff926",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/care-teams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"care-teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create care team",
 					"event": [
 						{
