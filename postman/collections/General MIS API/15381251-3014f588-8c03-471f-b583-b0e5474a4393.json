@@ -10886,7 +10886,7 @@
 							"response": []
 						},
 						{
-							"name": "Get care teams Copy",
+							"name": "Get care team by search params",
 							"id": "15381251-2edb91c5-1646-4812-bebe-9a085b55fe94",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
