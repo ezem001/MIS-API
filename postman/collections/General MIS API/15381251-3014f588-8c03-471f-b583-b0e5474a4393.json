@@ -10961,14 +10961,27 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/care-teams",
+							"raw": "http://localhost:3000/care-teams/:id/participants/:participantId",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"care-teams"
+								"care-teams",
+								":id",
+								"participants",
+								":participantId"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								},
+								{
+									"key": "participantId",
+									"value": ""
+								}
 							]
 						}
 					},
