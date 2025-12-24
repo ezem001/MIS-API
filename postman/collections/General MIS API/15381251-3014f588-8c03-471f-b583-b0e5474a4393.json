@@ -10961,7 +10961,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/care-teams/:id/participants/:participantId",
+							"raw": "http://localhost:3000/care-teams/33980c8f-4a3d-4b66-8688-07a1f20c7558/participants/85bf77d3-13dd-4790-864a-03b653798328",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -10969,19 +10969,9 @@
 							"port": "3000",
 							"path": [
 								"care-teams",
-								":id",
+								"33980c8f-4a3d-4b66-8688-07a1f20c7558",
 								"participants",
-								":participantId"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
-								},
-								{
-									"key": "participantId",
-									"value": ""
-								}
+								"85bf77d3-13dd-4790-864a-03b653798328"
 							]
 						}
 					},
