@@ -10887,6 +10887,30 @@
 							"response": []
 						},
 						{
+							"name": "Get care teams Copy",
+							"id": "15381251-825e3379-555b-4e7e-9eba-73859ed6fdf6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/care-teams/d8a1ed57-25d8-4594-a44f-4c27c5fc33db",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"care-teams",
+										"d8a1ed57-25d8-4594-a44f-4c27c5fc33db"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Get care team by search params",
 							"id": "15381251-2edb91c5-1646-4812-bebe-9a085b55fe94",
 							"protocolProfileBehavior": {
