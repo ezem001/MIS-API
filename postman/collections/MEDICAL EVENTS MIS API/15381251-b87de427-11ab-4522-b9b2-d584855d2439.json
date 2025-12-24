@@ -2152,7 +2152,7 @@
 											"response": []
 										},
 										{
-											"name": "Dummy AMB encounter condition procedure diagnostic-report",
+											"name": "Dummy AMB encounter care_team condition observations procedure diagnostic-report",
 											"event": [
 												{
 													"listen": "test",
