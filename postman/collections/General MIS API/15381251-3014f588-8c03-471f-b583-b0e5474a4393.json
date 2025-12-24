@@ -10861,7 +10861,20 @@
 			"item": [
 				{
 					"name": "Local saved care teams",
-					"item": [],
+					"item": [
+						{
+							"name": "New Request",
+							"id": "15381251-9435b591-ff22-419d-8a84-c29f190e676b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "15381251-4a56993e-fa5b-4d7e-aeef-e1446f4bbb4b"
 				},
 				{
