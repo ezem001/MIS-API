@@ -2186,7 +2186,7 @@
 							"response": []
 						},
 						{
-							"name": "S1.1 Get Employee users Copy",
+							"name": "Get Employee users",
 							"id": "15381251-b0f0d792-25a7-4ce3-abd3-7d087efa02be",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
