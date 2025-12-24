@@ -10895,14 +10895,27 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/care-teams",
+									"raw": "http://localhost:3000/care-teams/search",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"care-teams"
+										"care-teams",
+										"search"
+									],
+									"query": [
+										{
+											"key": "legal_entity_id",
+											"value": "24dbe468-7820-44d8-adae-28863fc41db4",
+											"disabled": true
+										},
+										{
+											"key": "author_employee_id",
+											"value": "5746e964-80fb-43d8-b388-ced55772d2f9",
+											"disabled": true
+										}
 									]
 								}
 							},
