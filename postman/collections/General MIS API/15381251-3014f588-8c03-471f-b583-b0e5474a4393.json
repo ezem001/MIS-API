@@ -10872,14 +10872,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/care-teams",
+									"raw": "http://localhost:3000/care-teams/d8a1ed57-25d8-4594-a44f-4c27c5fc33db",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"care-teams"
+										"care-teams",
+										"d8a1ed57-25d8-4594-a44f-4c27c5fc33db"
 									]
 								}
 							},
