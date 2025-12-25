@@ -11124,7 +11124,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"status\": \"draft\",\r\n  \"category\": \"surgical_care_team\",\r\n  \"name\": \"Тестова команда лікування no user 4\",\r\n  \"period_start\": \"2025-11-28\",\r\n  \"email\": \"test_care_team@email.com\",\r\n  \"phones\": [\r\n    {\r\n      \"type\": \"MOBILE\",\r\n      \"number\": \"+380503410870\"\r\n    }\r\n  ],\r\n  \"note\": \"Додаткова примітка до команди лікування\",\r\n  \"author_employee_id\": \"{{user_id}}\"\r\n}",
+							"raw": "{\r\n  \"status\": \"draft\",\r\n  \"category\": \"surgical_care_team\",\r\n  \"name\": \"Тестова команда 1.1\",\r\n  \"period_start\": \"2025-11-28\",\r\n  \"email\": \"test_care_team@email.com\",\r\n  \"phones\": [\r\n    {\r\n      \"type\": \"MOBILE\",\r\n      \"number\": \"+380503410870\"\r\n    }\r\n  ],\r\n  \"note\": \"Додаткова примітка до команди лікування\",\r\n  \"author_employee_id\": \"{{user_id}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
