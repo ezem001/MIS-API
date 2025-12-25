@@ -2040,7 +2040,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "a2bf3b9b-45b5-4113-a23d-c9595fb7fbc0",
+										"id": "d6aa9625-7b10-44a4-8217-e61fe3326063",
 										"exec": [
 											"// Логування запиту та відповіді\r",
 											"\r",
@@ -2057,11 +2057,7 @@
 											"\r",
 											"console.info(jsonData?.data)\r",
 											"\r",
-											"for (const value of jsonData?.data) {\r",
-											"\r",
-											"    for (const key in value) {}\r",
-											"      console.log(key);\r",
-											"}"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {},
@@ -2071,7 +2067,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "3d3cdc68-8003-4d09-8e4e-02646a9209cf",
+										"id": "215ca80d-bd09-4979-973c-e876e582ff53",
 										"exec": [
 											""
 										],
@@ -2110,7 +2106,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/employees",
+									"raw": "{{host}}/api/employees?page_size=1000",
 									"host": [
 										"{{host}}"
 									],
@@ -2161,8 +2157,7 @@
 										},
 										{
 											"key": "page_size",
-											"value": "1000",
-											"disabled": true
+											"value": "1000"
 										},
 										{
 											"key": "verification_status",
@@ -2171,7 +2166,7 @@
 										},
 										{
 											"key": "specialities",
-											"value": "FAMILY_DOCTOR",
+											"value": "HR",
 											"type": "text",
 											"disabled": true
 										},
