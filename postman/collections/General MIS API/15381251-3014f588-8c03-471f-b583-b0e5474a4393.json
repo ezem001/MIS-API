@@ -10930,7 +10930,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/care-teams?status=suspended",
+									"raw": "http://localhost:3000/care-teams?legal_entity_id=10d87d8b-81d3-448e-ae97-f45b6b1111cd",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -10942,8 +10942,7 @@
 									"query": [
 										{
 											"key": "legal_entity_id",
-											"value": "24dbe468-7820-44d8-adae-28863fc41db4",
-											"disabled": true
+											"value": "10d87d8b-81d3-448e-ae97-f45b6b1111cd"
 										},
 										{
 											"key": "author_employee_id",
@@ -10976,7 +10975,8 @@
 										},
 										{
 											"key": "status",
-											"value": "suspended"
+											"value": "suspended",
+											"disabled": true
 										}
 									]
 								}
