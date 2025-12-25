@@ -5045,7 +5045,7 @@
 													"",
 													"        // Відправка на бекенд для збереження в MongoDB",
 													"        pm.sendRequest({",
-													"            url: \"http://localhost:3000/patients\",",
+													"            url: \"http://localhost:3000/patient\",",
 													"            method: \"POST\",",
 													"            header: {",
 													"                \"Content-Type\": \"application/json\"",
@@ -5074,24 +5074,20 @@
 													"",
 													"// Логування запиту та відповіді",
 													"",
-													"(function () {",
-													"    // не логувати /log щоб уникнути рекурсії",
-													"    if (pm.request.url.toString().includes('/log')) return;",
+													"// (function () {",
+													"//     // не логувати /log щоб уникнути рекурсії",
+													"//     if (pm.request.url.toString().includes('/log')) return;",
 													"",
-													"    const logger = pm.require('@winter-zodiac-949553/log-utils')",
-													"    const logPayload = logger.createLogPayload(pm);",
-													"    logger.sendLog(logPayload);",
-													"})();",
+													"//     const logger = pm.require('@winter-zodiac-949553/log-utils')",
+													"//     const logPayload = logger.createLogPayload(pm);",
+													"//     logger.sendLog(logPayload);",
+													"// })();",
 													"",
 													"",
 													""
 												],
 												"type": "text/javascript",
-												"packages": {
-													"@winter-zodiac-949553/log-utils": {
-														"id": "019763ea-01f4-7431-9bc8-865f51c1b866"
-													}
-												},
+												"packages": {},
 												"requests": {}
 											}
 										},
