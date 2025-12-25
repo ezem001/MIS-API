@@ -5015,7 +5015,7 @@
 													"    const createPersonResponse = JSON.parse(pm.globals.get(\"CREATE_PERSON_RESPONSE\") || \"{}\");",
 													"",
 													"    // Перевіряємо, чи успішно підписано",
-													"    if (signPersonResponse.data && signPersonResponse.data.id) {",
+													"    if (signPersonResponse.data && signPersonResponse.data.person_id) {",
 													"        const patientId = signPersonResponse.data.person_id;",
 													"        console.log(\"✅ patientId:\", patientId);",
 													"",
