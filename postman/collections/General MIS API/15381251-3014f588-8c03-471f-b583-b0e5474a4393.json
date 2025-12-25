@@ -5033,15 +5033,20 @@
 													"@winter-zodiac-949553/log-utils": {
 														"id": "019763ea-01f4-7431-9bc8-865f51c1b866"
 													}
-												}
+												},
+												"requests": {}
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
 												"id": "cbfa6777-d20b-424d-af25-7ae94f0ac435",
-												"exec": [],
-												"type": "text/javascript"
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
 											}
 										}
 									],
