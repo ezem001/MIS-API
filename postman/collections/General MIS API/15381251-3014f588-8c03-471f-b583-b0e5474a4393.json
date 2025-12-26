@@ -5118,6 +5118,7 @@
 													"    procedures: [],",
 													"    diagnostic_reports: []",
 													"};",
+													"console.log(patientDocument)",
 													"",
 													"pm.sendRequest({",
 													"    url: \"http://localhost:3000/patient\",",
