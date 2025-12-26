@@ -5146,7 +5146,7 @@
 													"    },",
 													"    body: {",
 													"        mode: \"raw\",",
-													"        raw: JSON.stringify({ data: patientDocument })",
+													"        raw: JSON.stringify(patientDocument)",
 													"    }",
 													"}, (err, res) => {",
 													"    if (err) {",
