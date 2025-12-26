@@ -4850,7 +4850,7 @@
 													"        ? JSON.parse(pm.request.body.raw)\r",
 													"        : {};\r",
 													"\r",
-													"    if (body.id) {\r",
+													"    if (body?.person?.id) {\r",
 													"        isUpdate = true;\r",
 													"    }\r",
 													"} catch (e) {\r",
