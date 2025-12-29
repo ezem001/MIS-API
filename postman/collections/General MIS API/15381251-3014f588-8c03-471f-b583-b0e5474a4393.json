@@ -11399,9 +11399,82 @@
 					"name": "Change care team status",
 					"event": [
 						{
+							"listen": "test",
+							"script": {
+								"id": "b76e9bb2-7230-4c42-8c80-149b48d48617",
+								"exec": [
+									"pm.test(\"Change care team status handled\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    const response = pm.response.json();",
+									"",
+									"    if (!response?.data) {",
+									"        console.error(\"❌ No data in response\");",
+									"        return;",
+									"    }",
+									"",
+									"    const {",
+									"        id,",
+									"        status,",
+									"        status_reason,",
+									"        period_end",
+									"    } = response.data;",
+									"",
+									"    // ------------------------------",
+									"    //  Prepare backend payload",
+									"    // ------------------------------",
+									"    const updateData = {",
+									"        id,",
+									"        team_status: status",
+									"    };",
+									"",
+									"    if (status === \"entered_in_error\") {",
+									"        updateData.status_reason = status_reason ?? null;",
+									"    }",
+									"",
+									"    if (status === \"inactive\") {",
+									"        updateData.period_end = period_end ?? new Date().toISOString();",
+									"    }",
+									"",
+									"    // suspended → тільки team_status (нічого не додаємо)",
+									"",
+									"    console.info(\"📤 Updating team status in backend:\", updateData);",
+									"",
+									"    // ------------------------------",
+									"    //  Send to backend",
+									"    // ------------------------------",
+									"    pm.sendRequest({",
+									"        url: `http://localhost:3000/care-teams/${id}/status`,",
+									"        method: \"PATCH\",",
+									"        header: {",
+									"            \"Content-Type\": \"application/json\"",
+									"        },",
+									"        body: {",
+									"            mode: \"raw\",",
+									"            raw: JSON.stringify({",
+									"                data: updateData",
+									"            })",
+									"        }",
+									"    }, (err, res) => {",
+									"        if (err) {",
+									"            console.error(\"❌ Backend error:\", err);",
+									"            return;",
+									"        }",
+									"",
+									"        console.log(\"✅ Team status updated:\", res.json());",
+									"    });",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
 							"listen": "prerequest",
 							"script": {
-								"id": "24c269d5-8f52-403d-b636-6af819b88027",
+								"id": "d7783c5f-0bb7-4af1-90f1-05c3e9b4f463",
 								"exec": [
 									"// Отримуємо статус з тіла запиту",
 									"let requestBody = pm.request.body.raw ? JSON.parse(pm.request.body.raw) : {};",
@@ -12065,7 +12138,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"status\": \"entered_in_error\",\r\n    \"status_reason\": \"typo\"\r\n}",
+							"raw": "{\r\n    \"status\": \"inactive\",\r\n    \"period_end\": \"2025-12-03\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -12073,7 +12146,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/care_teams/participants/bdfbb0cf-7f66-4e28-b06a-274222945560/actions/change_status",
+							"raw": "{{host}}/api/care_teams/participants/bb94d7a7-4d5a-46ce-a356-576481445cea/actions/change_status",
 							"host": [
 								"{{host}}"
 							],
@@ -12081,7 +12154,7 @@
 								"api",
 								"care_teams",
 								"participants",
-								"bdfbb0cf-7f66-4e28-b06a-274222945560",
+								"bb94d7a7-4d5a-46ce-a356-576481445cea",
 								"actions",
 								"change_status"
 							]
