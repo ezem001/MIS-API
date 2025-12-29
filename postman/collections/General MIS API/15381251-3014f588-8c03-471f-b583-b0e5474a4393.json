@@ -9575,7 +9575,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/v2/dictionaries?name=eHealth/LOINC/observation_codes",
+							"raw": "{{host}}/api/v2/dictionaries?name=POSITION",
 							"host": [
 								"{{host}}"
 							],
@@ -9597,8 +9597,7 @@
 								},
 								{
 									"key": "name",
-									"value": "POSITION",
-									"disabled": true
+									"value": "POSITION"
 								},
 								{
 									"key": "name",
@@ -9637,7 +9636,8 @@
 								},
 								{
 									"key": "name",
-									"value": "eHealth/LOINC/observation_codes"
+									"value": "eHealth/LOINC/observation_codes",
+									"disabled": true
 								},
 								{
 									"key": "name",
