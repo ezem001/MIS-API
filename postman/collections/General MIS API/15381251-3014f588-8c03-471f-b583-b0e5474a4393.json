@@ -11249,7 +11249,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"status\": \"draft\",\r\n  \"category\": \"surgical_care_team\",\r\n  \"name\": \"Тестова команда 1.1\",\r\n  \"period_start\": \"2025-11-28\",\r\n  \"email\": \"test_care_team@email.com\",\r\n  \"phones\": [\r\n    {\r\n      \"type\": \"MOBILE\",\r\n      \"number\": \"+380503410870\"\r\n    }\r\n  ],\r\n  \"note\": \"Додаткова примітка до команди лікування\",\r\n  \"author_employee_id\": \"{{user_id}}\"\r\n}",
+							"raw": "{\r\n  \"status\": \"draft\",\r\n  \"category\": \"surgical_care_team\",\r\n  \"name\": \"Тестова команда 1.2\",\r\n  \"period_start\": \"2025-11-28\",\r\n  \"email\": \"test_care_team@email.com\",\r\n  \"phones\": [\r\n    {\r\n      \"type\": \"MOBILE\",\r\n      \"number\": \"+380503410870\"\r\n    }\r\n  ],\r\n  \"note\": \"Додаткова примітка до команди лікування\",\r\n  \"author_employee_id\": \"{{user_id}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11381,14 +11381,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/care_teams/id",
+							"raw": "{{host}}/api/care_teams/{{care_team_id}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"care_teams",
-								"id"
+								"{{care_team_id}}"
 							]
 						},
 						"description": "This method is used to get details of care team."
@@ -11492,7 +11492,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "15b4e918-89d5-4087-a94a-419edefbe4a9",
+								"id": "b95dd538-c131-443d-8aa6-34800056c199",
 								"exec": [
 									"// pm.test(\"Status code is 200\", function () {",
 									"//     pm.response.to.have.status(200);",
@@ -11685,19 +11685,20 @@
 									"function renderError(data) {",
 									"    const html = `",
 									"    <style>",
-									"        body { font-family: Inter, sans-serif; background:#450a0a; color:#fee2e2; }",
+									"        body { font-family: Inter, sans-serif; color:#fee2e2; }",
 									"        .card {",
 									"            background:#7f1d1d;",
 									"            border-radius:14px;",
 									"            padding:20px;",
-									"            max-width:800px;",
+									"            max-width:100%;",
 									"        }",
 									"        h2 { color:#fecaca; }",
 									"        pre {",
 									"            background:#991b1b;",
 									"            padding:12px;",
 									"            border-radius:8px;",
-									"            overflow:auto;",
+									"            max-width:100%;",
+									"            white-space: pre-wrap; ",
 									"        }",
 									"    </style>",
 									"",
@@ -12013,7 +12014,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"role\": \"team_member\",\r\n  \"member_type\": \"employee\",\r\n  \"member_id\": \"a2dec326-af1f-4591-9de0-c4ab1d7a2383\",\r\n  \"period_start\": \"2025-12-01\",\r\n  \"status\": \"active\",\r\n  \"care_team_id\": \"{{care_team_id}}\"\r\n}",
+							"raw": "{\r\n  \"role\": \"care_team_manager\",\r\n  \"member_type\": \"employee\",\r\n  \"member_id\": \"c997ff66-3711-43f7-a168-7cbd5b72bd95\",\r\n  \"period_start\": \"2025-12-01\",\r\n  \"status\": \"active\",\r\n  \"care_team_id\": \"{{care_team_id}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
