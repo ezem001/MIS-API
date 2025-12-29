@@ -11868,7 +11868,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/care_teams/participants?care_team_id=c2394c27-d3ac-4f71-b0b3-596e9bf415ab",
+							"raw": "{{host}}/api/care_teams/participants?care_team_id=c2394c27-d3ac-4f71-b0b3-596e9bf415ab&care_team_id=4c29451c-e0b3-43ea-8de3-ebf9e56ccd06",
 							"host": [
 								"{{host}}"
 							],
@@ -11913,8 +11913,7 @@
 								{
 									"key": "care_team_id",
 									"value": "c2394c27-d3ac-4f71-b0b3-596e9bf415ab",
-									"description": "no name same le",
-									"type": "text"
+									"description": "no name same le"
 								},
 								{
 									"key": "care_team_id",
@@ -11983,6 +11982,11 @@
 									"value": "607b81ad-f5d2-4a8e-9c9b-2b514aa910ad",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "care_team_id",
+									"value": "4c29451c-e0b3-43ea-8de3-ebf9e56ccd06",
+									"type": "text"
 								}
 							]
 						},
