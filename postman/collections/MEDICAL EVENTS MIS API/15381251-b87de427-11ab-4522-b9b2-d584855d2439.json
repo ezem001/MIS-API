@@ -1046,14 +1046,14 @@
 									"raw": " {\n   \"id\":\"{{episode_id}}\",\n   \"name\":\"Епізод QA_28\",\n   \"status\":\"active\",\n   \"type\":{\n      \"system\":\"eHealth/episode_types\",\n      \"code\":\"TREATMENT\"\n   },\n   \"period\":{\n      \"start\":\"{{episode_start_date}}\"\n   },\n   \"managing_organization\": {\n\t    \"identifier\": {\n\t      \"type\": {\n\t        \"coding\": [\n\t          {\n\t            \"system\": \"eHealth/resources\",\n\t            \"code\": \"legal_entity\"\n\t          }\n\t        ]\n\t      },\n\t      \"value\":\"{{user_legal_entity}}\"\n\t    }\n   },\n   \"care_manager\": {\n\t    \"identifier\": {\n\t      \"type\": {\n\t        \"coding\": [\n\t          {\n\t            \"system\": \"eHealth/resources\",\n\t            \"code\": \"employee\"\n\t          }\n\t        ]\n\t      },\n\t      \"value\":\"{{user_id}}\"\n\t    }\n   }\n}"
 								},
 								"url": {
-									"raw": "{{host}}/api/patients/d89f5a29-de52-40d1-872d-646253ddf8fb/episodes",
+									"raw": "{{host}}/api/patients/35da467f-11e2-4d3a-adc4-2d92a318929f/episodes",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
-										"d89f5a29-de52-40d1-872d-646253ddf8fb",
+										"35da467f-11e2-4d3a-adc4-2d92a318929f",
 										"episodes"
 									]
 								},
