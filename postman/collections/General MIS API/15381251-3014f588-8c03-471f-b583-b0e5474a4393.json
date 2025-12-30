@@ -2021,14 +2021,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/employees/a2dec326-af1f-4591-9de0-c4ab1d7a2383",
+									"raw": "{{host}}/api/employees/{{user_id}}",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"employees",
-										"a2dec326-af1f-4591-9de0-c4ab1d7a2383"
+										"{{user_id}}"
 									]
 								}
 							},
