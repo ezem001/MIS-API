@@ -774,36 +774,9 @@
 							"name": "Create Episode",
 							"event": [
 								{
-									"listen": "prerequest",
-									"script": {
-										"id": "6a2eb172-fbe6-49c4-80b4-172d625d2434",
-										"exec": [
-											"var uuid = require('uuid');",
-											"var id = uuid.v4();",
-											"pm.globals.set(\"episode_id\", id);",
-											"",
-											"const now = new Date();",
-											"",
-											"// Зменшити дату на 2 дні",
-											"const twoDaysAgo = new Date();",
-											"twoDaysAgo.setDate(now.getDate() - 4);",
-											"",
-											"// Форматувати дату у форматі ISO 8601",
-											"const formattedDate = twoDaysAgo.toISOString();",
-											"console.log(formattedDate)",
-											"// Зберегти дату в змінній середовища",
-											"pm.globals.set('episode_start_date', formattedDate);",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								},
-								{
 									"listen": "test",
 									"script": {
-										"id": "a5f1e9de-1809-413a-b90b-ca6ac21f1528",
+										"id": "e58c594e-dccb-45c3-ad19-11440730505b",
 										"exec": [
 											"function displayResponse(title, data) {\r",
 											"    console.log(title, data)\r",
@@ -968,6 +941,13 @@
 											"                    // Display response details in visualizer\r",
 											"                    displayResponse('Episode Job Response Details', responseBody.data);\r",
 											"\r",
+											"                    //Get episode by id\r",
+											"\r",
+											"                    pm.sendRequest({\r",
+											"\r",
+											"                    }, function (err, res) {\r",
+											"\r",
+											"                    });\r",
 											"\r",
 											"                } else {\r",
 											"\r",
@@ -1007,6 +987,33 @@
 										"packages": {},
 										"requests": {}
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a22723bd-011a-4430-b512-68199d6b6a1a",
+										"exec": [
+											"var uuid = require('uuid');",
+											"var id = uuid.v4();",
+											"pm.globals.set(\"episode_id\", id);",
+											"",
+											"const now = new Date();",
+											"",
+											"// Зменшити дату на 2 дні",
+											"const twoDaysAgo = new Date();",
+											"twoDaysAgo.setDate(now.getDate() - 4);",
+											"",
+											"// Форматувати дату у форматі ISO 8601",
+											"const formattedDate = twoDaysAgo.toISOString();",
+											"console.log(formattedDate)",
+											"// Зберегти дату в змінній середовища",
+											"pm.globals.set('episode_start_date', formattedDate);",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								}
 							],
 							"id": "15381251-72622f90-e9dd-4bc4-a9c0-54d62b0f32c4",
@@ -1039,14 +1046,14 @@
 									"raw": " {\n   \"id\":\"{{episode_id}}\",\n   \"name\":\"Епізод QA_28\",\n   \"status\":\"active\",\n   \"type\":{\n      \"system\":\"eHealth/episode_types\",\n      \"code\":\"TREATMENT\"\n   },\n   \"period\":{\n      \"start\":\"{{episode_start_date}}\"\n   },\n   \"managing_organization\": {\n\t    \"identifier\": {\n\t      \"type\": {\n\t        \"coding\": [\n\t          {\n\t            \"system\": \"eHealth/resources\",\n\t            \"code\": \"legal_entity\"\n\t          }\n\t        ]\n\t      },\n\t      \"value\":\"{{user_legal_entity}}\"\n\t    }\n   },\n   \"care_manager\": {\n\t    \"identifier\": {\n\t      \"type\": {\n\t        \"coding\": [\n\t          {\n\t            \"system\": \"eHealth/resources\",\n\t            \"code\": \"employee\"\n\t          }\n\t        ]\n\t      },\n\t      \"value\":\"{{user_id}}\"\n\t    }\n   }\n}"
 								},
 								"url": {
-									"raw": "{{host}}/api/patients/3241244c-acf7-40bf-8a35-d290607fb53e/episodes",
+									"raw": "{{host}}/api/patients/687e51c2-0e17-4300-9bd1-aab60c2dc466/episodes",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
-										"3241244c-acf7-40bf-8a35-d290607fb53e",
+										"687e51c2-0e17-4300-9bd1-aab60c2dc466",
 										"episodes"
 									]
 								},
