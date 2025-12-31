@@ -7506,7 +7506,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://storage-demo.ehealth.gov.ua/persons/96/d9/48/9d/83/96c086d0-d96d-4808-9da3-83705c8b3a95/person_person.MARRIAGE_CERTIFICATE.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Credential=UW2KVTMKINLYBM0A%2F20250903%2Fs3-demo%2Fs3%2Faws4_request&X-Amz-Date=20250903T101731Z&X-Amz-Signature=d4ae4f967fa65e3c9a27d25b65fc3ba913f1bc7d7fecfcf5b3dffe48c0d740ec",
+							"raw": "https://storage-demo.ehealth.gov.ua/authentication-method-requests/85/51/45/8c/0d/8512e172-5134-45b2-8c7e-0d5e4c64bfe4/authentication_method_request_BIRTH_CERTIFICATE.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Credential=UW2KVTMKINLYBM0A%2F20251231%2Fs3-demo%2Fs3%2Faws4_request&X-Amz-Date=20251231T111200Z&X-Amz-Signature=e88a7b74193cd205e15796476876519a30d8bd6ece542bd992634e0cd4337aa3",
 							"protocol": "https",
 							"host": [
 								"storage-demo",
@@ -7515,14 +7515,14 @@
 								"ua"
 							],
 							"path": [
-								"persons",
-								"96",
-								"d9",
-								"48",
-								"9d",
-								"83",
-								"96c086d0-d96d-4808-9da3-83705c8b3a95",
-								"person_person.MARRIAGE_CERTIFICATE.jpeg"
+								"authentication-method-requests",
+								"85",
+								"51",
+								"45",
+								"8c",
+								"0d",
+								"8512e172-5134-45b2-8c7e-0d5e4c64bfe4",
+								"authentication_method_request_BIRTH_CERTIFICATE.jpeg"
 							],
 							"query": [
 								{
@@ -7544,15 +7544,15 @@
 								},
 								{
 									"key": "X-Amz-Credential",
-									"value": "UW2KVTMKINLYBM0A%2F20250903%2Fs3-demo%2Fs3%2Faws4_request"
+									"value": "UW2KVTMKINLYBM0A%2F20251231%2Fs3-demo%2Fs3%2Faws4_request"
 								},
 								{
 									"key": "X-Amz-Date",
-									"value": "20250903T101731Z"
+									"value": "20251231T111200Z"
 								},
 								{
 									"key": "X-Amz-Signature",
-									"value": "d4ae4f967fa65e3c9a27d25b65fc3ba913f1bc7d7fecfcf5b3dffe48c0d740ec"
+									"value": "e88a7b74193cd205e15796476876519a30d8bd6ece542bd992634e0cd4337aa3"
 								}
 							]
 						}
