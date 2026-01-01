@@ -19222,12 +19222,26 @@
 									"script": {
 										"id": "ceb7cb7d-c0a5-4b7a-8cd5-52ded273ce9a",
 										"exec": [
+											"// Розбираємо відповідь",
+											"const resBody = pm.response.json();",
+											"",
+											"",
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
+											"",
+											"",
+											"    const contentString = JSON.stringify(resBody);",
+											"",
+											"    console.log(contentString);",
+											"",
+											"    // Зберігаємо у глобальні змінні",
+											"    pm.globals.set(\"ContentForSign\", contentString);",
+											"",
 											"});"
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								},
 								{
@@ -19238,7 +19252,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -19275,7 +19290,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/composition/1cc8690b-0a50-4fef-b254-4fb0702c4cdb/episode/{{jobEpisodeID}}/encounter/{{jobEncounterID}}",
+									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/composition/{{JobCompositionID}}/episode/{{jobEpisodeID}}/encounter/{{jobEncounterID}}",
 									"host": [
 										"{{host}}"
 									],
@@ -19284,7 +19299,7 @@
 										"patients",
 										"{{patient_id_from_episode}}",
 										"composition",
-										"1cc8690b-0a50-4fef-b254-4fb0702c4cdb",
+										"{{JobCompositionID}}",
 										"episode",
 										"{{jobEpisodeID}}",
 										"encounter",
