@@ -6029,7 +6029,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/persons?birth_date=1955-01-01&last_name=Галушка&first_name=Марко",
+									"raw": "{{host}}/api/persons?birth_date=2000-09-05&last_name=Москаленко&first_name=Станіслав",
 									"host": [
 										"{{host}}"
 									],
@@ -6045,15 +6045,15 @@
 										},
 										{
 											"key": "birth_date",
-											"value": "1955-01-01"
+											"value": "2000-09-05"
 										},
 										{
 											"key": "last_name",
-											"value": "Галушка"
+											"value": "Москаленко"
 										},
 										{
 											"key": "first_name",
-											"value": "Марко"
+											"value": "Станіслав"
 										},
 										{
 											"key": "tax_id",
