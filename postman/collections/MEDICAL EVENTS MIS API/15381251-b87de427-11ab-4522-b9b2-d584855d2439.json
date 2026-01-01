@@ -19419,7 +19419,7 @@
 							"response": []
 						},
 						{
-							"name": "Check job status after sign Copy",
+							"name": "Check job status after sign",
 							"event": [
 								{
 									"listen": "test",
