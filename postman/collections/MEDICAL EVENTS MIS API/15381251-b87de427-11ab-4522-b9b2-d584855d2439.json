@@ -18857,8 +18857,15 @@
 									"script": {
 										"id": "73841e3d-530b-4459-aca5-ed3b98cfa8b3",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
+											"const resData = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Sign Composition - PASS. Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
+											"",
+											"    const resId = resData.data?.id;",
+											"    pm.globals.set('creatCompositionJobId', resId)",
+											"",
 											"});"
 										],
 										"type": "text/javascript",
@@ -18953,7 +18960,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"data\": \"{composition_signed_content}}\"\r\n}",
+									"raw": "{\r\n  \"data\": \"{{composition_signed_content}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
