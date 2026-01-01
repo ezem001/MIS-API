@@ -18748,6 +18748,108 @@
 							"id": "15381251-5975e9a5-b97b-430c-975b-1e5c9da385e1"
 						},
 						{
+							"name": "Get composition",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ceb7cb7d-c0a5-4b7a-8cd5-52ded273ce9a",
+										"exec": [
+											"// Розбираємо відповідь",
+											"const resBody = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"",
+											"",
+											"    const contentString = JSON.stringify(resBody);",
+											"",
+											"    console.log(contentString);",
+											"",
+											"    // Зберігаємо у глобальні змінні",
+											"    pm.globals.set(\"ContentForSign\", contentString);",
+											"",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "b93a83cb-aa74-45d9-8b99-c6d8d2345e76",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "15381251-87d0d4a5-63e2-4da8-8a0b-d35e22f1f332",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/composition/{{JobCompositionID}}/episode/{{jobEpisodeID}}/encounter/{{jobEncounterID}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"{{patient_id_from_episode}}",
+										"composition",
+										"{{JobCompositionID}}",
+										"episode",
+										"{{jobEpisodeID}}",
+										"encounter",
+										"{{jobEncounterID}}"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Sign omposition",
 							"event": [
 								{
@@ -19209,108 +19311,6 @@
 										"composition",
 										"job",
 										"{{composition_check_job_id}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get composition",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "ceb7cb7d-c0a5-4b7a-8cd5-52ded273ce9a",
-										"exec": [
-											"// Розбираємо відповідь",
-											"const resBody = pm.response.json();",
-											"",
-											"",
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"",
-											"",
-											"    const contentString = JSON.stringify(resBody);",
-											"",
-											"    console.log(contentString);",
-											"",
-											"    // Зберігаємо у глобальні змінні",
-											"    pm.globals.set(\"ContentForSign\", contentString);",
-											"",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "b93a83cb-aa74-45d9-8b99-c6d8d2345e76",
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"id": "15381251-87d0d4a5-63e2-4da8-8a0b-d35e22f1f332",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "api-key",
-										"value": "{{mis_client_secret}}",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "X-Custom-PSK",
-										"value": "{{x-custom-psk}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{host}}/api/patients/{{patient_id_from_episode}}/composition/{{JobCompositionID}}/episode/{{jobEpisodeID}}/encounter/{{jobEncounterID}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"patients",
-										"{{patient_id_from_episode}}",
-										"composition",
-										"{{JobCompositionID}}",
-										"episode",
-										"{{jobEpisodeID}}",
-										"encounter",
-										"{{jobEncounterID}}"
-									],
-									"query": [
-										{
-											"key": "limit",
-											"value": "1",
-											"disabled": true
-										}
 									]
 								}
 							},
