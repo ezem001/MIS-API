@@ -18508,6 +18508,185 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "Create Composition Copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "3ff63839-beb7-4424-b694-91dc6cde139a",
+												"exec": [
+													"const jsonData = pm.response.json();",
+													"",
+													"function displayResponse(title, data) {",
+													"    let html = `<h3>${title}</h3>`;",
+													"",
+													"    if (Array.isArray(data)) {",
+													"        html += \"<ul>\";",
+													"        data.forEach(item => {",
+													"            html += `<li>${item}</li>`;",
+													"        });",
+													"        html += \"</ul>\";",
+													"    } else if (typeof data === 'object') {",
+													"        html += `<pre>${JSON.stringify(data, null, 2)}</pre>`;",
+													"    } else {",
+													"        html += `<p>${data}</p>`;",
+													"    }",
+													"",
+													"    pm.visualizer.set(html);",
+													"}",
+													"",
+													"// --- Основна перевірка відповіді ---",
+													"pm.test(\"Check composition code be 200\", function () {",
+													"    pm.expect(pm.response.code).to.eql(200);",
+													"",
+													"    const compositionCheckJobID = jsonData?.data?.id;",
+													"    if (compositionCheckJobID) {",
+													"        pm.globals.set('composition_check_job_id', compositionCheckJobID);",
+													"        console.log('composition_check_job_id:', compositionCheckJobID);",
+													"    } else {",
+													"        console.warn(\"composition_check_job_id not found in response\");",
+													"        return displayResponse(\"❌ composition_check_job_id not found\", jsonData);",
+													"    }",
+													"",
+													"    const url = `${pm.globals.get('host')}/api/patients/composition/job/${compositionCheckJobID}`;",
+													"",
+													"    pm.sendRequest({",
+													"        method: 'GET',",
+													"        url: url,",
+													"        header: {",
+													"            'Content-Type': 'application/json',",
+													"            'Authorization': `Bearer ${pm.environment.get('access_token')}`,",
+													"            'api-key': `${pm.environment.get('mis_client_secret')}`,",
+													"            'X-Custom-PSK': `${pm.globals.get('x-custom-psk')}`",
+													"        }",
+													"    }, function (err, res) {",
+													"        if (err) {",
+													"            console.error('GET error:', err);",
+													"            return displayResponse('❌ Request Error', err.message || err);",
+													"        }",
+													"",
+													"        const responseBody = res.json();",
+													"        const status = responseBody?.data?.status;",
+													"",
+													"        if (status === \"FAILED\") {",
+													"            const errorMessages = responseBody.data.links.map(link => {",
+													"                return link.error || JSON.stringify(link);",
+													"            });",
+													"",
+													"            displayResponse('❌ Job Failed — Reasons:', errorMessages);",
+													"            return;",
+													"        }",
+													"",
+													"        if (responseBody?.data?.links && Array.isArray(responseBody.data.links)) {",
+													"            const hrefs = responseBody.data.links",
+													"                .map(link => link.href)",
+													"                .filter(Boolean);",
+													"",
+													"            displayResponse('✅ Job Links', hrefs);",
+													"",
+													"            responseBody.data.links.forEach(link => {",
+													"                if (link?.href?.includes('composition/')) {",
+													"                    const compositionId = link.href.split('composition/').pop();",
+													"                    pm.globals.set('compositionId', compositionId);",
+													"                    console.log('✅ Saved compositionId:', compositionId);",
+													"                }",
+													"            });",
+													"        } else {",
+													"            displayResponse('⚠️ Unexpected Response Structure', responseBody);",
+													"        }",
+													"    });",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "c2d3c4b8-7021-4b1e-a876-d870cdb50fd0",
+												"exec": [
+													"// // Retrieve the URL from the global variable\r",
+													"// const url = pm.globals.get('jobEncounterID');\r",
+													"\r",
+													"// // Check if the URL is defined and contains the expected format\r",
+													"// if (url && url.includes('encounters/')) {\r",
+													"//     // Extract the ID after 'encounters/'\r",
+													"//     const parts = url.split('encounters/');\r",
+													"//     if (parts.length > 1) {\r",
+													"//         const jobEncounterID = parts[1];\r",
+													"        \r",
+													"//         // Log the extracted ID to the console (for debugging purposes)\r",
+													"//         console.log('Extracted jobEncounterID:', jobEncounterID);\r",
+													"        \r",
+													"//         // Optionally, set the extracted ID as an environment variable\r",
+													"//         pm.globals.set('encounter_extracted_id', jobEncounterID);\r",
+													"//     } else {\r",
+													"//         console.error('The URL does not contain the expected format.');\r",
+													"//     }\r",
+													"// } else {\r",
+													"//     console.error('The global variable jobEncounterID is not defined or does not contain the expected format.');\r",
+													"// }\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "15381251-da0ac1e4-9522-4a99-8c3e-46096efebd34",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api-key",
+												"value": "{{mis_client_secret}}",
+												"type": "text"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{access_token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-Custom-PSK",
+												"value": "{{x-custom-psk}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"COMPOSITION_CATEGORIES\",\r\n                \"code\": \"SICKNESS\"\r\n            }\r\n        ]\r\n    },\r\n    \"type\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"COMPOSITION_TYPES\",\r\n                \"code\": \"TEMP_DISABILITY\"\r\n            }\r\n        ]\r\n    },\r\n    \"event\": [\r\n        {\r\n            \"code\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"COMPOSITION_EVENTS\",\r\n                        \"code\": \"COMPOSITION_VALIDITY_PERIOD\"\r\n                    }\r\n                ]\r\n            },\r\n            \"period\": {\r\n                \"start\": \"2025-07-16T10:45:16Z\",\r\n                \"end\": \"2025-07-19T10:45:16Z\"\r\n            }\r\n        }\r\n    ],\r\n    \"subject\": {\r\n        \"type\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/resources\",\r\n                    \"code\": \"person\"\r\n                }\r\n            ],\r\n            \"text\": \"string\"\r\n        },\r\n        \"value\": \"{{patient_id_from_episode}}\"\r\n    },\r\n    \"encounter\": {\r\n        \"type\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/resources\",\r\n                    \"code\": \"encounter\"\r\n                }\r\n            ],\r\n            \"text\": \"string\"\r\n        },\r\n        \"value\": \"{{jobEncounterID}}\"\r\n    },\r\n    \"author\": {\r\n        \"type\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/resources\",\r\n                    \"code\": \"employee\"\r\n                }\r\n            ],\r\n            \"text\": \"string\"\r\n        },\r\n        \"value\": \"{{user_id}}\"\r\n    },\r\n    \"section\": {\r\n        \"focus\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"person\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{patient_id_from_episode}}\"\r\n        }\r\n    },\r\n    \"extension\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/patients/composition",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"patients",
+												"composition"
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "15381251-5975e9a5-b97b-430c-975b-1e5c9da385e1"
