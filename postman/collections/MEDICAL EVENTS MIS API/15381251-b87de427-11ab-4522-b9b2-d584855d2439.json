@@ -18485,27 +18485,6 @@
 											"script": {
 												"id": "c2d3c4b8-7021-4b1e-a876-d870cdb50fd0",
 												"exec": [
-													"// // Retrieve the URL from the global variable\r",
-													"// const url = pm.globals.get('jobEncounterID');\r",
-													"\r",
-													"// // Check if the URL is defined and contains the expected format\r",
-													"// if (url && url.includes('encounters/')) {\r",
-													"//     // Extract the ID after 'encounters/'\r",
-													"//     const parts = url.split('encounters/');\r",
-													"//     if (parts.length > 1) {\r",
-													"//         const jobEncounterID = parts[1];\r",
-													"        \r",
-													"//         // Log the extracted ID to the console (for debugging purposes)\r",
-													"//         console.log('Extracted jobEncounterID:', jobEncounterID);\r",
-													"        \r",
-													"//         // Optionally, set the extracted ID as an environment variable\r",
-													"//         pm.globals.set('encounter_extracted_id', jobEncounterID);\r",
-													"//     } else {\r",
-													"//         console.error('The URL does not contain the expected format.');\r",
-													"//     }\r",
-													"// } else {\r",
-													"//     console.error('The global variable jobEncounterID is not defined or does not contain the expected format.');\r",
-													"// }\r",
 													""
 												],
 												"type": "text/javascript",
@@ -18544,7 +18523,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"COMPOSITION_CATEGORIES\",\r\n                \"code\": \"SICKNESS\"\r\n            }\r\n        ]\r\n    },\r\n    \"type\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"COMPOSITION_TYPES\",\r\n                \"code\": \"TEMP_DISABILITY\"\r\n            }\r\n        ]\r\n    },\r\n    \"event\": [\r\n        {\r\n            \"code\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"COMPOSITION_EVENTS\",\r\n                        \"code\": \"COMPOSITION_VALIDITY_PERIOD\"\r\n                    }\r\n                ]\r\n            },\r\n            \"period\": {\r\n                \"start\": \"2025-07-16T10:45:16Z\",\r\n                \"end\": \"2025-07-19T10:45:16Z\"\r\n            }\r\n        }\r\n    ],\r\n    \"subject\": {\r\n        \"type\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/resources\",\r\n                    \"code\": \"person\"\r\n                }\r\n            ],\r\n            \"text\": \"string\"\r\n        },\r\n        \"value\": \"{{patient_id_from_episode}}\"\r\n    },\r\n    \"encounter\": {\r\n        \"type\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/resources\",\r\n                    \"code\": \"encounter\"\r\n                }\r\n            ],\r\n            \"text\": \"string\"\r\n        },\r\n        \"value\": \"{{jobEncounterID}}\"\r\n    },\r\n    \"author\": {\r\n        \"type\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/resources\",\r\n                    \"code\": \"employee\"\r\n                }\r\n            ],\r\n            \"text\": \"string\"\r\n        },\r\n        \"value\": \"{{user_id}}\"\r\n    },\r\n    \"section\": {\r\n        \"focus\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"person\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{patient_id_from_episode}}\"\r\n        }\r\n    },\r\n    \"extension\": []\r\n}",
+											"raw": "{\r\n    \"category\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"COMPOSITION_CATEGORIES\",\r\n                \"code\": \"SICKNESS\"\r\n            }\r\n        ]\r\n    },\r\n    \"type\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"COMPOSITION_TYPES\",\r\n                \"code\": \"TEMP_DISABILITY\"\r\n            }\r\n        ]\r\n    },\r\n    \"event\": [\r\n        {\r\n            \"code\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"COMPOSITION_EVENTS\",\r\n                        \"code\": \"COMPOSITION_VALIDITY_PERIOD\"\r\n                    }\r\n                ]\r\n            },\r\n            \"period\": {\r\n                \"start\": \"2026-01-01T10:45:16Z\",\r\n                \"end\": \"2026-01-05T10:45:16Z\"\r\n            }\r\n        }\r\n    ],\r\n    \"subject\": {\r\n        \"type\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/resources\",\r\n                    \"code\": \"person\"\r\n                }\r\n            ],\r\n            \"text\": \"string\"\r\n        },\r\n        \"value\": \"{{patient_id_from_episode}}\"\r\n    },\r\n    \"encounter\": {\r\n        \"type\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/resources\",\r\n                    \"code\": \"encounter\"\r\n                }\r\n            ],\r\n            \"text\": \"string\"\r\n        },\r\n        \"value\": \"{{jobEncounterID}}\"\r\n    },\r\n    \"author\": {\r\n        \"type\": {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"eHealth/resources\",\r\n                    \"code\": \"employee\"\r\n                }\r\n            ],\r\n            \"text\": \"string\"\r\n        },\r\n        \"value\": \"{{user_id}}\"\r\n    },\r\n    \"section\": {\r\n        \"focus\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"person\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{patient_id_from_episode}}\"\r\n        }\r\n    },\r\n    \"extension\": []\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
