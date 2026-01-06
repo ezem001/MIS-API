@@ -9725,30 +9725,30 @@
 							"response": []
 						},
 						{
-							"name": "Get Composition Configurations by search param Copy",
+							"name": "Get Composition Configurations by search param",
 							"event": [
 								{
 									"listen": "prerequest",
 									"script": {
+										"id": "4fdcc852-9102-4212-8f2d-8032b247fa39",
 										"exec": [
 											""
 										],
 										"type": "text/javascript",
 										"packages": {},
-										"requests": {},
-										"id": "4fdcc852-9102-4212-8f2d-8032b247fa39"
+										"requests": {}
 									}
 								},
 								{
 									"listen": "test",
 									"script": {
+										"id": "42a4b5d5-6eae-4431-b2bd-f8317b4da130",
 										"exec": [
 											""
 										],
 										"type": "text/javascript",
 										"packages": {},
-										"requests": {},
-										"id": "42a4b5d5-6eae-4431-b2bd-f8317b4da130"
+										"requests": {}
 									}
 								}
 							],
