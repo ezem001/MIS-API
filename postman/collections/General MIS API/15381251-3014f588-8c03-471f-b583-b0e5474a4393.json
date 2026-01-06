@@ -6029,7 +6029,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/persons?birth_date=2000-09-05&last_name=Москаленко&first_name=Станіслав",
+									"raw": "{{host}}/api/persons?birth_date=2000-09-05&first_name=Василина&last_name=Паламарчук",
 									"host": [
 										"{{host}}"
 									],
@@ -6048,12 +6048,12 @@
 											"value": "2000-09-05"
 										},
 										{
-											"key": "last_name",
-											"value": "Москаленко"
+											"key": "first_name",
+											"value": "Василина"
 										},
 										{
-											"key": "first_name",
-											"value": "Станіслав"
+											"key": "last_name",
+											"value": "Паламарчук"
 										},
 										{
 											"key": "tax_id",
