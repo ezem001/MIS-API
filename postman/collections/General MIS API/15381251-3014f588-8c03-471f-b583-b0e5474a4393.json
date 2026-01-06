@@ -9715,6 +9715,74 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get Observation Configurations by search params",
+							"id": "15381251-5f835a07-f2b3-403c-be2a-b8f61183c9e2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/observation_configurations?code=Barthel_Extended",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"observation_configurations"
+									],
+									"query": [
+										{
+											"key": "is_active",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page_size",
+											"value": "50",
+											"disabled": true
+										},
+										{
+											"key": "code",
+											"value": "Barthel_Extended"
+										},
+										{
+											"key": "code",
+											"value": "96761-2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "15381251-c9cd141b-6f63-4791-a1e4-0b385dba482e"
