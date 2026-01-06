@@ -9551,6 +9551,63 @@
 							"response": []
 						},
 						{
+							"name": "Get Device Parameters Configurations by search params",
+							"id": "15381251-810ea8ce-9721-48c3-80e9-adbc8bf0605f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/device_parameters_configurations?is_active=true&page_size=100",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"device_parameters_configurations"
+									],
+									"query": [
+										{
+											"key": "is_active",
+											"value": "true"
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page_size",
+											"value": "100"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Get Devices Configurations by search params",
 							"id": "15381251-29a50a33-ecf7-4b7a-a53f-ff776e4dc38d",
 							"protocolProfileBehavior": {
