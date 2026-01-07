@@ -36,7 +36,7 @@
 							"response": []
 						},
 						{
-							"name": "dummy_create_legal_entity Copy",
+							"name": "dummy create legal entity",
 							"id": "15381251-8c5b4eeb-28e3-44b6-b76d-f58406166e2d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
