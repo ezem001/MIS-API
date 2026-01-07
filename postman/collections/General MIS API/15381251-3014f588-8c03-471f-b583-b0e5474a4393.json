@@ -12,7 +12,7 @@
 					"name": "Legal Entity",
 					"item": [
 						{
-							"name": "dummy_create_legal_entity",
+							"name": "dummy create legal entity",
 							"id": "15381251-72b63685-1d23-435f-a80f-34db08ad833f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
