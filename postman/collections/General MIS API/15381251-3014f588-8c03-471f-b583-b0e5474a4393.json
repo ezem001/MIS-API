@@ -6126,7 +6126,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/persons?birth_date=2000-09-05&first_name=Василина&last_name=Паламарчук",
+									"raw": "{{host}}/api/persons?birth_date=2006-09-05&first_name=Артем&last_name=Мороз",
 									"host": [
 										"{{host}}"
 									],
@@ -6142,15 +6142,15 @@
 										},
 										{
 											"key": "birth_date",
-											"value": "2000-09-05"
+											"value": "2006-09-05"
 										},
 										{
 											"key": "first_name",
-											"value": "Василина"
+											"value": "Артем"
 										},
 										{
 											"key": "last_name",
-											"value": "Паламарчук"
+											"value": "Мороз"
 										},
 										{
 											"key": "tax_id",
