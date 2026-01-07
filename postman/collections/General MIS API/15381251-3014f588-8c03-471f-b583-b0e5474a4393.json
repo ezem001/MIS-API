@@ -711,6 +711,79 @@
 							"response": []
 						},
 						{
+							"name": "Create division Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ae622839-4f9c-4968-a65f-7f143c531c02",
+										"exec": [
+											"tests[\"Status code is 201\"] = responseCode.code === 201;",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "61b77bfe-feee-4db8-bc33-bf2ec8d607a2",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "15381251-31a36bcf-bfef-4446-9e4b-f8e818d72274",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									},
+									{
+										"key": "api-key",
+										"value": "30276e63617461a185ec"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test_2.0\",\n    \"addresses\": [\n        {\n            \"apartment\": \"99\",\n            \"area\": \"М.КИЇВ\",\n            \"building\": \"20\",\n            \"country\": \"UA\",\n            \"region\": \"М.КИЇВ\",\n            \"settlement\": \"Київ\",\n            \"settlement_id\": \"adaa4abf-f530-461c-bcbf-a0ac210d955b\",\n            \"settlement_type\": \"CITY\",\n            \"street\": \"Леоніда Первомайського\",\n            \"street_type\": \"STREET\",\n            \"type\": \"RESIDENCE\",\n            \"zip\": \"01200\"\n        }\n    ],\n    \"phones\": [\n        {\n            \"type\": \"MOBILE\",\n            \"number\": \"+380447777777\"\n        }\n    ],\n    \"email\": \"demo.emergency@ukr.net\",\n    \"working_hours\": {\n        \"mon\": [\n            [\n                \"09.00\",\n                \"13.00\"\n            ],\n            [\n                \"14.00\",\n                \"20.00\"\n            ]\n        ],\n        \"tue\": [\n            [\n                \"09.00\",\n                \"18.00\"\n            ]\n        ],\n        \"wed\": [\n            [\n                \"09.00\",\n                \"13.00\"\n            ],\n            [\n                \"14.00\",\n                \"20.00\"\n            ]\n        ],\n        \"thu\": [\n            [\n                \"08.00\",\n                \"08.35\"\n            ]\n        ],\n        \"fri\": [\n            [\n                \"09.00\",\n                \"15.00\"\n            ]\n        ]\n    },\n    \"type\": \"CLINIC\",\n    \"legal_entity_id\": \"{{user_legal_entity}}\",\n    \"external_id\": \"3213213\",\n    \"location\": {\n        \"latitude\": 49.3333333,\n        \"longitude\": 36.3333333\n    }\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/divisions",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"divisions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Update division",
 							"id": "15381251-3d3cb539-e1f5-46de-82f1-a1c96c8a78be",
 							"protocolProfileBehavior": {
