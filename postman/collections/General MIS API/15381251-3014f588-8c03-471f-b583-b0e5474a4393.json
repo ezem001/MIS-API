@@ -268,7 +268,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Institutional Legal Entity",
+							"name": "Create/Update Institutional Legal Entity",
 							"event": [
 								{
 									"listen": "test",
