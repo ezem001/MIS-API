@@ -17435,14 +17435,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host_demo}}/api/medical_programs/1318eabc-1a1a-42f6-8450-61e11c19eede",
+							"raw": "{{host}}/api/medical_programs/857588d8-9e12-4935-96c4-b08e95d19dce",
 							"host": [
-								"{{host_demo}}"
+								"{{host}}"
 							],
 							"path": [
 								"api",
 								"medical_programs",
-								"1318eabc-1a1a-42f6-8450-61e11c19eede"
+								"857588d8-9e12-4935-96c4-b08e95d19dce"
 							]
 						},
 						"description": "This endpoint returns medical program by id.\n\n**Scopes required:** `medical_program:read`"
