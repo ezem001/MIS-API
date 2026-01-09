@@ -729,7 +729,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/v2/legal_entities?edrpou=30054364",
+									"raw": "{{host}}/api/v2/legal_entities",
 									"host": [
 										"{{host}}"
 									],
@@ -776,7 +776,8 @@
 										},
 										{
 											"key": "edrpou",
-											"value": "30054364"
+											"value": "30054364",
+											"disabled": true
 										}
 									]
 								}
