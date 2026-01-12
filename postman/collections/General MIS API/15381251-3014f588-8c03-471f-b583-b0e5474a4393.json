@@ -3052,6 +3052,103 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "Get Contract Request Details",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "64784072-5d3a-4874-b280-86560c307bba",
+														"exec": [
+															"var template = `\r",
+															"<style type=\"text/css\">\r",
+															"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+															"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+															"    .tftable tr {background-color:#ffffff;}\r",
+															"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+															"    .tftable tr:hover {background-color:#e0ffff;}\r",
+															"</style>\r",
+															"\r",
+															"<table class=\"tftable\" border=\"1\">\r",
+															"    <tr>\r",
+															"        <th>Assignee ID</th>\r",
+															"        <th>Contract Number</th>\r",
+															"        <th>Contractor Base</th>\r",
+															"        <th>End Date</th>\r",
+															"        <th>Status</th>\r",
+															"    </tr>\r",
+															"    <tr>\r",
+															"        <td>{{response.data.assignee_id}}</td>\r",
+															"        <td>{{response.data.contract_number}}</td>\r",
+															"        <td>{{response.data.contractor_base}}</td>\r",
+															"        <td>{{response.data.end_date}}</td>\r",
+															"        <td>{{response.data.status}}</td>\r",
+															"    </tr>\r",
+															"</table>\r",
+															"`;\r",
+															"\r",
+															"function constructVisualizerPayload() {\r",
+															"    return { response: pm.response.json() }\r",
+															"}\r",
+															"\r",
+															"pm.visualizer.set(template, constructVisualizerPayload());"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "c2a526ec-9b90-4242-9865-0cc4935afd89",
+														"exec": [],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"id": "15381251-69ace939-9680-46fa-b20c-74f4fa0d66c1",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "api-key",
+														"value": "{{mis_client_secret}}",
+														"type": "text"
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer {{access_token}}",
+														"type": "text"
+													},
+													{
+														"key": "X-Custom-PSK",
+														"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{host}}/api/contract_requests/reimbursement/{{contract_request_id}}",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"contract_requests",
+														"reimbursement",
+														"{{contract_request_id}}"
+													]
+												}
+											},
+											"response": []
 										}
 									],
 									"id": "15381251-7a533cd1-999a-499b-b317-c097d158823e"
@@ -3533,106 +3630,106 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "Get Contract Request Details Copy",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "64784072-5d3a-4874-b280-86560c307bba",
+														"exec": [
+															"var template = `\r",
+															"<style type=\"text/css\">\r",
+															"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+															"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+															"    .tftable tr {background-color:#ffffff;}\r",
+															"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+															"    .tftable tr:hover {background-color:#e0ffff;}\r",
+															"</style>\r",
+															"\r",
+															"<table class=\"tftable\" border=\"1\">\r",
+															"    <tr>\r",
+															"        <th>Assignee ID</th>\r",
+															"        <th>Contract Number</th>\r",
+															"        <th>Contractor Base</th>\r",
+															"        <th>End Date</th>\r",
+															"        <th>Status</th>\r",
+															"    </tr>\r",
+															"    <tr>\r",
+															"        <td>{{response.data.assignee_id}}</td>\r",
+															"        <td>{{response.data.contract_number}}</td>\r",
+															"        <td>{{response.data.contractor_base}}</td>\r",
+															"        <td>{{response.data.end_date}}</td>\r",
+															"        <td>{{response.data.status}}</td>\r",
+															"    </tr>\r",
+															"</table>\r",
+															"`;\r",
+															"\r",
+															"function constructVisualizerPayload() {\r",
+															"    return { response: pm.response.json() }\r",
+															"}\r",
+															"\r",
+															"pm.visualizer.set(template, constructVisualizerPayload());"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "c2a526ec-9b90-4242-9865-0cc4935afd89",
+														"exec": [],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"id": "15381251-29784fa2-347a-4ae2-938f-0500db75bb5a",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "api-key",
+														"value": "{{mis_client_secret}}",
+														"type": "text"
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer {{access_token}}",
+														"type": "text"
+													},
+													{
+														"key": "X-Custom-PSK",
+														"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{host}}/api/contract_requests/reimbursement/{{contract_request_id}}",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"api",
+														"contract_requests",
+														"reimbursement",
+														"{{contract_request_id}}"
+													]
+												}
+											},
+											"response": []
 										}
 									],
 									"id": "15381251-869de2bc-e7e7-4cf4-88f1-05f717d80604"
-								},
-								{
-									"name": "Get Contract Request Details",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "64784072-5d3a-4874-b280-86560c307bba",
-												"exec": [
-													"var template = `\r",
-													"<style type=\"text/css\">\r",
-													"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
-													"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
-													"    .tftable tr {background-color:#ffffff;}\r",
-													"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
-													"    .tftable tr:hover {background-color:#e0ffff;}\r",
-													"</style>\r",
-													"\r",
-													"<table class=\"tftable\" border=\"1\">\r",
-													"    <tr>\r",
-													"        <th>Assignee ID</th>\r",
-													"        <th>Contract Number</th>\r",
-													"        <th>Contractor Base</th>\r",
-													"        <th>End Date</th>\r",
-													"        <th>Status</th>\r",
-													"    </tr>\r",
-													"    <tr>\r",
-													"        <td>{{response.data.assignee_id}}</td>\r",
-													"        <td>{{response.data.contract_number}}</td>\r",
-													"        <td>{{response.data.contractor_base}}</td>\r",
-													"        <td>{{response.data.end_date}}</td>\r",
-													"        <td>{{response.data.status}}</td>\r",
-													"    </tr>\r",
-													"</table>\r",
-													"`;\r",
-													"\r",
-													"function constructVisualizerPayload() {\r",
-													"    return { response: pm.response.json() }\r",
-													"}\r",
-													"\r",
-													"pm.visualizer.set(template, constructVisualizerPayload());"
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										},
-										{
-											"listen": "prerequest",
-											"script": {
-												"id": "c2a526ec-9b90-4242-9865-0cc4935afd89",
-												"exec": [],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "15381251-69ace939-9680-46fa-b20c-74f4fa0d66c1",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "api-key",
-												"value": "{{mis_client_secret}}",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Authorization",
-												"value": "Bearer {{access_token}}",
-												"type": "text"
-											},
-											{
-												"key": "X-Custom-PSK",
-												"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{host}}/api/contract_requests/reimbursement/{{contract_request_id}}",
-											"host": [
-												"{{host}}"
-											],
-											"path": [
-												"api",
-												"contract_requests",
-												"reimbursement",
-												"{{contract_request_id}}"
-											]
-										}
-									},
-									"response": []
 								},
 								{
 									"name": "Get Contract Request Printout Content",
