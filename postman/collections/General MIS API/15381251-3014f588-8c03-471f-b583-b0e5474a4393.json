@@ -3316,14 +3316,14 @@
 													"raw": "{\r\n  \"status_reason\": \"Неправильний період контракту\"\r\n}"
 												},
 												"url": {
-													"raw": "{{host}}/api/contract_requests/reimbursement/b2bf8b5e-bee5-4f91-bdf3-5aa765abffd8/actions/terminate",
+													"raw": "{{host}}/api/contract_requests/capitation/b2bf8b5e-bee5-4f91-bdf3-5aa765abffd8/actions/terminate",
 													"host": [
 														"{{host}}"
 													],
 													"path": [
 														"api",
 														"contract_requests",
-														"reimbursement",
+														"capitation",
 														"b2bf8b5e-bee5-4f91-bdf3-5aa765abffd8",
 														"actions",
 														"terminate"
