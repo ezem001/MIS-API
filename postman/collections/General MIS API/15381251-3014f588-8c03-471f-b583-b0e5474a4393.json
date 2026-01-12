@@ -3282,7 +3282,7 @@
 											"response": []
 										},
 										{
-											"name": "Terminate Contract Request by MSP Copy",
+											"name": "Terminate Capitation Contract Request by MSP",
 											"id": "15381251-f337cd6e-768b-4c22-9bd1-a2d8bd4b26d1",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
