@@ -3870,7 +3870,7 @@
 											"response": []
 										},
 										{
-											"name": "Get Contract Request Printout Content Copy",
+											"name": "Get Contract Request Printout Content",
 											"event": [
 												{
 													"listen": "test",
