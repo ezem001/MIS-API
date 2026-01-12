@@ -2539,7 +2539,7 @@
 									"name": "Reimbuersement",
 									"item": [
 										{
-											"name": "Initialize Contract Request Copy",
+											"name": "Initialize Contract Request",
 											"event": [
 												{
 													"listen": "test",
