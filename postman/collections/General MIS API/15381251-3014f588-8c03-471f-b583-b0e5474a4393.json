@@ -3434,7 +3434,7 @@
 											"response": []
 										},
 										{
-											"name": "Get Contract Requests list",
+											"name": "Get Capitation Contract Requests list",
 											"id": "15381251-fed38a26-e03a-47f8-9b53-011457c7afcf",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -3464,14 +3464,14 @@
 													}
 												],
 												"url": {
-													"raw": "{{host}}/api/contract_requests/reimbursement/?status=NHS_SIGNED",
+													"raw": "{{host}}/api/contract_requests/capitation/?status=NHS_SIGNED",
 													"host": [
 														"{{host}}"
 													],
 													"path": [
 														"api",
 														"contract_requests",
-														"reimbursement",
+														"capitation",
 														""
 													],
 													"query": [
