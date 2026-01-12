@@ -2700,6 +2700,7 @@
 													"    pm.visualizer.set(html);\r",
 													"}\r",
 													"\r",
+													"\r",
 													"pm.test(\"Initialize Contract Request status code is 200\", function () {\r",
 													"    pm.expect(pm.response.code).to.eql(200);\r",
 													"\r",
@@ -2818,14 +2819,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{host}}/api/contract_requests/capitation",
+											"raw": "{{host}}/api/contract_requests/reimbursement",
 											"host": [
 												"{{host}}"
 											],
 											"path": [
 												"api",
 												"contract_requests",
-												"capitation"
+												"reimbursement"
 											]
 										}
 									},
