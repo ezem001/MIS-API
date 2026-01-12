@@ -2536,6 +2536,11 @@
 							"name": "Contract request",
 							"item": [
 								{
+									"name": "Reimbuersement",
+									"item": [],
+									"id": "15381251-7a533cd1-999a-499b-b317-c097d158823e"
+								},
+								{
 									"name": "Initialize Contract Request",
 									"event": [
 										{
@@ -3452,18 +3457,6 @@
 												"printout_content"
 											]
 										}
-									},
-									"response": []
-								},
-								{
-									"name": "New Request",
-									"id": "15381251-adf0b3a8-09e2-4a35-877e-e607de869a3d",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": []
 									},
 									"response": []
 								}
