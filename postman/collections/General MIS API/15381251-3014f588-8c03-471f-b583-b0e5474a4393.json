@@ -3673,15 +3673,20 @@
 															"pm.visualizer.set(template, constructVisualizerPayload());"
 														],
 														"type": "text/javascript",
-														"packages": {}
+														"packages": {},
+														"requests": {}
 													}
 												},
 												{
 													"listen": "prerequest",
 													"script": {
 														"id": "c2a526ec-9b90-4242-9865-0cc4935afd89",
-														"exec": [],
-														"type": "text/javascript"
+														"exec": [
+															""
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
 													}
 												}
 											],
@@ -3714,14 +3719,14 @@
 													}
 												],
 												"url": {
-													"raw": "{{host}}/api/contract_requests/reimbursement/{{contract_request_id}}",
+													"raw": "{{host}}/api/contract_requests/capitation/{{contract_request_id}}",
 													"host": [
 														"{{host}}"
 													],
 													"path": [
 														"api",
 														"contract_requests",
-														"reimbursement",
+														"capitation",
 														"{{contract_request_id}}"
 													]
 												}
