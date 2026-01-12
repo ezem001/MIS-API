@@ -3029,7 +3029,7 @@
 											"response": []
 										},
 										{
-											"name": "Approve Contract Request by MSP",
+											"name": "Approve Capitation Contract Request by MSP",
 											"id": "15381251-5e5033c3-5412-4c13-9f8b-74a3a9825796",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
