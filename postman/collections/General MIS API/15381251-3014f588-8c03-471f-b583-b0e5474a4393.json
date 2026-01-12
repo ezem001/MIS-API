@@ -1228,14 +1228,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/divisions/{{user_division_id}}",
+									"raw": "{{host}}/api/divisions/43445143-73df-4c5b-8141-611d527a2ba0",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"divisions",
-										"{{user_division_id}}"
+										"43445143-73df-4c5b-8141-611d527a2ba0"
 									]
 								}
 							},
