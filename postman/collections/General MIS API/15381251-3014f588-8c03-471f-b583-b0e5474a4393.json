@@ -3229,6 +3229,57 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "Terminate Contract Request by MSP Copy",
+											"id": "15381251-f337cd6e-768b-4c22-9bd1-a2d8bd4b26d1",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "X-Custom-PSK",
+														"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+														"type": "text"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer {{access_token}}",
+														"type": "text"
+													},
+													{
+														"key": "api-key",
+														"value": "{{mis_client_secret}}",
+														"type": "text"
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n  \"status_reason\": \"Неправильний період контракту\"\r\n}"
+												},
+												"url": {
+													"raw": "{{host_demo}}/api/contract_requests/reimbursement/b2bf8b5e-bee5-4f91-bdf3-5aa765abffd8/actions/terminate",
+													"host": [
+														"{{host_demo}}"
+													],
+													"path": [
+														"api",
+														"contract_requests",
+														"reimbursement",
+														"b2bf8b5e-bee5-4f91-bdf3-5aa765abffd8",
+														"actions",
+														"terminate"
+													]
+												}
+											},
+											"response": []
 										}
 									],
 									"id": "15381251-869de2bc-e7e7-4cf4-88f1-05f717d80604"
