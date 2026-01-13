@@ -8322,7 +8322,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "{{host}}/api/patients/composition/job/{{creatCompositionJobId}}",
+					"raw": "{{host}}/api/patients/composition/job/{{composition_check_job_id}}",
 					"host": [
 						"{{host}}"
 					],
@@ -8331,7 +8331,7 @@
 						"patients",
 						"composition",
 						"job",
-						"{{creatCompositionJobId}}"
+						"{{composition_check_job_id}}"
 					]
 				}
 			},
