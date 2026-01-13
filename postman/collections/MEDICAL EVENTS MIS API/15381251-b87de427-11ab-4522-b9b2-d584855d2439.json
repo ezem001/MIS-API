@@ -19019,108 +19019,6 @@
 							"response": []
 						},
 						{
-							"name": "Check job status before sign",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "df1c0162-03f9-4111-927f-c8fce6bdce05",
-										"exec": [
-											"// Розбираємо відповідь\r",
-											"const resBody = pm.response.json();\r",
-											"\r",
-											"// Перевіряємо статус-код\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"// Перевіряємо статус DONE\r",
-											"pm.test(\"Status is DONE\", function () {\r",
-											"    pm.expect(resBody.data.status).to.eql(\"DONE\");\r",
-											"});\r",
-											"\r",
-											"// Якщо статус 200 і DONE, зберігаємо ID\r",
-											"if (pm.response.code === 200 && resBody.data.status === \"DONE\") {\r",
-											"    // Знаходимо посилання на composition\r",
-											"    const compositionLink = resBody.data.links.find(link => link.href.includes(\"composition/\"));\r",
-											"\r",
-											"    if (compositionLink) {\r",
-											"        // Витягуємо ID після composition/\r",
-											"        const compositionId = compositionLink.href.split(\"composition/\")[1];\r",
-											"\r",
-											"        // Зберігаємо в глобальні змінні\r",
-											"        pm.globals.set(\"JobCompositionID\", compositionId);\r",
-											"\r",
-											"        // Виводимо для перевірки\r",
-											"        console.log(\"Saved Composition ID:\", compositionId);\r",
-											"    } else {\r",
-											"        console.warn(\"No composition link found.\");\r",
-											"    }\r",
-											"}\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "f527fedf-c5cb-4882-af59-6c8e87b9a9af",
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"id": "15381251-7061955b-6323-43a6-b639-002b446b11a0",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "api-key",
-										"value": "{{mis_client_secret}}",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Custom-PSK",
-										"value": "{{x-custom-psk}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{host}}/api/patients/composition/job/{{composition_check_job_id}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"patients",
-										"composition",
-										"job",
-										"{{composition_check_job_id}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "CancelComposition",
 							"event": [
 								{
@@ -19394,6 +19292,108 @@
 											"value": "TEMP_DISABILITY",
 											"disabled": true
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check job status before sign",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "df1c0162-03f9-4111-927f-c8fce6bdce05",
+										"exec": [
+											"// Розбираємо відповідь\r",
+											"const resBody = pm.response.json();\r",
+											"\r",
+											"// Перевіряємо статус-код\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Перевіряємо статус DONE\r",
+											"pm.test(\"Status is DONE\", function () {\r",
+											"    pm.expect(resBody.data.status).to.eql(\"DONE\");\r",
+											"});\r",
+											"\r",
+											"// Якщо статус 200 і DONE, зберігаємо ID\r",
+											"if (pm.response.code === 200 && resBody.data.status === \"DONE\") {\r",
+											"    // Знаходимо посилання на composition\r",
+											"    const compositionLink = resBody.data.links.find(link => link.href.includes(\"composition/\"));\r",
+											"\r",
+											"    if (compositionLink) {\r",
+											"        // Витягуємо ID після composition/\r",
+											"        const compositionId = compositionLink.href.split(\"composition/\")[1];\r",
+											"\r",
+											"        // Зберігаємо в глобальні змінні\r",
+											"        pm.globals.set(\"JobCompositionID\", compositionId);\r",
+											"\r",
+											"        // Виводимо для перевірки\r",
+											"        console.log(\"Saved Composition ID:\", compositionId);\r",
+											"    } else {\r",
+											"        console.warn(\"No composition link found.\");\r",
+											"    }\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f527fedf-c5cb-4882-af59-6c8e87b9a9af",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "15381251-7061955b-6323-43a6-b639-002b446b11a0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{host}}/api/patients/composition/job/{{composition_check_job_id}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"composition",
+										"job",
+										"{{composition_check_job_id}}"
 									]
 								}
 							},
