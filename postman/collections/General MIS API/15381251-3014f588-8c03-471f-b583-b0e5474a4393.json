@@ -10933,7 +10933,7 @@
 					"response": []
 				},
 				{
-					"name": "Dictionary",
+					"name": "Dictionaries",
 					"event": [
 						{
 							"listen": "prerequest",
