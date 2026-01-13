@@ -8611,14 +8611,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/persons/8fb10e9d-59e5-4c0e-a34e-9162e2b94f6f/authentication_methods",
+									"raw": "{{host}}/api/persons/b3695d68-0b6c-449a-9916-c755ca6e3e79/authentication_methods",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"persons",
-										"8fb10e9d-59e5-4c0e-a34e-9162e2b94f6f",
+										"b3695d68-0b6c-449a-9916-c755ca6e3e79",
 										"authentication_methods"
 									]
 								}
@@ -8629,21 +8629,9 @@
 							"name": "Create authentification method",
 							"event": [
 								{
-									"listen": "prerequest",
-									"script": {
-										"id": "f73ede97-b1d6-4ba3-bc6e-a21cf7fae316",
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								},
-								{
 									"listen": "test",
 									"script": {
-										"id": "be251edb-d10a-45d1-8e4e-01207fcd8efb",
+										"id": "5e83f333-8fda-4db9-a394-ffb9d65ad228",
 										"exec": [
 											"const resBody = JSON.parse(responseBody);\r",
 											"\r",
@@ -8715,19 +8703,31 @@
 											"const resData = pm.response.json();\r",
 											"\r",
 											"// Extract URLs from the documents array in the response\r",
-											"// const documents = resData.urgent.documents;\r",
-											"// const urls = documents.map(doc => doc.url);\r",
+											"const documents = resData.urgent.documents;\r",
+											"const urls = documents.map(doc => doc.url);\r",
 											"\r",
-											"// const additionalData = {\r",
-											"//     row: '0JTQvtC60YPQvNC10L3Rgg=='\r",
-											"// };\r",
+											"const additionalData = {\r",
+											"    row: '0JTQvtC60YPQvNC10L3Rgg=='\r",
+											"};\r",
 											"\r",
-											"// // Process each URL from the documents array\r",
-											"// urls.forEach(url => {\r",
-											"//     processUrl(url, additionalData);\r",
-											"// });\r",
+											"// Process each URL from the documents array\r",
+											"urls.forEach(url => {\r",
+											"    processUrl(url, additionalData);\r",
+											"});\r",
 											"\r",
-											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+											"tests[\"Status code is 201\"] = responseCode.code === 201;"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "bfecda95-66a3-428f-af18-e06781fa9b7d",
+										"exec": [
+											""
 										],
 										"type": "text/javascript",
 										"packages": {},
@@ -8765,7 +8765,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"action\": \"INSERT\",\r\n    \"authentication_method\": {\r\n        \"type\":\"THIRD_PERSON\",\r\n        \"value\":\"a6b83007-0b09-420c-ba0b-138335bb751e\",\r\n        \"phone_number\": \"+380502298393\",\r\n        \"alias\":\"Otp\"\r\n    }\r\n}"
+									"raw": "{\r\n    \"action\": \"INSERT\",\r\n    \"authentication_method\": {\r\n        \"type\":\"THIRD_PERSON\",\r\n        \"value\":\"fa14e2fb-0ddb-4318-9aac-09450a28bf6e\",\r\n        \"alias\":\"third\"\r\n    }\r\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/persons/b3695d68-0b6c-449a-9916-c755ca6e3e79/authentication_method_requests",
@@ -8840,7 +8840,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"verification_code\": 7370\r\n}"
+									"raw": "{\r\n  \"verification_code\": 8627\r\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/persons/{{auth_method_person_id}}/authentication_method_requests/{{Person_auth_method_id}}/actions/approve",
@@ -10971,7 +10971,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/v2/dictionaries?name=POSITION",
+							"raw": "{{host}}/api/v2/dictionaries?name=COMPOSITION_TYPES",
 							"host": [
 								"{{host}}"
 							],
@@ -10993,7 +10993,8 @@
 								},
 								{
 									"key": "name",
-									"value": "POSITION"
+									"value": "POSITION",
+									"disabled": true
 								},
 								{
 									"key": "name",
@@ -11138,11 +11139,6 @@
 								},
 								{
 									"key": "name",
-									"value": "COMPOSITION_CATEGORIES",
-									"disabled": true
-								},
-								{
-									"key": "name",
 									"value": "COMPOSITION_EVENTS",
 									"disabled": true
 								},
@@ -11232,6 +11228,15 @@
 									"key": "name",
 									"value": "eHealth/risk_assesment_codes",
 									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "COMPOSITION_CATEGORIES",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "COMPOSITION_TYPES"
 								}
 							]
 						}
