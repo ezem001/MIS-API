@@ -7853,10 +7853,28 @@
 											"const uuid = require('uuid');\r",
 											"const caraPlanActivityId = uuid.v4();\r",
 											"\r",
-											"pm.globals.set(\"care_plan_activity_id\", caraPlanActivityId);"
+											"pm.globals.set(\"care_plan_activity_id\", caraPlanActivityId);\r",
+											"\r",
+											"\r",
+											"const carePlanStartDate = pm.globals.get('carePlanStartDate');\r",
+											"const carePlanDate = new Date(carePlanStartDate);\r",
+											"\r",
+											"// Додаємо 1 день для activityStartDate\r",
+											"const activityStartDate = new Date(carePlanDate);\r",
+											"activityStartDate.setDate(activityStartDate.getDate() + 1);\r",
+											"\r",
+											"\r",
+											"// Конвертуємо у формат ISO 8601\r",
+											"const activityStartDateISO = activityStartDate.toISOString();\r",
+											"\r",
+											"// Зберігаємо значення в глобальні змінні\r",
+											"pm.globals.set('activityStartDate', activityStartDateISO);\r",
+											"\r",
+											"console.log(\"Activity Start Date:\", activityStartDateISO);"
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								},
 								{
@@ -7864,14 +7882,15 @@
 									"script": {
 										"id": "bfe67303-d9dc-4611-964f-1a8beb280cb5",
 										"exec": [
-											"const resData = JSON.parse(responseBody);\r",
+											"const resData = pm.response.json();\r",
 											"\r",
 											"if(resData.signed_content){\r",
 											"    pm.globals.set('care_plan_activity_signed_content', resData.signed_content)\r",
 											"}"
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -7884,7 +7903,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"{{care_plan_activity_id}}\",\r\n    \"author\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"employee\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{user_id}}\"\r\n        }\r\n    },\r\n    \"care_plan\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"care_plan\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{jobCareplanID}}\"\r\n        }\r\n    },\r\n    \"detail\": {\r\n        \"kind\": \"medication_request\",\r\n        \"product_reference\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"medication\"\r\n                        }\r\n                    ],\r\n                    \"text\": \"Тестовий текст\"\r\n                },\r\n                \"value\": \"00016d96-2638-4128-9484-a3ff1fe745df\"\r\n            }\r\n        },\r\n        \"reason_code\": [\r\n            {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/ICD10_AM/condition_codes\",\r\n                        \"code\": \"E10.9\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"reason_reference\": [\r\n            {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"condition\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    \"value\": \"{{jobEncounterID}}\"\r\n                }\r\n            }\r\n        ],\r\n        \"goal\": [\r\n            {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/care_plan_activity_goals\",\r\n                        \"code\": \"default\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"quantity\": {\r\n            \"value\": 10,\r\n            \"code\": \"ML\",\r\n            \"system\": \"MEDICATION_UNIT\"\r\n        },\r\n        \"scheduled_period\": {\r\n            \"start\": \"2025-08-31T10:00:00.000Z\",\r\n            \"end\": \"2025-09-11T10:05:00.000Z\"\r\n        },\r\n        \"location\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"division\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{user_division_id}}\"\r\n            }\r\n        },\r\n        \"performer\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"employee\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{user_id}}\"\r\n            }\r\n        },\r\n        \"daily_amount\": {\r\n            \"value\": 3.5,\r\n            \"system\": \"MEDICATION_UNIT\",\r\n            \"code\": \"ML\"\r\n        },\r\n        \"description\": \"Some activity description 123\",\r\n        \"do_not_perform\": false,\r\n        \"program\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"medical_program\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"1318eabc-1a1a-42f6-8450-61e11c19eede\"\r\n            }\r\n        },\r\n        \"status\": \"scheduled\"\r\n    }\r\n}",
+									"raw": "{\r\n    \"id\": \"{{care_plan_activity_id}}\",\r\n    \"author\": [\r\n        {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"employee\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{user_id}}\"\r\n            }\r\n        }\r\n    ],\r\n    \"care_plan\": {\r\n        \"identifier\": {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/resources\",\r\n                        \"code\": \"care_plan\"\r\n                    }\r\n                ]\r\n            },\r\n            \"value\": \"{{jobCareplanID}}\"\r\n        }\r\n    },\r\n    \"detail\": {\r\n        \"kind\": \"medication_request\",\r\n        \"product_reference\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"medication\"\r\n                        }\r\n                    ],\r\n                    \"text\": \"Тестовий текст\"\r\n                },\r\n                \"value\": \"0423794a-fccc-41db-8926-b941a9a5a375\"\r\n            }\r\n        },\r\n        \"reason_code\": [\r\n            {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/ICD10_AM/condition_codes\",\r\n                        \"code\": \"E10.9\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"reason_reference\": [\r\n            {\r\n                \"identifier\": {\r\n                    \"type\": {\r\n                        \"coding\": [\r\n                            {\r\n                                \"system\": \"eHealth/resources\",\r\n                                \"code\": \"condition\"\r\n                            }\r\n                        ]\r\n                    },\r\n                    \"value\": \"{{jobEncounterID}}\"\r\n                }\r\n            }\r\n        ],\r\n        \"goal\": [\r\n            {\r\n                \"coding\": [\r\n                    {\r\n                        \"system\": \"eHealth/care_plan_activity_goals\",\r\n                        \"code\": \"default\"\r\n                    }\r\n                ]\r\n            }\r\n        ],\r\n        \"quantity\": {\r\n            \"value\": 10,\r\n            \"code\": \"DOSE\",\r\n            \"system\": \"MEDICATION_UNIT\"\r\n        },\r\n        \"scheduled_period\": {\r\n            \"start\": \"2026-01-14T10:00:00.000Z\",\r\n            \"end\": \"2026-01-28T10:05:00.000Z\"\r\n        },\r\n        \"location\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"division\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{user_division_id}}\"\r\n            }\r\n        },\r\n        \"performer\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"employee\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"{{user_id}}\"\r\n            }\r\n        },\r\n        \"daily_amount\": {\r\n            \"value\": 3.5,\r\n            \"system\": \"MEDICATION_UNIT\",\r\n            \"code\": \"DOSE\"\r\n        },\r\n        \"description\": \"Some activity description 123\",\r\n        \"do_not_perform\": false,\r\n        \"program\": {\r\n            \"identifier\": {\r\n                \"type\": {\r\n                    \"coding\": [\r\n                        {\r\n                            \"system\": \"eHealth/resources\",\r\n                            \"code\": \"medical_program\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"value\": \"2adffeff-be3c-4a23-92a3-2cf4a34a2972\"\r\n            }\r\n        },\r\n        \"status\": \"scheduled\"\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
