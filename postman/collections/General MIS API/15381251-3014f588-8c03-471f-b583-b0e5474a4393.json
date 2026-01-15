@@ -11253,6 +11253,50 @@
 							"script": {
 								"id": "4b1dd3f5-6247-4617-be71-9805fe18db15",
 								"exec": [
+									"let response = pm.response.json();",
+									"",
+									"pm.test(\"Check if the response 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"",
+									"    let data = Array.isArray(response) ? response : response.data;",
+									"",
+									"    if (data?.length > 0) {",
+									"        let firstDrug = data[0];",
+									"        let firstIngredient = firstDrug.ingredients?.[0];",
+									"        let firstPackage = firstDrug.packages?.[0];",
+									"",
+									"        if (firstIngredient && firstPackage) {",
+									"            pm.globals.set(\"med_quantity_code\", firstIngredient.dosage.denumerator_unit);",
+									"            pm.globals.set(\"med_quantity_value\", Number(firstPackage.package_min_qty));",
+									"            pm.globals.set(\"med_daily_amount\", Number(firstDrug.daily_dosage));",
+									"        } else {",
+									"            console.error(\"Інгредієнти або пакети не знайдено для першого препарату\");",
+									"        }",
+									"    } else {",
+									"        console.error(\"Масив препаратів пустий\");",
+									"    }",
+									"",
+									"",
+									"",
+									"    let reqUrl = pm.request.url;",
+									"",
+									"    // Перевіряємо, чи є query-параметри",
+									"    if (reqUrl.query && reqUrl.query.count() > 0) {",
+									"        let medProgramParam = reqUrl.query.find(q => q.key === \"medical_program_id\");",
+									"        if (medProgramParam) {",
+									"            pm.globals.set(\"medication_program\", medProgramParam.value);",
+									"            console.log(\"Medical Program ID:\", medProgramParam.value);",
+									"        } else {",
+									"            console.error(\"medical_program_id не знайдено в query\");",
+									"        }",
+									"    } else {",
+									"        console.error(\"У запиті немає query параметрів\");",
+									"    }",
+									"});",
+									"",
+									"",
+									"",
 									""
 								],
 								"type": "text/javascript",
@@ -11299,7 +11343,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/v3/drugs?medical_program_id=b59f2ca3-b284-44a7-9ab1-7c5f221402c4",
+							"raw": "{{host}}/api/v3/drugs?medical_program_id=2adffeff-be3c-4a23-92a3-2cf4a34a2972",
 							"host": [
 								"{{host}}"
 							],
@@ -11397,7 +11441,19 @@
 								},
 								{
 									"key": "medical_program_id",
-									"value": "b59f2ca3-b284-44a7-9ab1-7c5f221402c4"
+									"value": "b59f2ca3-b284-44a7-9ab1-7c5f221402c4",
+									"disabled": true
+								},
+								{
+									"key": "medical_program_id",
+									"value": "2adffeff-be3c-4a23-92a3-2cf4a34a2972",
+									"description": "Хронічні хвороби нижніх дихальних шляхів"
+								},
+								{
+									"key": "medical_program_id",
+									"value": "857588d8-9e12-4935-96c4-b08e95d19dce",
+									"description": "Інсуліни людські (картриджі та шприц-ручки з доплатою)",
+									"disabled": true
 								}
 							]
 						}
