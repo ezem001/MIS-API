@@ -1582,7 +1582,7 @@
 									"name": "PHC",
 									"item": [
 										{
-											"name": "PHC encounter observation immunization",
+											"name": "PHC encounter+observation(2)+immunization",
 											"event": [
 												{
 													"listen": "prerequest",
