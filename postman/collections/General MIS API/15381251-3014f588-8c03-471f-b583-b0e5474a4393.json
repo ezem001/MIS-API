@@ -8557,7 +8557,7 @@
 					"name": "AuthMehtods",
 					"item": [
 						{
-							"name": "Public. MeGet Person Authentication methods",
+							"name": "Get Person Authentication methods",
 							"event": [
 								{
 									"listen": "prerequest",
