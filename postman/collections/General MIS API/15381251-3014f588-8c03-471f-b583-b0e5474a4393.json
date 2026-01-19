@@ -10209,6 +10209,11 @@
 										"key": "API-key",
 										"value": "{{mis_client_secret}}",
 										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -10242,7 +10247,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Forbidden group list Copy",
+							"name": "Get Forbidden group details",
 							"id": "15381251-5d1c37d4-3953-41e7-80b6-dcdb1d7daef5",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -10264,16 +10269,22 @@
 										"key": "API-key",
 										"value": "{{mis_client_secret}}",
 										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/forbidden_groups",
+									"raw": "{{host}}/api/forbidden_groups/1db0cf6f-bc4e-4871-9887-ddd26049f5c1",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
-										"forbidden_groups"
+										"forbidden_groups",
+										"1db0cf6f-bc4e-4871-9887-ddd26049f5c1"
 									],
 									"query": [
 										{
