@@ -10419,13 +10419,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{host}}/api/diagnoses_groups",
+									"raw": "{{host}}/api/diagnoses_groups/35f84014-e5c2-416f-96a6-47a1b60f698e",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
-										"diagnoses_groups"
+										"diagnoses_groups",
+										"35f84014-e5c2-416f-96a6-47a1b60f698e"
 									],
 									"query": [
 										{
@@ -10458,50 +10459,6 @@
 											"value": "G30.9",
 											"disabled": true
 										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Group of Diagnoses details",
-							"id": "15381251-b6d9b11d-acb9-42d2-9c6d-f3aeb5c08d0a",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "api-key",
-										"value": "30276e63617461a185ec",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{access_token}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Custom-PSK",
-										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{host_demo}}/api/diagnoses_groups/id",
-									"host": [
-										"{{host_demo}}"
-									],
-									"path": [
-										"api",
-										"diagnoses_groups",
-										"id"
 									]
 								}
 							},
