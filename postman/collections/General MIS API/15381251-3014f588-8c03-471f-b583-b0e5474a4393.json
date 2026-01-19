@@ -10240,6 +10240,61 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get Forbidden group list Copy",
+							"id": "15381251-5d1c37d4-3953-41e7-80b6-dcdb1d7daef5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "API-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/forbidden_groups",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"forbidden_groups"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Some%20name",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page_size",
+											"value": "50",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "15381251-4fc830e3-5db3-42b0-aa5f-b3e60d1ba253"
