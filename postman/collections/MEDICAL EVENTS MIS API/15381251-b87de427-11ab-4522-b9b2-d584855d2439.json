@@ -941,14 +941,6 @@
 											"                    // Display response details in visualizer\r",
 											"                    displayResponse('Episode Job Response Details', responseBody.data);\r",
 											"\r",
-											"                    //Get episode by id\r",
-											"\r",
-											"                    pm.sendRequest({\r",
-											"\r",
-											"                    }, function (err, res) {\r",
-											"\r",
-											"                    });\r",
-											"\r",
 											"                } else {\r",
 											"\r",
 											"                    // Retrieve the current retry count\r",
@@ -1043,17 +1035,17 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": " {\n   \"id\":\"{{episode_id}}\",\n   \"name\":\"Епізод QA_28\",\n   \"status\":\"active\",\n   \"type\":{\n      \"system\":\"eHealth/episode_types\",\n      \"code\":\"TREATMENT\"\n   },\n   \"period\":{\n      \"start\":\"{{episode_start_date}}\"\n   },\n   \"managing_organization\": {\n\t    \"identifier\": {\n\t      \"type\": {\n\t        \"coding\": [\n\t          {\n\t            \"system\": \"eHealth/resources\",\n\t            \"code\": \"legal_entity\"\n\t          }\n\t        ]\n\t      },\n\t      \"value\":\"{{user_legal_entity}}\"\n\t    }\n   },\n   \"care_manager\": {\n\t    \"identifier\": {\n\t      \"type\": {\n\t        \"coding\": [\n\t          {\n\t            \"system\": \"eHealth/resources\",\n\t            \"code\": \"employee\"\n\t          }\n\t        ]\n\t      },\n\t      \"value\":\"{{user_id}}\"\n\t    }\n   }\n}"
+									"raw": " {\n   \"id\":\"{{episode_id}}\",\n   \"name\":\"Епізод QA_29\",\n   \"status\":\"active\",\n   \"type\":{\n      \"system\":\"eHealth/episode_types\",\n      \"code\":\"TREATMENT\"\n   },\n   \"period\":{\n      \"start\":\"{{episode_start_date}}\"\n   },\n   \"managing_organization\": {\n\t    \"identifier\": {\n\t      \"type\": {\n\t        \"coding\": [\n\t          {\n\t            \"system\": \"eHealth/resources\",\n\t            \"code\": \"legal_entity\"\n\t          }\n\t        ]\n\t      },\n\t      \"value\":\"{{user_legal_entity}}\"\n\t    }\n   },\n   \"care_manager\": {\n\t    \"identifier\": {\n\t      \"type\": {\n\t        \"coding\": [\n\t          {\n\t            \"system\": \"eHealth/resources\",\n\t            \"code\": \"employee\"\n\t          }\n\t        ]\n\t      },\n\t      \"value\":\"{{user_id}}\"\n\t    }\n   },\n   \"care_team\": {\n    \"identifier\": {\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"eHealth/resources\",\n            \"code\": \"care_team\"\n          }\n        ]\n      },\n      \"value\": \"085b69da-cbae-457d-aeab-959884409983\"\n    }\n  },\n  \"part_of\": {\n    \"identifier\": {\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"eHealth/resources\",\n            \"code\": \"episode_of_care\"\n          }\n        ]\n      },\n      \"value\": \"7e091aeb-364c-4d92-8706-c888f1a93a32\"\n    }\n  }\n}"
 								},
 								"url": {
-									"raw": "{{host}}/api/patients/35da467f-11e2-4d3a-adc4-2d92a318929f/episodes",
+									"raw": "{{host}}/api/patients/1816d0f6-050f-466d-9cea-2190f53a3d0b/episodes",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"patients",
-										"35da467f-11e2-4d3a-adc4-2d92a318929f",
+										"1816d0f6-050f-466d-9cea-2190f53a3d0b",
 										"episodes"
 									]
 								},
