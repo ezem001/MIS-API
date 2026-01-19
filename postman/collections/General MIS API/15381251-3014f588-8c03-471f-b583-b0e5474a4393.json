@@ -10329,7 +10329,7 @@
 									},
 									{
 										"key": "api-key",
-										"value": "30276e63617461a185ec",
+										"value": "{{mis_client_secret}}",
 										"type": "text"
 									},
 									{
@@ -10339,14 +10339,14 @@
 									},
 									{
 										"key": "X-Custom-PSK",
-										"value": "a2ffb0888561e50d5a868faf56ea5708619b7ecc03b5bd21ff1a50f37a3f430e",
+										"value": "{{x-custom-psk}}",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{host_demo}}/api/diagnoses_groups?page=2&page_size=50&diagnoses_group_name=Some%20name&diagnoses_group_code=H00&diagnosis_name=Some%20name&diagnosis_code=G30.9",
+									"raw": "{{host}}/api/diagnoses_groups",
 									"host": [
-										"{{host_demo}}"
+										"{{host}}"
 									],
 									"path": [
 										"api",
@@ -10355,27 +10355,108 @@
 									"query": [
 										{
 											"key": "page",
-											"value": "2"
+											"value": "2",
+											"disabled": true
 										},
 										{
 											"key": "page_size",
-											"value": "50"
+											"value": "50",
+											"disabled": true
 										},
 										{
 											"key": "diagnoses_group_name",
-											"value": "Some%20name"
+											"value": "Some%20name",
+											"disabled": true
 										},
 										{
 											"key": "diagnoses_group_code",
-											"value": "H00"
+											"value": "H00",
+											"disabled": true
 										},
 										{
 											"key": "diagnosis_name",
-											"value": "Some%20name"
+											"value": "Some%20name",
+											"disabled": true
 										},
 										{
 											"key": "diagnosis_code",
-											"value": "G30.9"
+											"value": "G30.9",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Group of Diagnoses details",
+							"id": "15381251-1376bb96-1f66-44e1-b879-890b3b012f41",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "api-key",
+										"value": "{{mis_client_secret}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Custom-PSK",
+										"value": "{{x-custom-psk}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/diagnoses_groups",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"diagnoses_groups"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page_size",
+											"value": "50",
+											"disabled": true
+										},
+										{
+											"key": "diagnoses_group_name",
+											"value": "Some%20name",
+											"disabled": true
+										},
+										{
+											"key": "diagnoses_group_code",
+											"value": "H00",
+											"disabled": true
+										},
+										{
+											"key": "diagnosis_name",
+											"value": "Some%20name",
+											"disabled": true
+										},
+										{
+											"key": "diagnosis_code",
+											"value": "G30.9",
+											"disabled": true
 										}
 									]
 								}
