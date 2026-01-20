@@ -12520,7 +12520,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/care-teams?legal_entity_id=10d87d8b-81d3-448e-ae97-f45b6b1111cd",
+									"raw": "http://localhost:3000/care-teams",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -12532,7 +12532,8 @@
 									"query": [
 										{
 											"key": "legal_entity_id",
-											"value": "10d87d8b-81d3-448e-ae97-f45b6b1111cd"
+											"value": "10d87d8b-81d3-448e-ae97-f45b6b1111cd",
+											"disabled": true
 										},
 										{
 											"key": "author_employee_id",
