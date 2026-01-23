@@ -1113,33 +1113,27 @@
 							"name": "Get Episode by ID",
 							"event": [
 								{
-									"listen": "test",
+									"listen": "prerequest",
 									"script": {
-										"id": "082f1043-4488-4a69-9d2d-fdb85dfeba80",
+										"id": "7665ebf9-77f8-456a-be29-9720448118db",
 										"exec": [
-											"// tests[\"Job created\"] = responseCode.code === 202;",
-											"// var jsonData = JSON.parse(responseBody);",
-											"// //pm.environment.set(\"job_id\", jsonData.data.id);",
-											"// var job_id=jsonData.data.links[0].href.substring(6);",
-											"// pm.environment.set(\"job_id\", job_id);",
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								},
 								{
-									"listen": "prerequest",
+									"listen": "test",
 									"script": {
-										"id": "7a619893-d291-44e8-b7d4-808f8613ffb0",
+										"id": "937f322a-47ff-486b-bb33-c265606df59b",
 										"exec": [
-											"var uuid = require('uuid');",
-											"var id = uuid.v4();",
-											"pm.environment.set(\"episode_id\", id);",
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
