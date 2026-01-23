@@ -18497,7 +18497,7 @@
 							"name": "МВТН",
 							"item": [
 								{
-									"name": "Create Composition",
+									"name": "Create Composition SICKNESS",
 									"event": [
 										{
 											"listen": "test",
