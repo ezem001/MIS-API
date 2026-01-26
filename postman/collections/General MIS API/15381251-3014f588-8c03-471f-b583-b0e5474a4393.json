@@ -7673,7 +7673,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"external_id\": \"3999869394.2799207815.1\",\n  \"first_name\": \"Анна\",\n  \"last_name\": \"Бондар\",\n  \"second_name\":\"Іванівна\",\n  \"gender\": \"FEMALE\",\n  \"birth_date\": \"2026-01-21\",\n  \"emergency_contact\": {\n    \"first_name\": \"Йоханнес\",\n    \"last_name\": \"Петренко\",\n    \"second_name\": \"Іванівна\",\n    \"phones\": [\n      {\n        \"type\": \"MOBILE\",\n        \"number\": \"+380951364444\"\n      }\n    ]\n  },\n  \"note\": \"Зареєстрований у тестових цілях\"\n}"
+									"raw": "{\n  \"external_id\": \"3999869394.2799207815.1\",\n  \"first_name\": \"Ірина\",\n  \"last_name\": \"Бондар\",\n  \"second_name\":\"Іванівна\",\n  \"gender\": \"FEMALE\",\n  \"birth_date\": \"2026-01-25\",\n  \"emergency_contact\": {\n    \"first_name\": \"Йоханнес\",\n    \"last_name\": \"Петренко\",\n    \"second_name\": \"Іванівна\",\n    \"phones\": [\n      {\n        \"type\": \"MOBILE\",\n        \"number\": \"+380951364444\"\n      }\n    ]\n  },\n  \"note\": \"Зареєстрований у тестових цілях\"\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/prepersons",
