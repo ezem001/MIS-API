@@ -7552,7 +7552,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://storage-demo.ehealth.gov.ua/authentication-method-requests/85/51/45/8c/0d/8512e172-5134-45b2-8c7e-0d5e4c64bfe4/authentication_method_request_BIRTH_CERTIFICATE.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Credential=UW2KVTMKINLYBM0A%2F20251231%2Fs3-demo%2Fs3%2Faws4_request&X-Amz-Date=20251231T111200Z&X-Amz-Signature=e88a7b74193cd205e15796476876519a30d8bd6ece542bd992634e0cd4337aa3",
+							"raw": "https://storage-demo.ehealth.gov.ua/merge-requests/45/d3/40/83/51/457f4a42-d34a-40c7-83da-51612d40e1a9/merge_request_person.PASSPORT.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Credential=AHOKBGJW12AXVMI3%2F20260123%2Fs3-demo%2Fs3%2Faws4_request&X-Amz-Date=20260123T154452Z&X-Amz-Signature=f86c6f436454c909a105b8865a200e426a28cf9170923773fa7a6b218fecc96d",
 							"protocol": "https",
 							"host": [
 								"storage-demo",
@@ -7561,14 +7561,14 @@
 								"ua"
 							],
 							"path": [
-								"authentication-method-requests",
-								"85",
-								"51",
+								"merge-requests",
 								"45",
-								"8c",
-								"0d",
-								"8512e172-5134-45b2-8c7e-0d5e4c64bfe4",
-								"authentication_method_request_BIRTH_CERTIFICATE.jpeg"
+								"d3",
+								"40",
+								"83",
+								"51",
+								"457f4a42-d34a-40c7-83da-51612d40e1a9",
+								"merge_request_person.PASSPORT.jpeg"
 							],
 							"query": [
 								{
@@ -7590,15 +7590,15 @@
 								},
 								{
 									"key": "X-Amz-Credential",
-									"value": "UW2KVTMKINLYBM0A%2F20251231%2Fs3-demo%2Fs3%2Faws4_request"
+									"value": "AHOKBGJW12AXVMI3%2F20260123%2Fs3-demo%2Fs3%2Faws4_request"
 								},
 								{
 									"key": "X-Amz-Date",
-									"value": "20251231T111200Z"
+									"value": "20260123T154452Z"
 								},
 								{
 									"key": "X-Amz-Signature",
-									"value": "e88a7b74193cd205e15796476876519a30d8bd6ece542bd992634e0cd4337aa3"
+									"value": "f86c6f436454c909a105b8865a200e426a28cf9170923773fa7a6b218fecc96d"
 								}
 							]
 						}
