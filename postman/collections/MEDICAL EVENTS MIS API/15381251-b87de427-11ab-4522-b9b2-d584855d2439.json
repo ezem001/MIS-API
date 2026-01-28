@@ -7548,32 +7548,36 @@
 						"body": {
 							"mode": "file",
 							"file": {
-								"src": "postman-cloud:///1f088a87-f578-4210-b9a6-7197687e59be"
+								"src": "postman-cloud:///1ef66c68-3e78-4280-8f60-872c4c3dd8e8"
 							}
 						},
 						"url": {
-							"raw": "https://storage-demo.ehealth.gov.ua/merge-requests/45/d3/40/83/51/457f4a42-d34a-40c7-83da-51612d40e1a9/merge_request_person.PASSPORT.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Credential=AHOKBGJW12AXVMI3%2F20260123%2Fs3-demo%2Fs3%2Faws4_request&X-Amz-Date=20260123T154452Z&X-Amz-Signature=f86c6f436454c909a105b8865a200e426a28cf9170923773fa7a6b218fecc96d",
+							"raw": "https://storage-01-demo.ehealth.gov.ua/declaration-requests/e2/bd/4a/95/51/e2c243b6-bd37-4a9b-95ff-51563b1b2bb0/declaration_request_person.NATIONAL_ID.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AHOKBGJW12AXVMI3%2F20260128%2Fs3-demo%2Fs3%2Faws4_request&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Date=20260128T130713Z&X-Amz-Signature=d0ec9bb192413822fac3ce3a14289ffb356334b863460dbd7a94a95960bea473",
 							"protocol": "https",
 							"host": [
-								"storage-demo",
+								"storage-01-demo",
 								"ehealth",
 								"gov",
 								"ua"
 							],
 							"path": [
-								"merge-requests",
-								"45",
-								"d3",
-								"40",
-								"83",
+								"declaration-requests",
+								"e2",
+								"bd",
+								"4a",
+								"95",
 								"51",
-								"457f4a42-d34a-40c7-83da-51612d40e1a9",
-								"merge_request_person.PASSPORT.jpeg"
+								"e2c243b6-bd37-4a9b-95ff-51563b1b2bb0",
+								"declaration_request_person.NATIONAL_ID.jpeg"
 							],
 							"query": [
 								{
 									"key": "X-Amz-Algorithm",
 									"value": "AWS4-HMAC-SHA256"
+								},
+								{
+									"key": "X-Amz-Credential",
+									"value": "AHOKBGJW12AXVMI3%2F20260128%2Fs3-demo%2Fs3%2Faws4_request"
 								},
 								{
 									"key": "X-Amz-Expires",
@@ -7589,16 +7593,12 @@
 									"disabled": true
 								},
 								{
-									"key": "X-Amz-Credential",
-									"value": "AHOKBGJW12AXVMI3%2F20260123%2Fs3-demo%2Fs3%2Faws4_request"
-								},
-								{
 									"key": "X-Amz-Date",
-									"value": "20260123T154452Z"
+									"value": "20260128T130713Z"
 								},
 								{
 									"key": "X-Amz-Signature",
-									"value": "f86c6f436454c909a105b8865a200e426a28cf9170923773fa7a6b218fecc96d"
+									"value": "d0ec9bb192413822fac3ce3a14289ffb356334b863460dbd7a94a95960bea473"
 								}
 							]
 						}
